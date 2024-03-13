@@ -77,7 +77,6 @@ const Register = () => {
           Back
         </Button>
         <Button
-          // onClick={ageGate}
           className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95"
         >
           Next
