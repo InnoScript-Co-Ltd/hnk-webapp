@@ -1,6 +1,13 @@
+import ShadowButton from "@/components/global/ShadowButton";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HNKLogo from "@/assets/images/HNK logo 1.png";
+import LabelLogo from "@/assets/images/05 1.png";
+import BgMask from "@/assets/images/Mask group.png";
+import KpopOp from "@/assets/images/K-POP-OP01 copy 1.png";
+import Punk from "@/assets/images/PUNK copy 1.png";
+import WaterMark from "@/assets/images/Heineken E logo.png";
 
 const AgeGate = () => {
   const [overEighteen, setOverEighteen] = useState(false);
@@ -14,10 +21,10 @@ const AgeGate = () => {
   return (
     <div className="bg-[#009D1B] min-h-screen">
       <div className="flex justify-center">
-        <img src="/src/assets/HNK logo 1.png" alt="" />
+        <img src={HNKLogo} alt="" />
       </div>
       <div className="flex justify-center  mx-auto">
-        <img src="/src/assets/05 1.png" alt="" className="absolute top-20" />
+        <img src={LabelLogo} alt="" className="absolute top-20" />
       </div>
       <div className="flex justify-center">
         <span
@@ -35,43 +42,27 @@ const AgeGate = () => {
         <div className="absolute top-[390px] flex flex-col gap-3">
           <Button
             onClick={ageGate}
-            className="w-[247px] h-[64px] bg-white text-dark rounded-full text-xl active:bg-transparent"
-            style={{ boxShadow: "-2px 6px 0px 0px rgba(0, 0, 0, 1)" }}
+            className="text-dark login-button h-[64px] w-[247px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95"
           >
             Yes, I am
           </Button>
           <Button
             onClick={() => setOverEighteen(false)}
-            className="w-[247px] h-[64px] bg-white text-dark rounded-full shadow-lg text-xl"
-            style={{ boxShadow: "-2px 6px 0px 0px rgba(0, 0, 0, 1)" }}
+            className="text-dark login-button h-[64px] w-[247px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95"
           >
             No, I am not
           </Button>
+          {/* <ShadowButton label="Yes, I am" />
+          <ShadowButton label="No, I am not" /> */}
         </div>
       </div>
       <div>
         <div>
-          <img
-            src="/src/assets/Mask group.png"
-            alt=""
-            className="absolute bottom-0"
-          />
+          <img src={BgMask} alt="" className="absolute bottom-0" />
         </div>
-        <img
-          src="/src/assets/K-POP-OP01 copy 1.png"
-          alt=""
-          className="absolute bottom-0"
-        />
-        <img
-          src="/src/assets/PUNK copy 1.png"
-          alt=""
-          className="absolute bottom-0 right-0"
-        />
-        <img
-          src="/src/assets/Heineken E logo 1.png"
-          alt=""
-          className="absolute bottom-5 right-5"
-        />
+        <img src={KpopOp} alt="" className="absolute bottom-0" />
+        <img src={Punk} alt="" className="absolute bottom-0 right-0" />
+        <img src={WaterMark} alt="" className="absolute bottom-5 right-5" />
       </div>
     </div>
   );
