@@ -73,10 +73,7 @@ const Register = () => {
         </div>
       </div>
       <div className=" mx-auto ">
-        <Button
-          // onClick={ageGate}
-          className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95"
-        >
+        <Button className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95">
           Back
         </Button>
         <Button
