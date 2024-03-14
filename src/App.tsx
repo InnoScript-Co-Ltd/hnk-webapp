@@ -4,16 +4,24 @@ import HomeComponent from "./modules/home/HomeComponent";
 import AgeGate from "./modules/auth/AgeGate";
 import Register from "./modules/auth/Register";
 import Cover from "./modules/cover/Cover";
+import PlayerComponent from "./modules/player/PlayerComponent";
 
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: <DefaultLayout />,
-      children: [
-        {
-          path: "",
-          element: <HomeComponent />,
+
+            path: "/",
+            element: <DefaultLayout />,
+            children: [
+                {
+                    path: "",
+                    element: <HomeComponent />,
+                },
+                {
+                    path: "player",
+                    element: <PlayerComponent />,
+                },
+            ],
         },
       ],
     },

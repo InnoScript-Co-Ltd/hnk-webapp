@@ -65,12 +65,52 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
+
  
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background text-foreground; */
+    background-color: #36454F;
+    margin-top: 0px;
   }
+}
+
+@font-face {
+  font-family: natosansmm;
+  src: url('./assets/fonts/NotoSansMyanmar-Regular.ttf');
+}
+
+@font-face {
+  font-family: hanikenSerif;
+  src: url('./assets/fonts/Heineken\ Serif\ 18\ Bold.ttf');
+}
+
+@font-face {
+  font-family: w14art;
+  src: url('./assets/fonts/W14Art\ House.TTF');
+}
+
+@media only screen and (max-width: 400px) {
+    .layout-container{
+      width: 100%;
+      margin: 0 auto;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+}
+
+.layout-container{
+  max-width: 400px;
+  /* height: 100%; */
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #040658; */
 }
