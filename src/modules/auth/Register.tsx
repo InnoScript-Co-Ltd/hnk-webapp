@@ -56,8 +56,8 @@ const Register = () => {
         navigate("/");
       } catch (e) {
         if (e) {
-          console.log(e?.response.data.data);
-          const eMessage = e?.response.data.data || "Registration failed";
+          console.log(e.response.data.data);
+          const eMessage = e.response.data.data || "Registration failed";
           setError(eMessage);
           console.log("Registration failed:", eMessage);
         } else {
@@ -159,11 +159,14 @@ const Register = () => {
           </div>
         </div>
         <div className="flex justify-center gap-5 mt-6">
-          <Button className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95">
+          <Button
+           onClick={() => navigate('/verifyage')}
+           className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95">
             Back
           </Button>
           <Button
             onClick={handleRegister}
+            disabled={formData.is_accept == false}
             className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95"
           >
             Next
