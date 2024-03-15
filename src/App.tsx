@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout";
+import HomeComponent from "./modules/home/HomeComponent";
+import AgeGate from "./modules/auth/AgeGate";
+import Register from "./modules/auth/Register";
+// import Cover from "./modules/cover/Cover";
+import PlayerComponent from "./modules/player/PlayerComponent";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import Termsandconditions from "./modules/termsandconditions/Termsandconditions";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      
+      path: "/",
+      element: <DefaultLayout />,
+      children: [
+        {
+          path: "",
+          element: <HomeComponent />,
+        },
+        {
+          path: "player",
+          element: <PlayerComponent />,
+        },
+        {
+          path: "/verifyage",
+          element: <AgeGate />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/termsandconditions",
+          element: <Termsandconditions />,
+        },
+      ],
+    },
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    // {
+    //   path: "/cover",
+    //   element: <Cover />,
+    // },
+  ]);
+  return(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>)
+};
+export default App;
