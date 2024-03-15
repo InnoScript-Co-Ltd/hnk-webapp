@@ -68,7 +68,7 @@ const Termsandconditions = () => {
   return (
     <>
       {token && (
-        <div className="home-container">
+        <div className="homee-container">
           <div className="content-sectiontnc">
             <div className="top-slogantnc">
               Refresh Your Music
