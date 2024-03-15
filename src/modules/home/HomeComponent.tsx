@@ -20,7 +20,7 @@ const HomeComponent = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/register");
+      navigate("/verifyage");
     }
   }, [token, navigate]);
 
