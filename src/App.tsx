@@ -7,6 +7,7 @@ import Register from "./modules/auth/Register";
 import PlayerComponent from "./modules/player/PlayerComponent";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import Termsandconditions from "./modules/termsandconditions/Termsandconditions";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const App = () => {
         {
           path: "/register",
           element: <Register />,
+        },
+        {
+          path: "/termsandconditions",
+          element: <Termsandconditions />,
         },
       ],
     },
