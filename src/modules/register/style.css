@@ -1,0 +1,231 @@
+.register-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #000242;
+}
+
+.header {
+    width: 425px;
+    margin-top: 20px;
+}
+
+.register-elogo {
+    position: relative;
+    left: 20px;
+}
+
+.header-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    top: -10%;
+}
+
+.img-mask {
+    position: relative;
+    left: -10px;
+    top: 20px;
+}
+
+.hnk-bottle {
+    position: relative;
+    top: -20px;
+    left: -25px;
+}
+
+.img-guitter {
+    position: relative;
+    top: 0px;
+    right: 9%;
+}
+
+.hnk-text {
+    width: 100%;
+    font-size: 2em;
+    color: #000000;
+    font-family: 'hanikenSerifBold';
+    color: #fff;
+    text-align: center;
+    top: -95px;
+    position: relative;
+}
+
+.register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group {
+    background: #00EE49;
+    box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1);
+    -moz-box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1);
+    height: 42px;
+    width: 300px;
+    border-radius: 100px;
+    color: #000000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.input-label-text {
+    font-family: 'hanikenSerifBold';
+    font-size: 1em;
+}
+
+.input-control {
+    width: 200px;
+    padding-left: 15px;
+    border: 0px;
+    outline: 0px;
+    background: transparent;
+    font-family: 'hanikenSerifBold';
+}
+
+.checkbox-group {
+    width: 320px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 50px;
+    padding-left: 20px;
+}
+
+.input-checkbox {
+    border: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    outline: 0;
+}
+
+.checkbox-label {
+    color: #fff;
+    margin-left: 10px;
+    font-family: "hanikenSerifBold";
+    font-size: 14px;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hnk-btn {
+    box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1) !important;
+    -webkit-box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1) !important;
+    -moz-box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1) !important;
+    height: 50px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 100px!important;
+    font-size: 14px!important;
+    color: #000000;
+    font-family: 'hanikenSerifBold'!important;
+    border: 1px solid #000!important;
+    background-color: #FFFFFF!important;
+    color: #000000!important;
+}
+
+.footer {
+    
+}
+
+@media (max-width: 320px) {
+    
+    .header {
+        width: 320px;
+        margin-top: 20px;
+    }
+    
+    .register-elogo {
+        width: 50px;
+        position: relative;
+        left: 20px;
+    }
+    
+    .header-group {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        top: -50px;
+    }
+    
+    .img-mask {
+        width: 120px;
+        position: relative;
+        left: -10px;
+        top: 20px;
+    }
+    
+    .hnk-bottle {
+        width: 120px;
+        position: relative;
+        top: 0px;
+        left: -20px;
+    }
+    
+    .img-guitter {
+        width: 100px;
+        position: relative;
+        top: 0px;
+        right: 21px;
+    }
+    
+    .hnk-text {
+        width: 100%;
+        font-size: 1.5em;
+        color: #000000;
+        font-family: 'hanikenSerifBold';
+        color: #fff;
+        text-align: center;
+        top: -70px;
+        position: relative;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+    .header {
+        width: 375px;
+    }
+
+    .img-mask {
+        width: 120px;
+        left: 0px;
+    }
+
+    .hnk-bottle {
+        width: 140px;
+        left: 0px;
+    }
+
+    .img-guitter {
+        width: 115px;
+        right: 0px;
+    }
+
+    .hnk-text {
+        top: -75px;
+    }   
+}

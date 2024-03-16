@@ -1,13 +1,83 @@
 .home-container{
-    background-image: url('../../assets/images/HomePage/landingBg.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 100%;
-    min-height: 720px;
-    position: relative;
+    height: 100vh;
+    /* position: relative; */
     background-color: #000242;
 }
+
+.age-gate-wrapper {
+    width: 100%!important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vh;
+    background-color: #009D1B;
+}
+
+.age-gate-btn {
+    box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1) !important;
+    -webkit-box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1) !important;
+    -moz-box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1) !important;
+    height: 64px!important;
+    width: 247px!important;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 100px!important;
+    font-size: 18px!important;
+    color: #000000;
+    font-family: 'hanikenSerifBold'!important;
+    border: 1px solid #000!important;
+    background-color: #FFFFFF!important;
+    color: #000000!important;
+}
+
+.age-gate-refresh-music-logo {
+    margin-top: -100px;
+}
+
+.footer-background {
+    margin-top: 50px;
+    position: relative;
+    bottom: 0px;
+}
+
+.age-gate-left-vector {
+    position: absolute;
+    bottom: 0px;
+}
+
+.age-gate-right-vector {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+@media (max-width: 320px) { 
+    .age-gate-hnk-logo {
+        width: 150px;
+    }
+
+    .age-gate-refresh-music-logo {
+        width: 200px;
+        margin-top: -70px;
+    }
+
+    .age-gate-btn {
+        height: 50px!important;
+    }
+
+    .age-gate-right-vector {
+        width: 240px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .age-gate-hnk-logo {
+        width: 200px;
+    }
+}
+
 
 .enjoy-logo{
     position: absolute;
