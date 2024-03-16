@@ -20,26 +20,6 @@
     border-radius: 10px;
 }
 
-.top-slogan{
-    font-family: hanikenSerif;
-    width: 370px;
-    text-wrap: nowrap;
-    display: flex;
-    overflow: hidden;
-    color: #00FF70;
-    background-color: #000242;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 7px;
-    align-items: center;
-}
-
-.redStar{
-    margin: 0 10px;
-    width: 20px;
-    height: 18px;
-}
-
 .right-illu{
     position: absolute;
     right: 0;

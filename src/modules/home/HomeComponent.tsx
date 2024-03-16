@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import redStar from "../../assets/images/HomePage/redstar.png";
 import title from "../../assets/images/HomePage/title.png";
@@ -12,21 +11,26 @@ import "./style.css";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import RotatingSlogan from "@/components/RotatingSlogan";
 
 const HomeComponent = () => {
   const token = useSelector(selectToken);
   console.log(token);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/verifyage");
-    }
-  }, [token, navigate]);
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate("/verifyage");
+  //   }
+  // }, [token, navigate]);
+
+  const handleClickRandR = () => {
+    navigate('/randr')
+  }
 
   return (
     <>
-      {token && (
+      {/* {token && ( */}
         <div className="home-container">
           <div>
             <img className="enjoy-logo" src={enjoyLogo} />
@@ -35,16 +39,7 @@ const HomeComponent = () => {
             <div className="right-illu">
               <img src={titleRightIllu} />
             </div>
-            <div className="top-slogan">
-              Refresh Your Music
-              <img className="redStar" src={redStar} />
-              Refresh Your Night
-              <img className="redStar" src={redStar} />
-              Refresh Your Music
-              <img className="redStar" src={redStar} />
-              Refresh Your Night
-              <img className="redStar" src={redStar} />
-            </div>
+            <RotatingSlogan />
             <div className="content-title">
               <img src={title} />
             </div>
@@ -99,7 +94,7 @@ const HomeComponent = () => {
                 src={contentsection2leftIllu}
               />
               <img className="section-2-randr-illu" src={randr} />
-              <button className="randr btn">
+              <button onClick={handleClickRandR} className="randr btn">
                 <span>R&R</span>
                 <svg
                   width="24"
@@ -121,7 +116,7 @@ const HomeComponent = () => {
             </div>
           </div>
         </div>
-      )}
+      {/* )} */}
     </>
   );
 };

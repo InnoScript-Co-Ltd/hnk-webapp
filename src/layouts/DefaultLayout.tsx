@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import logoIcon from "../assets/images/HomePage/logo.png";
 import slogan from "../assets/images/HomePage/slogan.png";
-import minilogo from "../assets/images/HomePage/minilogo.png";
+import profile from "../assets/images/HomePage/profile 1.png";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -72,12 +72,15 @@ const DefaultLayout = () => {
                 />
               </div>
               <div className="mini-logo">
-                <img src={minilogo} alt="Mini Logo" />
+                <img className="profile" src={profile} alt="Mini Logo" />
               </div>
             </div>
           )}
-
-        <Outlet />
+        <div
+        style={{marginTop: location.pathname === '/' ? '' : '100px'}}
+        >
+          <Outlet />
+        </div>
       </div>
     </main>
   );

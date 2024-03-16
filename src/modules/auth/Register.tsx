@@ -54,7 +54,7 @@ const Register = () => {
         
         dispatch(setToken(token));
         navigate("/");
-      } catch (e) {
+      } catch (e: any) {
         if (e) {
           console.log(e.response.data.data);
           const eMessage = e.response.data.data || "Registration failed";

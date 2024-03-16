@@ -85,12 +85,12 @@
 
 @font-face {
   font-family: hanikenSerif;
-  src: url('./assets/fonts/Heineken\ Serif\ 18\ Bold.ttf');
+  src: url('./assets/fonts/Heineken\ Serif\ 18\ Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: w14art;
-  src: url('./assets/fonts/W14Art\ House.TTF');
+  src: url('./assets/fonts/W14ArtHouse.ttf') format('truetype');
 }
 
 @media only screen and (max-width: 400px) {
@@ -98,9 +98,6 @@
       width: 100%;
       margin: 0 auto;
       /* padding: 10px; */
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 }
 
@@ -109,8 +106,5 @@
   /* height: 100%; */
   margin: 0 auto;
   /* padding: 10px; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   /* background-color: #040658; */
 }

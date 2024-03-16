@@ -8,6 +8,9 @@ import PlayerComponent from "./modules/player/PlayerComponent";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Termsandconditions from "./modules/termsandconditions/Termsandconditions";
+import RandRComponent from "./modules/randr/RandRComponent";
+import EpisodeOne from "./modules/episodes/epsode_one/EpisodeOne";
+import Invite from "./modules/invite/Invite";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -36,6 +39,18 @@ const App = () => {
           path: "/termsandconditions",
           element: <Termsandconditions />,
         },
+        {
+          path: "/randr",
+          element: <RandRComponent />
+        },
+        {
+          path: '/randr/episode-1',
+          element: <EpisodeOne />
+        },
+        {
+          path: '/invite',
+          element: <Invite />
+        }
       ],
     },
 
