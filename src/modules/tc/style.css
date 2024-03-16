@@ -1,0 +1,169 @@
+.tnc-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url("../../assets/images/bg_tandc.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: fixed;
+}
+
+.tnc-content {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.tnc-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.menubar-btn,
+.profile-btn {
+    cursor: pointer;
+}
+
+.ads-content {
+    width: calc(100% - 20px);
+    border: 1px solid rgba(0, 255, 112, 0.5);
+    border-radius: 5px;
+    background: #000242;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.ads-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ads-item > label {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #00FF70;
+    font-family: "hanikenSerif";
+    font-size: 14px;
+    width: 135px;
+}
+
+.loop-text {
+    animation: loopText 5s infinite linear;    
+    display: flex;
+    flex-direction: row;
+    align-items: center;  
+}
+
+.tnc-card {
+    width: calc(100% - 20px);
+    margin-top: 20px;
+    background: rgba(30, 18, 115, 0.88);
+    height: 400px;
+    border: 1px solid #EABFFF; 
+    border-radius: 9px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    margin-bottom: 50px;
+}
+
+.tnc-card-title {
+    font-family: natosansmm;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tnc-card-content {
+    padding: 20px;
+    font-family: natosansmm;
+    color: #fff;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.tnc-checkbox-group {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tnc-input-checkbox {
+    border: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    outline: 0;
+}
+
+.tnc-checkbox-group > label {
+    font-family: hanikenSerif;
+    color: #fff;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+
+.hnk-btn-group{
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
+@keyframes loopText {
+
+  from {
+      transform: translateX(0);
+   }
+
+  to {
+      transform: translateX(-100%);
+   }
+
+}
+
+@media screen and (max-width: 320px) {
+    .tnc-content {
+        width: 320px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .tnc-content {
+        width: 320px;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 420px) and (orientation:portrait) {
+    .tnc-content {
+        width: 320px;
+    }
+}

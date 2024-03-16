@@ -7,11 +7,17 @@ export interface USER_STORY {
   phone: string;
   email: string;
   tc_accept: boolean;
+  is_campaign: boolean;
 }
 
 const initialUserJourney = localStorage.getItem(USER_JOURNEY);
 const initialState: USER_STORY = initialUserJourney ? JSON.parse(initialUserJourney) : {
-  is_over_twentyone: false
+  is_over_twentyone: false,
+  name: "",
+  phone: "",
+  email: "",
+  tc_accept: false,
+  is_campaign: false
 };
 
 const storySlice = createSlice({

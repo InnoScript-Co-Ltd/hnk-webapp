@@ -23,6 +23,7 @@ export const Register = () => {
     const story: USER_STORY = useSelector((state: any) => {
         return state.story;
       });
+      
     const navigate = useNavigate();
 
     const submitHandler = () => {

@@ -7,6 +7,7 @@ import AgeGate from "./modules/ageGate/AgeGate";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { Register } from "./modules/register/Register";
+import { Termsandconditions } from "./modules/tc/Termsandconditions";
 // import Termsandconditions from "./modules/termsandconditions/Termsandconditions";
 
 const App = () => {
@@ -41,6 +42,10 @@ const App = () => {
     {
       path: "register",
       element: <Register />
+    },
+    {
+      path: "term-and-condition",
+      element: <Termsandconditions />
     }
 
     // {
