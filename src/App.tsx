@@ -9,20 +9,17 @@ import PlayerComponent from "./modules/player/PlayerComponent";
 const App = () => {
   const router = createBrowserRouter([
     {
-
-            path: "/",
-            element: <DefaultLayout />,
-            children: [
-                {
-                    path: "",
-                    element: <HomeComponent />,
-                },
-                {
-                    path: "player",
-                    element: <PlayerComponent />,
-                },
-            ],
-        },
+      path: "/",
+      element: <DefaultLayout />,
+      children: [
+          {
+              path: "",
+              element: <HomeComponent />,
+          },
+          {
+              path: "player",
+              element: <PlayerComponent />,
+          },
       ],
     },
     {
