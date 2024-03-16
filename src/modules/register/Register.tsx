@@ -122,7 +122,7 @@ export const Register = () => {
             </div>
 
             <div className="footer">
-                <img src={footerImg} alt="Henineken" title="Henineken" />
+                <img style={{width: "100%"}} src={footerImg} alt="Henineken" title="Henineken" />
             </div>
 
         </div>
