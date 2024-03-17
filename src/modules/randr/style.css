@@ -1,0 +1,157 @@
+.page-container{
+    position: relative;
+    margin-top: 100px;
+}
+
+.slider-container{
+    /* position: absolute; */
+    width: 100%;
+    margin-top: 100px;
+    display: block;
+    padding: 5px 0;
+    background-color: #532B6F;
+}
+
+.level-section{
+    background-color: #00880F;
+    position: relative;
+    overflow: hidden;
+}
+
+.level-title{
+    font-family: hanikenSerif;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    color: #00FF00;
+    text-shadow: -4px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+    line-height: normal;
+}
+
+.ep1{
+    position: absolute;
+    top: 210px;
+    left: 20px;
+}
+
+.ep2{
+    position: absolute;
+    top: 455px;
+    right: 20px;
+}
+
+.ep3{
+    position: absolute;
+    top: 650px;
+    left: 20px;
+}
+
+.ep4{
+    position: absolute;
+    top: 880px;
+    right: 20px;
+}
+
+.ep5{
+    position: absolute;
+    top: 1125px;
+    left: 20px;
+}
+
+.line{
+    margin-top: 60px;
+}
+
+.line-2{
+    margin-top: 60px;
+}
+
+.line-3{
+    margin-top: 60px;
+}
+
+.ep1-btn-label{
+    width: 180px;
+    position: absolute;
+    top: 210px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ep2-btn-label{
+    width: 180px;
+    position: absolute;
+    top: 440px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ep3-btn-label{
+    width: 180px;
+    position: absolute;
+    top: 650px;
+    right: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ep4-btn-label{
+    width: 180px;
+    position: absolute;
+    top: 880px;
+    left: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ep5-btn-label{
+    width: 180px;
+    position: absolute;
+    top: 1125px;
+    right: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+.btn-label{
+    font-family: hanikenSerif;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.getstars-btn{
+    width: 180px;
+    position: absolute;
+    top: 1390px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.randr-enjoy{
+    position: absolute;
+    right: 30px;
+    bottom: 180px;
+}

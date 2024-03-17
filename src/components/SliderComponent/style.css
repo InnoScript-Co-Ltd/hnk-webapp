@@ -1,0 +1,23 @@
+.slider-wrapper{
+    /* display: flex; */
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-layout{
+    display: flex;
+}
+
+.individual-division{
+    flex-shrink: 0;
+    width: 300px;
+}
+
+.indicationbtn{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    /* background-color: #FFF; */
+    /* width: 100px; */
+    transform: translateX(-50%);
+}
