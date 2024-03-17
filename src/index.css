@@ -84,13 +84,8 @@
 }
 
 @font-face {
-<<<<<<< HEAD
-  font-family: hanikenSerifBold;
-  src: url('./assets/fonts/HeinekenSerif18Bold.ttf');
-=======
   font-family: hanikenSerif;
   src: url('./assets/fonts/Heineken\ Serif\ 18\ Bold.ttf') format('truetype');
->>>>>>> fa17e737c154cc2147286fd7c29d64f34f385c00
 }
 
 @font-face {

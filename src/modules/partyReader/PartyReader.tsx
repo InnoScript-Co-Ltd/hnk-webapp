@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./partyReaderStyle.css";
 import starIcon from "@/assets/images/star.png";
 import menubarIcon from "@/assets/images/menu.png";
@@ -16,6 +16,11 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { useNavigate } from "react-router-dom";
+
+interface Location {
+  lat: number;
+  lng: number;
+}
 
 const sliders = [
   {
@@ -46,9 +51,76 @@ const outletPromotions = [
   },
 ];
 
+const all_outlets = [
+  {
+    id: 1,
+    image: promotion,
+    name: "Outlet Name",
+  },
+  {
+    id: 2,
+    image: promotion,
+    name: "Outlet Name",
+  },
+  {
+    id: 3,
+    image: promotion,
+    name: "Outlet Name",
+  },
+  {
+    id: 4,
+    image: promotion,
+    name: "Outlet Name",
+  },
+  {
+    id: 5,
+    image: promotion,
+    name: "Outlet Name",
+  },
+  {
+    id: 6,
+    image: promotion,
+    name: "Outlet Name",
+  },
+  {
+    id: 7,
+    image: promotion,
+    name: "Outlet Name",
+  },
+  {
+    id: 8,
+    image: promotion,
+    name: "Outlet Name",
+  },
+]
+
 const PartyReader = () => {
   const [promotionTab, setPromotionTab] = useState(true);
   const navigate =  useNavigate()
+  const [userLocation, setUserLocation] = useState<Location | null>(null);
+
+  console.log(userLocation);
+  
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => { 
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }, []);
+
+
   return (
     <div className="partyreader-container">
       <div className="partyreader-content">
@@ -73,7 +145,7 @@ const PartyReader = () => {
         </div>
 
         <div className="slider-content-wrapper">
-          <div className="ads-content">
+          <div className="partyreader-ads-content">
             <div className="ads-item loop-text">
               <img
                 src={starIcon}
@@ -174,13 +246,13 @@ const PartyReader = () => {
               className={`promotion-btn ${
                 promotionTab === true ? "active" : ""
               }`}
-              onClick={() => setPromotionTab(!promotionTab)}
+              onClick={() => setPromotionTab(true)}
             >
               Promotion
             </button>
             <button
               className={`all-btn ${promotionTab === false ? "active" : ""}`}
-              onClick={() => setPromotionTab(!promotionTab)}
+              onClick={() => setPromotionTab(false)}
             >
               All
             </button>
@@ -192,7 +264,7 @@ const PartyReader = () => {
                   <img
                     src={item.image}
                     alt="HNK Fresh Drink"
-                    className="outlet_img"
+                    className="promotion_img"
                   />
                   <span className="outlet_name">{item.name}</span>
                 </button>
@@ -200,7 +272,18 @@ const PartyReader = () => {
             </div>
           )}
           {!promotionTab && (
-            <div>no promotion outlet</div>
+            <div className="promotion-container" >
+            {all_outlets.map((item, index) => (
+              <button key={index} className="outlet-item" onClick={(() => navigate(`/outlet-detail/${item.id}`))}>
+                <img
+                  src={item.image}
+                  alt="HNK Fresh Drink"
+                  className="outlet_img"
+                />
+                <span className="outlet_name">{item.name}</span>
+              </button>
+            ))}
+          </div>
           )
 
           }

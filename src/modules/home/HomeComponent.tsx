@@ -7,15 +7,15 @@ import beerBottle from "../../assets/images/HomePage/beerbottle.png";
 import contentsection2leftIllu from "../../assets/images/HomePage/section2leftillu.png";
 import footerImg from "../../assets/images/HomePage/footer.png";
 import randr from "../../assets/images/HomePage/r&r.png";
-import "./style.css";
-import { useSelector } from "react-redux";
-import { selectToken } from "../auth/authSlice";
+// import "./style.css";
+// import { useSelector } from "react-redux";
+// import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import RotatingSlogan from "@/components/RotatingSlogan";
 
 const HomeComponent = () => {
-  const token = useSelector(selectToken);
-  console.log(token);
+  // const token = useSelector(selectToken);
+  // console.log(token);
   const navigate = useNavigate();
 
   // useEffect(() => {
