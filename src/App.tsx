@@ -15,7 +15,8 @@ import PlayerComponent from "./modules/player/PlayerComponent";
 import { Register } from "./modules/register/Register";
 import PartyReader from "./modules/partyReader/PartyReader";
 import { Termsandconditions } from "./modules/tc/Termsandconditions";
-import OutletDetail from "./modules/partyReader/OutletDetail";
+import OutletDetail from "./modules/partyReader/OutletModal";
+import OutletModal from "./modules/partyReader/OutletModal";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -47,7 +48,11 @@ const App = () => {
         {
           path: '/invite',
           element: <Invite />
-        }
+        },
+        {
+          path: "party-reader",
+          element: <PartyReader />
+        },
       ],
     },
     {
@@ -58,14 +63,11 @@ const App = () => {
       path: "term-and-condition",
       element: <Termsandconditions />
     },
-    {
-      path: "party-reader",
-      element: <PartyReader />
-    },
-    {
-      path: "outlet-detail/1",
-      element: <OutletDetail />
-    }
+    
+    // {
+    //   path: "outlet-detail/1",
+    //   element: <OutletModal />
+    // }
 
     // {
     //   path: "/cover",
