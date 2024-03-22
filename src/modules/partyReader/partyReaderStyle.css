@@ -238,7 +238,7 @@
 
 .nearby-container{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   z-index: 9.9;
   padding-right: 15px;

@@ -15,8 +15,30 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    background-color: #532B6F;
+  }
+
+  .rhap_time{
+    color: white !important;
   }
   
+  .rhap_repeat-button {
+    color: white !important;
+  }
+
+  .rhap_main-controls-button {
+    color: white !important;
+  }
+
+  .rhap_volume-button{
+    color: white !important;
+    flex: 0 0 23px !important;  
+  }
+
+  .rhap_volume-container {
+    flex: 0 1 80px !important;
+  }
+
   .playlist-header {
     width: 100%;
     display: flex;
@@ -114,6 +136,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  .audio-player-container{
+    margin-top: 40px;
+  }
+
+  .singer-info-container{
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white;
   }
   
   @keyframes loopText {

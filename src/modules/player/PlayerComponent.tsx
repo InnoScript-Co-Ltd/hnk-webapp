@@ -5,6 +5,9 @@ import singer from "@/assets/images/singer.png";
 import player from "@/assets/images/turntable_detail.png";
 import redGuitar from "@/assets/images/heart_dagger.png";
 import greenGuitar from "@/assets/images/green_guitar.png";
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+import music from '@/assets/LEE HONGGI (이홍기) X YOO HWESEUNG (유회승) STILL LOVE YOU (사랑했었다) LYRICS (Han_Rom_Eng) COLOUR CODED.mp3'
 
 interface Song {
   title: string;
@@ -125,6 +128,7 @@ const PlayerComponent = () => {
               flexDirection: "column",
               alignItems: "center",
               marginTop: "60px",
+              position: "relative"
             }}
           >
             <div className="img-outer-wrapper">
@@ -139,10 +143,25 @@ const PlayerComponent = () => {
             <div className="turntable">
               <img src={player} alt="HNK Refresh Music" />
             </div>
-          </div>
-          <div className="guitars">
-          <img src={greenGuitar} alt="HNK Refresh Music" className="green-guitar"/>
+            <div className="guitars">
+            <img src={greenGuitar} alt="HNK Refresh Music" className="green-guitar" />
             <img src={redGuitar} alt="HNK Refresh Music" className="red-guitar" />
+          </div>
+          </div>
+          
+          <div className="singer-info-container">
+            <p>{songs[currentSongIndex].title}</p>
+            <p>{songs[currentSongIndex].artist}</p>
+          </div>
+          <div className="audio-player-container">
+            <AudioPlayer
+              autoPlay
+              src={music}
+              onPlay={(e) => console.log(e, "onPlay")}
+              volume={1}
+              loop={false}
+              style={{ backgroundColor: "transparent", boxShadow: 'none'}}
+            />
           </div>
         </div>
       </div>
