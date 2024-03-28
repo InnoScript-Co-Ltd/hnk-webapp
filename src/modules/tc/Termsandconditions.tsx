@@ -35,11 +35,6 @@ export const Termsandconditions = () => {
     return (
         <div className="tnc-container">
             <div className="tnc-content">
-                <div className="tnc-header">
-                    <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" />
-                    <img src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
-                    <img className="profile-btn" src={profileImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
-                </div>
 
                 <div className="ads-content">
                     <div className="ads-item loop-text">

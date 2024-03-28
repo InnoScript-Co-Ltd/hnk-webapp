@@ -37,35 +37,36 @@ const PlayerComponent = () => {
       singerImage: singer,
     },
   ]);
+  let height = screen.height;
 
   const [currentSongIndex, setCurrentSongIndex] = useState<number>(0);
 
-  const playSong = (index: number) => {
-    setCurrentSongIndex(index);
-    const audioElement = document.getElementById("audio") as HTMLAudioElement;
-    audioElement.load();
-    audioElement.play();
-  };
+  // const playSong = (index: number) => {
+  //   setCurrentSongIndex(index);
+  //   const audioElement = document.getElementById("audio") as HTMLAudioElement;
+  //   audioElement.load();
+  //   audioElement.play();
+  // };
 
-  const nextSong = () => {
-    const newIndex = (currentSongIndex + 1) % songs.length;
-    setCurrentSongIndex(newIndex);
-    const audioElement = document.getElementById("audio") as HTMLAudioElement;
-    audioElement.load();
-    audioElement.play();
-  };
+  // const nextSong = () => {
+  //   const newIndex = (currentSongIndex + 1) % songs.length;
+  //   setCurrentSongIndex(newIndex);
+  //   const audioElement = document.getElementById("audio") as HTMLAudioElement;
+  //   audioElement.load();
+  //   audioElement.play();
+  // };
 
-  const previousSong = () => {
-    const newIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-    setCurrentSongIndex(newIndex);
-    const audioElement = document.getElementById("audio") as HTMLAudioElement;
-    audioElement.load();
-    audioElement.play();
-  };
+  // const previousSong = () => {
+  //   const newIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+  //   setCurrentSongIndex(newIndex);
+  //   const audioElement = document.getElementById("audio") as HTMLAudioElement;
+  //   audioElement.load();
+  //   audioElement.play();
+  // };
 
   return (
     <div className="playlist-container">
-      <div className="playlist-content">
+      <div className="playlist-content" style={{height: height}}>
         <div className="content-wrapper">
           <div className="playlist-ads-content">
             <div className="ads-item loop-text">
@@ -122,13 +123,16 @@ const PlayerComponent = () => {
               <label> Refresh Your Music </label>
             </div>
           </div>
-          <div
+         <div className="h-[430px]">
+         <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              marginTop: "60px",
-              position: "relative"
+              // marginTop: "60px",
+              position: "relative",
+              top: "60px",
+              margin: "0 auto"
             }}
           >
             <div className="img-outer-wrapper">
@@ -148,10 +152,11 @@ const PlayerComponent = () => {
             <img src={redGuitar} alt="HNK Refresh Music" className="red-guitar" />
           </div>
           </div>
+         </div>
           
           <div className="singer-info-container">
-            <p>{songs[currentSongIndex].title}</p>
-            <p>{songs[currentSongIndex].artist}</p>
+            <p className="song-title">{songs[currentSongIndex].title}</p>
+            <p className="artist-name">{songs[currentSongIndex].artist}</p>
           </div>
           <div className="audio-player-container">
             <AudioPlayer

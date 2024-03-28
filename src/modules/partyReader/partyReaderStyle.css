@@ -283,4 +283,12 @@
     width: 100%;
     height: auto;
   }
+
+  .promotion-btn{
+    width: 130px;
+  }
+
+  .all-btn{
+    width: 130px;
+  }
 }
