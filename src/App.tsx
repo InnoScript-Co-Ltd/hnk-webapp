@@ -63,15 +63,6 @@ const App = () => {
       path: "/verifyage",
       element: <AgeGate />,
     },
-    // {
-    //   path: "outlet-detail/1",
-    //   element: <OutletModal />
-    // }
-
-    // {
-    //   path: "/cover",
-    //   element: <Cover />,
-    // },
   ]);
   return(
   <Provider store={store}>

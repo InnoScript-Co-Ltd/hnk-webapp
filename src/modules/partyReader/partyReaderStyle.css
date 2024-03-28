@@ -186,7 +186,7 @@
   width: 165px;
   height: 85px;
   border-radius: 27px;
-
+  object-fit: cover;
   box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
   -webkit-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
   -moz-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
@@ -196,7 +196,7 @@
   width: 86px;
   height: 80px;
   border-radius: 27px;
-
+  object-fit: cover;
   box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
   -webkit-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
   -moz-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
@@ -285,10 +285,10 @@
   }
 
   .promotion-btn{
-    width: 130px;
+    width: 160px;
   }
 
   .all-btn{
-    width: 130px;
+    width: 160px;
   }
 }
