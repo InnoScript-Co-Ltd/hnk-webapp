@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from "react";
-import menubarIcon from "@/assets/images/menu.png";
-import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
-import profileImage from "@/assets/images/profile.png";
+// import menubarIcon from "@/assets/images/menu.png";
+// import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
+// import profileImage from "@/assets/images/profile.png";
 import starIcon from "@/assets/images/star.png";
 import { useSelector } from "react-redux";
 import { USER_STORY } from "@/store/storySlice";
