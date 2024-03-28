@@ -71,8 +71,8 @@ const DefaultLayout = () => {
                   alt="Slogan"
                 />
               </div>
-              <div className="mini-logo">
-                <img className="profile" src={profile} alt="Mini Logo" />
+              <div>
+                {/* <img className="profile" src={profile} alt="Mini Logo" /> */}
               </div>
             </div>
           )}

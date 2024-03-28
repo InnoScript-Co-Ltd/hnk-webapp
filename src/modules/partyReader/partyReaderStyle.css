@@ -94,6 +94,22 @@
   margin: 0 auto;
 }
 
+.party-title-1 {
+  /* font-family: hanikenSerif; */
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.party-title-2 {
+  /* font-family: hanikenSerif; */
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0 auto;
+  color: #01EC48;
+}
+
 .party-content {
   font-family: natosansmm;
   font-size: 10px;

@@ -244,6 +244,12 @@ const PartyReader = () => {
               alt="HNK Refresh Music"
               className="party-title"
             />
+            {/* <p 
+              className="party-title-1"
+            >ဘယ်နေရာလဲ...</p>
+            <p
+              className="party-title-2"
+            >ဘာပွဲလဲ...?</p> */}
             <p className="party-content">
               ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
               စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
