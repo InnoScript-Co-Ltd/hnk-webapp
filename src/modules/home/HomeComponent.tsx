@@ -20,11 +20,11 @@ const HomeComponent = () => {
   const navigate = useNavigate();
   const userPayload = sessionStorage.getItem('USER_PAYLOAD') || '';
 
-  useEffect(() => {
-    if (!userPayload) {
-      navigate("/verifyage");
-    }
-  }, [userPayload]);
+  // useEffect(() => {
+  //   if (!userPayload) {
+  //     navigate("/verifyage");
+  //   }
+  // }, [userPayload]);
 
   const handleClickRandR = () => {
     navigate('/randr')

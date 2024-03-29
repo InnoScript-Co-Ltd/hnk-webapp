@@ -77,7 +77,7 @@ const Navigation = (props: proptype) => {
                     </button>
                 ))
             }
-            <button
+            {/* <button
             onClick={logoutHandler}
             style={{
                 width: '100%',
@@ -86,7 +86,7 @@ const Navigation = (props: proptype) => {
             }}
             >
                 Logout
-            </button>
+            </button> */}
         </div>
     </div>
   )
