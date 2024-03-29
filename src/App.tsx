@@ -45,17 +45,17 @@ const App = () => {
           element: <Invite />
         },
         {
-          path: "party-reader",
+          path: "/party-radar",
           element: <PartyReader />
         },
         {
-          path: "term-and-condition",
+          path: "/term-and-condition",
           element: <Termsandconditions />
         },
       ],
     },
     {
-      path: "register",
+      path: "/register",
       element: <Register />
     },
     

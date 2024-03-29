@@ -45,6 +45,8 @@ export const Register = () => {
         updateStory.phone = payload.phone;
 
         dispath(storyUpdate(updateStory));
+        sessionStorage.setItem('USER_PAYLOAD', JSON.stringify(payload));
+        navigate('/term-and-condition')
     }
 
     return (

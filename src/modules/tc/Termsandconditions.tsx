@@ -28,6 +28,10 @@ export const Termsandconditions = () => {
         }
     },[story]);
 
+    const handleTcAccept = () => {
+        navigate('/');
+    }
+
     useEffect(() => {
         initialLoading();
     },[initialLoading]);
@@ -100,7 +104,7 @@ export const Termsandconditions = () => {
 
                     <div className="hnk-btn-group">
                         <button className="hnk-btn" style={{ width: "100px" }} onClick={() => navigate("/")}> Back </button>
-                        <button className="hnk-btn" style={{ width: "100px" }}> Next </button>
+                        <button disabled={!payload.is_campaign} className="hnk-btn" style={{ width: "100px" }} onClick={handleTcAccept}> Next </button>
                     </div>
                 </div>
             </div>

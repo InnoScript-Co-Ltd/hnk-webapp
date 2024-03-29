@@ -1,17 +1,18 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import logoIcon from "../assets/images/HomePage/logo.png";
 import slogan from "../assets/images/HomePage/slogan.png";
-import profile from "../assets/images/HomePage/profile 1.png";
 import "./style.css";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import Navigation from "./Navigation";
+import { AnimatePresence, motion } from "framer-motion"
 // import { selectToken } from "@/modules/auth/authSlice";
 const DefaultLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isHome, setIsHome] = useState(true);
   const [scroll, setScroll] = useState(0);
-  // const token = useSelector(selectToken)
+  const [navOpen, setNavOpen] = useState(false);
+
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
@@ -24,6 +25,10 @@ const DefaultLayout = () => {
     }
   }, [location.pathname]);
 
+  const closeNavigation = () => {
+    setNavOpen(false);
+  }
+
   useEffect(() => {
     if (location.pathname !== "/") {
       setIsHome(false);
@@ -35,6 +40,12 @@ const DefaultLayout = () => {
       }
     }
   }, [location.pathname, scroll]);
+
+  const navVariant = {
+      initial: { x: "-200%"},
+      open: { x: 0 },
+      exit: { x: "-100%" },
+  }
 
   return (
     <main>
@@ -49,8 +60,22 @@ const DefaultLayout = () => {
               }}
               className="top-bar"
             >
-              <div className="menu">
-                <div className="menu-icon"></div>
+              <AnimatePresence>
+              {
+                navOpen && (
+                  <motion.div 
+                  variants={navVariant}
+                  initial={"initial"}
+                  animate={"open"}
+                  exit={'exit'}
+                >
+                  <Navigation onNavigateClose={closeNavigation} />
+                </motion.div>
+                )
+              }
+              </AnimatePresence>
+              <div style={{cursor: "pointer"}} onClick={() => setNavOpen(prev => !prev)} className="menu">
+                  <div className="menu-icon"></div>
               </div>
               <div onClick={() => navigate("/")} className="logo">
                 <img

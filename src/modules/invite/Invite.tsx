@@ -19,15 +19,15 @@ const Invite = () => {
     }
 
     const onGoBack = () => {
-        navigate('/randr');
+        navigate('/');
     }
   return (
     <div className='ep1-container'>
         <RotatingSlogan />
         <div style={{marginTop: '50px'}} className='section-wrapper'>
-            <div className="invite-profile">
+            {/* <div className="invite-profile">
                 <img className="profile-invite-img" src={profile} alt="Mini Logo" />
-            </div>
+            </div> */}
             <img className='invite-beer-bottle' src={bottle} />
             <div className='invite-section'>
                 <p className='user-name'>
