@@ -13,7 +13,7 @@ import store from "./store/store";
 // import HomeComponent from "./modules/home/HomeComponent";
 // import PlayerComponent from "./modules/player/PlayerComponent";
 import { Register } from "./modules/register/Register";
-// import PartyReader from "./modules/partyReader/PartyReader";
+import PartyReader from "./modules/partyReader/PartyReader";
 import { Termsandconditions } from "./modules/tc/Termsandconditions";
 import "./index.css";
 
@@ -60,6 +60,10 @@ const App = () => {
     {
       path: "term-and-condition",
       element: <Termsandconditions />
+    },
+    {
+      path: "party-reader",
+      element: <PartyReader />
     },
 
     {

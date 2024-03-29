@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./partyReaderStyle.css";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { SetStateAction, useEffect, useState } from "react";
+import menubarIcon from "@/assets/images/menu.png";
+import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
 import starIcon from "@/assets/images/star.png";
 import outletPromotion from "@/assets/images/Outlet_Promotion.png";
 import partyTitle from "@/assets/images/partyTitle.png";
@@ -23,6 +25,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import OutletModal from "./OutletModal";
 
+import "./partyReaderStyle.css";
 interface Location {
   lat: number;
   lng: number;
@@ -145,12 +148,13 @@ const all_outlets = [
 
 const PartyReader = () => {
   const [promotionTab, setPromotionTab] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const navigate = useNavigate();
   const [userLocation, setUserLocation] = useState<Location | null>(null);
   const [selectedDistance, setSelectedDistance] = useState("10km");
   const [selectedOutlet, setSelectedOutlet] = useState(null);
 
-  const openModal = (outlet) => {
+  const openModal = (outlet: SetStateAction<null>) => {
     setSelectedOutlet(outlet);
   };
 
@@ -181,6 +185,11 @@ const PartyReader = () => {
   return (
     <div className="partyreader-container">
       <div className="partyreader-content">
+        <div className="partyreader-header">
+          <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
+        </div>
+        <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" />
+
         <div className="slider-content-wrapper">
           <div className="partyreader-ads-content">
             <div className="ads-item loop-text">
@@ -237,7 +246,6 @@ const PartyReader = () => {
               <label> Refresh Your Music </label>
             </div>
           </div>
-          {/* <RotatingSlogan /> */}
           <div className="party-content-wrapper">
             <img
               src={partyTitle}
@@ -287,9 +295,8 @@ const PartyReader = () => {
           </p>
           <div className="promotion-btn-group">
             <button
-              className={`promotion-btn ${
-                promotionTab === true ? "active" : ""
-              }`}
+              className={`promotion-btn ${promotionTab === true ? "active" : ""
+                }`}
               onClick={() => setPromotionTab(true)}
             >
               Promotion
@@ -354,8 +361,8 @@ const PartyReader = () => {
             </>
           )}
           {selectedOutlet && (
-        <OutletModal outlet={selectedOutlet} onClose={closeModal} />
-      )}
+            <OutletModal outlet={selectedOutlet} onClose={closeModal} />
+          )}
           <div className="footer">
             <img
               style={{ width: "100%" }}
