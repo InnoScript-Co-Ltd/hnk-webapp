@@ -73,7 +73,7 @@
   }
   body {
     /* @apply bg-background text-foreground; */
-    background-color: #36454F;
+    background-color: #532B6F;
     margin-top: 0px;
   }
 }
@@ -85,7 +85,7 @@
 
 @font-face {
   font-family: hanikenSerif;
-  src: url('./assets/fonts/Heineken\ Serif\ 18\ Bold.ttf') format('truetype');
+  src: url('./assets/fonts/HeinekenSerif18Bold.ttf') format('truetype');
 }
 
 @font-face {

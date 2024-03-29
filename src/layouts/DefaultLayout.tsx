@@ -5,13 +5,13 @@ import profile from "../assets/images/HomePage/profile 1.png";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectToken } from "@/modules/auth/authSlice";
+// import { selectToken } from "@/modules/auth/authSlice";
 const DefaultLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isHome, setIsHome] = useState(true);
   const [scroll, setScroll] = useState(0);
-  const token = useSelector(selectToken)
+  // const token = useSelector(selectToken)
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
@@ -71,8 +71,8 @@ const DefaultLayout = () => {
                   alt="Slogan"
                 />
               </div>
-              <div className="mini-logo">
-                <img className="profile" src={profile} alt="Mini Logo" />
+              <div>
+                {/* <img className="profile" src={profile} alt="Mini Logo" /> */}
               </div>
             </div>
           )}
