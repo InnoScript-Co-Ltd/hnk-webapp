@@ -1,22 +1,31 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import HomeComponent from "./modules/home/HomeComponent";
-import AgeGate from "./modules/ageGate/AgeGate";
-// import Register from "./modules/auth/Register";
-// import Cover from "./modules/cover/Cover";
-// import PlayerComponent from "./modules/player/PlayerComponent";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import RandRComponent from "./modules/randr/RandRComponent";
-import EpisodeOne from "./modules/episodes/epsode_one/EpisodeOne";
-import Invite from "./modules/invite/Invite";
 import DefaultLayout from "./layouts/DefaultLayout";
-import HomeComponent from "./modules/home/HomeComponent";
-import PlayerComponent from "./modules/player/PlayerComponent";
-import { Register } from "./modules/register/Register";
-import PartyReader from "./modules/partyReader/PartyReader";
-import { Termsandconditions } from "./modules/tc/Termsandconditions";
+import LoadingComponent from "./components/LoadingComponent.tsx";
+import { lazy, ReactElement, Suspense } from "react";
+
+const HomeComponent = lazy(() => import('./modules/home/HomeComponent.tsx'));
+const PlayerComponent = lazy(() => import('./modules/player/PlayerComponent'));
+const PartyRadar = lazy(() => import('./modules/partyReader/PartyReader'));
+const Episode = lazy(() => import('./modules/episodes/epsode_one/EpisodeOne'));
+const Termsandconditions = lazy(() => import('./modules/tc/Termsandconditions.tsx'));
+const Register = lazy(() => import('./modules/register/Register'));
+const AgeGate = lazy(() => import('./modules/ageGate/AgeGate'));
+const Invite = lazy(() => import('./modules/invite/Invite'));
+const RandRComponent = lazy(() => import('./modules/randr/RandRComponent'));
+
+
+const lazyLoad = (element: ReactElement) => {
+  return(
+    <Suspense fallback={<LoadingComponent />}>
+      {element}
+    </Suspense>
+  )
+}
 
 const App = () => {
+
   const router = createBrowserRouter([
     {
       
@@ -25,43 +34,42 @@ const App = () => {
       children: [
         {
           path: "",
-          element: <HomeComponent />,
+          element: lazyLoad(<HomeComponent />)
         },
         {
           path: "player",
-          element: <PlayerComponent />,
+          element: lazyLoad(<PlayerComponent/>),
         },
-        
         {
           path: "/randr",
-          element: <RandRComponent />
+          element: lazyLoad(<RandRComponent />),
         },
         {
           path: '/randr/episode-1',
-          element: <EpisodeOne />
+          element: lazyLoad(<Episode />)
         },
         {
           path: '/invite',
-          element: <Invite />
+          element: lazyLoad(<Invite />),
         },
         {
           path: "/party-radar",
-          element: <PartyReader />
+          element: lazyLoad(<PartyRadar />),
         },
         {
           path: "/term-and-condition",
-          element: <Termsandconditions />
+          element: lazyLoad(<Termsandconditions />),
         },
       ],
     },
     {
       path: "/register",
-      element: <Register />
+      element: lazyLoad(<Register />),
     },
     
     {
       path: "/verifyage",
-      element: <AgeGate />,
+      element: lazyLoad(<AgeGate />),
     },
   ]);
   return(

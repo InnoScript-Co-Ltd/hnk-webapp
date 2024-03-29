@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import './style.css'
 import RotatingSlogan from '@/components/RotatingSlogan'
 import earphone from '../../assets/images/randr/episode_1/earphone.png'
 import mp3Player from '../../assets/images/randr/episode_1/mp3Player.png'
-import profile from '../../assets/images/HomePage/profile 1.png'
 import inviteContent from '../../assets/images/Invite/content.png'
 import feedbackStar from '../../assets/images/Invite/feedbackStar.png'
 import bottle from '../../assets/images/HomePage/beerbottle.png'
@@ -11,7 +10,7 @@ import enjoyLogo from '../../assets/images/HomePage/enjoyLogo.png';
 import ButtonComponent from '@/components/ButtonComponent'
 import { useNavigate } from 'react-router-dom'
 import ShareModalComponent from '@/components/ShareModalComponent'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 const Invite = () => {
     const navigate = useNavigate();
@@ -30,21 +29,16 @@ const Invite = () => {
     }
   return (
     <>
-        <div className='ep1-container'>
+        <div className='invite-container'>
             <AnimatePresence>
                 {
                     openShareModel && (
-                        <motion.div
-                        animate={{y: 0}}
-                        exit={{y: '-100%'}}
-                        >
-                            <ShareModalComponent closeModal={modalCloseHandler} />
-                        </motion.div>
+                        <ShareModalComponent closeModal={modalCloseHandler} />
                     )
                 }
             </AnimatePresence>
             <RotatingSlogan />
-            <div style={{marginTop: '50px'}} className='section-wrapper'>
+            <div style={{marginTop: '50px'}} className='invite-section-wrapper'>
                 {/* <div className="invite-profile">
                     <img className="profile-invite-img" src={profile} alt="Mini Logo" />
                 </div> */}

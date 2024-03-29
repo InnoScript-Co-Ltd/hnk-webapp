@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { USER_STORY, storyUpdate } from "@/store/storySlice";
 import "./style.css";
 
-export const Register = () => {
+const Register = () => {
 
     const [payload, setPayload] = useState({
         name: "",
@@ -131,3 +131,5 @@ export const Register = () => {
         </div>
     )
 }
+
+export default Register

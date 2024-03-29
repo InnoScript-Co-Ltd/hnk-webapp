@@ -93,11 +93,16 @@
   src: url('./assets/fonts/W14ArtHouse.ttf') format('truetype');
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 375px) {
+  .layout-container{
+    width: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 420px) {
     .layout-container{
       width: 100%;
-      margin: 0 auto;
-      /* padding: 10px; */
     }
 }
 

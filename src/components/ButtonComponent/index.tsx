@@ -1,4 +1,3 @@
-import React from 'react'
 import './style.css'
 
 type btnProps = {
@@ -6,13 +5,14 @@ type btnProps = {
     label: string,
     backgroundColor?: string,
     minWidth?: string, 
-    arrow?: boolean
+    arrow?: boolean,
+    disabled?: boolean,
 }
 
 const ButtonComponent = (props: btnProps) => {
-    const {onBtnClick, label, backgroundColor, minWidth, arrow} = props
+    const {onBtnClick, label, backgroundColor, minWidth, arrow, disabled} = props
   return (
-    <button style={{backgroundColor: backgroundColor || '', minWidth: minWidth || ''}} onClick={onBtnClick} className="btn">
+    <button disabled={disabled} style={{backgroundColor: backgroundColor || '', minWidth: minWidth || ''}} onClick={onBtnClick} className="btn">
         <span className='button-label'>{label}</span>
         {
           arrow && (

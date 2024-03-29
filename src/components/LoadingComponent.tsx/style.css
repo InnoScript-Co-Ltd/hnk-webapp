@@ -1,0 +1,37 @@
+.loading-container{
+    position: fixed;
+    z-index: 150;
+    background-color: rgba(0, 2, 66, 0.8);
+    width: 100%;
+    height: 100vh;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+}
+
+.loading-mainlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-redstar{
+    animation: spin 1.5s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    50%{
+        transform: rotate(180deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}

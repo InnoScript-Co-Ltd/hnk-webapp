@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Error, some.expr may be null or undefined
 import { useEffect, useRef, useState } from 'react'
 import './style.css'
@@ -9,15 +10,17 @@ type Props = {
 
 const SliderComponent = ({children, autoPlay}: Props) => {
     const [currentIndex, setCurrentIndex] = useState(1);
-    const [touchStart, setTouchStart] = useState(null)
-    const [touchEnd, setTouchEnd] = useState(null)
+    const [touchStart, setTouchStart] = useState<unknown>(null)
+    const [touchEnd, setTouchEnd] = useState<unknown>(null)
     const left = -300
-    const sliderRef = useRef(null);
+    const sliderRef = useRef<any>(null);
+    const intervalRef = useRef<any>(null);
 
     // the required distance between touchStart and touchEnd to be detected as a swipe
     const minSwipeDistance = 50 
 
     const onTouchStart = (e: number) => {
+    window.clearInterval(intervalRef.current);
     setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
     setTouchStart(e)
     }
@@ -26,7 +29,7 @@ const SliderComponent = ({children, autoPlay}: Props) => {
 
     const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return
-    const distance = touchStart - touchEnd
+    const distance = Number(touchStart) - Number(touchEnd);
     const isLeftSwipe = distance > minSwipeDistance
     const isRightSwipe = distance < -minSwipeDistance
     if (isLeftSwipe || isRightSwipe){
@@ -38,7 +41,13 @@ const SliderComponent = ({children, autoPlay}: Props) => {
             setCurrentIndex( prev => prev - 1);
         }
     }
-    // add your conditional logic here
+    if(autoPlay){
+        intervalRef.current = setInterval(() => {
+            setCurrentIndex( prev => prev + 1)
+        }, 3000);
+
+        return () => clearInterval(intervalRef.current)
+    }
     }
 
 
@@ -66,11 +75,11 @@ const SliderComponent = ({children, autoPlay}: Props) => {
     
     useEffect(() => {
         if(autoPlay){
-            const transitionInterval = setInterval(() => {
+            intervalRef.current = setInterval(() => {
                 setCurrentIndex( prev => prev + 1)
             }, 3000);
     
-            return () => clearInterval(transitionInterval)
+            return () => clearInterval(intervalRef.current)
         }
     },[autoPlay])
 
