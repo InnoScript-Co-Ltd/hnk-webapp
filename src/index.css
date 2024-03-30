@@ -78,6 +78,19 @@
   }
 }
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+      display: none;
+  }
+
+  .scrollbar-none {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+  }
+}
+
+
 @font-face {
   font-family: natosansmm;
   src: url('./assets/fonts/NotoSansMyanmar-Regular.ttf');
