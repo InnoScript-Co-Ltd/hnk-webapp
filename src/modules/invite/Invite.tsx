@@ -46,18 +46,17 @@ const Invite = () => {
           <img className="invite-beer-bottle" src={bottle} />
           <div className="invite-section">
             <p className="user-name">{story.name}</p>
-            <div className="invite-content">
-            <span className="invite-content-white-text">
-                တမူထူးခြားတဲ့
-            </span>
-            <span className="invite-content-green-text">ဂီတအသစ်</span>
-            <span className="invite-content-white-text">တွေကို</span>
-            <span className="invite-content-white-text">ကိုယ်တိုင်</span>
-            <span className="invite-content-green-text">Liveခံစားနားဆင်ဖို့</span>
-            <span className="invite-content-green-text">HNK Outdoor TOV</span>
-            <span className="invite-content-white-text">သို့</span>
-            <span className="invite-content-white-text">ဖိတ်ခေါ်ပါတယ်</span>
-            </div>
+            <p className="invite-content">
+              <span className="invite-content-white-text">တမူထူးခြားတဲ့</span>
+              <span className="invite-content-green-text">ဂီတအသစ်</span>
+              <span className="invite-content-white-text">တွေကို</span>
+              <span className="invite-content-white-text">ကိုယ်တိုင်</span>
+              <span className="invite-content-eng-text">Live</span>
+              <span className="invite-content-green-text">ခံစားနားဆင်ဖို့</span>
+              <span className="invite-content-eng-text">HNK Outdoor TOV</span>
+              <span className="invite-content-white-text">သို့</span>
+              <span className="invite-content-white-text">ဖိတ်ခေါ်ပါတယ်</span>
+            </p>
             <img
               className="feed-back-stars"
               src={feedbackStar}
