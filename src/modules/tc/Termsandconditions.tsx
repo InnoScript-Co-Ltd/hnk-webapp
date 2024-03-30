@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from "react";
-import menubarIcon from "@/assets/images/menu.png";
-import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
-import profileImage from "@/assets/images/profile.png";
+// import menubarIcon from "@/assets/images/menu.png";
+// import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
+// import profileImage from "@/assets/images/profile.png";
 import starIcon from "@/assets/images/star.png";
 import { useSelector } from "react-redux";
 import { USER_STORY } from "@/store/storySlice";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-export const Termsandconditions = () => {
+const Termsandconditions = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const story: USER_STORY = useSelector((state: any) => {
@@ -111,3 +111,6 @@ export const Termsandconditions = () => {
         </div>
     );
 };
+
+
+export default Termsandconditions;

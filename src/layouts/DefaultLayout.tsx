@@ -23,6 +23,7 @@ const DefaultLayout = () => {
 
       return () => document.removeEventListener("scroll", handleScroll);
     }
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }, [location.pathname]);
 
   const closeNavigation = () => {
@@ -77,7 +78,14 @@ const DefaultLayout = () => {
               <div style={{cursor: "pointer"}} onClick={() => setNavOpen(prev => !prev)} className="menu">
                   <div className="menu-icon"></div>
               </div>
-              <div onClick={() => navigate("/")} className="logo">
+              <div 
+              style={{
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)'
+              }} 
+              onClick={() => navigate("/")} 
+              className="logo">
                 <img
                   style={{
                     marginBottom: "10px",
@@ -102,7 +110,7 @@ const DefaultLayout = () => {
             </div>
           )}
         <div
-        style={{marginTop: location.pathname === '/' ? '' : '100px'}}
+        style={{marginTop: location.pathname === '/' ? '' : '100px', width: '100%'}}
         >
           <Outlet />
         </div>

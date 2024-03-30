@@ -27,10 +27,6 @@ const Navigation = (props: proptype) => {
     const {onNavigateClose} = props;
     const navigate = useNavigate();
 
-    const logoutHandler = () => {
-        sessionStorage.removeItem('USER_PAYLOAD');
-        navigate('/')
-    }
   return (
     <div className='nav-container'>
         <div

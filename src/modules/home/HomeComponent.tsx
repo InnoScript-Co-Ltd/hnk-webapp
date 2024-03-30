@@ -1,5 +1,4 @@
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-import redStar from "../../assets/images/HomePage/redstar.png";
 import title from "../../assets/images/HomePage/title.png";
 import titleRightIllu from "../../assets/images/HomePage/titleRightIllu.png";
 import contentIllu from "../../assets/images/HomePage/contentIlluLeft.png";
@@ -8,23 +7,11 @@ import contentsection2leftIllu from "../../assets/images/HomePage/section2leftil
 import footerImg from "../../assets/images/HomePage/footer.png";
 import randr from "../../assets/images/HomePage/r&r.png";
 import "./style.css";
-// import { useSelector } from "react-redux";
-// import { selectToken } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import RotatingSlogan from "@/components/RotatingSlogan";
-import { useEffect } from "react";
 
 const HomeComponent = () => {
-  // const token = useSelector(selectToken);
-  // console.log(token);
   const navigate = useNavigate();
-  const userPayload = sessionStorage.getItem('USER_PAYLOAD') || '';
-
-  // useEffect(() => {
-  //   if (!userPayload) {
-  //     navigate("/verifyage");
-  //   }
-  // }, [userPayload]);
 
   const handleClickRandR = () => {
     navigate('/randr')

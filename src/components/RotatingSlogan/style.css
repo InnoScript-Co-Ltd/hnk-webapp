@@ -1,5 +1,5 @@
 .top-slogan{
-    width: 410px;
+    max-width: 410px;
     height: 30px;
     overflow: hidden;
     background-color: #000242;
@@ -30,5 +30,17 @@
 @keyframes rotateSlogan {    
     100% {
         left: -334px
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .top-slogan{
+        width: calc(100% - 20px)
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .top-slogan{
+        width: calc(100% - 20px)
     }
 }

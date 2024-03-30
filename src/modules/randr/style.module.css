@@ -1,9 +1,10 @@
-.page-container{
+.page_container{
+    width: 100%;
     position: relative;
     margin-top: 100px;
 }
 
-.slider-container{
+.slider_container{
     /* position: absolute; */
     width: 100%;
     margin-top: 100px;
@@ -12,13 +13,13 @@
     background-color: #532B6F;
 }
 
-.level-section{
+.level_section{
     background-color: #00880F;
     position: relative;
     overflow: hidden;
 }
 
-.level-title{
+.level_title{
     font-family: hanikenSerif;
     font-size: 40px;
     font-weight: 600;
@@ -66,15 +67,15 @@
     margin-top: 60px;
 }
 
-.line-2{
+.line_2{
     margin-top: 60px;
 }
 
-.line-3{
+.line_3{
     margin-top: 60px;
 }
 
-.ep1-btn-label{
+.ep1_btn_label{
     width: 180px;
     position: absolute;
     top: 210px;
@@ -84,7 +85,7 @@
     align-items: center;
 }
 
-.ep2-btn-label{
+.ep2_btn_label{
     width: 180px;
     position: absolute;
     top: 440px;
@@ -94,7 +95,7 @@
     align-items: center;
 }
 
-.ep3-btn-label{
+.ep3_btn_label{
     width: 180px;
     position: absolute;
     top: 650px;
@@ -105,7 +106,7 @@
     align-items: center;
 }
 
-.ep4-btn-label{
+.ep4_btn_label{
     width: 180px;
     position: absolute;
     top: 880px;
@@ -116,7 +117,7 @@
     align-items: center;
 }
 
-.ep5-btn-label{
+.ep5_btn_label{
     width: 180px;
     position: absolute;
     top: 1125px;
@@ -127,7 +128,7 @@
     align-items: center;
 }
 
-.start-label{
+.start_label{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,13 +137,13 @@
     font-size: 20px;
 }
 
-.btn-label{
+.btn_label{
     font-family: hanikenSerif;
     color: #FFFFFF;
     text-align: center;
 }
 
-.getstars-btn{
+.getstars_btn{
     width: 180px;
     position: absolute;
     top: 1390px;
@@ -150,8 +151,20 @@
     transform: translateX(-50%);
 }
 
-.randr-enjoy{
+.randr_enjoy{
     position: absolute;
     right: 30px;
     bottom: 180px;
+}
+
+@media only screen and (min-width: 375px) {
+    .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
+        right: 0;
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
+        right: 20px;
+    }
 }

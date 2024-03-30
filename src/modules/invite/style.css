@@ -10,6 +10,20 @@
     transform: translateX(-50%);
 }
 
+.invite-container{
+    position: relative;
+    background-color: #00880F;
+    padding: 5px 0;
+}
+
+.invite-section-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
 .invite-section{
     width: 306px;
     height: 302px;
@@ -20,7 +34,7 @@
 }
 
 .user-name{
-    margin-top: 40px;
+    margin-top: 19px;
     text-align: center;
     font-family: hanikenSerif;
     font-size: 27px;
@@ -29,7 +43,26 @@
     text-shadow: -2px 3px #000;
 }
 
+.invite-content-green-text{
+    text-align: center;
+    font-family: hanikenSerif;
+    font-size: 31px;
+    font-weight: 600;
+    color: #01EC48;
+    text-shadow: -2px 3px #000;
+}
+
+.invite-content-white-text{
+    text-align: center;
+    font-family: hanikenSerif;
+    font-size: 31px;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: -2px 3px #000;
+}
+
 .invite-content{
+    margin-top: 23px;
     margin: 10px auto;
 }
 
@@ -74,4 +107,31 @@
     bottom: 170px;
     right: 10px;
     z-index: 20;
+}
+
+.mp3Player{
+    position: absolute;
+    right: 0;
+    /* top: 31px; */
+}
+
+.earphone{
+    position: absolute;
+    left: 0;
+    top: -90px;
+    z-index: 10;
+}
+
+@media only screen and (min-width: 375px) {
+    .mp3Player{
+        top: 13px
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    .mp3Player{
+        top: -4px;
+        width: 250px;
+
+    }
 }

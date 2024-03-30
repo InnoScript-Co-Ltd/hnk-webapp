@@ -1,6 +1,7 @@
 .register-wrapper {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    /* max-height: ; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,13 +54,15 @@
 
 .hnk-text {
     width: 100%;
-    font-size: 1.6em;
-    color: #000000;
+    font-size: 40px;
+    font-weight: 900;
     font-family: 'hanikenSerifBold';
     color: #fff;
     text-align: center;
     top: -50px;
     position: relative;
+    text-shadow: -2px 2px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
 }
 
 .register-form {
@@ -88,8 +91,9 @@
 }
 
 .input-label-text {
-    font-family: 'hanikenSerifBold';
-    font-size: 1em;
+    font-family: "hanikenSerif"!important;
+    font-size: 0.8em;
+    padding-left: 10px;
 }
 
 .input-control {
@@ -98,7 +102,7 @@
     border: 0px;
     outline: 0px;
     background: transparent;
-    font-family: 'hanikenSerifBold';
+    font-family: 'hanikenSerif'!important;
 }
 
 .checkbox-group {
@@ -108,7 +112,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 50px;
+    margin-top: 40px;
     padding-left: 20px;
 }
 
@@ -124,16 +128,20 @@
     color: #fff;
     margin-left: 10px;
     font-family: "hanikenSerifBold";
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 800;
 }
 
 .btn-group {
-    width: 320px;
-    overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content:space-around;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    z-index: 20;
+    gap: 58px;
 }
 
 .hnk-btn {
@@ -142,12 +150,26 @@
     -moz-box-shadow: -1px 6px 0px 1px rgba(0, 0, 0, 1) !important;
     height: 50px;
     text-align: center;
-    margin-top: 20px;
     border-radius: 100px!important;
-    font-size: 14px!important;
+    font-size: 15px!important;
+    font-weight: 800;
     color: #000000;
     font-family: 'hanikenSerifBold'!important;
     border: 1px solid #000!important;
     background-color: #FFFFFF!important;
     color: #000000!important;
+    font-family: "hanikenSerif"!important;
+}
+
+.disble {
+    background: #d3d1d1!important;
+}
+
+.register-error {
+    width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    font-size: small;
+    padding-top: 5px;
 }

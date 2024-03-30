@@ -39,7 +39,6 @@ const AgeGate = () => {
       </Button>
 
       <Button
-        onClick={() => ageGate(false)}
         className="age-gate-btn"
       >
         No, I am not
