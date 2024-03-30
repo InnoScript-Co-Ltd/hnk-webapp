@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { SetStateAction, useCallback, useEffect, useState } from "react";
 import menubarIcon from "@/assets/images/menu.png";
@@ -188,7 +189,7 @@ const PartyReader = () => {
   const getOutlet = useCallback(async () => {
     const response : any = await getRequest('outlet', userLocation)
     if(response.status === 200){
-      console.log(response);
+      console.log('response',response);
       
     }
   }, [userLocation])
@@ -200,9 +201,9 @@ const PartyReader = () => {
   return (
     <div className="partyreader-container">
       <div className="partyreader-content h-[100vh]">
-        <div className="partyreader-header">
+        {/* <div className="partyreader-header">
           <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
-        </div>
+        </div> */}
         <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" />
 
         <div className="slider-content-wrapper">
