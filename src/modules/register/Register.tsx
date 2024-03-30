@@ -6,9 +6,8 @@ import guitter from "@/assets/images/guiter.png";
 import footerImg from "@/assets/images/footer.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { USER_STORY, storyUpdate } from "@/store/storySlice";
 import "./style.css";
+import { postRequest } from "@/lib/axios";
 
 const Register = () => {
 
@@ -19,34 +18,25 @@ const Register = () => {
         tc_accept: false
     });
 
-    const dispath = useDispatch();
-    const story: USER_STORY = useSelector((state: any) => {
-        return state.story;
-      });
-      
+    const [errors, setErrors] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
 
-    const submitHandler = () => {
-        if(payload.name === "" || payload.phone === "" || payload.email === "") {
-            alert("All fields are required");
-            return;
+    const submitHandler = async () => {
+        setLoading(true);
+        setErrors(null);
+        const result: any = await postRequest('user', payload);
+
+        if(result.status === 422) {
+            setErrors(result.data.data);
         }
 
-        if(payload.tc_accept === false) {
-            alert("Accept T&C");
-            return;
+        if(result.status === 200) {
+            navigate("/term-and-condition")
         }
 
-        const  updateStory = {...story};
-
-        updateStory.tc_accept = payload.tc_accept;
-        updateStory.name = payload.name;
-        updateStory.email = payload.email;
-        updateStory.phone = payload.phone;
-
-        dispath(storyUpdate(updateStory));
-        sessionStorage.setItem('USER_PAYLOAD', JSON.stringify(payload));
-        navigate('/term-and-condition')
+        setLoading(false);
     }
 
     return (
@@ -65,6 +55,7 @@ const Register = () => {
                 <div className="input-group">
                     <label className="input-label-text"> Name : </label>
                     <input 
+                        disabled={loading}
                         type="text"
                         className="input-control" 
                         value={payload.name}
@@ -75,10 +66,12 @@ const Register = () => {
                         }}
                     />
                 </div>
+                { errors && errors['name'] && <label className="register-error"> { errors['name'][0]}</label>}
 
                 <div className="input-group">
                     <label className="input-label-text"> Phone : </label>
                     <input 
+                        disabled={loading}
                         type="text"
                         className="input-control" 
                         value={payload.phone}
@@ -89,10 +82,13 @@ const Register = () => {
                         }}
                     />
                 </div>
+                { errors && errors['phone'] && <label className="register-error"> { errors['phone'][0]}</label>}
+
 
                 <div className="input-group">
                     <label className="input-label-text"> Email : </label>
                     <input 
+                        disabled={loading}
                         type="email"
                         className="input-control" 
                         value={payload.email}
@@ -103,9 +99,12 @@ const Register = () => {
                         }}
                     />
                 </div>
+                { errors && errors['email'] && <label className="register-error"> { errors['email'][0]}</label>}
+                
 
                 <div className="checkbox-group">
                     <input 
+                        disabled={loading}
                         className="input-checkbox" 
                         type="checkbox" 
                         checked={payload.tc_accept}
@@ -119,8 +118,23 @@ const Register = () => {
                 </div>
 
                 <div className="btn-group">
-                    <button style={{width: "100px"}} className="hnk-btn" onClick={() => navigate('/')}> Back </button>
-                    <button style={{width: "100px"}} className="hnk-btn" onClick={() => submitHandler()}> Next </button>
+                    <button 
+                        disabled={loading}
+                        style={{width: "100px"}} 
+                        className="hnk-btn" 
+                        onClick={() => navigate('/')}
+                    > 
+                        Back 
+                    </button>
+                        
+                    <button 
+                        className={`hnk-btn ${!payload.tc_accept ? 'disble' : ""}`}
+                        disabled={!payload.tc_accept || loading} 
+                        style={{width: "100px"}} 
+                        onClick={() => submitHandler()}
+                    > 
+                        Next 
+                    </button>
                 </div>
             </div>
 

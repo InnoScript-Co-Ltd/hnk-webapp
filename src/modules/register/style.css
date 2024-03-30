@@ -60,6 +60,7 @@
     text-align: center;
     top: -50px;
     position: relative;
+    font-family: "hanikenSerif"!important;
 }
 
 .register-form {
@@ -88,8 +89,9 @@
 }
 
 .input-label-text {
-    font-family: 'hanikenSerifBold';
-    font-size: 1em;
+    font-family: "hanikenSerif"!important;
+    font-size: 0.8em;
+    padding-left: 10px;
 }
 
 .input-control {
@@ -98,7 +100,7 @@
     border: 0px;
     outline: 0px;
     background: transparent;
-    font-family: 'hanikenSerifBold';
+    font-family: 'hanikenSerif'!important;
 }
 
 .checkbox-group {
@@ -123,7 +125,7 @@
 .checkbox-label {
     color: #fff;
     margin-left: 10px;
-    font-family: "hanikenSerifBold";
+    font-family: "hanikenSerif"!important;
     font-size: 14px;
 }
 
@@ -134,6 +136,7 @@
     flex-direction: row;
     justify-content:space-around;
     align-items: center;
+    margin-top: 20px;
 }
 
 .hnk-btn {
@@ -150,4 +153,18 @@
     border: 1px solid #000!important;
     background-color: #FFFFFF!important;
     color: #000000!important;
+    font-family: "hanikenSerif"!important;
+}
+
+.disble {
+    background: #d3d1d1!important;
+}
+
+.register-error {
+    width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    font-size: small;
+    padding-top: 5px;
 }

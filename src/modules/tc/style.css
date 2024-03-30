@@ -61,8 +61,8 @@
     margin-right: 5px;
     color: #00FF70;
     font-family: "hanikenSerif";
-    font-size: 14px;
-    width: 135px;
+    font-size: small;
+    width: 200px;
 }
 
 .loop-text {
@@ -104,13 +104,15 @@
 }
 
 .tnc-checkbox-group {
-    width: calc(100% - 20px);
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .tnc-input-checkbox {

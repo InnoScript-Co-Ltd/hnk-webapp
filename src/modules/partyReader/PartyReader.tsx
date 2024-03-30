@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./partyReaderStyle.css";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { SetStateAction, useCallback, useEffect, useState } from "react";
+import menubarIcon from "@/assets/images/menu.png";
+import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
 import starIcon from "@/assets/images/star.png";
 import outletPromotion from "@/assets/images/Outlet_Promotion.png";
 import partyTitle from "@/assets/images/partyTitle.png";
@@ -7,6 +9,7 @@ import slide1 from "@/assets/images/event1.png";
 import slide2 from "@/assets/images/event2.png";
 import promotion from "@/assets/images/promotion.png";
 import footerImg from "@/assets/images/footer.png";
+import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import {
   Carousel,
   CarouselContent,
@@ -23,9 +26,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import OutletModal from "./OutletModal";
 
+import "./partyReaderStyle.css";
+import { getRequest } from "@/lib/axios";
 interface Location {
   lat: number;
-  lng: number;
+  long: number;
+  distance : number;
 }
 
 const sliders = [
@@ -145,12 +151,14 @@ const all_outlets = [
 
 const PartyReader = () => {
   const [promotionTab, setPromotionTab] = useState(true);
-  const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const navigate = useNavigate();
   const [userLocation, setUserLocation] = useState<Location | null>(null);
   const [selectedDistance, setSelectedDistance] = useState("10km");
   const [selectedOutlet, setSelectedOutlet] = useState(null);
+  const [outletList, setOutletList] = useState([]);
 
-  const openModal = (outlet) => {
+  const openModal = (outlet: SetStateAction<null>) => {
     setSelectedOutlet(outlet);
   };
 
@@ -158,15 +166,14 @@ const PartyReader = () => {
     setSelectedOutlet(null);
   };
 
-  console.log(selectedOutlet);
-
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setUserLocation({
             lat: position.coords.latitude,
-            lng: position.coords.longitude,
+            long: position.coords.longitude,
+            distance: selectedDistance === '10km' ? 10 : Number(selectedDistance)
           });
         },
         (error) => {
@@ -176,11 +183,28 @@ const PartyReader = () => {
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  }, []);
+  }, [selectedDistance]);
+
+  const getOutlet = useCallback(async () => {
+    const response : any = await getRequest('outlet', userLocation)
+    if(response.status === 200){
+      console.log(response);
+      
+    }
+  }, [userLocation])
+
+  useEffect(() => {
+    getOutlet()
+  }, [getOutlet])
 
   return (
     <div className="partyreader-container">
-      <div className="partyreader-content">
+      <div className="partyreader-content h-[100vh]">
+        <div className="partyreader-header">
+          <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
+        </div>
+        <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" />
+
         <div className="slider-content-wrapper">
           <div className="partyreader-ads-content">
             <div className="ads-item loop-text">
@@ -237,7 +261,6 @@ const PartyReader = () => {
               <label> Refresh Your Music </label>
             </div>
           </div>
-          {/* <RotatingSlogan /> */}
           <div className="party-content-wrapper">
             <img
               src={partyTitle}
@@ -250,12 +273,12 @@ const PartyReader = () => {
             <p
               className="party-title-2"
             >ဘာပွဲလဲ...?</p> */}
-            <p className="party-content">
+            <p className="party-content px-[20px] font-medium leading-[19px]">
               ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
               စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
               ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
             </p>
-            <div className="slidder-wrapper">
+            <div className="slidder-wrapper mt-[20px]">
               <Carousel className="">
                 <CarouselContent>
                   {sliders.map((slide, index) => (
@@ -280,16 +303,15 @@ const PartyReader = () => {
             alt="HNK Refresh Music"
             className="promotion-title"
           />
-          <p className="promotion-content">
+          <p className="promotion-content px-[20px] font-medium leading-[19px]">
             ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
             စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
             ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
           </p>
           <div className="promotion-btn-group">
             <button
-              className={`promotion-btn ${
-                promotionTab === true ? "active" : ""
-              }`}
+              className={`promotion-btn ${promotionTab === true ? "active" : ""
+                }`}
               onClick={() => setPromotionTab(true)}
             >
               Promotion
@@ -303,7 +325,7 @@ const PartyReader = () => {
           </div>
           {promotionTab && (
             <div className="promotion-container">
-              {outletPromotions.map((item, index) => (
+              {outletList.map((item: any, index: any): any => (
                 <button
                   key={index}
                   className="promotion-item"
@@ -323,20 +345,20 @@ const PartyReader = () => {
             <>
               <div className="nearby-container">
                 <span className="nearby-label">Near by</span>
-                <Select defaultValue={selectedDistance}>
+                <Select defaultValue={selectedDistance} onValueChange={setSelectedDistance}>
                   <SelectTrigger className="w-[80px] text-[#00F944] rounded-full border-[#00F944]">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="10km">10km</SelectItem>
-                    <SelectItem value="20km">20km</SelectItem>
-                    <SelectItem value="30km">30km</SelectItem>
+                    <SelectItem value="10">10km</SelectItem>
+                    <SelectItem value="20">20km</SelectItem>
+                    <SelectItem value="30">30km</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="promotion-container">
-                {all_outlets.map((item, index) => (
+                {all_outlets.map((item: any, index: any): any => (
                   <button
                     key={index}
                     className="outlet-items"
@@ -353,18 +375,21 @@ const PartyReader = () => {
               </div>
             </>
           )}
-          {selectedOutlet && (
-        <OutletModal outlet={selectedOutlet} onClose={closeModal} />
-      )}
-          <div className="footer">
+          <div className="footer relative z-0">
             <img
               style={{ width: "100%" }}
               src={footerImg}
               alt="Henineken"
               title="Henineken"
             />
+            <div>
+              <img className="enjoy-logo z-50 bottom-[80px] left-[20px]" src={enjoyLogo} />
+            </div>
           </div>
         </div>
+        {selectedOutlet && (
+            <OutletModal outlet={selectedOutlet} onClose={closeModal} />
+          )}
       </div>
     </div>
   );

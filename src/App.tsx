@@ -66,15 +66,14 @@ const App = () => {
       path: "/register",
       element: lazyLoad(<Register />),
     },
-    
     {
       path: "/verifyage",
       element: lazyLoad(<AgeGate />),
     },
   ]);
-  return(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>)
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>)
 };
 export default App;
