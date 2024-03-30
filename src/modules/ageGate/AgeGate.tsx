@@ -9,7 +9,6 @@ import Punk from "@/assets/images/PUNK.png";
 import AgeGateTitle from "@/assets/images/ageGateTitle.png";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_STORY, storyUpdate } from "@/store/storySlice";
-// import "./style.css";
 
 const AgeGate = () => {
     const navigate = useNavigate();
