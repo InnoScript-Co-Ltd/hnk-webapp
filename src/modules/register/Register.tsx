@@ -43,7 +43,8 @@ const Register = () => {
     try {
     setIsLoading(true)
       const response = await axios.post(
-        `${serverURL}/${endpoints.user}`,
+        `${serverURL}${endpoints.user}`,
+        // "http://hnk-api.innoscript.co/api/user",
         // "http://localhost:8000/api/user",
         payload
       );
@@ -58,13 +59,13 @@ const Register = () => {
       sessionStorage.setItem("USER_PAYLOAD", JSON.stringify(updateStory));
       navigate("/term-and-condition");
     } catch (error:any) {
-      console.error("Error submitting data:", error.response.data.message);
+      console.error("Error submitting data:", error.response);
       alert(`${error.response.data.message}. Please check your data and try again later.`);
     }
     
     setTimeout(() => {
         setIsLoading(false)
-    },5000)
+    },2000)
   };
   
   return (
