@@ -8,16 +8,19 @@ export interface USER_STORY {
   email: string;
   tc_accept: boolean;
   is_campaign: boolean;
+  authToken: string;
 }
 
 const initialUserJourney = localStorage.getItem(USER_JOURNEY);
+
 const initialState: USER_STORY = initialUserJourney ? JSON.parse(initialUserJourney) : {
   is_over_twentyone: false,
   name: "",
   phone: "",
   email: "",
   tc_accept: false,
-  is_campaign: false
+  is_campaign: false,
+  authToken: ""
 };
 
 const storySlice = createSlice({
@@ -25,6 +28,8 @@ const storySlice = createSlice({
   initialState,
   reducers: {
     storyUpdate(state: USER_STORY | null, action: PayloadAction<USER_STORY>) {
+      console.log(state, action);
+      
       state = action.payload;
       localStorage.setItem(USER_JOURNEY, JSON.stringify(action.payload));
       return state;

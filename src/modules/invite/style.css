@@ -34,7 +34,7 @@
 }
 
 .user-name{
-    margin-top: 40px;
+    margin-top: 19px;
     text-align: center;
     font-family: hanikenSerif;
     font-size: 27px;
@@ -43,7 +43,26 @@
     text-shadow: -2px 3px #000;
 }
 
+.invite-content-green-text{
+    text-align: center;
+    font-family: hanikenSerif;
+    font-size: 31px;
+    font-weight: 600;
+    color: #01EC48;
+    text-shadow: -2px 3px #000;
+}
+
+.invite-content-white-text{
+    text-align: center;
+    font-family: hanikenSerif;
+    font-size: 31px;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: -2px 3px #000;
+}
+
 .invite-content{
+    margin-top: 23px;
     margin: 10px auto;
 }
 
