@@ -9,6 +9,7 @@ import randr from "../../assets/images/HomePage/r&r.png";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import RotatingSlogan from "@/components/RotatingSlogan";
+import { Header } from "@/components/Header";
 
 const HomeComponent = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const HomeComponent = () => {
     <>
       {/* {token && ( */}
       <div className="home-container">
+        <Header imageWidth={"130px"} />
         <div>
           <img className="enjoy-logo" src={enjoyLogo} />
         </div>

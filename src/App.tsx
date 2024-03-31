@@ -32,10 +32,6 @@ const App = () => {
                     element: lazyLoad(<AgeGate />),
                 },
                 {
-                    path: "/home",
-                    element: lazyLoad(<HomeComponent />),
-                },
-                {
                     path: "/player",
                     element: lazyLoad(<PlayerComponent />),
                 },
@@ -46,10 +42,6 @@ const App = () => {
                 {
                     path: "/randr/episode-1",
                     element: lazyLoad(<Episode />),
-                },
-                {
-                    path: "/party-radar",
-                    element: lazyLoad(<PartyRadar />),
                 },
             ],
         },
@@ -64,6 +56,14 @@ const App = () => {
         {
             path: "/invite",
             element: lazyLoad(<Invite />),
+        },
+        {
+            path: "/party-radar",
+            element: lazyLoad(<PartyRadar />),
+        },
+        {
+            path: "/home",
+            element: lazyLoad(<HomeComponent />),
         },
     ]);
     return (

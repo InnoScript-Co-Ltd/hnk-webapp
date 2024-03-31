@@ -1,7 +1,7 @@
 .app-header {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding-bottom: 20px;
 }
@@ -10,6 +10,7 @@
     position: absolute;
     left: 20px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .refresh-music-img {

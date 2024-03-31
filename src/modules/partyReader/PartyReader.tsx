@@ -32,6 +32,7 @@ import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
+import { Header } from "@/components/Header";
 interface Location {
   lat: number;
   long: number;
@@ -122,6 +123,7 @@ const PartyReader = () => {
         {/* <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" /> */}
 
         <div className="slider-content-wrapper">
+          <Header backgroundColor={"#000242"} />
           <RotatingSlogan />
           <div className="party-content-wrapper">
             {/* <img
@@ -141,7 +143,7 @@ const PartyReader = () => {
               စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
               ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
             </p>
-            <div className="slidder-wrapper mt-[20px]">
+            <div className="slidder-wrapper mt-[20px] mb-[20px]">
               <Carousel className="">
                 <CarouselContent>
                   {sliders.map((slide, index) => (
@@ -161,7 +163,7 @@ const PartyReader = () => {
           </div>
         </div>
         <div className="promotion-wrapper">
-          <h1 className=" text-secondary-green text-white text-[30px] text-center">
+          <h1 className=" text-secondary-green text-white text-[30px] text-center mt-[20px]">
             Outlet <span className=" text-secondary-green">Promotion</span>
           </h1>
           <p className="promotion-content px-[20px] font-medium leading-[19px]">
