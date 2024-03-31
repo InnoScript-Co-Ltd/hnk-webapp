@@ -22,7 +22,7 @@ const Invite = () => {
   };
 
   const onGoBack = () => {
-    navigate("/term-and-condition");
+    navigate("/home");
   };
 
   const modalCloseHandler = () => {

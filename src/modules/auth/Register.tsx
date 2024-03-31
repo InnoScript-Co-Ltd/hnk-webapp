@@ -1,17 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import React, { useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+// import axios from "axios";
 import Logo from "@/assets/images/Heineken E logo1.png";
 import LeftGift from "@/assets/images/26 1.png";
 import Guitar from "@/assets/images/v1guiter 1.png";
 import Bottle from "@/assets/images/bottle logo png 1.png";
-import { useDispatch } from "react-redux";
-import { setToken } from "./authSlice";
-import { baseURL } from "@/constants/endpoints";
+// import { useDispatch } from "react-redux";
+// import { setToken } from "./authSlice";
+// import { baseURL } from "@/constants/endpoints";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@/components/ui/use-toast";
-import { Toast } from "@/components/ui/toast";
+// import { useToast } from "@/components/ui/use-toast";
+// import { Toast } from "@/components/ui/toast";
 
 interface formData {
   name: string;
@@ -28,7 +28,7 @@ const Register = () => {
     is_accept: false,
   });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [error, setError] = useState({
     email: "",
     name: "",
@@ -46,28 +46,21 @@ const Register = () => {
   const handleRegister = async () => {
     if (formData) {
       try {
-        const response = await axios.post(`${baseURL}/user`, formData);
-        console.log(response);
+        // const response = await axios.post(`${baseURL}/user`, formData);
         
-        const token = response.data.data.token;
-        console.log(token);
+        // const token = response.data.data.token;
         
-        dispatch(setToken(token));
+        // dispatch(setToken(token));
         navigate("/");
       } catch (e: any) {
         if (e) {
-          console.log(e.response.data.data);
           const eMessage = e.response.data.data || "Registration failed";
           setError(eMessage);
           console.log("Registration failed:", eMessage);
-        } else {
-          console.log("Registration failed:");
         }
       }
     }
   };
-
-  console.log(error.email[0]);
 
   return (
     <div className="home-container">

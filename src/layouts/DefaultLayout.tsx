@@ -47,7 +47,6 @@ const DefaultLayout = () => {
       open: { x: 0 },
       exit: { x: "-100%" },
   }
-  console.log(location.pathname)
 
   return (
     <main>

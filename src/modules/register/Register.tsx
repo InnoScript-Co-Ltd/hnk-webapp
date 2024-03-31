@@ -11,8 +11,9 @@ import axios from "axios";
 import ButtonComponent from "@/components/ButtonComponent";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
 import { endpoints, serverURL } from "@/constants/endpoints";
-import { USER_STORY, storyUpdate } from "@/store/storySlice";
+import { storyUpdate } from "@/store/storySlice";
 import { useDispatch, useSelector } from "react-redux";
+import { USER_STORY } from '@/models/story.model';
 
 const Register = () => {
   const [payload, setPayload] = useState({
