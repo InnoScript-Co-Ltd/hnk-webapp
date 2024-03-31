@@ -46,7 +46,7 @@
 .invite-content-green-text{
     text-align: center;
     font-family: w14art;
-    font-size: 20px;
+    font-size: 31px;
     font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
@@ -55,7 +55,7 @@
 .invite-content-white-text{
     text-align: center;
     font-family: w14art;
-    font-size: 20px;
+    font-size: 31px;
     font-weight: 400;
     color: #ffffff;
     text-shadow: -2px 3px #000;
@@ -64,7 +64,7 @@
 .invite-content-eng-text{
     text-align: center;
     font-family: hanikenSerif;
-    font-size: 20px;
+    font-size: 31px;
     font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
@@ -102,6 +102,13 @@
     left: -35px;
     top: 5px;
     transform: rotate(50deg);
+}
+
+.invite-hand{
+    position: absolute;
+    right: -7px;
+    top: 150px;
+    transform: rotate(6.38deg);
 }
 
 .invite-footer{

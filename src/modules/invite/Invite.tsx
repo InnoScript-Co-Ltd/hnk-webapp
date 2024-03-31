@@ -5,6 +5,7 @@ import earphone from "../../assets/images/randr/episode_1/earphone.png";
 import mp3Player from "../../assets/images/randr/episode_1/mp3Player.png";
 import feedbackStar from "../../assets/images/Invite/feedbackStar.png";
 import bottle from "../../assets/images/HomePage/beerbottle.png";
+import hand from "../../assets/images/hand.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import ButtonComponent from "@/components/ButtonComponent";
 import { useNavigate } from "react-router-dom";
@@ -47,15 +48,9 @@ const Invite = () => {
           <div className="invite-section">
             <p className="user-name">{story.name}</p>
             <p className="invite-content">
-              <span className="invite-content-white-text">တမူထူးခြားတဲ့</span>
-              <span className="invite-content-green-text">ဂီတအသစ်</span>
-              <span className="invite-content-white-text">တွေကို</span>
-              <span className="invite-content-white-text">ကိုယ်တိုင်</span>
-              <span className="invite-content-eng-text">Live</span>
-              <span className="invite-content-green-text">ခံစားနားဆင်ဖို့</span>
-              <span className="invite-content-eng-text">HNK Outdoor TOV</span>
-              <span className="invite-content-white-text">သို့</span>
-              <span className="invite-content-white-text">ဖိတ်ခေါ်ပါတယ်</span>
+              <span className="invite-content-green-text">
+              <span className="invite-content-white-text">wrlxl;jcm;wJh</span> *Dwtopf <span className="invite-content-white-text">awGudk udk,fwdkif</span> <span className="invite-content-eng-text">Live</span> cHpm;em;qifzdkY <span className="invite-content-eng-text">HNK Outdoor TOV</span> <span className="invite-content-white-text">odkY zdwfac:ygw,f...</span>
+              </span>
             </p>
             <img
               className="feed-back-stars"
@@ -63,6 +58,7 @@ const Invite = () => {
               alt="feedbackStar"
             />
           </div>
+          <img className="invite-hand" src={hand} />
           <div className="share-back-btn">
             <ButtonComponent
               minWidth="200px"
