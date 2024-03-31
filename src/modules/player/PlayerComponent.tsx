@@ -1,6 +1,8 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import starIcon from "@/assets/images/star.png";
 import "./playerStyle.css";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import singer from "@/assets/images/singer.png";
 import player from "@/assets/images/turntable_detail.png";
 import redGuitar from "@/assets/images/heart_dagger.png";
@@ -39,7 +41,7 @@ const PlayerComponent = () => {
   ]);
   let height = screen.height;
 
-  const [currentSongIndex, setCurrentSongIndex] = useState<number>(0);
+  const [currentSongIndex] = useState<number>(0);
 
   // const playSong = (index: number) => {
   //   setCurrentSongIndex(index);

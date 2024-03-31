@@ -1,5 +1,5 @@
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-import title from "../../assets/images/HomePage/title.png";
+// import title from "../../assets/images/HomePage/title.png";
 import titleRightIllu from "../../assets/images/HomePage/titleRightIllu.png";
 import contentIllu from "../../assets/images/HomePage/contentIlluLeft.png";
 import beerBottle from "../../assets/images/HomePage/beerbottle.png";
