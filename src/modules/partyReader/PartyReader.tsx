@@ -112,10 +112,11 @@ const PartyReader = () => {
   
 
   return (
-    <div className="partyreader-container">
+    <div className="partyreader-container relative max-w-[420px] mx-auto">
       {
         loading && <LoadingComponent />
       }
+      <Header backgroundColor={"#000242"} />
       <div className="partyreader-content h-[100vh]">
         {/* <div className="partyreader-header">
           <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
@@ -123,7 +124,6 @@ const PartyReader = () => {
         {/* <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" /> */}
 
         <div className="slider-content-wrapper">
-          <Header backgroundColor={"#000242"} />
           <RotatingSlogan />
           <div className="party-content-wrapper">
             {/* <img

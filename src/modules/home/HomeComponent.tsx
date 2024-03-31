@@ -26,7 +26,7 @@ const HomeComponent = () => {
   return (
     <>
       {/* {token && ( */}
-      <div className="home-container">
+      <div className="home-container max-w-[420px] mx-auto">
         <Header imageWidth={"130px"} />
         <div>
           <img className="enjoy-logo" src={enjoyLogo} />
@@ -37,7 +37,7 @@ const HomeComponent = () => {
           </div>
           <RotatingSlogan />
           <div className="content-title">
-            <img src={title} />
+            <h1 className=" text-center text-primary-white text-[36px]">qef;opfxl;jcm;wJh <span className=" text-primary-white text-green">*Dwt&omawGudk</span> <br /> udk,fwdkif pD;arsmcHpm;zdkY ...</h1>
           </div>
           <div className="content-texts pl-[20px] pr-[50px] font-semibold leading-[19px]">
             <p>
