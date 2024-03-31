@@ -46,7 +46,7 @@
 .invite-content-green-text{
     text-align: center;
     font-family: w14art;
-    font-size: 31px;
+    font-size: 20px;
     font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
@@ -55,7 +55,7 @@
 .invite-content-white-text{
     text-align: center;
     font-family: w14art;
-    font-size: 31px;
+    font-size: 20px;
     font-weight: 400;
     color: #ffffff;
     text-shadow: -2px 3px #000;
@@ -64,7 +64,7 @@
 .invite-content-eng-text{
     text-align: center;
     font-family: hanikenSerif;
-    font-size: 31px;
+    font-size: 20px;
     font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
