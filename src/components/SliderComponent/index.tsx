@@ -46,7 +46,7 @@ const SliderComponent = ({children, autoPlay}: Props) => {
     if(autoPlay){
         intervalRef.current = setInterval(() => {
             setCurrentIndex( prev => prev + 1)
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(intervalRef.current)
     }
@@ -70,16 +70,16 @@ const SliderComponent = ({children, autoPlay}: Props) => {
     }
 
     useEffect(() => {
-        window.addEventListener('transitionend', handleTransitionEnd);
+        document.addEventListener('transitionend', handleTransitionEnd);
 
-        return () => window.removeEventListener('transitionend', handleTransitionEnd);
+        return () => document.removeEventListener('transitionend', handleTransitionEnd);
     },[currentIndex])
     
     useEffect(() => {
         if(autoPlay){
             intervalRef.current = setInterval(() => {
                 setCurrentIndex( prev => prev + 1)
-            }, 3000);
+            }, 5000);
     
             return () => clearInterval(intervalRef.current)
         }

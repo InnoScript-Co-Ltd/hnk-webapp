@@ -11,11 +11,12 @@ import { useNavigate } from 'react-router-dom'
 // import pop from '../../../assets/images/randr/episode_1/pop.png'
 // import randb from '../../../assets/images/randr/episode_1/randb.png'
 // import rock from '../../../assets/images/randr/episode_1/rock.png'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getGenre, voteGenre } from '@/lib/randrApi'
 import { IGenrereResponse } from '@/models/genre.model'
 import { IMAGE_ROUTE } from '@/constants/keys'
 import LoadingComponent from '@/components/LoadingComponent.tsx'
+import { openModal } from '@/store/modalSlice'
 
 // const dummyData = [
 //   {
@@ -71,6 +72,7 @@ const EpisodeOne = () => {
   const [genreList, setGenreList] = useState([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const story = useSelector((state: any) => state.story);
+  const dispatch = useDispatch();
 
   const voteHandler = (data: IGenrereResponse) => {
     setBoxState(data)
@@ -78,14 +80,23 @@ const EpisodeOne = () => {
 
   const onDoneClick = async() => {
     if(boxState.name !== ''){
-      navigate('/invite')
       setLoading(true);
       await voteGenre(story.id, {vote_genre: boxState.name})
       .then(() => {
         setLoading(false);
+        // dispatch(openModal({
+        //   title: 'Success Vote',
+        //   message: 'Vote Genres Successfully',
+        //   theme: 'success'
+        // }))
         navigate('/invite')
       })
-      .catch(() => {
+      .catch((error) => {
+        dispatch(openModal({
+          title: 'Error when voting',
+          message: `${error.response.data.message}. Please check your data and try again later.`,
+          theme: 'error'
+        }));
         setLoading(false);
       })
     }
@@ -97,9 +108,19 @@ const EpisodeOne = () => {
     await getGenre()
     .then((response) => {
       setGenreList(response.data.data);
+      // dispatch(openModal({
+      //   title: 'Success Loading',
+      //   message: 'Get Genres Successfully',
+      //   theme: 'success'
+      // }))
       setLoading(false);
     })
-    .catch(() => {
+    .catch((error) => {
+      dispatch(openModal({
+        title: 'Error loading Genres',
+        message: `${error.response.data.message}. Please check your data and try again later.`,
+        theme: 'error'
+      }));
       setLoading(false);
     })
   }
@@ -128,8 +149,10 @@ const EpisodeOne = () => {
             <img src={titleIllu} />
             {/* <img src={title} /> */}
             <p className='section-title'>
-              လွှမ်းပိုင်ရဲ့ <span className='bold-text'>တစ်ရာတန်</span>ကို<br/>
-              ဘယ်လိုပုံစံနဲ့ <span className='bold-text'>နားထောင်ချင်လဲ...<span className='question-mark'>?</span></span>
+            vGrf;ydkif&JY   <span className='bold-text'>wpf&mwef</span>  udk
+            b,fvdkyHkpHeJY     <span className='bold-text'>em;axmifcsifvJ...?</span>
+              {/* လွှမ်းပိုင်ရဲ့ <span className='bold-text'>တစ်ရာတန်</span>ကို<br/>
+              ဘယ်လိုပုံစံနဲ့ <span className='bold-text'>နားထောင်ချင်လဲ...<span className='question-mark'>?</span></span> */}
             </p>
           </div>
           <div className='genre-select'>

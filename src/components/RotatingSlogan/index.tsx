@@ -16,7 +16,7 @@ const RotatingSlogan = () => {
         <img className="redStar" src={redStar} />
         Refresh Your Night
         <img className="redStar" src={redStar} />
-        Refresh Your Music
+        Refresh Your Night
         <img className="redStar" src={redStar} />
       </div>
     </div>

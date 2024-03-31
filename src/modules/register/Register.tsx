@@ -14,6 +14,10 @@ import { endpoints, serverURL } from "@/constants/endpoints";
 import { storyUpdate } from "@/store/storySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_STORY } from '@/models/story.model';
+import ModalComponent from "@/components/ModalComponent";
+import { AnimatePresence } from "framer-motion";
+import { IReducer } from "@/store/store";
+import { openModal } from "@/store/modalSlice";
 
 const Register = () => {
   const [payload, setPayload] = useState({
@@ -24,6 +28,7 @@ const Register = () => {
     authToken: "",
   });
   const [isLoading, setIsLoading] = useState(false)
+  const modal = useSelector((state: IReducer) => state.modal);
 
   const dispath = useDispatch();
   const story: USER_STORY = useSelector((state: any) => {
@@ -34,15 +39,23 @@ const Register = () => {
 
   const submitHandler = async () => {
     if (payload.name === "" || payload.phone === "" || payload.email === "") {
-      alert("All fields are required");
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `All fields are required`,
+        theme: 'error',
+      }));
       return;
     }
     if (payload.tc_accept === false) {
-      alert("Accept Terms & Conditions");
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `All fields are required`,
+        theme: 'error',
+      }));
       return;
     }
     try {
-    setIsLoading(true)
+      setIsLoading(true)
       const response = await axios.post(
         `${serverURL}${endpoints.user}`,
         // "http://hnk-api.innoscript.co/api/user",
@@ -59,19 +72,30 @@ const Register = () => {
       updateStory.authToken = result.token;
       dispath(storyUpdate(updateStory));
       sessionStorage.setItem("USER_PAYLOAD", JSON.stringify(updateStory));
+      setIsLoading(false);
       navigate("/term-and-condition");
     } catch (error:any) {
       console.error("Error submitting data:", error.response);
-      alert(`${error.response.data.message}. Please check your data and try again later.`);
+      setIsLoading(false);
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `${error.response.data.message}. Please check your data and try again later.`,
+        theme: 'error',
+      }));
+      // alert(`${error.response.data.message}. Please check your data and try again later.`);
     }
-    
-    setTimeout(() => {
-        setIsLoading(false)
-    },2000)
+  
   };
   
   return (
     <div className="register-wrapper">
+      <AnimatePresence>
+        {
+          modal.isOpen && (
+            <ModalComponent />
+          )
+        }
+      </AnimatePresence>
       <div className="header">
         <img
           src={hnkELogo}
@@ -178,6 +202,7 @@ const Register = () => {
             onBtnClick={() => navigate("/")}
           />
           <ButtonComponent
+            disabled={!payload.tc_accept}
             minWidth="100px"
             label="Next"
             onBtnClick={() => submitHandler()}

@@ -33,12 +33,14 @@ import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
-import { Header } from "@/components/Header";
+// import { Header } from "@/components/Header";
 interface Location {
   lat: number;
   long: number;
   distance: number;
 }
+import { openModal as openErrorModal } from "@/store/modalSlice";
+import { useDispatch } from "react-redux";
 
 const sliders = [
   {
@@ -61,6 +63,7 @@ const PartyReader = () => {
   const [outletList, setOutletList] = useState<Array<any>>([]);
   const [selectChange, setSelectChange] = useState<boolean | undefined>();
   const [loading, setLoading] = useState<boolean>();
+  const dispatch = useDispatch();
 
   const openModal = (outlet: SetStateAction<null>) => {
     setSelectedOutlet(outlet);
@@ -86,24 +89,44 @@ const PartyReader = () => {
           }
         },
         (error) => {
-          console.warn(error.message);
+          // console.warn(error.message);
+          dispatch(openErrorModal({
+            title: 'Location Error',
+            message: `${error.message}`,
+            theme: 'error'
+          }));
         }
       );
     } else {
-      console.error("Geolocation is not supported by this browser.");
+      
+      // console.error("Geolocation is not supported by this browser.");
+      dispatch(openErrorModal({
+        title: 'Location Error',
+        message: "Geolocation is not supported by this browser.",
+        theme: 'error'
+      }));
     }
   }, [selectedDistance, navigator, promotionTab]);
 
   const getOutlet = useCallback(async () => {
     setLoading(true);
-    const response: any = await getRequest('outlet', userLocation);
 
-    if (response.status === 200) {
-      setOutletList(response.data.data);
+    try{
+      const response: any = await getRequest('outlet', userLocation);
+
+      if (response.status === 200) {
+        setOutletList(response.data.data);
+        setLoading(false)
+      }
+    }catch(error){
+      dispatch(openErrorModal({
+        title: 'Outlet Error',
+        message: "Failed to get outlets",
+        theme: 'error'
+      }));
       setLoading(false)
     }
 
-    setLoading(false)
   }, [userLocation])
 
 
@@ -117,7 +140,7 @@ const PartyReader = () => {
       {
         loading && <LoadingComponent />
       }
-      <Header backgroundColor={"#000242"} />
+      {/* <Header backgroundColor={"#000242"} /> */}
       <div className="partyreader-content h-[100vh]">
         {/* <div className="partyreader-header">
           <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
@@ -191,7 +214,7 @@ const PartyReader = () => {
             <>
               <div className="nearby-container">
                 <span className="nearby-label">Near by</span>
-                <Select onOpenChange={(e) => setSelectChange(e)} defaultValue={selectedDistance} onValueChange={setSelectedDistance}>
+                <Select onOpenChange={(e: any) => setSelectChange(e)} defaultValue={selectedDistance} onValueChange={setSelectedDistance}>
                   <SelectTrigger className="w-[80px] text-[#00F944] rounded-full border-[#00F944]">
                     <SelectValue />
                   </SelectTrigger>

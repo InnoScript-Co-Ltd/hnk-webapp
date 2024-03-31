@@ -19,6 +19,7 @@ const RandRComponent = () => {
     const EpOneCLickHandler = () => {
         navigate('/randr/episode-1')
     }
+
   return (
     <div className={styles.page_container}>
         <div className={styles.slider_container}>

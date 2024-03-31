@@ -4,7 +4,10 @@ import slogan from "../assets/images/HomePage/slogan.png";
 import "./style.css";
 import { useEffect, useState } from "react";
 import Navigation from "./Navigation";
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
+import { useSelector } from "react-redux";
+import { IReducer } from "@/store/store";
+import ModalComponent from "@/components/ModalComponent";
 // import { selectToken } from "@/modules/auth/authSlice";
 const DefaultLayout = () => {
   const location = useLocation();
@@ -12,6 +15,7 @@ const DefaultLayout = () => {
   const [isHome, setIsHome] = useState(true);
   const [scroll, setScroll] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
+  const modal = useSelector((state: IReducer) => state.modal)
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -42,15 +46,16 @@ const DefaultLayout = () => {
     }
   }, [location.pathname, scroll]);
 
-  const navVariant = {
-      initial: { x: "-200%"},
-      open: { x: 0 },
-      exit: { x: "-100%" },
-  }
-
   return (
     <main>
       <div className="layout-container">
+      <AnimatePresence>
+        {
+          modal.isOpen && (
+            <ModalComponent />
+          )
+        }
+      </AnimatePresence>
         {location.pathname !== "/" &&
           location.pathname !== "/register" && (
             <div
@@ -64,14 +69,7 @@ const DefaultLayout = () => {
               <AnimatePresence>
               {
                 navOpen && (
-                  <motion.div 
-                  variants={navVariant}
-                  initial={"initial"}
-                  animate={"open"}
-                  exit={'exit'}
-                >
                   <Navigation onNavigateClose={closeNavigation} />
-                </motion.div>
                 )
               }
               </AnimatePresence>

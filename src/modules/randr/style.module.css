@@ -2,6 +2,7 @@
     width: 100%;
     position: relative;
     margin-top: 100px;
+    background-color: #000242;
 }
 
 .slider_container{
@@ -11,6 +12,9 @@
     display: block;
     padding: 5px 0;
     background-color: #532B6F;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #000;
 }
 
 .level_section{
@@ -78,7 +82,7 @@
 .ep1_btn_label{
     width: 180px;
     position: absolute;
-    top: 210px;
+    top: 230px;
     right: 20px;
     display: flex;
     flex-direction: column;
@@ -88,7 +92,7 @@
 .ep2_btn_label{
     width: 180px;
     position: absolute;
-    top: 440px;
+    top: 455px;
     left: 20px;
     display: flex;
     flex-direction: column;
@@ -98,7 +102,7 @@
 .ep3_btn_label{
     width: 180px;
     position: absolute;
-    top: 650px;
+    top: 680px;
     right: 20px;
     text-align: center;
     display: flex;
@@ -109,7 +113,7 @@
 .ep4_btn_label{
     width: 180px;
     position: absolute;
-    top: 880px;
+    top: 895px;
     left: 20px;
     text-align: center;
     display: flex;
@@ -120,7 +124,7 @@
 .ep5_btn_label{
     width: 180px;
     position: absolute;
-    top: 1125px;
+    top: 1150px;
     right: 20px;
     text-align: center;
     display: flex;
@@ -161,10 +165,19 @@
     .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
         right: 0;
     }
+
+    .randr_enjoy{
+        right: 22px;
+        bottom: 173px;
+    }
 }
 
 @media only screen and (min-width: 420px) {
     .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
         right: 20px;
+    }
+    .randr_enjoy{
+    right: 30px;
+    bottom: 192px;
     }
 }

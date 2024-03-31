@@ -210,7 +210,7 @@
     /* text-wrap: wrap; */
     bottom: 10px;
     font-family: hanikenSerif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     color: white;
     text-shadow: -3px 2px 1px #000;
@@ -240,11 +240,12 @@
 }
 
 .section-title{
-    font-family: w14art;
-    font-size: 20px;
-    color: #FFF;
     text-align: center;
-    font-weight: 600;
+    font-family: w14art;
+    font-size: 40px;
+    font-weight: 400;
+    color: #ffffff;
+    text-shadow: -2px 3px #000;
 }
 
 .question-mark{

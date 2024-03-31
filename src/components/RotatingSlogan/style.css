@@ -3,11 +3,12 @@
     height: 30px;
     overflow: hidden;
     background-color: #000242;
-    padding: 5px;
+    padding: 5px 0px 28px 0px;
     margin: 5px;
     border-radius: 5px;
     align-items: center;
     position: relative;
+    border: 1px solid #00FF70;
 }
 
 .redStar{
@@ -29,7 +30,7 @@
 
 @keyframes rotateSlogan {    
     100% {
-        left: -334px
+        left: -405px;
     }
 }
 

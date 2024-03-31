@@ -2,6 +2,7 @@ import logoIcon from "../../assets/images/HomePage/logo.png";
 import { CgClose } from "react-icons/cg";
 import './style.css'
 import { useNavigate } from 'react-router-dom';
+import {motion} from 'framer-motion';
 
 const navigation = [
     {
@@ -26,12 +27,28 @@ const Navigation = (props: proptype) => {
     const {onNavigateClose} = props;
     const navigate = useNavigate();
 
+    const onNavigateClick = (path: string) => {
+        navigate(path);
+        onNavigateClose();
+    }
+
+    const navVariant = {
+        initial: { height: '0'},
+        open: { height: '100vh'},
+        exit: { height: '0' },
+    }
+
   return (
-    <div className='nav-container'>
+    <motion.div 
+    variants={navVariant}
+    initial='initial'
+    animate='open'
+    exit='exit'
+    className='nav-container'>
         <div
         style={{
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             width: '100%',
             marginTop: '20px',
             paddingRight: '10px',
@@ -46,7 +63,9 @@ const Navigation = (props: proptype) => {
             <button
             onClick={onNavigateClose}
             style={{
-                fontSize: '25px'
+                fontSize: '25px',
+                position: 'absolute',
+                right: '10px'
             }}
             >
                 <CgClose color='#FFF' />
@@ -61,7 +80,7 @@ const Navigation = (props: proptype) => {
                 navigation.map((value, index) => (
                     <button
                     key={index}
-                    onClick={() => navigate(value.path)}
+                    onClick={() => onNavigateClick(value.path)}
                     style={{
                         width: '100%',
                         marginTop: '20px',
@@ -83,7 +102,7 @@ const Navigation = (props: proptype) => {
                 Logout
             </button> */}
         </div>
-    </div>
+    </motion.div>
   )
 }
 
