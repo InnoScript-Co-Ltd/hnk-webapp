@@ -27,9 +27,9 @@ const AgeGate = () => {
     };
 
     return (
-        <div className=" min-h-screen bg-[#009D1B] flex justify-center items-center pt-5">
+        <div className=" min-h-screen h-full w-full overflow-hidden bg-[#009D1B] flex justify-center items-center pt-[30px]">
             
-            <div className=" flex flex-col items-center min-w-full">
+            <div className=" flex flex-col items-center min-h-screen">
                 <div className="flex flex-col items-center gap-2">
                     <img
                         className="age-gate-hnk-logo w-[6rem]"
@@ -65,7 +65,7 @@ const AgeGate = () => {
                     </Button>
                 </div>
 
-                <div className="iamge-container flex relative mt-10 ">
+                <div className="iamge-container flex relative mt-auto pt-[20px] ">
                     <img
                         src={BgMask}
                         alt="Heineken Refresh Your Music"

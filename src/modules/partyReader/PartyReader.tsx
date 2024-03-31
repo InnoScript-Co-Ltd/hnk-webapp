@@ -229,7 +229,7 @@ const PartyReader = () => {
               title="Henineken"
             />
             <div>
-              <img className="enjoy-logo absolute z-50 bottom-[80px] left-[20px]" src={enjoyLogo} />
+              <img className="absolute z-50 bottom-[100px] left-[20px]" src={enjoyLogo} />
             </div>
           </div>
         </div>
