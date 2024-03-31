@@ -1,11 +1,12 @@
 .top-slogan{
-    max-width: 410px;
+    width: calc(100% - 10px);
     height: 30px;
     overflow: hidden;
     background-color: #000242;
-    margin: 5px;
     padding: 5px;
-    border-radius: 7px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
     align-items: center;
     position: relative;
 }
@@ -33,14 +34,8 @@
     }
 }
 
-@media only screen and (max-width: 375px) {
+/* @media only screen and (max-width: 375px) {
     .top-slogan{
         width: calc(100% - 20px)
     }
-}
-
-@media only screen and (max-width: 420px) {
-    .top-slogan{
-        width: calc(100% - 20px)
-    }
-}
+} */

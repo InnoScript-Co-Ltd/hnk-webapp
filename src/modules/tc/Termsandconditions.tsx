@@ -1,63 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useEffect, useState } from "react";
-import starIcon from "@/assets/images/star.png";
-import { useSelector } from "react-redux";
-import { USER_STORY } from '@/models/story.model';
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
 import { Button } from "@/components/ui/button";
+import RotatingSlogan from "@/components/RotatingSlogan";
+import "./style.css";
 
 const Termsandconditions = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const story: USER_STORY = useSelector((state: any) => {
-        return state.story;
-    });
-
     const [payload, setPayload] = useState({
         is_campaign: false,
     });
 
     const navigate = useNavigate();
 
-    const initialLoading = useCallback(() => {
-        if (story) {
-            setPayload(story);
-        }
-    }, [story]);
-
     const handleTcAccept = () => {
         navigate("/randr/episode-1");
     };
 
-    const adsItems = [
-        { alt: "HNK Refresh Music", label: "Refresh Your Music" },
-        { alt: "HNK Refresh Music", label: "Refresh Your Night" },
-        { alt: "HNK Refresh Music", label: "Refresh Your Music" },
-        { alt: "HNK Refresh Music", label: "Refresh Your Night" },
-        { alt: "HNK Refresh Music", label: "Refresh Your Music" },
-        { alt: "HNK Refresh Music", label: "Refresh Your Night" },
-    ];
-
-    useEffect(() => {
-        initialLoading();
-    }, [initialLoading]);
-
     return (
-        <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-4">
-            <div className="w-full flex flex-col justify-center items-center gap-4">
-                <div className="ads-content">
-                    {adsItems.map((item, index) => (
-                        <div key={index} className="ads-item loop-text">
-                            <img
-                                src={starIcon}
-                                alt={item.alt}
-                                title="HNK Refresh Music"
-                            />
-                            <label> {item.label}</label>
-                        </div>
-                    ))}
-                </div>
-
+        <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-1">
+            <div className="w-full flex flex-col justify-center items-center gap-3">
+                <RotatingSlogan />
                 <div className="w-full h-[700px] font-natosansmm text-white bg-[rgba(30,18,115,0.88)]/30 backdrop-blur-2xl border border-[#EABFFF] rounded-lg verflow-hidden overflow-y-scroll scrollbar-none flex flex-col gap-4 p-5">
                     <h1 className="text-[25px] font-bold text-center">
                         Campaign အကြောင်း
@@ -73,7 +35,7 @@ const Termsandconditions = () => {
                         ဖျော်ဖြေခဲ့ကြပါတယ်။
                     </p>
 
-                    <p className="text-sm leading-6 line-clamp-[12]">
+                    <p className="text-sm leading-6 line-[12]">
                         အခု ၂၀၂၃ ခုနှစ်မှာလည်း ဆန်းသစ်တဲ့
                         ဂီတအရသာတွေနဲ့စီးမျောခံစားဖို့ Refresh Your Music,
                         Refresh Your Nights 2023 ကို (၁၁) ရက် နိုဝင်ဘာလ၊ ၂၀၂၃
@@ -112,12 +74,13 @@ const Termsandconditions = () => {
                         <Button
                             variant="hnk"
                             size="hnksm"
-                            onClick={() => navigate("/")}
+                            onClick={() => navigate("/randr")}
                             className="text-black"
                         >
                             Back
                         </Button>
                         <Button
+                            disabled={!payload.is_campaign}
                             onClick={handleTcAccept}
                             variant="hnk"
                             size="hnksm"
