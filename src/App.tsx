@@ -48,10 +48,6 @@ const App = () => {
                     element: lazyLoad(<Episode />),
                 },
                 {
-                    path: "/invite",
-                    element: lazyLoad(<Invite />),
-                },
-                {
                     path: "/party-radar",
                     element: lazyLoad(<PartyRadar />),
                 },
@@ -64,6 +60,10 @@ const App = () => {
         {
             path: "/term-and-condition",
             element: lazyLoad(<Termsandconditions />),
+        },
+        {
+            path: "/invite",
+            element: lazyLoad(<Invite />),
         },
     ]);
     return (
