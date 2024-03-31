@@ -1,0 +1,17 @@
+.app-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.menu-btn {
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+}
+
+.refresh-music-img {
+    margin-top: 20px;
+}
