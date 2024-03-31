@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const localUrl = "http://localhost:8000/api";
 export const baseUrl = "http://hnk-api.innoscript.co/api";
 
 axios.defaults.baseURL = baseUrl;
