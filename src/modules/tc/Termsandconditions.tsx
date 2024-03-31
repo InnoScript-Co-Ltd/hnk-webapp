@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from "react";
-// import menubarIcon from "@/assets/images/menu.png";
-// import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
-// import profileImage from "@/assets/images/profile.png";
 import starIcon from "@/assets/images/star.png";
 import { useSelector } from "react-redux";
 import { USER_STORY } from "@/store/storySlice";
@@ -76,7 +73,7 @@ const Termsandconditions = () => {
                         ဖျော်ဖြေခဲ့ကြပါတယ်။
                     </p>
 
-                    <p className="text-sm leading-6">
+                    <p className="text-sm leading-6 line-clamp-[12]">
                         အခု ၂၀၂၃ ခုနှစ်မှာလည်း ဆန်းသစ်တဲ့
                         ဂီတအရသာတွေနဲ့စီးမျောခံစားဖို့ Refresh Your Music,
                         Refresh Your Nights 2023 ကို (၁၁) ရက် နိုဝင်ဘာလ၊ ၂၀၂၃

@@ -25,6 +25,9 @@ export default {
             },
         },
         extend: {
+            lineClamp: {
+                7: "7",
+            },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
