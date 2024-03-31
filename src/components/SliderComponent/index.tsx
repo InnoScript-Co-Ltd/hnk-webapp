@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Error, some.expr may be null or undefined
 import { useEffect, useRef, useState } from 'react'
@@ -119,7 +121,7 @@ const SliderComponent = ({children, autoPlay}: Props) => {
         className='indicationbtn' 
         >
         {
-            children?.length > 0 && children.map((child, index) => (
+            children?.length > 0 && children.map((_child, index) => (
                 <button
                 key={index}
                 style={{

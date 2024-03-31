@@ -1,6 +1,7 @@
+/* eslint-disable prefer-const */
 import axios from "axios";
 
-const localUrl = "http://localhost:8000/api";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const baseUrl = "http://hnk-api.innoscript.co/api";
 
 axios.defaults.baseURL = baseUrl;

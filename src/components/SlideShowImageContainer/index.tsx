@@ -1,4 +1,3 @@
-import React from 'react'
 import bgImage from '../../assets/images/util_imgs/bgtest.png'
 import bottleImg from '../../assets/images/randr/singerBottle.png'
 import './style.css'

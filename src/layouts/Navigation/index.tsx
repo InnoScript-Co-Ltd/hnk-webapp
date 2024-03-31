@@ -1,4 +1,3 @@
-import React from 'react'
 import logoIcon from "../../assets/images/HomePage/logo.png";
 import { CgClose } from "react-icons/cg";
 import './style.css'

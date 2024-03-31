@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { SetStateAction, useCallback, useEffect, useState } from "react";
-import menubarIcon from "@/assets/images/menu.png";
-import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
-import starIcon from "@/assets/images/star.png";
-import outletPromotion from "@/assets/images/Outlet_Promotion.png";
-import partyTitle from "@/assets/images/partyTitle.png";
+// import menubarIcon from "@/assets/images/menu.png";
+// import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
+// import starIcon from "@/assets/images/star.png";
+// import outletPromotion from "@/assets/images/Outlet_Promotion.png";
+// import partyTitle from "@/assets/images/partyTitle.png";
 import slide1 from "@/assets/images/event1.png";
 import slide2 from "@/assets/images/event2.png";
-import promotion from "@/assets/images/promotion.png";
+// import promotion from "@/assets/images/promotion.png";
 import footerImg from "@/assets/images/footer.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import {
@@ -24,7 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import OutletModal from "./OutletModal";
 
 import "./partyReaderStyle.css";
