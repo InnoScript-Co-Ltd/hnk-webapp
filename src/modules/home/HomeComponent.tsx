@@ -65,7 +65,7 @@ const HomeComponent = () => {
               />
             </svg>
           </button>
-          <div className="right-bottom-clip">
+          <div className="right-bottom-clip !-bottom-[71px]">
             {/* <svg width="100" height="100" viewBox="0 0 168 151" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M16 131C14.5 143 9 146 0 150.5H168V0L28.5 85.5C19.409 91.6 16.7985 95.4305 16 103V131Z" fill="#040658"/>
 						</svg> */}

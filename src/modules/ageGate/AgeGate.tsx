@@ -27,7 +27,7 @@ const AgeGate = () => {
     };
 
     return (
-        <div className=" bg-[#009D1B] flex justify-center items-center pt-5">
+        <div className=" min-h-screen bg-[#009D1B] flex justify-center items-center pt-5">
             
             <div className=" flex flex-col items-center min-w-full">
                 <div className="flex flex-col items-center gap-2">
