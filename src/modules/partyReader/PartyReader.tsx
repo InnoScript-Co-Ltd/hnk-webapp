@@ -30,10 +30,12 @@ import OutletModal from "./OutletModal";
 import "./partyReaderStyle.css";
 import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
+import RotatingSlogan from "@/components/RotatingSlogan";
+import LoadingComponent from "@/components/LoadingComponent.tsx";
 interface Location {
   lat: number;
   long: number;
-  distance : number;
+  distance: number;
 }
 
 const sliders = [
@@ -47,118 +49,16 @@ const sliders = [
   },
 ];
 
-const outletPromotions = [
-  {
-    id: 1,
-    image: promotion,
-    name: "Kan Daw Gyi",
-    phone: "9887766565",
-    address: "NO.2, ioj  jo  id f Yangon, Myanmar",
-    date: "23.3.2024",
-    time: "12 pm to 10 pm",
-    promotion: "10% off",
-    promo_description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. I",
-    latitude: 16.77925491444093,
-    longitude: 96.15483604133,
-  },
-  {
-    id: 2,
-    image: promotion,
-    name: "Time city",
-    phone: "9887766565",
-    address: "NO.2, ioj  jo  id f Yangon, Myanmar",
-    date: "23.3.2024",
-    time: "12 pm to 10 pm",
-    promotion: "10% off",
-    promo_description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. I",
-    latitude: 16.77925491444093,
-    longitude: 96.15483604133,
-  },
-  {
-    id: 3,
-    image: promotion,
-    name: "Kan Daw Gyi",
-    phone: "9887766565",
-    address: "NO.2, ioj  jo  id f Yangon, Myanmar",
-    date: "23.3.2024",
-    time: "12 pm to 10 pm",
-    promotion: "10% off",
-    promo_description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. I",
-    latitude: 16.77925491444093,
-    longitude: 96.15483604133,
-  },
-];
-
-const all_outlets = [
-  {
-    id: 1,
-    image: promotion,
-    name: "Kan Daw Gyi",
-    phone: "9887766565",
-    address: "NO.2, ioj  jo  id f Yangon, Myanmar",
-    date: "23.3.2024",
-    time: "12 pm to 10 pm",
-    promotion: "10% off",
-    promo_description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. I",
-    latitude: 16.77925491444093,
-    longitude: 96.15483604133,
-  },
-  {
-    id: 2,
-    image: promotion,
-    name: "Time City",
-    phone: "9887766565",
-    address: "NO.2, ioj  jo  id f Yangon, Myanmar",
-    date: "23.3.2024",
-    time: "12 pm to 10 pm",
-    promotion: "10% off",
-    promo_description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. I",
-    latitude: 16.77925491444093,
-    longitude: 96.15483604133,
-  },
-  {
-    id: 3,
-    image: promotion,
-    name: "Kan Daw Gyi",
-    phone: "9887766565",
-    address: "NO.2, ioj  jo  id f Yangon, Myanmar",
-    date: "23.3.2024",
-    time: "12 pm to 10 pm",
-    promotion: "10% off",
-    promo_description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. I",
-    latitude: 16.77925491444093,
-    longitude: 96.15483604133,
-  },
-  {
-    id: 4,
-    image: promotion,
-    name: "Kan Daw Gyi",
-    phone: "9887766565",
-    address: "NO.2, ioj  jo  id f Yangon, Myanmar",
-    date: "23.3.2024",
-    time: "12 pm to 10 pm",
-    promotion: "10% off",
-    promo_description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. I",
-    latitude: 16.77925491444093,
-    longitude: 96.15483604133,
-  },
-];
-
 const PartyReader = () => {
-  const [promotionTab, setPromotionTab] = useState(true);
+  const [promotionTab, setPromotionTab] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const navigate = useNavigate();
   const [userLocation, setUserLocation] = useState<Location | null>(null);
-  const [selectedDistance, setSelectedDistance] = useState("10km");
-  const [selectedOutlet, setSelectedOutlet] = useState(null);
-  const [outletList, setOutletList] = useState([]);
+  const [selectedDistance, setSelectedDistance] = useState<any>("10km");
+  const [selectedOutlet, setSelectedOutlet] = useState<any>(null);
+  const [outletList, setOutletList] = useState<Array<any>>([]);
+  const [selectChange, setSelectChange] = useState<boolean | undefined>();
+  const [loading, setLoading] = useState<boolean>();
 
   const openModal = (outlet: SetStateAction<null>) => {
     setSelectedOutlet(outlet);
@@ -172,36 +72,49 @@ const PartyReader = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setUserLocation({
-            lat: position.coords.latitude,
-            long: position.coords.longitude,
-            distance: selectedDistance === '10km' ? 10 : Number(selectedDistance)
-          });
+          
+          if (promotionTab && selectedDistance && position !== null) {
+            setUserLocation({
+              lat: position.coords.latitude,
+              long: position.coords.longitude,
+              distance: Number(selectedDistance.replace(/km/g, ""))
+            });
+          } else {
+            setUserLocation(null);
+          }
         },
         (error) => {
-          console.error(error);
+          console.warn(error.message);
         }
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  }, [selectedDistance]);
+  }, [selectedDistance, navigator, promotionTab]);
 
   const getOutlet = useCallback(async () => {
-    const response : any = await getRequest('outlet', userLocation)
-    if(response.status === 200){
+    setLoading(true);
+    const response: any = await getRequest('outlet', userLocation);
+
+    if (response.status === 200) {
       setOutletList(response.data.data);
-      
+      setLoading(false)
     }
+
+    setLoading(false)
   }, [userLocation])
-  
+
 
   useEffect(() => {
     getOutlet()
   }, [getOutlet])
+  
 
   return (
     <div className="partyreader-container">
+      {
+        loading && <LoadingComponent />
+      }
       <div className="partyreader-content h-[100vh]">
         {/* <div className="partyreader-header">
           <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
@@ -209,61 +122,7 @@ const PartyReader = () => {
         <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" />
 
         <div className="slider-content-wrapper">
-          <div className="partyreader-ads-content">
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-          </div>
+          <RotatingSlogan />
           <div className="party-content-wrapper">
             <img
               src={partyTitle}
@@ -327,57 +186,39 @@ const PartyReader = () => {
             </button>
           </div>
           {promotionTab && (
-            <div className="promotion-container">
-              {outletList.map((item: any, index: any): any => (
-                <button
-                  key={index}
-                  className="promotion-item"
-                  onClick={() => openModal(item)}
-                >
-                  <img
-                    src={`${endpoints.image}/${item?.image?.image}`}
-                    alt="HNK Fresh Drink"
-                    className="promotion_img"
-                  />
-                  <span className="outlet_name">{item.name}</span>
-                </button>
-              ))}
-            </div>
-          )}
-          {!promotionTab && (
             <>
               <div className="nearby-container">
                 <span className="nearby-label">Near by</span>
-                <Select defaultValue={selectedDistance} onValueChange={setSelectedDistance}>
+                <Select onOpenChange={(e) => setSelectChange(e)} defaultValue={selectedDistance} onValueChange={setSelectedDistance}>
                   <SelectTrigger className="w-[80px] text-[#00F944] rounded-full border-[#00F944]">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="10">10km</SelectItem>
-                    <SelectItem value="20">20km</SelectItem>
-                    <SelectItem value="30">30km</SelectItem>
+                    <SelectItem value="10km">10km</SelectItem>
+                    <SelectItem value="20km">20km</SelectItem>
+                    <SelectItem value="30km">30km</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-
-              <div className="promotion-container">
-                {outletList.map((item: any, index: any): any => (
-                  <button
-                    key={index}
-                    className="outlet-items"
-                    onClick={() => openModal(item)}
-                  >
-                    <img
-                      src={item.image.image}
-                      alt="HNK Fresh Drink"
-                      className="outlet_img"
-                    />
-                    <span className="outlet_name">{item.name}</span>
-                  </button>
-                ))}
-              </div>
             </>
           )}
+
+          <div className="promotion-container px-[20px] !justify-between gap-[20px]">
+            {outletList.map((item: any, index: any): any => (
+              <button
+                key={index}
+                className="outlet-items w-[150px] md:w-[180px]"
+                onClick={() => selectChange !== true && openModal(item)}
+              >
+                <img
+                  src={`${endpoints.image}/${item?.image?.image}`}
+                  alt="HNK Fresh Drink"
+                  className="outlet_img min-w-[150px] md:min-w-[180px]"
+                />
+                <p className="outlet_name w-full !pt-[10px]">{item.name}</p>
+              </button>
+            ))}
+          </div>
           <div className="footer relative z-0">
             <img
               style={{ width: "100%" }}
@@ -386,14 +227,14 @@ const PartyReader = () => {
               title="Henineken"
             />
             <div>
-              <img className="enjoy-logo z-50 bottom-[80px] left-[20px]" src={enjoyLogo} />
+              <img className="enjoy-logo absolute z-50 bottom-[80px] left-[20px]" src={enjoyLogo} />
             </div>
           </div>
         </div>
-        {selectedOutlet && (
+      </div>
+      {selectedOutlet && (
             <OutletModal outlet={selectedOutlet} onClose={closeModal} />
           )}
-      </div>
     </div>
   );
 };

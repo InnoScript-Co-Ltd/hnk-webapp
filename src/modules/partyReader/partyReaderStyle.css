@@ -219,7 +219,6 @@
 }
 
 .outlet_img {
-  width: 86px;
   height: 80px;
   border-radius: 27px;
   object-fit: cover;
@@ -244,22 +243,17 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .outlet-items {
-  width: calc(100% / 3);
-  padding: 10px;
   text-align: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 10px;
 }
 
 .promotion-item {
-  width: calc(100% / 2);
+  width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
