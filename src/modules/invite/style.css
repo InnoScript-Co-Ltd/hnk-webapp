@@ -21,7 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 70px;
 }
 
 .invite-section{
@@ -46,7 +46,7 @@
 .invite-content-green-text{
     text-align: center;
     font-family: w14art;
-    font-size: 31px;
+    font-size: 25px;
     font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
@@ -55,7 +55,7 @@
 .invite-content-white-text{
     text-align: center;
     font-family: w14art;
-    font-size: 31px;
+    font-size: 25px;
     font-weight: 400;
     color: #ffffff;
     text-shadow: -2px 3px #000;
@@ -64,7 +64,7 @@
 .invite-content-eng-text{
     text-align: center;
     font-family: hanikenSerif;
-    font-size: 31px;
+    font-size: 25px;
     font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
@@ -72,9 +72,10 @@
 
 .invite-content{
     margin-top: 23px;
-    margin: 10px auto;
+    /* margin: 10px auto; */
     text-align: center;
     line-height: 50px;
+    padding: 10px 10px
 }
 
 .share-back-btn{
