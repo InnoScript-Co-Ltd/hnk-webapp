@@ -8,7 +8,8 @@ import KpopOp from "@/assets/images/K_POP_OP01.png";
 import Punk from "@/assets/images/PUNK.png";
 import AgeGateTitle from "@/assets/images/ageGateTitle.png";
 import { useDispatch, useSelector } from "react-redux";
-import { USER_STORY, storyUpdate } from "@/store/storySlice";
+import { storyUpdate } from "@/store/storySlice";
+import { USER_STORY } from '@/models/story.model';
 
 const AgeGate = () => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ const AgeGate = () => {
         const updateStory: USER_STORY = { ...story };
         updateStory.is_over_twentyone = value;
         dispatch(storyUpdate(updateStory));
-        navigate("/register");
+        navigate("/home");
     };
 
     return (

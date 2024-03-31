@@ -28,16 +28,16 @@ const App = () => {
             element: <DefaultLayout />,
             children: [
                 {
-                    path: "",
+                    path: "/",
+                    element: lazyLoad(<AgeGate />),
+                },
+                {
+                    path: "/home",
                     element: lazyLoad(<HomeComponent />),
                 },
                 {
-                    path: "player",
+                    path: "/player",
                     element: lazyLoad(<PlayerComponent />),
-                },
-                {
-                    path: "agegate",
-                    element: lazyLoad(<AgeGate />),
                 },
                 {
                     path: "/randr",
@@ -64,11 +64,6 @@ const App = () => {
         {
             path: "/register",
             element: lazyLoad(<Register />),
-        },
-
-        {
-            path: "/verifyage",
-            element: lazyLoad(<AgeGate />),
         },
     ]);
     return (

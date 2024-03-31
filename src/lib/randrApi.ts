@@ -6,8 +6,8 @@ type voteGenreBodyType = {
     vote_genre: string | null
 }
 
-export const voteGenre = async(genreId: string | null, body: voteGenreBodyType) => {
-    const response = await axios.post(`${serverURL}/user/${genreId}/vote/genre`, body);
+export const voteGenre = async(userId: string | null, body: voteGenreBodyType) => {
+    const response = await axios.post(`${serverURL}/user/${userId}/vote/genre`, body);
     return response;
 }
 

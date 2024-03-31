@@ -12,6 +12,7 @@ import RotatingSlogan from "@/components/RotatingSlogan";
 
 const HomeComponent = () => {
   const navigate = useNavigate();
+  // const story = localStorage.getItem(USER_JOURNEY) || '';
 
   const handleClickRandR = () => {
     navigate('/randr')

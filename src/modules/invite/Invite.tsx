@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./style.css";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import earphone from "../../assets/images/randr/episode_1/earphone.png";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ShareModalComponent from "@/components/ShareModalComponent";
 import { AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
-import { USER_STORY } from "@/store/storySlice";
+import { USER_STORY } from '@/models/story.model';
 
 const Invite = () => {
   const navigate = useNavigate();

@@ -50,6 +50,7 @@ const Register = () => {
       );
       const result = response.data.data;
       const updateStory = { ...story };
+      updateStory.id = result.id;
       updateStory.tc_accept = payload.tc_accept;
       updateStory.name = result.name;
       updateStory.email = result.email;

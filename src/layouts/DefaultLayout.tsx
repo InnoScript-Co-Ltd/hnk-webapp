@@ -18,7 +18,7 @@ const DefaultLayout = () => {
   };
 
   useEffect(() => {
-    if (location.pathname === "/") {
+    if (location.pathname === "/home") {
       document.addEventListener("scroll", handleScroll);
 
       return () => document.removeEventListener("scroll", handleScroll);
@@ -31,7 +31,7 @@ const DefaultLayout = () => {
   }
 
   useEffect(() => {
-    if (location.pathname !== "/") {
+    if (location.pathname !== "/home") {
       setIsHome(false);
     } else {
       if (scroll > 300) {
@@ -47,11 +47,12 @@ const DefaultLayout = () => {
       open: { x: 0 },
       exit: { x: "-100%" },
   }
+  console.log(location.pathname)
 
   return (
     <main>
       <div className="layout-container">
-        {location.pathname !== "/verifyage" &&
+        {location.pathname !== "/" &&
           location.pathname !== "/register" && (
             <div
               style={{
@@ -110,7 +111,7 @@ const DefaultLayout = () => {
             </div>
           )}
         <div
-        style={{marginTop: location.pathname === '/' ? '' : '100px', width: '100%'}}
+        style={{marginTop: location.pathname === '/home' || location.pathname === '/' ? '' : '100px', width: '100%'}}
         >
           <Outlet />
         </div>

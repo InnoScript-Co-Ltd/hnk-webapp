@@ -19,7 +19,6 @@ const storySlice = createSlice({
   initialState,
   reducers: {
     storyUpdate(state: USER_STORY | null, action: PayloadAction<USER_STORY>) {
-      console.log(state, action);
       
       state = action.payload;
       localStorage.setItem(USER_JOURNEY, JSON.stringify(action.payload));

@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import starIcon from "@/assets/images/star.png";
 import { useSelector } from "react-redux";
-import { USER_STORY } from "@/store/storySlice";
+import { USER_STORY } from '@/models/story.model';
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { Button } from "@/components/ui/button";
@@ -46,8 +46,8 @@ const Termsandconditions = () => {
         <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-4">
             <div className="w-full flex flex-col justify-center items-center gap-4">
                 <div className="ads-content">
-                    {adsItems.map((item) => (
-                        <div className="ads-item loop-text">
+                    {adsItems.map((item, index) => (
+                        <div key={index} className="ads-item loop-text">
                             <img
                                 src={starIcon}
                                 alt={item.alt}

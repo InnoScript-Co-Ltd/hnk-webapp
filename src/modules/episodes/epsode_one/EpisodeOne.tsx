@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 // import randb from '../../../assets/images/randr/episode_1/randb.png'
 // import rock from '../../../assets/images/randr/episode_1/rock.png'
 import { useSelector } from 'react-redux'
-import { getGenre } from '@/lib/randrApi'
+import { getGenre, voteGenre } from '@/lib/randrApi'
 import { IGenrereResponse } from '@/models/genre.model'
 import { IMAGE_ROUTE } from '@/constants/keys'
 import LoadingComponent from '@/components/LoadingComponent.tsx'
@@ -79,15 +79,15 @@ const EpisodeOne = () => {
   const onDoneClick = async() => {
     if(boxState.name !== ''){
       navigate('/invite')
-      // setLoading(true);
-      // await voteGenre(boxState.id, {vote_genre: boxState.name})
-      // .then(() => {
-      //   setLoading(false);
-      //   navigate('/invite')
-      // })
-      // .catch(() => {
-      //   setLoading(false);
-      // })
+      setLoading(true);
+      await voteGenre(story.id, {vote_genre: boxState.name})
+      .then(() => {
+        setLoading(false);
+        navigate('/invite')
+      })
+      .catch(() => {
+        setLoading(false);
+      })
     }
   }
 
@@ -105,7 +105,7 @@ const EpisodeOne = () => {
   }
 
   useEffect(() => {
-    if(story.authToken === ''){
+    if(!story.id || story.id === ''){
       return navigate('/register')
     }
     loadGenreData();
