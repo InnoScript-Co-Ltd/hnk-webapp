@@ -19,7 +19,7 @@ const HomeComponent = () => {
   }
 
   const handleClickPartyRadar = () => {
-    navigate('party-radar');
+    navigate('/party-radar');
   }
 
   return (
