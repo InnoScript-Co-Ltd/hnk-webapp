@@ -335,7 +335,7 @@ const PartyReader = () => {
                   onClick={() => openModal(item)}
                 >
                   <img
-                    src={`${endpoints.image}/${item.image.image}`}
+                    src={`${endpoints.image}/${item?.image?.image}`}
                     alt="HNK Fresh Drink"
                     className="promotion_img"
                   />

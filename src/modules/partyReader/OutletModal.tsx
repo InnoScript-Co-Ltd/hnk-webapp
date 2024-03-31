@@ -8,7 +8,7 @@ const OutletModal = ({ outlet, onClose }: any) => {
     <div className="overlay">
       <div className="outlet-detail-container overflow-hidden">
         <div className="outlet-detail-content">
-          <img src={`${endpoints.image}/${outlet.image.image}`} alt="" className="outlet-cover-img min-h-[200px]" />
+          <img src={`${endpoints.image}/${outlet?.image?.image}`} alt="" className="outlet-cover-img min-h-[200px]" />
           <p className="outlet-title">Outdoor TOV</p>
           <div className="outlet-content">
             <div className="outlet-item">
