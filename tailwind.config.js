@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 export default {
     darkMode: ["class"],
     content: [
@@ -11,6 +12,7 @@ export default {
     theme: {
         backgroundImage: {
             tandc: "url('./src/assets/images/bg_tandc.png')",
+            homeBg: "url('./src/assets/images/HomePage/bg.svg')"
         },
         fontFamily: {
             hanikenSerif: ["hanikenSerif", "sans-serif"],
@@ -24,11 +26,15 @@ export default {
                 "2xl": "1400px",
             },
         },
+        textShadow: {
+            DEFAULT: '-2px 3px 0px #000000'
+        },
         extend: {
             lineClamp: {
                 7: "7",
             },
             colors: {
+                green: "#01EC48",
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
@@ -88,5 +94,14 @@ export default {
             },
         },
     },
-    plugins: [import("tailwindcss-animate")],
+    plugins: [plugin(function ({ matchUtilities, theme }) {
+        matchUtilities(
+            {
+                'text-shadow': (value) => ({
+                    textShadow: value,
+                }),
+            },
+            { values: theme('textShadow') }
+        )
+    }), import("tailwindcss-animate")],
 };

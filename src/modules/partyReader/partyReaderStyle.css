@@ -284,6 +284,57 @@
   font-weight: 500;
 }
 
+.title{
+  font-family: w14art !important;
+  font-size: 40px;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: -2px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap : 3
+}
+
+.title span {
+  font-family: w14art !important;
+  font-size: 40px;
+  font-weight: 400;
+  color: #01EC48;
+  text-shadow: -2px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+}
+
+.title p {
+  font-family: hanikenSerif !important;
+  font-size: 40px;
+  font-weight: 400;
+  color: #01EC48;
+  text-shadow: -2px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+}
+
+.outlet-promotion-title{
+  text-align: center;
+  font-family: hanikenSerif !important;
+  font-size: 32px;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: -2px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+}
+
+.outlet-promotion-title span {
+  font-family: hanikenSerif !important;
+  font-size: 32px;
+  font-weight: 400;
+  color: #01EC48;
+  text-shadow: -2px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+}
+
 /* radix select override */
 .SelectContent {
   position: relative;

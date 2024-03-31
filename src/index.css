@@ -90,6 +90,15 @@
   }
 }
 
+@layer components {
+  .text-primary-white {
+    @apply font-w14art font-normal text-shadow text-white;
+  }
+  .text-secondary-green {
+    @apply font-hanikenSerif font-normal text-shadow text-green;
+  }
+}
+
 
 @font-face {
   font-family: natosansmm;
