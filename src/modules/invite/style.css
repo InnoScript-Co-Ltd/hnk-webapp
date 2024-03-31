@@ -26,7 +26,7 @@
 
 .invite-section{
     width: 306px;
-    height: 302px;
+    /* height: 302px; */
     background-color: #532B6F;
     border-radius: 15px;
     border: 2px solid #000;
@@ -45,25 +45,35 @@
 
 .invite-content-green-text{
     text-align: center;
-    font-family: hanikenSerif;
-    font-size: 31px;
-    font-weight: 600;
+    font-family: w14art;
+    font-size: 20px;
+    font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
 }
 
 .invite-content-white-text{
     text-align: center;
-    font-family: hanikenSerif;
-    font-size: 31px;
-    font-weight: 600;
+    font-family: w14art;
+    font-size: 20px;
+    font-weight: 400;
     color: #ffffff;
+    text-shadow: -2px 3px #000;
+}
+
+.invite-content-eng-text{
+    text-align: center;
+    font-family: hanikenSerif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #01EC48;
     text-shadow: -2px 3px #000;
 }
 
 .invite-content{
     margin-top: 23px;
     margin: 10px auto;
+    text-align: center;
 }
 
 .share-back-btn{

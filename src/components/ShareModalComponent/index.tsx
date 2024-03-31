@@ -1,15 +1,17 @@
 import './style.css'
 import { motion } from 'framer-motion'
 import { FaFacebookF, FaInstagram, FaFacebookMessenger, FaTelegram, FaWhatsapp } from "react-icons/fa";
+import { FacebookShareButton, TelegramShareButton, WhatsappShareButton, InstapaperShareButton, FacebookMessengerShareButton} from 'react-share';
 
 const color = '#FFF'
 
 const shareMedias = [
-    {media: <FaFacebookF color={color} />},
-    {media: <FaInstagram color={color} />},
-    {media: <FaFacebookMessenger color={color} />},
-    {media: <FaTelegram color={color} />},
-    {media: <FaWhatsapp color={color} />},
+    // {media: <FaFacebookF color={color} />},
+    {media: <FacebookShareButton url='http://hnk.innoscript.co/home'><FaFacebookF color={color} /> </FacebookShareButton>},
+    {media: <InstapaperShareButton url='http://hnk.innoscript.co/home'><FaInstagram color={color} /></InstapaperShareButton>},
+    {media: <FacebookMessengerShareButton appId='784926446458048' url='http://hnk.innoscript.co/home'><FaFacebookMessenger color={color} /></FacebookMessengerShareButton>},
+    {media: <TelegramShareButton url='http://hnk.innoscript.co/home' ><FaTelegram color={color} /></TelegramShareButton>},
+    {media: <WhatsappShareButton url='http://hnk.innoscript.co/home'><FaWhatsapp color={color} /></WhatsappShareButton>},
     // {media: <FaViber color={color} />},
 ]
 
