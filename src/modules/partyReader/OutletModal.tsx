@@ -5,7 +5,7 @@ import "./outletDetailStyle.css";
 const OutletModal = ({ outlet, onClose }: any) => {
 
   return (
-    <div className="overlay">
+    <div className="w-full h-full fixed top-0 left-0 z-[9999] backdrop-blur-sm bg-white/30">
       <div className="outlet-detail-container overflow-hidden">
         <div className="outlet-detail-content">
           <img src={`${endpoints.image}/${outlet?.image?.image}`} alt="" className="outlet-cover-img min-h-[200px]" />

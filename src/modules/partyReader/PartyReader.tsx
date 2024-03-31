@@ -119,16 +119,17 @@ const PartyReader = () => {
         {/* <div className="partyreader-header">
           <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
         </div> */}
-        <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" />
+        {/* <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" /> */}
 
         <div className="slider-content-wrapper">
           <RotatingSlogan />
           <div className="party-content-wrapper">
-            <img
+            {/* <img
               src={partyTitle}
               alt="HNK Refresh Music"
               className="party-title"
-            />
+            /> */}
+            <h1 className=" flex justify-start items-start gap-2 mx-auto text-primary-white text-white text-[40px]">b,fae&mvJ...<span className=" text-primary-white text-green">bmyGJvJ...</span> <p className=" text-secondary-green ">?</p> </h1>
             {/* <p 
               className="party-title-1"
             >ဘယ်နေရာလဲ...</p>
@@ -160,11 +161,9 @@ const PartyReader = () => {
           </div>
         </div>
         <div className="promotion-wrapper">
-          <img
-            src={outletPromotion}
-            alt="HNK Refresh Music"
-            className="promotion-title"
-          />
+          <h1 className=" text-secondary-green text-white text-[30px] text-center">
+            Outlet <span className=" text-secondary-green">Promotion</span>
+          </h1>
           <p className="promotion-content px-[20px] font-medium leading-[19px]">
             ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
             စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
