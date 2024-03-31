@@ -29,6 +29,7 @@ import OutletModal from "./OutletModal";
 
 import "./partyReaderStyle.css";
 import { getRequest } from "@/lib/axios";
+import { endpoints } from "@/constants/endpoints";
 interface Location {
   lat: number;
   long: number;
@@ -189,10 +190,11 @@ const PartyReader = () => {
   const getOutlet = useCallback(async () => {
     const response : any = await getRequest('outlet', userLocation)
     if(response.status === 200){
-      console.log('response',response);
+      setOutletList(response.data.data);
       
     }
   }, [userLocation])
+  
 
   useEffect(() => {
     getOutlet()
@@ -333,7 +335,7 @@ const PartyReader = () => {
                   onClick={() => openModal(item)}
                 >
                   <img
-                    src={item.image}
+                    src={`${endpoints.image}/${item.image.image}`}
                     alt="HNK Fresh Drink"
                     className="promotion_img"
                   />
@@ -359,14 +361,14 @@ const PartyReader = () => {
               </div>
 
               <div className="promotion-container">
-                {all_outlets.map((item: any, index: any): any => (
+                {outletList.map((item: any, index: any): any => (
                   <button
                     key={index}
                     className="outlet-items"
                     onClick={() => openModal(item)}
                   >
                     <img
-                      src={item.image}
+                      src={item.image.image}
                       alt="HNK Fresh Drink"
                       className="outlet_img"
                     />
