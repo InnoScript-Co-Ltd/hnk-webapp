@@ -26,7 +26,7 @@ const Termsandconditions = () => {
     }, [story]);
 
     const handleTcAccept = () => {
-        navigate("/");
+        navigate("/randr/episode-1");
     };
 
     const adsItems = [
@@ -118,6 +118,7 @@ const Termsandconditions = () => {
                             Back
                         </Button>
                         <Button
+                            onClick={handleTcAccept}
                             variant="hnk"
                             size="hnksm"
                             className="text-black"

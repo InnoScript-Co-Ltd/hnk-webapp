@@ -12,7 +12,7 @@ type btnProps = {
 const ButtonComponent = (props: btnProps) => {
     const {onBtnClick, label, backgroundColor, minWidth, arrow, disabled} = props
   return (
-    <button disabled={disabled} style={{backgroundColor: backgroundColor || '', minWidth: minWidth || ''}} onClick={onBtnClick} className="btn">
+    <button disabled={disabled} style={{backgroundColor: backgroundColor || '', minWidth: minWidth || ''}} onClick={onBtnClick} className="btn-style">
         <span className='button-label'>{label}</span>
         {
           arrow && (

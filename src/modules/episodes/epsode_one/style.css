@@ -200,11 +200,14 @@
 }
 
 .left{
+    width: 75px;
     left: 10px;
 }
 
 .label{
     position: absolute;
+    overflow: hidden;
+    /* text-wrap: wrap; */
     bottom: 10px;
     font-family: hanikenSerif;
     font-size: 25px;

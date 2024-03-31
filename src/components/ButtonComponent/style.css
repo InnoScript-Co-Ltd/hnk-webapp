@@ -1,4 +1,4 @@
-.btn{
+.btn-style{
     font-size: 20px;
     font-weight: 500;
     background-color: #FFFFFF;
@@ -20,7 +20,7 @@
     margin-right: 10px;
 }
 
-.btn:hover{
+.btn-style:hover{
     scale: 0.95;
     transition: scale 0.3s ease;
 
@@ -37,12 +37,12 @@
 
 }
 
-.btn:disabled{
+.btn-style:disabled{
     background-color: #c1c1c1;
     color: #e4e4e4;
 }
 
-.btn:active{
+.btn-style:active{
     scale: 0.95;
     transition: scale 0.3s ease;
 }
