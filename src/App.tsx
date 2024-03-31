@@ -55,15 +55,15 @@ const App = () => {
                     path: "/party-radar",
                     element: lazyLoad(<PartyRadar />),
                 },
-                {
-                    path: "/term-and-condition",
-                    element: lazyLoad(<Termsandconditions />),
-                },
             ],
         },
         {
             path: "/register",
             element: lazyLoad(<Register />),
+        },
+        {
+            path: "/term-and-condition",
+            element: lazyLoad(<Termsandconditions />),
         },
     ]);
     return (
