@@ -4,7 +4,7 @@ import RotatingSlogan from "@/components/RotatingSlogan";
 import earphone from "../../assets/images/randr/episode_1/earphone.png";
 import mp3Player from "../../assets/images/randr/episode_1/mp3Player.png";
 import feedbackStar from "../../assets/images/Invite/feedbackStar.png";
-import bottle from "../../assets/images/HomePage/beerbottle.png";
+import bottle from "../../assets/svgs/bottle.svg";
 import hand from "../../assets/images/hand.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import ButtonComponent from "@/components/ButtonComponent";
@@ -37,7 +37,7 @@ const Invite = () => {
 
   return (
     <>
-      <div className="invite-container">
+      <div className="invite-container max-w-[420px] mx-auto">
         <AnimatePresence>
           {openShareModel && (
             <ShareModalComponent closeModal={modalCloseHandler} />
@@ -46,13 +46,13 @@ const Invite = () => {
         <Header backgroundColor="#000242" />
         <RotatingSlogan />
         
-        <div className="invite-section-wrapper">
-          <img className="invite-beer-bottle" src={bottle} />
+        <div className="invite-section-wrapper relative">
+          <img className=" absolute -top-[58px] left-[5px]" src={bottle} />
           <div className="invite-section">
             <p className="user-name">{story.name}</p>
             <p className="invite-content">
               <span className="invite-content-green-text">
-              <span className="invite-content-white-text">wrlxl;jcm;wJh</span> *Dwtopf <span className="invite-content-white-text">awGudk udk,fwdkif</span> <span className="invite-content-eng-text">Live</span> cHpm;em;qifzdkY <span className="invite-content-eng-text">HNK Outdoor TOV</span> <span className="invite-content-white-text">odkY zdwfac:ygw,f...</span>
+              <span className="invite-content-white-text">wrlxl;jcm;wJh</span> *Dwtopf <span className="invite-content-white-text">awGudk <br /> udk,fwdkif</span> <span className="invite-content-eng-text">Live</span> cHpm;em; qifzdkY <br /> <span className="invite-content-eng-text">HNK Outdoor TOV</span> <br /> <span className="invite-content-white-text">odkY zdwfac:ygw,f...</span>
               </span>
             </p>
             <img
@@ -61,7 +61,7 @@ const Invite = () => {
               alt="feedbackStar"
             />
           </div>
-          <img className="invite-hand" src={hand} />
+          <img className=" absolute top-[100px] right-[5px]" src={hand} />
           <div className="share-back-btn">
             <ButtonComponent
               minWidth="200px"
