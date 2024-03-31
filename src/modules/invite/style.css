@@ -1,3 +1,9 @@
+.invite-container{
+    position: relative;
+    background-color: #00880F;
+    border-radius: 5px;
+}
+
 .profile-invite-img{
     margin-top: 50px;
     width: 60px;
@@ -10,18 +16,12 @@
     transform: translateX(-50%);
 }
 
-.invite-container{
-    position: relative;
-    background-color: #00880F;
-    padding: 5px 0;
-}
-
 .invite-section-wrapper{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
+    margin-top: 50px;
 }
 
 .invite-section{
@@ -99,18 +99,16 @@
 }
 
 .invite-beer-bottle{
-    position: absolute;
-    left: -35px;
-    top: 5px;
+    position: relative;
     transform: rotate(50deg);
 }
 
-.invite-hand{
+/* .invite-hand{
     position: absolute;
     right: -7px;
     top: 150px;
     transform: rotate(6.38deg);
-}
+} */
 
 .invite-footer{
     background-color: #00880F;

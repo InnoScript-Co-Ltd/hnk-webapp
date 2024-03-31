@@ -13,6 +13,7 @@ import ShareModalComponent from "@/components/ShareModalComponent";
 import { AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 import { USER_STORY } from '@/models/story.model';
+import { Header } from "@/components/Header";
 
 const Invite = () => {
   const navigate = useNavigate();
@@ -42,8 +43,10 @@ const Invite = () => {
             <ShareModalComponent closeModal={modalCloseHandler} />
           )}
         </AnimatePresence>
+        <Header backgroundColor="#000242" />
         <RotatingSlogan />
-        <div style={{ marginTop: "50px" }} className="invite-section-wrapper">
+        
+        <div className="invite-section-wrapper">
           <img className="invite-beer-bottle" src={bottle} />
           <div className="invite-section">
             <p className="user-name">{story.name}</p>
