@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import "./style.css";
-import { Header } from "@/components/Header";
+// import { Header } from "@/components/Header";
 
 const Termsandconditions = () => {
     const [payload, setPayload] = useState({
@@ -19,7 +19,7 @@ const Termsandconditions = () => {
 
     return (
         <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-1 max-w-[420px] mx-auto relative">
-            <Header />
+            {/* <Header /> */}
             <div className="w-full flex flex-col justify-center items-center gap-3">
                 <RotatingSlogan />
                 <div className="w-full h-full font-natosansmm text-white bg-[rgba(30,18,115,0.88)]/30 backdrop-blur-2xl border border-[#EABFFF] rounded-lg verflow-hidden overflow-y-scroll scrollbar-none flex flex-col gap-4 p-5">
