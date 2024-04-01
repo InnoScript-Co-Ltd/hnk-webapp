@@ -6,6 +6,8 @@ import guitter from "@/assets/images/guiter.png";
 import footerImg from "@/assets/images/footer.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { USER_STORY, storyUpdate } from "@/store/storySlice";
 import "./style.css";
 import axios from "axios";
 import ButtonComponent from "@/components/ButtonComponent";
@@ -14,10 +16,6 @@ import { endpoints, serverURL } from "@/constants/endpoints";
 import { storyUpdate } from "@/store/storySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_STORY } from '@/models/story.model';
-import ModalComponent from "@/components/ModalComponent";
-import { AnimatePresence } from "framer-motion";
-import { IReducer } from "@/store/store";
-import { openModal } from "@/store/modalSlice";
 
 const Register = () => {
   const [payload, setPayload] = useState({
@@ -58,13 +56,11 @@ const Register = () => {
       setIsLoading(true)
       const response = await axios.post(
         `${serverURL}${endpoints.user}`,
-        // "http://hnk-api.innoscript.co/api/user",
         // "http://localhost:8000/api/user",
         payload
       );
       const result = response.data.data;
       const updateStory = { ...story };
-      updateStory.id = result.id;
       updateStory.tc_accept = payload.tc_accept;
       updateStory.name = result.name;
       updateStory.email = result.email;
@@ -76,15 +72,12 @@ const Register = () => {
       navigate("/term-and-condition");
     } catch (error:any) {
       console.error("Error submitting data:", error.response);
-      setIsLoading(false);
-      dispath(openModal({
-        title: 'Register Failed',
-        message: `${error.response.data.message}. Please check your data and try again later.`,
-        theme: 'error',
-      }));
-      // alert(`${error.response.data.message}. Please check your data and try again later.`);
+      alert(`${error.response.data.message}. Please check your data and try again later.`);
     }
-  
+    
+    setTimeout(() => {
+        setIsLoading(false)
+    },2000)
   };
   
   return (
