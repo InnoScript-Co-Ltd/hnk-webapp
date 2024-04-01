@@ -1,7 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { SetStateAction, useCallback, useEffect, useState } from "react";
+import {
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 // import menubarIcon from "@/assets/images/menu.png";
 // import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
 // import starIcon from "@/assets/images/star.png";
@@ -41,15 +47,24 @@ interface Location {
 }
 import { openModal as openErrorModal } from "@/store/modalSlice";
 import { useDispatch } from "react-redux";
+import EventSliderComponent from "./EventSlider";
+import EventModal from "./EventModal";
 
 const sliders = [
   {
     id: 1,
     image: slide1,
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
   },
   {
     id: 2,
     image: slide2,
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
+  },
+  {
+    id: 3,
+    image: slide1,
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
   },
 ];
 
@@ -63,6 +78,8 @@ const PartyReader = () => {
   const [outletList, setOutletList] = useState<Array<any>>([]);
   const [selectChange, setSelectChange] = useState<boolean | undefined>();
   const [loading, setLoading] = useState<boolean>();
+  const [openEventModal, setOpenEventModal] = useState<boolean>();
+  const [description, setDescription] = useState<string>("");
   const dispatch = useDispatch();
 
   const openModal = (outlet: SetStateAction<null>) => {
@@ -73,16 +90,19 @@ const PartyReader = () => {
     setSelectedOutlet(null);
   };
 
+  const closeEventModal = () => {
+    setOpenEventModal(false);
+  };
+
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          
           if (promotionTab && selectedDistance && position !== null) {
             setUserLocation({
               lat: position.coords.latitude,
               long: position.coords.longitude,
-              distance: Number(selectedDistance.replace(/km/g, ""))
+              distance: Number(selectedDistance.replace(/km/g, "")),
             });
           } else {
             setUserLocation(null);
@@ -90,56 +110,56 @@ const PartyReader = () => {
         },
         (error) => {
           // console.warn(error.message);
-          dispatch(openErrorModal({
-            title: 'Location Error',
-            message: `${error.message}`,
-            theme: 'error'
-          }));
+          dispatch(
+            openErrorModal({
+              title: "Location Error",
+              message: `${error.message}`,
+              theme: "error",
+            })
+          );
         }
       );
     } else {
-      
       // console.error("Geolocation is not supported by this browser.");
-      dispatch(openErrorModal({
-        title: 'Location Error',
-        message: "Geolocation is not supported by this browser.",
-        theme: 'error'
-      }));
+      dispatch(
+        openErrorModal({
+          title: "Location Error",
+          message: "Geolocation is not supported by this browser.",
+          theme: "error",
+        })
+      );
     }
   }, [selectedDistance, navigator, promotionTab]);
 
   const getOutlet = useCallback(async () => {
     setLoading(true);
 
-    try{
-      const response: any = await getRequest('outlet', userLocation);
+    try {
+      const response: any = await getRequest("outlet", userLocation);
 
       if (response.status === 200) {
         setOutletList(response.data.data);
-        setLoading(false)
+        setLoading(false);
       }
-    }catch(error){
-      dispatch(openErrorModal({
-        title: 'Outlet Error',
-        message: "Failed to get outlets",
-        theme: 'error'
-      }));
-      setLoading(false)
+    } catch (error) {
+      dispatch(
+        openErrorModal({
+          title: "Outlet Error",
+          message: "Failed to get outlets",
+          theme: "error",
+        })
+      );
+      setLoading(false);
     }
-
-  }, [userLocation])
-
+  }, [userLocation]);
 
   useEffect(() => {
-    getOutlet()
-  }, [getOutlet])
-  
+    getOutlet();
+  }, [getOutlet]);
 
   return (
     <div className="partyreader-container relative max-w-[420px] mx-auto">
-      {
-        loading && <LoadingComponent />
-      }
+      {loading && <LoadingComponent />}
       {/* <Header backgroundColor={"#000242"} /> */}
       <div className="partyreader-content h-[100vh]">
         {/* <div className="partyreader-header">
@@ -155,7 +175,11 @@ const PartyReader = () => {
               alt="HNK Refresh Music"
               className="party-title"
             /> */}
-            <h1 className=" flex justify-start items-start gap-2 mx-auto text-primary-white text-white text-[40px]">b,fae&mvJ...<span className=" text-primary-white text-green">bmyGJvJ...</span> <p className=" text-secondary-green ">?</p> </h1>
+            <h1 className=" flex justify-start items-start gap-2 mx-auto text-primary-white text-white text-[40px]">
+              b,fae&mvJ...
+              <span className=" text-primary-white text-green">bmyGJvJ...</span>{" "}
+              <p className=" text-secondary-green ">?</p>{" "}
+            </h1>
             {/* <p 
               className="party-title-1"
             >ဘယ်နေရာလဲ...</p>
@@ -168,21 +192,21 @@ const PartyReader = () => {
               ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
             </p>
             <div className="slidder-wrapper mt-[20px] mb-[20px]">
-              <Carousel className="">
-                <CarouselContent>
-                  {sliders.map((slide, index) => (
-                    <CarouselItem key={index}>
-                      <div className="p-2">
-                        <img
-                          src={slide.image}
-                          alt="HNK Refresh Music"
-                          className="slider-img"
-                        />
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-              </Carousel>
+              <EventSliderComponent autoPlay>
+                {sliders.map((slide, index) => (
+                  <div className="p-2" key={index}>
+                    <img
+                      src={slide.image}
+                      alt="HNK Refresh Music"
+                      className="slider-img"
+                      onClick={() => {
+                        setOpenEventModal(true)
+                        setDescription(slide.description)
+                      }}
+                    />
+                  </div>
+                ))}
+              </EventSliderComponent>
             </div>
           </div>
         </div>
@@ -197,8 +221,9 @@ const PartyReader = () => {
           </p>
           <div className="promotion-btn-group">
             <button
-              className={`promotion-btn ${promotionTab === true ? "active" : ""
-                }`}
+              className={`promotion-btn ${
+                promotionTab === true ? "active" : ""
+              }`}
               onClick={() => setPromotionTab(true)}
             >
               Promotion
@@ -214,7 +239,11 @@ const PartyReader = () => {
             <>
               <div className="nearby-container">
                 <span className="nearby-label">Near by</span>
-                <Select onOpenChange={(e: any) => setSelectChange(e)} defaultValue={selectedDistance} onValueChange={setSelectedDistance}>
+                <Select
+                  onOpenChange={(e: any) => setSelectChange(e)}
+                  defaultValue={selectedDistance}
+                  onValueChange={setSelectedDistance}
+                >
                   <SelectTrigger className="w-[80px] text-[#00F944] rounded-full border-[#00F944]">
                     <SelectValue />
                   </SelectTrigger>
@@ -252,14 +281,20 @@ const PartyReader = () => {
               title="Henineken"
             />
             <div>
-              <img className="absolute z-50 bottom-[100px] left-[20px]" src={enjoyLogo} />
+              <img
+                className="absolute z-50 bottom-[100px] left-[20px]"
+                src={enjoyLogo}
+              />
             </div>
           </div>
         </div>
       </div>
       {selectedOutlet && (
-            <OutletModal outlet={selectedOutlet} onClose={closeModal} />
-          )}
+        <OutletModal outlet={selectedOutlet} onClose={closeModal} />
+      )}
+      {openEventModal && (
+        <EventModal description={description} onClose={closeEventModal} />
+      )}
     </div>
   );
 };
