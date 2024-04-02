@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import starIcon from "@/assets/images/star.png";
 import "./playerStyle.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import singer from "@/assets/images/singer.png";
 import player from "@/assets/images/turntable_detail.png";
 import redGuitar from "@/assets/images/heart_dagger.png";
@@ -10,6 +10,8 @@ import greenGuitar from "@/assets/images/green_guitar.png";
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import music from '@/assets/LEE HONGGI (이홍기) X YOO HWESEUNG (유회승) STILL LOVE YOU (사랑했었다) LYRICS (Han_Rom_Eng) COLOUR CODED.mp3'
+import RotatingSlogan from "@/components/RotatingSlogan";
+import { motion, useAnimation} from "framer-motion"
 
 interface Song {
   title: string;
@@ -42,6 +44,8 @@ const PlayerComponent = () => {
   let height = screen.height;
 
   const [currentSongIndex] = useState<number>(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const control = useAnimation();
 
   // const playSong = (index: number) => {
   //   setCurrentSongIndex(index);
@@ -66,65 +70,26 @@ const PlayerComponent = () => {
   //   audioElement.play();
   // };
 
+  useEffect(() => {
+    if(isPlaying){
+      control.start({
+        rotate: 360,
+        transition: {
+          duration: 5,
+          repeat: Infinity,
+          ease: 'linear'
+        }
+      })
+    }else{
+      control.stop()
+    }
+  },[isPlaying])
+
   return (
     <div className="playlist-container">
       <div className="playlist-content" style={{height: height}}>
+        <RotatingSlogan />
         <div className="content-wrapper">
-          <div className="playlist-ads-content">
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-
-            <div className="ads-item loop-text">
-              <img
-                src={starIcon}
-                alt="HNK Refresh Music"
-                title="HNK Refresh Music"
-              />
-              <label> Refresh Your Music </label>
-            </div>
-          </div>
          <div className="h-[430px]">
          <div
             style={{
@@ -139,14 +104,22 @@ const PlayerComponent = () => {
           >
             <div className="img-outer-wrapper">
               <div className="img-wrapper">
-                <img
+                <motion.img
+                  animate={control}
                   src={songs[currentSongIndex].singerImage}
                   alt={songs[currentSongIndex].artist}
                   className="singer-img"
                 />
               </div>
             </div>
-            <div className="turntable">
+            <div 
+            style={{
+              transform: isPlaying ? 'rotate(0deg)' : 'rotate(-30deg)',
+              transformOrigin: '0px 0px',
+              transition: 'transform 0.5s linear'
+            }}
+            className="turntable"
+            >
               <img src={player} alt="HNK Refresh Music" />
             </div>
             <div className="guitars">
@@ -164,9 +137,12 @@ const PlayerComponent = () => {
             <AudioPlayer
               autoPlay
               src={music}
-              onPlay={(e) => console.log(e, "onPlay")}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
               volume={1}
               loop={false}
+              showSkipControls
+              showJumpControls={false}
               style={{ backgroundColor: "transparent", boxShadow: 'none'}}
             />
           </div>

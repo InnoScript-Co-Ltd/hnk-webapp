@@ -34,9 +34,10 @@ const RotatingSlogan = () => {
   return (
     <div 
     style={{
+    maxWidth: stopSlogan ? '410px' : '',
     position: stopSlogan ? 'fixed' : 'relative',
     top: stopSlogan ? 100 : '0',
-    left: 0,
+    // left: 0,
     zIndex: 21
     }} 
     id="rotating-slogan" 
