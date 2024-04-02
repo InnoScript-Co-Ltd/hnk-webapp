@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import starIcon from "@/assets/images/star.png";
 import "./playerStyle.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import singer from "@/assets/images/singer.png";
 import player from "@/assets/images/turntable_detail.png";
 import redGuitar from "@/assets/images/heart_dagger.png";
@@ -45,6 +45,8 @@ const PlayerComponent = () => {
 
   const [currentSongIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [rotateDeg, setRotateDeg] = useState(0);
+  const intervalRef = useRef<any>(null);
   const control = useAnimation();
 
   // const playSong = (index: number) => {
@@ -72,18 +74,16 @@ const PlayerComponent = () => {
 
   useEffect(() => {
     if(isPlaying){
-      control.start({
-        rotate: 360,
-        transition: {
-          duration: 5,
-          repeat: Infinity,
-          ease: 'linear'
-        }
-      })
+      intervalRef.current = setInterval(() => {
+        setRotateDeg(prev => prev + 10);
+      },300)
     }else{
-      control.stop()
+      window.clearInterval(intervalRef.current);
     }
-  },[isPlaying])
+
+    return () => clearInterval(intervalRef.current)
+  }, [isPlaying])
+
 
   return (
     <div className="playlist-container">
@@ -104,8 +104,11 @@ const PlayerComponent = () => {
           >
             <div className="img-outer-wrapper">
               <div className="img-wrapper">
-                <motion.img
-                  animate={control}
+                <img
+                  style={{
+                    transform: `rotate(${rotateDeg}deg)`,
+                    transition: 'transform 0.3s linear'
+                  }}
                   src={songs[currentSongIndex].singerImage}
                   alt={songs[currentSongIndex].artist}
                   className="singer-img"
