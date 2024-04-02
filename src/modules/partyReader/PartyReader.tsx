@@ -1,28 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-// import menubarIcon from "@/assets/images/menu.png";
-// import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
-// import starIcon from "@/assets/images/star.png";
-// import outletPromotion from "@/assets/images/Outlet_Promotion.png";
-// import partyTitle from "@/assets/images/partyTitle.png";
+import { SetStateAction, useCallback, useEffect, useState } from "react";
 import slide1 from "@/assets/images/event1.png";
 import slide2 from "@/assets/images/event2.png";
-// import promotion from "@/assets/images/promotion.png";
 import footerImg from "@/assets/images/footer.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 import {
   Select,
   SelectContent,
@@ -30,8 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-// import { useNavigate } from "react-router-dom";
 import OutletModal from "./OutletModal";
 
 import "./partyReaderStyle.css";
@@ -39,7 +20,6 @@ import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
-// import { Header } from "@/components/Header";
 interface Location {
   lat: number;
   long: number;
@@ -50,25 +30,39 @@ import { useDispatch } from "react-redux";
 import EventSliderComponent from "./EventSlider";
 import EventModal from "./EventModal";
 
+type btnProps = {
+  onBtnClick: () => void;
+  label: string;
+  backgroundColor?: string;
+  minWidth?: string;
+  arrow?: boolean;
+  disabled?: boolean;
+};
+
 const sliders = [
   {
     id: 1,
     image: slide1,
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
   },
   {
     id: 2,
     image: slide2,
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
   },
   {
     id: 3,
     image: slide1,
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
   },
 ];
 
-const PartyReader = () => {
+const PartyReader = (props: btnProps) => {
+  const { onBtnClick, label, backgroundColor, minWidth, arrow, disabled } =
+    props;
   const [promotionTab, setPromotionTab] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const navigate = useNavigate();
@@ -177,7 +171,9 @@ const PartyReader = () => {
             /> */}
             <h1 className=" flex justify-start items-start gap-2 mx-auto text-primary-white text-white text-[40px]">
               b,fae&mvJ...
-              <span className=" text-primary-white text-green">bmyGJvJ...</span>{" "}
+              <span className=" text-primary-white text-green">
+                bmyGJvJ...
+              </span>{" "}
               <p className=" text-secondary-green ">?</p>{" "}
             </h1>
             {/* <p 
@@ -200,8 +196,8 @@ const PartyReader = () => {
                       alt="HNK Refresh Music"
                       className="slider-img"
                       onClick={() => {
-                        setOpenEventModal(true)
-                        setDescription(slide.description)
+                        setOpenEventModal(true);
+                        setDescription(slide.description);
                       }}
                     />
                   </div>
@@ -221,18 +217,44 @@ const PartyReader = () => {
           </p>
           <div className="promotion-btn-group">
             <button
-              className={`promotion-btn ${
-                promotionTab === true ? "active" : ""
-              }`}
+              className={`btn-style ${promotionTab === true ? "active" : ""}`}
               onClick={() => setPromotionTab(true)}
             >
-              Promotion
+              <span className="button-label">Promotion</span>
+              {arrow && (
+                <svg
+                  width="24"
+                  height="18"
+                  viewBox="0 0 24 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.9263 0L13.9592 0.501143C13.9592 2.83013 15.9778 5.86846 18.1466 7.61036H0.21875V10.3896H18.1454C15.9767 12.1315 13.958 15.1699 13.958 17.4989L16.9251 18C16.9251 14.6966 19.8797 10.3896 23.2188 10.3896V7.61036C19.8797 7.61036 16.9251 3.30343 16.9251 0L16.9263 0Z"
+                    fill="black"
+                  />
+                </svg>
+              )}
             </button>
             <button
-              className={`all-btn ${promotionTab === false ? "active" : ""}`}
+              className={`btn-style ${promotionTab === false ? "active" : ""}`}
               onClick={() => setPromotionTab(false)}
             >
-              All
+              <span className="button-label">All</span>
+              {arrow && (
+                <svg
+                  width="24"
+                  height="18"
+                  viewBox="0 0 24 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.9263 0L13.9592 0.501143C13.9592 2.83013 15.9778 5.86846 18.1466 7.61036H0.21875V10.3896H18.1454C15.9767 12.1315 13.958 15.1699 13.958 17.4989L16.9251 18C16.9251 14.6966 19.8797 10.3896 23.2188 10.3896V7.61036C19.8797 7.61036 16.9251 3.30343 16.9251 0L16.9263 0Z"
+                    fill="black"
+                  />
+                </svg>
+              )}
             </button>
           </div>
           {promotionTab && (
