@@ -4,37 +4,37 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import "./style.css";
-import { toast } from "@/components/ui/use-toast";
+import AlertModal from "@/components/modals/alert-modal";
 // import { Header } from "@/components/Header";
-
-const Modal = () => {
-    <div className="w-full ">Hello</div>;
-};
 
 const Termsandconditions = () => {
     const [payload, setPayload] = useState({
         is_campaign: false,
     });
 
-    console.log(payload);
-
-    payload.is_campaign
-        ? toast({
-              description:
-                  "သင်ဟာ ဒီ အချက် အလက်တွေကို အသိအမှတ်ပြုလိုက်ခံလိုက်ပါပီ။",
-          })
-        : "";
+    const [open, setOpen] = useState(false);
 
     const navigate = useNavigate();
 
     const handleTcAccept = () => {
-        // window.alert("Are you sure you want to Do");
         navigate("/randr/episode-1");
+    };
+
+    const onClose = () => {
+        setPayload({ ...payload, is_campaign: false });
+        setOpen(false);
     };
 
     return (
         <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-1 max-w-[420px] mx-auto relative">
             {/* <Header /> */}
+            {/* Model Box */}
+            <AlertModal
+                isOpen={open}
+                onClose={() => onClose()}
+                onConfirm={() => setOpen(false)}
+            />
+
             <div className="w-full flex flex-col justify-center items-center gap-3">
                 <RotatingSlogan />
                 <div className="w-full h-full font-natosansmm text-white bg-[rgba(30,18,115,0.88)]/30 backdrop-blur-2xl border border-[#EABFFF] rounded-lg verflow-hidden overflow-y-scroll scrollbar-none flex flex-col gap-4 p-5">
@@ -80,6 +80,7 @@ const Termsandconditions = () => {
                                 const updatePayload = { ...payload };
                                 updatePayload.is_campaign = e.target.checked;
                                 setPayload(updatePayload);
+                                setOpen(!payload.is_campaign);
                             }}
                         />
                         <label className="text-md md:text-[18px]">
