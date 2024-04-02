@@ -5,11 +5,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 select-none",
     {
         variants: {
             variant: {
-                hnk: "shadow-[-1px_6px_0px_1px_rgba(0,0,0,1)] active:shadow-[-1px_4px_0px_1px_rgba(0,0,0,1)] bg-white  font-hanikenSerif  tracking-wide rounded-[100px] border border-black",
+                hnk: "shadow-[-1px_6px_0px_1px_rgba(0,0,0,1)] active:shadow-[-1px_4px_0px_1px_rgba(0,0,0,1)] bg-white  font-hanikenSerif  tracking-wide rounded-[100px] border border-black ",
                 hnkalert:
                     "shadow-[-1px_3px_0px_1px_rgba(0,0,0,1)] active:shadow-[-1px_1px_0px_1px_rgba(0,0,0,1)] bg-white  font-hanikenSerif  tracking-wide rounded-[100px] border border-black",
                 default:
