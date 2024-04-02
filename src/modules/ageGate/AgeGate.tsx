@@ -10,6 +10,7 @@ import AgeGateTitle from "@/assets/images/ageGateTitle.png";
 import { useDispatch, useSelector } from "react-redux";
 import { storyUpdate } from "@/store/storySlice";
 import { USER_STORY } from '@/models/story.model';
+import "./style.css";
 
 const AgeGate = () => {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ const AgeGate = () => {
     };
 
     return (
-        <div className=" min-h-screen h-full w-full overflow-hidden bg-[#009D1B] flex justify-center items-center pt-[30px]">
+        <div className="bg min-h-screen h-full w-full overflow-hidden flex justify-center items-center pt-[30px]">
             
             <div className=" flex flex-col items-center min-h-screen">
                 <div className="flex flex-col items-center gap-2">

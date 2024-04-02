@@ -78,16 +78,14 @@
 .line_3{
     margin-top: 60px;
 }
-
+/* 
 .ep1_btn_label{
-    width: 180px;
-    position: absolute;
     top: 230px;
     right: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .ep2_btn_label{
     width: 180px;
@@ -137,14 +135,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    font-size: 20px;
-}
-
-.btn_label{
-    font-family: hanikenSerif;
-    color: #FFFFFF;
-    text-align: center;
+    font-size: 18px;
+    position: relative;
+    right: 0px;
+    top: -170px;
 }
 
 .getstars_btn{
@@ -159,6 +153,68 @@
     position: absolute;
     right: 30px;
     bottom: 180px;
+}
+
+.ep_section{
+    width: 100%;
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+}
+
+.flex_relative {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    top: -170px;
+}
+
+.ep_right_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ep_right_label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn_label_text {
+    width: 180px;
+    font-family: hanikenSerif;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.ep_btn {
+    position: relative;
+    top: -10px;
+}
+
+.svg_line_2 {
+    top: -175px;
+    position: relative;
+}
+
+.top_adj_200 {
+    top: -300px;
+    left: 20px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 @media only screen and (min-width: 375px) {

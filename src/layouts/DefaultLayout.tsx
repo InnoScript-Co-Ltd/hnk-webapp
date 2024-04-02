@@ -27,7 +27,7 @@ const DefaultLayout = () => {
 
       return () => document.removeEventListener("scroll", handleScroll);
     }
-    window.scrollTo({top: 0, behavior: 'smooth'})
+    window.scrollTo({top: 0})
   }, [location.pathname]);
 
   const closeNavigation = () => {
@@ -81,7 +81,11 @@ const DefaultLayout = () => {
                 position: 'absolute',
                 left: '50%',
                 top: "10px",
-                transform: 'translateX(-50%)'
+                transform: 'translateX(-50%)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
               }} 
               onClick={() => navigate("/")} 
               className="logo">

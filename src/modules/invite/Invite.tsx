@@ -24,7 +24,7 @@ const Invite = () => {
   };
 
   const onGoBack = () => {
-    navigate("/term-and-condition");
+    navigate("/party-radar");
   };
 
   const modalCloseHandler = () => {
