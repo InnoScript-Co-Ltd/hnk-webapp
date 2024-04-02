@@ -4,6 +4,7 @@ import store from "./store/store";
 import DefaultLayout from "./layouts/DefaultLayout";
 import LoadingComponent from "./components/LoadingComponent.tsx";
 import { lazy, ReactElement, Suspense } from "react";
+import { Toaster } from "./components/ui/toaster.tsx";
 
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
@@ -69,6 +70,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <RouterProvider router={router} />
+            <Toaster />
         </Provider>
     );
 };

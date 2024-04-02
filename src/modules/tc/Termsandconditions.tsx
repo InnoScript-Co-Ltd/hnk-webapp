@@ -4,16 +4,31 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import "./style.css";
+import { toast } from "@/components/ui/use-toast";
 // import { Header } from "@/components/Header";
+
+const Modal = () => {
+    <div className="w-full ">Hello</div>;
+};
 
 const Termsandconditions = () => {
     const [payload, setPayload] = useState({
         is_campaign: false,
     });
 
+    console.log(payload);
+
+    payload.is_campaign
+        ? toast({
+              description:
+                  "သင်ဟာ ဒီ အချက် အလက်တွေကို အသိအမှတ်ပြုလိုက်ခံလိုက်ပါပီ။",
+          })
+        : "";
+
     const navigate = useNavigate();
 
     const handleTcAccept = () => {
+        // window.alert("Are you sure you want to Do");
         navigate("/randr/episode-1");
     };
 
@@ -37,7 +52,7 @@ const Termsandconditions = () => {
                         ဖျော်ဖြေခဲ့ကြပါတယ်။
                     </p>
 
-                    <p className="text-sm leading-6 line-[12]">
+                    <p className="text-sm leading-6">
                         အခု ၂၀၂၃ ခုနှစ်မှာလည်း ဆန်းသစ်တဲ့
                         ဂီတအရသာတွေနဲ့စီးမျောခံစားဖို့ Refresh Your Music,
                         Refresh Your Nights 2023 ကို (၁၁) ရက် နိုဝင်ဘာလ၊ ၂၀၂၃
