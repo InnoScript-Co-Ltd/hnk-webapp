@@ -37,7 +37,7 @@ const RotatingSlogan = () => {
     position: stopSlogan ? 'fixed' : 'relative',
     top: stopSlogan ? 100 : '0',
     left: 0,
-    zIndex: 12
+    zIndex: 21
     }} 
     id="rotating-slogan" 
     className="top-slogan"
