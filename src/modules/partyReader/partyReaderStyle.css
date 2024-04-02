@@ -165,48 +165,70 @@
   padding-right: 10px;
 }
 
-.promotion-btn {
-  background-color: #ffffff;
-  font-family: hanikenSerif;
+.btn-style{
   font-size: 16px;
   font-weight: 500;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 100px;
-  box-shadow: -1px 6px 0px 1px rgb(0, 0, 0) !important;
-  -webkit-box-shadow: -1px 6px 0px 1px rgb(0, 0, 0) !important;
-  -moz-box-shadow: -1px 6px 0px 1px rgb(0, 0, 0) !important;
-  margin-right: 20px;
-}
-
-.promotion-btn.active {
-  width: 70%;
-}
-
-.all-btn.active {
-  width: 70%;
-}
-
-.all-btn {
+  background-color: #FFFFFF;
+  display: flex;
+  font-family: hanikenSerif;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  border: 1px solid #000000;
+  box-shadow: -5px 5px 0px 1px #000000;
+  z-index: 1;
   width: 129px;
-  background-color: #ffffff;
-  font-family: hanikenSerif;
-  font-size: 16px;
-  font-weight: 500;
+  position: relative;
+  overflow: hidden;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 20px;
   padding-right: 20px;
-  border-radius: 100px;
-  box-shadow: -1px 6px 0px 1px rgb(0, 0, 0) !important;
-  -webkit-box-shadow: -1px 6px 0px 1px rgb(0, 0, 0) !important;
-  -moz-box-shadow: -1px 6px 0px 1px rgb(0, 0, 0) !important;
+  -webkit-box-shadow: -5px 5px 0px 1px #000000 !important;
+  -moz-box-shadow: -5px 5px 0px 1px #000000 !important;
+}
+
+.btn-style:hover{
+  scale: 0.95;
+  transition: scale 0.3s ease;
+
+  &::before{
+      content: '';
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      background-color: #e4e4e4;
+      border-radius: 50%;
+      z-index: -1;
+      animation: btnAnimation 1s ease-in-out backwards;
+  }
+
+}
+
+.btn-style:disabled{
+  background-color: #c1c1c1;
+  color: #e4e4e4;
+}
+
+.btn-style:active{
+  scale: 0.95;
+  transition: scale 0.3s ease;
+}
+
+@keyframes btnAnimation {
+  from {
+      width: 0;
+      height: 0;
+  }
+  to{
+      width: 200px;
+      height: 200px;
+  }
 }
 
 .active {
   background-color: #00ff38;
+  width: 60%;
 }
 
 .promotion_img {
