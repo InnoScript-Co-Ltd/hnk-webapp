@@ -12,6 +12,31 @@ import ButtonComponent from '@/components/ButtonComponent';
 import { IoIosStarOutline } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import styles from './style.module.css'
+import bgImage from '../../assets/images/util_imgs/bgtest.png'
+
+const singerDummy = [
+    {
+        id: 1,
+        singerName: 'Wai La',
+        singerSlogan: 'Refresh Rock',
+        color: '#FF00F5',
+        image: bgImage
+    },
+    {
+        id: 2,
+        singerName: 'Aung La',
+        singerSlogan: 'Refresh Pop',
+        color: '#33FF64',
+        image: bgImage
+    },
+    {
+        id: 1,
+        singerName: 'SCY',
+        singerSlogan: 'Refresh Hip Hop',
+        color: '#87CEEB',
+        image: bgImage
+    },
+]
 
 const RandRComponent = () => {
     const navigate = useNavigate();
@@ -20,6 +45,10 @@ const RandRComponent = () => {
         navigate('/randr/episode-1')
     }
 
+    const onClickSinger = (id: string) => {
+        navigate('/play/'+id);
+    }  
+
     return (
         <div className={styles.page_container}>
             <div className={styles.slider_container}>
@@ -27,9 +56,18 @@ const RandRComponent = () => {
                 <SliderComponent
                     autoPlay
                 >
-                    <SlideShowImageContainer color='#FF00F5' singerName='Wai La' singerSlogan='Refresh Rock' />
-                    <SlideShowImageContainer color='#33FF64' singerName='Aung La' singerSlogan='Refresh Rock' />
-                    <SlideShowImageContainer color='#FF00F5' singerName='Si Thu Lwin' singerSlogan='Refresh Hip Hop' />
+                    {
+                        singerDummy.map((value) => (
+                            <SlideShowImageContainer
+                            key={value.id}
+                            color={value.color}
+                            image={value.image}
+                            singerName={value.singerName}
+                            singerSlogan={value.singerSlogan}
+                            onContainerClicked={() => onClickSinger(value.id.toString())}
+                            />
+                        ))
+                    }
                 </SliderComponent>
             </div>
             <div className={styles.level_section}>

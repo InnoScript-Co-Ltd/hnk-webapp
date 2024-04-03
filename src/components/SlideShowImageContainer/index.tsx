@@ -1,4 +1,3 @@
-import bgImage from '../../assets/images/util_imgs/bgtest.png'
 import bottleImg from '../../assets/images/randr/singerBottle.png'
 import './style.css'
 
@@ -6,15 +5,17 @@ type propsTypes = {
     color: string,
     singerName: string,
     singerSlogan: string,
+    image: string,
+    onContainerClicked: () => void
 }
 
-const SlideShowImageContainer = ({color, singerName, singerSlogan}: propsTypes) => {
+const SlideShowImageContainer = ({color, singerName, singerSlogan, image, onContainerClicked}: propsTypes) => {
   return (
-    <div className='img-container'>
+    <div onClick={onContainerClicked} className='img-container'>
         <div className='img-background'>
             <div 
             style={{
-                backgroundImage: `url(${bgImage})`,
+                backgroundImage: `url(${image})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',

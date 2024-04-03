@@ -44,7 +44,7 @@ const App = () => {
                     element: lazyLoad(<HomeComponent />),
                 },
                 {
-                    path: "/player",
+                    path: "/play/:id",
                     element: lazyLoad(<PlayerComponent />),
                 },
                 {
