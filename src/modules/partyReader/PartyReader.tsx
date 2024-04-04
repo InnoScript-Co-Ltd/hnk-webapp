@@ -74,6 +74,8 @@ const PartyReader = (props: btnProps) => {
   const [loading, setLoading] = useState<boolean>();
   const [openEventModal, setOpenEventModal] = useState<boolean>();
   const [description, setDescription] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [slides, setSlides] = useState<Array<any>>([]);
   const dispatch = useDispatch();
 
   const openModal = (outlet: SetStateAction<null>) => {
@@ -147,9 +149,34 @@ const PartyReader = (props: btnProps) => {
     }
   }, [userLocation]);
 
+  const getEventSliders = async() => {
+    try{
+      const response: any = await getRequest("/event-slider");
+      if(response.status === 200) {
+      console.log(response);
+      setSlides(response.data.data)
+      }
+    } catch (error) {
+      dispatch(
+        openErrorModal({
+          title: "Event Slide Error",
+          message: "Failed to get events",
+          theme: "error",
+        })
+      );
+    }
+  }
+
+  console.log(slides[0]?.cover_photo.image);
+  
+  
   useEffect(() => {
     getOutlet();
   }, [getOutlet]);
+
+  useEffect(() => {
+    getEventSliders()
+  },[])
 
   return (
     <div className="partyreader-container relative max-w-[420px] mx-auto">
@@ -164,11 +191,6 @@ const PartyReader = (props: btnProps) => {
         <div className="slider-content-wrapper">
           <RotatingSlogan />
           <div className="party-content-wrapper">
-            {/* <img
-              src={partyTitle}
-              alt="HNK Refresh Music"
-              className="party-title"
-            /> */}
             <h1 className=" flex justify-start items-start gap-2 mx-auto text-primary-white text-white text-[40px]">
               b,fae&mvJ...
               <span className=" text-primary-white text-green">
@@ -176,34 +198,31 @@ const PartyReader = (props: btnProps) => {
               </span>{" "}
               <p className=" text-secondary-green ">?</p>{" "}
             </h1>
-            {/* <p 
-              className="party-title-1"
-            >ဘယ်နေရာလဲ...</p>
-            <p
-              className="party-title-2"
-            >ဘာပွဲလဲ...?</p> */}
             <p className="party-content px-[20px] font-medium leading-[19px]">
               ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
               စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
               ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
             </p>
-            <div className="slidder-wrapper mt-[20px] mb-[20px]">
+            {sliders.length > 0 && 
+              <div className="slidder-wrapper mt-[20px] mb-[20px]">
               <EventSliderComponent autoPlay>
-                {sliders.map((slide, index) => (
+                {slides?.map((slide, index) => (
                   <div className="p-2" key={index}>
                     <img
-                      src={slide.image}
+                      src={`${endpoints.image}/${slide?.cover_photo.image}`}
                       alt="HNK Refresh Music"
                       className="slider-img"
                       onClick={() => {
                         setOpenEventModal(true);
                         setDescription(slide.description);
+                        setTitle(slide.name);
                       }}
                     />
                   </div>
                 ))}
               </EventSliderComponent>
             </div>
+            }
           </div>
         </div>
         <div className="promotion-wrapper">
@@ -315,7 +334,7 @@ const PartyReader = (props: btnProps) => {
         <OutletModal outlet={selectedOutlet} onClose={closeModal} />
       )}
       {openEventModal && (
-        <EventModal description={description} onClose={closeEventModal} />
+        <EventModal description={description} title={title} onClose={closeEventModal} />
       )}
     </div>
   );
