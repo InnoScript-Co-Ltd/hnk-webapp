@@ -38,7 +38,9 @@ const App = () => {
                 },
                 {
                     path: "/party-radar",
-                    element: lazyLoad(<PartyRadar />),
+                    element: lazyLoad(<PartyRadar onBtnClick={function (): void {
+                        throw new Error("Function not implemented.");
+                    } } label={""} />),
                 },
                 {
                     path: "/home",
@@ -63,7 +65,7 @@ const App = () => {
             ],
         },
         {
-            path: "/register",
+            path: "/register/:vote",
             element: lazyLoad(<Register />),
         },
     ]);

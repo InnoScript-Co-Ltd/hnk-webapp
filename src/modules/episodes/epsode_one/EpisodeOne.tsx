@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './style.css'
 import RotatingSlogan from '@/components/RotatingSlogan'
 import titleIllu from '../../../assets/images/randr/episode_1/titleIllu.png'
@@ -11,52 +11,12 @@ import { useNavigate } from 'react-router-dom'
 // import pop from '../../../assets/images/randr/episode_1/pop.png'
 // import randb from '../../../assets/images/randr/episode_1/randb.png'
 // import rock from '../../../assets/images/randr/episode_1/rock.png'
-import { useDispatch, useSelector } from 'react-redux'
-import { getGenre, voteGenre } from '@/lib/randrApi'
+import { useDispatch } from 'react-redux'
+import { getGenre } from '@/lib/randrApi'
 import { IGenrereResponse } from '@/models/genre.model'
 import { IMAGE_ROUTE } from '@/constants/keys'
 import LoadingComponent from '@/components/LoadingComponent.tsx'
 import { openModal } from '@/store/modalSlice'
-
-// const dummyData = [
-//   {
-//     id: 1,
-//     color: '#B371EE',
-//     text: 'Rap',
-//     percentage: 25,
-//     image: rap
-//   },
-//   {
-//     id: 2,
-//     color: '#FF00F5',
-//     text: 'Pop',
-//     percentage: 25,
-//     image: pop
-//   },
-//   {
-//     id: 3,
-//     color: '#0047FF',
-//     text: 'R&B',
-//     percentage: 25,
-//     image: randb
-//   },
-//   {
-//     id: 4,
-//     color: '#24FF00',
-//     text: 'Rock',
-//     percentage: 25,
-//     image: rock
-//   },
-  
-// ]
-
-// type boxType = {
-//   id: number,
-//   color: string,
-//   text: string,
-//   percentage: number,
-//   image: string
-// }
 
 const EpisodeOne = () => {
   const [boxState, setBoxState] = useState<IGenrereResponse>({
@@ -71,7 +31,6 @@ const EpisodeOne = () => {
   const [loading, setLoading] = useState(false);
   const [genreList, setGenreList] = useState([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const story = useSelector((state: any) => state.story);
   const dispatch = useDispatch();
 
   const voteHandler = (data: IGenrereResponse) => {
@@ -79,58 +38,48 @@ const EpisodeOne = () => {
   }
 
   const onDoneClick = async() => {
-    if(boxState.name !== ''){
-      setLoading(true);
-      await voteGenre(story.id, {vote_genre: boxState.name})
-      .then(() => {
-        setLoading(false);
-        // dispatch(openModal({
-        //   title: 'Success Vote',
-        //   message: 'Vote Genres Successfully',
-        //   theme: 'success'
-        // }))
-        navigate('/invite')
-      })
-      .catch((error) => {
-        dispatch(openModal({
-          title: 'Error when voting',
-          message: `${error.response.data.message}. Please check your data and try again later.`,
-          theme: 'error'
-        }));
-        setLoading(false);
-      })
-    }
+    navigate(`/register/${boxState.name}`)
+    // if(boxState.name !== ''){
+    //   setLoading(true);
+    //   await voteGenre(story.id, {vote_genre: boxState.name})
+    //   .then(() => {
+    //     setLoading(false);
+    //     // dispatch(openModal({
+    //     //   title: 'Success Vote',
+    //     //   message: 'Vote Genres Successfully',
+    //     //   theme: 'success'
+    //     // }))
+    //     navigate('/invite')
+    //   })
+    //   .catch((error) => {
+    //     dispatch(openModal({
+    //       title: 'Error when voting',
+    //       message: `${error.response.data.message}. Please check your data and try again later.`,
+    //       theme: 'error'
+    //     }));
+    //     setLoading(false);
+    //   })
+    // }
   }
 
-
-  const loadGenreData = async() => {
+  const loadGenreData = useCallback(async() => {
     setLoading(true);
-    await getGenre()
-    .then((response) => {
+    await getGenre().then((response) => {
       setGenreList(response.data.data);
-      // dispatch(openModal({
-      //   title: 'Success Loading',
-      //   message: 'Get Genres Successfully',
-      //   theme: 'success'
-      // }))
       setLoading(false);
-    })
-    .catch((error) => {
+    }).catch((error) => {
       dispatch(openModal({
         title: 'Error loading Genres',
         message: `${error.response.data.message}. Please check your data and try again later.`,
         theme: 'error'
       }));
       setLoading(false);
-    })
-  }
+    });
+  }, [dispatch]);
 
   useEffect(() => {
-    if(!story.id || story.id === ''){
-      return navigate('/register')
-    }
     loadGenreData();
-  }, [story])
+  }, [loadGenreData])
   
   return (
     <>

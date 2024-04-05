@@ -91,8 +91,8 @@ const HomeComponent = () => {
               src={contentsection2leftIllu}
             />
             <img className="section-2-randr-illu" src={randr} />
-            <button onClick={handleClickRandR} className="randr btn !w-[200px]">
-              <span>R&R</span>
+            <button onClick={handleClickRandR} className="randr btn fix-btn">
+              <span> Refresh with Double J </span>
               <svg
                 width="24"
                 height="18"
