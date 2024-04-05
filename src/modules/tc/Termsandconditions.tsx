@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import "./style.css";
+import AlertModal from "@/components/modals/alert-modal";
 // import { Header } from "@/components/Header";
 
 const Termsandconditions = () => {
@@ -11,15 +12,29 @@ const Termsandconditions = () => {
         is_campaign: false,
     });
 
+    const [open, setOpen] = useState(false);
+
     const navigate = useNavigate();
 
     const handleTcAccept = () => {
         navigate("/randr/episode-1");
     };
 
+    const onClose = () => {
+        setPayload({ ...payload, is_campaign: false });
+        setOpen(false);
+    };
+
     return (
         <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-1 max-w-[420px] mx-auto relative">
             {/* <Header /> */}
+            {/* Model Box */}
+            <AlertModal
+                isOpen={open}
+                onClose={() => onClose()}
+                onConfirm={() => setOpen(false)}
+            />
+
             <div className="w-full flex flex-col justify-center items-center gap-3">
                 <RotatingSlogan />
                 <div className="w-full h-full font-natosansmm text-white bg-[rgba(30,18,115,0.88)]/30 backdrop-blur-2xl border border-[#EABFFF] rounded-lg verflow-hidden overflow-y-scroll scrollbar-none flex flex-col gap-4 p-5">
@@ -37,7 +52,7 @@ const Termsandconditions = () => {
                         ဖျော်ဖြေခဲ့ကြပါတယ်။
                     </p>
 
-                    <p className="text-sm leading-6 line-[12]">
+                    <p className="text-sm leading-6">
                         အခု ၂၀၂၃ ခုနှစ်မှာလည်း ဆန်းသစ်တဲ့
                         ဂီတအရသာတွေနဲ့စီးမျောခံစားဖို့ Refresh Your Music,
                         Refresh Your Nights 2023 ကို (၁၁) ရက် နိုဝင်ဘာလ၊ ၂၀၂၃
@@ -65,6 +80,7 @@ const Termsandconditions = () => {
                                 const updatePayload = { ...payload };
                                 updatePayload.is_campaign = e.target.checked;
                                 setPayload(updatePayload);
+                                setOpen(!payload.is_campaign);
                             }}
                         />
                         <label className="text-md md:text-[18px]">
