@@ -61,7 +61,7 @@ const sliders = [
 ];
 
 const PartyReader = (props: btnProps) => {
-  const { onBtnClick, label, backgroundColor, minWidth, arrow, disabled } =
+  const { arrow } =
     props;
   const [promotionTab, setPromotionTab] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

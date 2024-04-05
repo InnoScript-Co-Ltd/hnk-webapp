@@ -81,7 +81,7 @@
 
 .btn{
     font-family: hanikenSerif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     background-color: #FFFFFF;
     display: flex;
@@ -139,4 +139,9 @@
 
 .footer-img{
     background-color: #040658;
+}
+
+.fix-btn {
+    width: 200px;
+    padding: 10px;
 }

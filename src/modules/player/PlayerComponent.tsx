@@ -1,6 +1,6 @@
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import starIcon from "@/assets/images/star.png";
+// import starIcon from "@/assets/images/star.png";
 import "./playerStyle.css";
 import { useEffect, useRef, useState } from "react";
 import singer from "@/assets/images/singer.png";
@@ -11,7 +11,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import music from '@/assets/LEE HONGGI (이홍기) X YOO HWESEUNG (유회승) STILL LOVE YOU (사랑했었다) LYRICS (Han_Rom_Eng) COLOUR CODED.mp3'
 import RotatingSlogan from "@/components/RotatingSlogan";
-import { motion, useAnimation} from "framer-motion"
+// import { motion, useAnimation} from "framer-motion"
 
 interface Song {
   title: string;
@@ -47,7 +47,6 @@ const PlayerComponent = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [rotateDeg, setRotateDeg] = useState(0);
   const intervalRef = useRef<any>(null);
-  const control = useAnimation();
 
   // const playSong = (index: number) => {
   //   setCurrentSongIndex(index);

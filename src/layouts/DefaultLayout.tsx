@@ -87,7 +87,7 @@ const DefaultLayout = () => {
                 justifyContent: 'center',
                 alignItems: 'center'
               }} 
-              onClick={() => navigate("/")} 
+              onClick={() => navigate("/home")} 
               className="logo">
                 <img
                   style={{

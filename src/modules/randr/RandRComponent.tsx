@@ -8,7 +8,6 @@ import ep4 from '../../assets/images/randr/ep4.png'
 import ep5 from '../../assets/images/randr/ep5.png'
 import enjoyLogo from '../../assets/images/HomePage/enjoyLogo.png'
 import footerImg from '../../assets/images/randr/randrfooter.png'
-import ButtonComponent from '@/components/ButtonComponent';
 import { IoIosStarOutline } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import styles from './style.module.css'
@@ -46,8 +45,8 @@ const RandRComponent = () => {
     }
 
     const onClickSinger = (id: string) => {
-        navigate('/play/'+id);
-    }  
+        navigate('/play/' + id);
+    }
 
     return (
         <div className={styles.page_container}>
@@ -59,12 +58,12 @@ const RandRComponent = () => {
                     {
                         singerDummy.map((value) => (
                             <SlideShowImageContainer
-                            key={value.id}
-                            color={value.color}
-                            image={value.image}
-                            singerName={value.singerName}
-                            singerSlogan={value.singerSlogan}
-                            onContainerClicked={() => onClickSinger(value.id.toString())}
+                                key={value.id}
+                                color={value.color}
+                                image={value.image}
+                                singerName={value.singerName}
+                                singerSlogan={value.singerSlogan}
+                                onContainerClicked={() => onClickSinger(value.id.toString())}
                             />
                         ))
                     }
@@ -82,16 +81,19 @@ const RandRComponent = () => {
 
                     <div className={styles.flex_relative}>
                         <img src={ep1} />
-                        <div className={styles.ep_right_text}>
+                        <div className={styles.ep_right_text} style={{position: "relative", right: "30px"}}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
-                                    Refresh Your Music
+                                    Refresh Your Music X Double J
                                 </p>
                             </div>
 
                             <div className={styles.ep_btn}>
-                                <ButtonComponent label='Episode-1' onBtnClick={EpOneCLickHandler} />
+                                <button className={styles.btn_style} onClick={EpOneCLickHandler} style={{width: "170px"}}>
+                                    <span className={styles.button_label}>  Refresh with Double J </span>
+                                </button>
+                                {/* <ButtonComponent label='Refresh with Double J' onBtnClick={EpOneCLickHandler} /> */}
                             </div>
                         </div>
                     </div>
@@ -102,9 +104,9 @@ const RandRComponent = () => {
                     <svg className={styles.svg_line_2} width="420" height="395" viewBox="0 0 390 395" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M-30.5 0.5H81.5C97.5163 0.5 110.5 13.4837 110.5 29.5V172.5H400L493.5 129.5L408.5 249.5H316.5C301.036 249.5 288.5 262.036 288.5 277.5V394H102.5H-60" stroke="#00FF0A"></path>
                     </svg>
-                    <div className={styles.top_adj_200}>
+                    <div className={styles.top_adj_200} style={{justifyContent: 'flex-end'}}>
                         <div className={styles.ep_right_text} style={{ top: "-20px", position: "relative" }}>
-                            <div className={styles.ep_right_label}>
+                            {/* <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
                                     Refresh Your Lyric
@@ -113,9 +115,9 @@ const RandRComponent = () => {
 
                             <div className={styles.ep_btn}>
                                 <ButtonComponent disabled={true} label='Episode-2' onBtnClick={EpOneCLickHandler} />
-                            </div>
+                            </div> */}
                         </div>
-                        <img src={ep2} />
+                        <img src={ep2} style={{position: "relative", right: "22px"}} />
                     </div>
                 </div>
 
@@ -126,7 +128,7 @@ const RandRComponent = () => {
 
                     <div className={styles.flex_relative}>
                         <img src={ep3} style={{ top: "-440px", position: "relative", left: "20px" }} />
-                        <div className={styles.ep_right_text} style={{ top: "-435px", position: "relative" }}>
+                        {/* <div className={styles.ep_right_text} style={{ top: "-435px", position: "relative" }}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
@@ -137,11 +139,11 @@ const RandRComponent = () => {
                             <div className={styles.ep_btn}>
                                 <ButtonComponent disabled={true} label='Episode-3' onBtnClick={EpOneCLickHandler} />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
-                    <div className={styles.flex_relative}>
-                        <div className={styles.ep_right_text} style={{ top: "-435px", position: "relative" }}>
+                    <div className={styles.flex_relative} style={{justifyContent: "flex-end"}}>
+                        {/* <div className={styles.ep_right_text} style={{ top: "-435px", position: "relative" }}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
@@ -150,27 +152,27 @@ const RandRComponent = () => {
                             </div>
 
                             <div className={styles.ep_btn} style={{ left: "20px", position: "relative" }}>
-                                <ButtonComponent  disabled={true} label='Episode-4' onBtnClick={EpOneCLickHandler} />
+                                <ButtonComponent disabled={true} label='Episode-4' onBtnClick={EpOneCLickHandler} />
                             </div>
-                        </div>
+                        </div> */}
 
-                        <img src={ep4} style={{ top: "-430px", position: "relative", right: "-35px" }} />
+                        <img src={ep4} style={{ top: "-430px", position: "relative", right: "-30px" }} />
                     </div>
 
                     <div className={styles.flex_relative}>
                         <img src={ep5} style={{ top: "-400px", position: "relative", left: "20px" }} />
-                        <div className={styles.ep_right_text} style={{ top: "-390px", position: "relative" }}>
+                        {/* <div className={styles.ep_right_text} style={{ top: "-390px", position: "relative" }}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
-                                   Together & Refresh
+                                    Together & Refresh
                                 </p>
                             </div>
 
                             <div className={styles.ep_btn} style={{ left: "20px", position: "relative" }}>
                                 <ButtonComponent disabled={true} label='Episode-5' onBtnClick={EpOneCLickHandler} />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
