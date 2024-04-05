@@ -1,0 +1,127 @@
+/* .overlay{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+} */
+
+.close-button{
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    font-family: hanikenSerif;
+    width: 70%;
+  }
+  
+  
+  .modal-detail-container {
+    width: 376px;
+    height: 550px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #000242;
+    border-radius: 30px;
+    box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
+    -webkit-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
+    -moz-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
+  }
+  
+  /* .modal-detail-content {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  } */
+  .modal-detail-content {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto; /* Add this line to enable vertical scrolling */
+  }
+  
+  .modal-title {
+    font-family: hanikenSerif;
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+    color: white;
+    margin-top: 15px;
+    padding-left: 25px;
+  }
+  
+  .modal-content {
+    font-family: hanikenSerif;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-top: 20px;
+    /* margin-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 10px; */
+  }
+  
+  .modal-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .modal-item-value {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+  
+  
+  
+  @media screen and (max-width: 320px) {
+      .modal-detail-content {
+        width: 320px;
+      }
+    }
+    
+    @media screen and (max-width: 320px) {
+      .modal-detail-content {
+        width: 320px;
+      }
+    }
+    
+    @media only screen and (min-width: 320px) and (max-width: 420px) and (orientation: portrait) {
+      .modal-detail-content {
+        width: 100%;
+      }
+    
+      .modal-cover-img{
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+      }
+      .modal-detail-container {
+        width: 80%;
+        /* height: 950px; */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #000242;
+        border-radius: 30px;
+      }
+    }
+    
