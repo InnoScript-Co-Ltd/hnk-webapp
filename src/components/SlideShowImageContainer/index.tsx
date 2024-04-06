@@ -1,3 +1,4 @@
+import { endpoints } from '@/constants/endpoints'
 import bottleImg from '../../assets/images/randr/singerBottle.png'
 import './style.css'
 
@@ -15,7 +16,7 @@ const SlideShowImageContainer = ({color, singerName, singerSlogan, image, onCont
         <div className='img-background'>
             <div 
             style={{
-                backgroundImage: `url(${image})`,
+                backgroundImage: `url(${endpoints.image}/${image})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',

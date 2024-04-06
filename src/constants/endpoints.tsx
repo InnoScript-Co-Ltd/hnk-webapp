@@ -5,4 +5,6 @@ const imageUrl = "http://hnk-api.innoscript.co";
 export const endpoints = {
     user: '/user',
     image: `${imageUrl}/storage/images`,
+    audio: `${imageUrl}/storage/audio`,
+    singerSlider: "singer-in-song"
 }

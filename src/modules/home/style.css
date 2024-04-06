@@ -45,10 +45,33 @@
 .content-texts{
     width: 100%;
     margin-top: 10px;
+    height: 190px;
     font-family: natosansmm;
     font-size: 12px;
     line-height: 25px;
     color: #FFFFFF;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.content-texts > p {
+    margin-bottom: 10px;
+}
+
+.text-effect {
+    color: #00ff70;
+    font-weight: bolder;
+    font-family: hanikenSerif;
+}
+
+.seemore-text {
+    font-family: natosansmm;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.link {
+    color: #08084a;
 }
 
 .content-illu{
