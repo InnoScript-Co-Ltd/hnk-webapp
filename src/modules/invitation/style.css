@@ -1,10 +1,10 @@
-.invite-container{
+.invitation-container{
     position: relative;
     background-color: #00880F;
     border-radius: 5px;
 }
 
-.profile-invite-img{
+.profile-invitation-img{
     margin-top: 50px;
     width: 60px;
     height: 60px;
@@ -16,16 +16,9 @@
     transform: translateX(-50%);
 }
 
-.invite-section-wrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 70px;
-}
 
-.invite-section{
-    width: 340px;
+.invitation-section{
+    width: 306px;
     /* height: 302px; */
     background-color: #532B6F;
     border-radius: 15px;
@@ -33,17 +26,8 @@
     box-shadow: -3px 3px 0px 0px #000;
 }
 
-.user-name{
-    margin-top: 19px;
-    text-align: center;
-    font-family: hanikenSerif;
-    font-size: 27px;
-    font-weight: 600;
-    color: #01EC48;
-    text-shadow: -2px 3px #000;
-}
 
-.invite-content-green-text{
+.invitation-content-green-text{
     text-align: center;
     font-family: w14art;
     font-size: 25px;
@@ -52,30 +36,13 @@
     text-shadow: -2px 3px #000;
 }
 
-.invite-content-white-text{
-    text-align: center;
-    font-family: w14art;
-    font-size: 25px;
-    font-weight: 400;
-    color: #ffffff;
-    text-shadow: -2px 3px #000;
-}
-
-.invite-content-eng-text{
+.invitation-content-eng-text{
     text-align: center;
     font-family: hanikenSerif;
     font-size: 25px;
     font-weight: 400;
     color: #01EC48;
     text-shadow: -2px 3px #000;
-}
-
-.invite-content{
-    margin-top: 23px;
-    /* margin: 10px auto; */
-    text-align: center;
-    line-height: 50px;
-    padding: 10px 10px
 }
 
 .share-back-btn{
@@ -99,20 +66,20 @@
     margin: 10px auto;
 }
 
-.invite-beer-bottle{
+.invitation-beer-bottle{
     position: relative;
     transform: rotate(50deg);
 }
 
-/* .invite-hand{
+/* .invitation-hand{
     position: absolute;
     right: -7px;
     top: 150px;
     transform: rotate(6.38deg);
 } */
 
-.invite-footer{
-    background-color: #00880F;
+.invitation-footer{
+    /* background-color: #00880F; */
     position: relative;
     width: 100%;
     height: 240px;

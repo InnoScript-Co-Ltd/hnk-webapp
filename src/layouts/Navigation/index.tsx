@@ -18,8 +18,8 @@ const navigation = [
         path: '/party-radar'
     },
     {
-        name: 'Invite',
-        path: '/invite'
+        name: 'Invitation',
+        path: '/invitation'
     }
 ]
 
