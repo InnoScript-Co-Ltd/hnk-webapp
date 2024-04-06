@@ -7,4 +7,5 @@ export interface USER_STORY {
     tc_accept: boolean;
     is_campaign: boolean;
     authToken: string;
+    fav_music: []
   }

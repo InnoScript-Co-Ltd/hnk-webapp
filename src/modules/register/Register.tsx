@@ -30,10 +30,11 @@ const Register = () => {
     phone: "",
     email: "",
     dob: new Date(),
-    favGenre: [] as Genre[],
+    fav_music: [] as (Genre | string)[],
     tc_accept: false,
     authToken: "",
   });
+  const [other, setOther] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const modal = useSelector((state: IReducer) => state.modal);
   const [openTCModal, setOpenTCModal] = useState(false);
@@ -49,21 +50,47 @@ const Register = () => {
     updatePayload.dob = date;
     setPayload(updatePayload);
   };
+  console.log(other);
   console.log(payload);
 
-  const handleGenreChange = (genre: Genre, checked: boolean) => {
-    let updatedGenres: Genre[];
+  const handleGenreChange = (
+    genre: Genre | string,
+    checked: boolean,
+    value?: string
+  ) => {
+    let updatedGenres: (Genre | string)[] = [...payload.fav_music];
+    let updatedCheckGenres: (Genre | string)[];
+  
     if (checked) {
-      updatedGenres = [...payload.favGenre, genre];
+      if (genre === "Others" && value && value.trim() !== "") {
+        const words = value
+          .trim()
+          .split(",")
+          .map((word) => word.trim());
+  
+          updatedCheckGenres = [...updatedGenres, ...words];
+          console.log(updatedCheckGenres);
+          
+  
+        setPayload((prevPayload) => ({
+          ...prevPayload,
+          fav_music: updatedCheckGenres,
+        }));
+      } else if (!updatedGenres.includes(genre)) {
+        updatedGenres.push(genre);
+      }
     } else {
-      updatedGenres = payload.favGenre.filter((g) => g !== genre);
+      updatedGenres = updatedGenres.filter((g) => g !== genre);
     }
+  
     setPayload((prevPayload) => ({
       ...prevPayload,
-      favGenre: updatedGenres,
+      fav_music: updatedGenres,
     }));
   };
-
+    
+  console.log(payload);
+  
   const submitHandler = async () => {
     if (
       payload.name === "" ||
@@ -105,6 +132,7 @@ const Register = () => {
       updateStory.name = result.name;
       updateStory.email = result.email;
       updateStory.phone = result.phone;
+      updateStory.fav_music = result.fav_music;
       updateStory.authToken = result.token;
       dispath(storyUpdate(updateStory));
       sessionStorage.setItem("USER_PAYLOAD", JSON.stringify(updateStory));
@@ -217,13 +245,13 @@ const Register = () => {
           <DatePicker
             selected={payload.dob}
             onChange={handleDateChange}
-            className="input-control"
+            className="input-control z-999"
           />
         </div>
 
         <label className="input-label-text text-white font-extrabold pl-3 mt-3">
           {" "}
-          Favorite Genre(s) :{" "}
+         အကြိုက်ဆုံး ဂီတအမျိုးအစား{" "}
         </label>
         <div className="checkboxes-wrapper">
           <span className="genre-checkbox-group">
@@ -231,7 +259,7 @@ const Register = () => {
               className="input-checkbox"
               type="checkbox"
               id="hiphop"
-              checked={payload.favGenre.includes("Hip-hop")}
+              checked={payload.fav_music.includes("Hip-hop")}
               onChange={(e) => handleGenreChange("Hip-hop", e.target.checked)}
             />
             <label className="checkbox-label" htmlFor="hiphop">
@@ -244,7 +272,7 @@ const Register = () => {
               className="input-checkbox"
               type="checkbox"
               id="rnb"
-              checked={payload.favGenre.includes("RnB")}
+              checked={payload.fav_music.includes("RnB")}
               onChange={(e) => handleGenreChange("RnB", e.target.checked)}
             />
             <label className="checkbox-label" htmlFor="rnb">
@@ -257,7 +285,7 @@ const Register = () => {
               className="input-checkbox"
               type="checkbox"
               id="pop"
-              checked={payload.favGenre.includes("Pop")}
+              checked={payload.fav_music.includes("Pop")}
               onChange={(e) => handleGenreChange("Pop", e.target.checked)}
             />
             <label className="checkbox-label" htmlFor="pop">
@@ -270,7 +298,7 @@ const Register = () => {
               className="input-checkbox"
               type="checkbox"
               id="rock"
-              checked={payload.favGenre.includes("Rock")}
+              checked={payload.fav_music.includes("Rock")}
               onChange={(e) => handleGenreChange("Rock", e.target.checked)}
             />
             <label className="checkbox-label" htmlFor="rock">
@@ -283,7 +311,7 @@ const Register = () => {
               className="input-checkbox"
               type="checkbox"
               id="classical"
-              checked={payload.favGenre.includes("Classical")}
+              checked={payload.fav_music.includes("Classical")}
               onChange={(e) => handleGenreChange("Classical", e.target.checked)}
             />
             <label className="checkbox-label" htmlFor="classical">
@@ -296,20 +324,24 @@ const Register = () => {
               className="input-checkbox"
               type="checkbox"
               id="others"
-              checked={payload.favGenre.includes("Others")}
-              onChange={(e) => handleGenreChange("Others", e.target.checked)}
+              checked={payload.fav_music.includes("Others")}
+              onChange={(e) =>
+                handleGenreChange("Others", e.target.checked, other)
+              }
             />
+
             <label className="checkbox-label" htmlFor="others">
               {" "}
               Others{" "}
             </label>
-            {payload.favGenre.includes("Others") && (
+            {payload.fav_music.includes("Others") && (
               <input
                 type="text"
-                value={payload.favGenre.filter((g) => g !== "Others")[0] || ""}
-                onChange={(e) =>
-                  handleGenreChange("Others", e.target.value.trim() !== "")
-                }
+                value={other}
+                onChange={(e) => {
+                  setOther(e.target.value); // Update the other state
+                  handleGenreChange("Others", true, e.target.value); // Pass the value to handleGenreChange
+                }}
               />
             )}
           </span>
@@ -335,6 +367,7 @@ const Register = () => {
                 e.preventDefault();
                 setOpenTCModal(true);
               }}
+              style={{ textDecoration: "underline" }}
             >
               terms and conditions
             </a>{" "}
@@ -368,10 +401,10 @@ const Register = () => {
       {isLoading && <LoadingComponent />}
 
       {openTCModal && (
-        <TCModal onClose={() =>setOpenTCModal(false)} />
+        <TCModal onClose={() => setOpenTCModal(false)} />
         // <ModalComponent>
         //   <div className="modal-content">
-            
+
         //     <span className="close" onClick={() => setOpenTCModal(false)}>
         //       &times;
         //     </span>

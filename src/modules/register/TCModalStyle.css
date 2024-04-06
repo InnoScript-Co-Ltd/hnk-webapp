@@ -64,12 +64,13 @@
     font-size: 16px;
     font-weight: 500;
     display: flex;
+    line-height: 25px;
     flex-direction: column;
     color: white;
     margin-top: 20px;
-    /* margin-bottom: 20px;
+    margin-bottom: 20px;
     padding-left: 25px;
-    padding-right: 10px; */
+    padding-right: 10px;
   }
   
   .modal-item {
