@@ -8,7 +8,7 @@ import { AnimatePresence } from "framer-motion"
 import { useSelector } from "react-redux";
 import { IReducer } from "@/store/store";
 import ModalComponent from "@/components/ModalComponent";
-// import { selectToken } from "@/modules/auth/authSlice";
+
 const DefaultLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();

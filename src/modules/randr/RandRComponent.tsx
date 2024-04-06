@@ -11,34 +11,38 @@ import footerImg from '../../assets/images/randr/randrfooter.png'
 import { IoIosStarOutline } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import styles from './style.module.css'
-import bgImage from '../../assets/images/util_imgs/bgtest.png'
+// import bgImage from '../../assets/images/util_imgs/bgtest.png'
+import { useCallback, useEffect, useState } from 'react';
+import { getRequest } from '@/lib/axios';
+import { endpoints } from '@/constants/endpoints';
 
-const singerDummy = [
-    {
-        id: 1,
-        singerName: 'Wai La',
-        singerSlogan: 'Refresh Rock',
-        color: '#FF00F5',
-        image: bgImage
-    },
-    {
-        id: 2,
-        singerName: 'Aung La',
-        singerSlogan: 'Refresh Pop',
-        color: '#33FF64',
-        image: bgImage
-    },
-    {
-        id: 1,
-        singerName: 'SCY',
-        singerSlogan: 'Refresh Hip Hop',
-        color: '#87CEEB',
-        image: bgImage
-    },
-]
+// const singerDummy = [
+//     {
+//         id: 1,
+//         singerName: 'Wai La',
+//         singerSlogan: 'Refresh Rock',
+//         color: '#FF00F5',
+//         image: bgImage
+//     },
+//     {
+//         id: 2,
+//         singerName: 'Aung La',
+//         singerSlogan: 'Refresh Pop',
+//         color: '#33FF64',
+//         image: bgImage
+//     },
+//     {
+//         id: 1,
+//         singerName: 'SCY',
+//         singerSlogan: 'Refresh Hip Hop',
+//         color: '#87CEEB',
+//         image: bgImage
+//     },
+// ]
 
 const RandRComponent = () => {
     const navigate = useNavigate();
+    const [singerSlider, setSingerSlider] :any = useState([]);
 
     const EpOneCLickHandler = () => {
         navigate('/randr/episode-1')
@@ -48,6 +52,18 @@ const RandRComponent = () => {
         navigate('/play/' + id);
     }
 
+    const loadingSingerSlider = useCallback(async () => {
+        const result: any = await getRequest(`${endpoints.singerSlider}`);
+
+        if(result.status === 200) {
+            setSingerSlider(result.data.data);
+        }
+    }, []);
+
+    useEffect(() => {
+        loadingSingerSlider();
+    }, [loadingSingerSlider]);
+
     return (
         <div className={styles.page_container}>
             <div className={styles.slider_container}>
@@ -56,14 +72,14 @@ const RandRComponent = () => {
                     autoPlay
                 >
                     {
-                        singerDummy.map((value) => (
+                        singerSlider.map((value: any) => (
                             <SlideShowImageContainer
                                 key={value.id}
-                                color={value.color}
-                                image={value.image}
-                                singerName={value.singerName}
-                                singerSlogan={value.singerSlogan}
-                                onContainerClicked={() => onClickSinger(value.id.toString())}
+                                color={"#FF00F5"}
+                                image={value.singer.profile.image}
+                                singerName={value.singer.name}
+                                singerSlogan={"Refresh with"}
+                                onContainerClicked={() => onClickSinger(value.id)}
                             />
                         ))
                     }

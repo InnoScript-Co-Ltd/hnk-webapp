@@ -1,19 +1,22 @@
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-// import title from "../../assets/images/HomePage/title.png";
 import titleRightIllu from "../../assets/images/HomePage/titleRightIllu.png";
 import contentIllu from "../../assets/images/HomePage/contentIlluLeft.png";
 import beerBottle from "../../assets/images/HomePage/beerbottle.png";
 import contentsection2leftIllu from "../../assets/images/HomePage/section2leftillu.png";
 import footerImg from "../../assets/images/HomePage/footer.png";
 import randr from "../../assets/images/HomePage/r&r.png";
-import "./style.css";
 import { useNavigate } from "react-router-dom";
 import RotatingSlogan from "@/components/RotatingSlogan";
-// import { Header } from "@/components/Header";
+import { useState } from "react";
+import "./style.css";
 
 const HomeComponent = () => {
   const navigate = useNavigate();
-  // const story = localStorage.getItem(USER_JOURNEY) || '';
+  const [showMore, setShowMore] = useState(false);
+
+  const openMoreText = () => {
+    setShowMore(!showMore);
+  }
 
   const handleClickRandR = () => {
     navigate('/randr')
@@ -41,32 +44,49 @@ const HomeComponent = () => {
           </div>
           <div className="content-texts pl-[20px] pr-[50px] font-semibold leading-[19px]">
             <p>
-              ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားနိုင်မယ့် Heineken® Refresh
-              Your Music, Refresh Your Nights က မြန်မာနိုင်ငံကို
-              ပြန်လည်ရောက်ရှိလာပါပြီ။ ၂၀၂၂ ခုနှစ်တုန်းက... seemore..
+              ဂီတဟာ ခံစားမှု၊ စိတ်ကူးနိုင်စွမ်းနဲ့  <span className="text-effect"> Refresh Vibes </span> တွေကိုပါ ရရှိစေပါတယ်။  ဒါကြောင့် လူငယ်အများစုဟာ အရင်တုန်းကလို <span className="text-effect"> Refresh </span> ညတွေ ပြန်ရဖို့
+              ကိုယ့်အကြိုက်ဆုံးသီချင်းတွေ ကြားရမယ့်နေရာတွေဆီ သွားလေ့ရှိကြပေမယ့်  <span className="text-effect"> Social Media  Algorithms </span> တွေကြောင့် ပုံစံတူသီချင်း၊ ခံစားမှုတွေဆီမှာပဲ
+              ပိတ်မိပြန်ပါတယ် <span className="seemore-text" onClick={openMoreText}> see more </span>
             </p>
+
+            {showMore && (
+              <>
+                <p> ဒီအတွက် <span className="text-effect"> Heineken®Refresh Your Music, Refresh Your Nights </span> ပြန်လည်ရောက်ရှိလာပါပြီ </p>
+
+                <p> ခေါက်ရိုးကျိုးပုံစံတွေကနေ ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတသံစဉ်တွေနဲ့ ဖောက်ထွက်နိုင်မယ့် <span className="text-effect"> Heineken </span>  ရဲ့
+                  <span className="text-effect"> campaign </span> တစ်ခုဖြစ်ပြီးတော့ ၂၀၂၂ ခုနှစ်တုန်းကလည်း ရန်ကုန်မြို့က <span className="text-effect"> Heineken®Premium Outlets </span> တွေမှာ
+                  <span className="text-effect"> International EDM Artist THE CHAINSMOKERS </span> ရဲ့ နာမည်ကျော်သီချင်းတွေကို
+                  <span className="text-effect"> Local Artists  </span> တွေဖြစ်ကြတဲ့ ဝေလ၊ SNARE၊ ထက်ယံ၊ အမရာဖုန်းတို့က ဖျော်ဖြေခဲ့ကြပါသေးတ​ယ်။
+                </p>
+
+                <p> ဒီနှစ် <span className="text-effect"> Refresh Your Music, Refresh Your Nights 2024 </span> မှာတော့ ပရိသတ်အကြိုက်ဆုံးသီချင်းတွေ ဖန်တီးထားကြတဲ့
+                  Local Artists Mi Sandi၊ Ar-T၊ Jewel၊ Double J၊ Shine နဲ့  Amera Hpone တို့က <span className="text-effect"> Heineken </span> နဲ့အတူ အသစ်လွင်ဆုံး
+                  ဂီတသံစဉ်ကို အတူဖန်တီးသွားကြမှာဖြစ်ပါတယ်။ ဖန်တီးတဲ့တစ်လျှောက်လုံး <a className="" href="https://www.refreshyourmusichnk.com" target="_blank"> www.refreshyourmusichnk.com </a>
+                  ကတဆင့် ပရိသတ်တွေကိုယ်တိုင်ပါဝင်နိုင်မယ့် အစီအစဉ်တွေအပြင် <span className="text-effect"> Live Performance </span> အဖြစ် ကိုယ်တိုင် နားထောင်နိုင်မယ့် <span className="text-effect"> Event </span> တွေလည်းပါဝင်ဦးမှာပါ။
+                  ဒီအစီအစဉ်တွေကနေ <span className="text-effect"> Heineken </span> ရဲ့ <span className="text-effect"> Exclusive </span>
+                  ဆုလက်ဆောင်တွေရယူနိုင်မယ့် အခွင့်အရေးတွေလည်းရှိနေမှာမို့  ဘယ်လိုပုံစံနဲ့ <span className="text-effect"> Refresh </span> သွားမလဲ? စောင့်မျှော်ခံစားကြည့်လိုက်ပါ…
+                </p>
+              </>
+            )}
           </div>
           <div className="content-illu relative">
             <img className="content-left-illu" src={contentIllu} />
             <img className="content-right-illu" src={beerBottle} />
 
             <div className="right-bottom-clip !-bottom-[164px]">
-            {/* <svg width="100" height="100" viewBox="0 0 168 151" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M16 131C14.5 143 9 146 0 150.5H168V0L28.5 85.5C19.409 91.6 16.7985 95.4305 16 103V131Z" fill="#040658"/>
-						</svg> */}
-            <svg
-              width="100"
-              height="199"
-              viewBox="0 0 176 199"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M23.5 165C22 177 16 191.5 0.5 198.5H175.5V0.5L36 86C26.909 92.1 24.2985 95.9305 23.5 103.5V165Z"
-                fill="#040658"
-              />
-            </svg>
-          </div>
+              <svg
+                width="100"
+                height="199"
+                viewBox="0 0 176 199"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M23.5 165C22 177 16 191.5 0.5 198.5H175.5V0.5L36 86C26.909 92.1 24.2985 95.9305 23.5 103.5V165Z"
+                  fill="#040658"
+                />
+              </svg>
+            </div>
           </div>
           <button onClick={handleClickPartyRadar} className="rader btn">
             <span>Party Radar</span>
@@ -116,7 +136,6 @@ const HomeComponent = () => {
           </div>
         </div>
       </div>
-      {/* )} */}
     </>
   );
 };

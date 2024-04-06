@@ -7,7 +7,7 @@ import {motion} from 'framer-motion';
 const navigation = [
     {
         name: 'Home',
-        path: '/'
+        path: '/home'
     },
     {
         name: 'R&R',
