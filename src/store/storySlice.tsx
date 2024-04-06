@@ -11,6 +11,7 @@ const initialState: USER_STORY = initialUserJourney ? JSON.parse(initialUserJour
   email: "",
   tc_accept: false,
   is_campaign: false,
+  fav_music: [],
   authToken: ""
 };
 
