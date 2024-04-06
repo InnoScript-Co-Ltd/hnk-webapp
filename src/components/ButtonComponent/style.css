@@ -12,12 +12,15 @@
     padding: 15px 30px;
     position: relative;
     overflow: hidden;
+
 }
 
 .button-label{
     font-family: hanikenSerif;
     font-weight: 600;
     margin-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .btn-style:hover{

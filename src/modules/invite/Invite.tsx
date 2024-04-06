@@ -52,15 +52,9 @@ const Invite = () => {
                         src={bottle}
                     />
                     <div className="invite-section">
-                        <p className="user-name">{story.name}</p>
+                        <p className="user-name">Hello {story.name} </p>
                         <p className=" text-lg text-white font-normal font-hanikenSerif text-shadow px-5">
-                            Myanmar Plaza က Levitate မှာ ကျင်းပသွားမ​​ယ့်
-                            <span className="text-[#01EC48] px-2">
-                                Heineken®Refresh Your Music, Refresh Your Nights
-                            </span>
-                            မှာ Mi Sandi၊ Ar-T၊ Jewels၊ Double J၊ Shine နဲ့
-                            Amera Hponeတို့က Heineken နဲ့အတူ အသစ်လွင်ဆုံး
-                            ဂီတသံစဉ်တွေ Live Performance တင်ဆက်သွားမှာဖြစ်ပါတယ်။
+                            ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတခံစားမှုအသစ်တွေကို ကိုယ်တိုင်ကိုယ်ကျ လာရောက်ခံစားပြီး <span className="text-[#01EC48] px-2"> Refresh </span> လုပ်ဖို့ ဖိတ်ခေါ်လိုက်ပါတယ်နော်…
                         </p>
                         <img
                             className="feed-back-stars"

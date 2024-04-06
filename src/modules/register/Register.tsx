@@ -4,157 +4,104 @@ import mask from "@/assets/images/mask.png";
 import hnkBottle from "@/assets/images/hnk_bottle.png";
 import guitter from "@/assets/images/guiter.png";
 import footerImg from "@/assets/images/footer.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import "./style.css";
 import axios from "axios";
 import ButtonComponent from "@/components/ButtonComponent";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
 import { endpoints, serverURL } from "@/constants/endpoints";
 import { storyUpdate } from "@/store/storySlice";
 import { useDispatch, useSelector } from "react-redux";
-import { USER_STORY } from "@/models/story.model";
 import ModalComponent from "@/components/ModalComponent";
 import { AnimatePresence } from "framer-motion";
 import { IReducer } from "@/store/store";
 import { openModal } from "@/store/modalSlice";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import TCModal from "./TCModal";
-
-type Genre = "Hip-hop" | "RnB" | "Pop" | "Rock" | "Classical" | "Others";
+import "./style.css";
 
 const Register = () => {
   const [payload, setPayload] = useState({
     name: "",
     phone: "",
     email: "",
-    dob: new Date(),
-    fav_music: [] as (Genre | string)[],
     tc_accept: false,
-    authToken: "",
+    dob: "",
+    fav_music: [],
   });
-  const [other, setOther] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [favMusic, setFav]: any = useState([
+    { label: "Hip-Hop", value: "Hip-Hop", is_checked: false },
+    { label: "RnB", value: "RnB", is_checked: false },
+    { label: "Pop", value: "Pop", is_checked: false },
+    { label: "Rock", value: "Rock", is_checked: false },
+    { label: "Classical", value: "Classical", is_checked: false },
+    { label: "Others", value: "Others", is_checked: false }
+  ]);
+  const [isLoading, setIsLoading] = useState(false)
   const modal = useSelector((state: IReducer) => state.modal);
-  const [openTCModal, setOpenTCModal] = useState(false);
   const dispath = useDispatch();
-  const story: USER_STORY = useSelector((state: any) => {
-    return state.story;
-  });
 
   const navigate = useNavigate();
+  const params = useParams();
 
-  const handleDateChange = (date: Date) => {
-    const updatePayload = { ...payload };
-    updatePayload.dob = date;
-    setPayload(updatePayload);
-  };
-  console.log(other);
-  console.log(payload);
-
-  const handleGenreChange = (
-    genre: Genre | string,
-    checked: boolean,
-    value?: string
-  ) => {
-    let updatedGenres: (Genre | string)[] = [...payload.fav_music];
-    let updatedCheckGenres: (Genre | string)[];
-  
-    if (checked) {
-      if (genre === "Others" && value && value.trim() !== "") {
-        const words = value
-          .trim()
-          .split(",")
-          .map((word) => word.trim());
-  
-          updatedCheckGenres = [...updatedGenres, ...words];
-          console.log(updatedCheckGenres);
-          
-  
-        setPayload((prevPayload) => ({
-          ...prevPayload,
-          fav_music: updatedCheckGenres,
-        }));
-      } else if (!updatedGenres.includes(genre)) {
-        updatedGenres.push(genre);
-      }
-    } else {
-      updatedGenres = updatedGenres.filter((g) => g !== genre);
-    }
-  
-    setPayload((prevPayload) => ({
-      ...prevPayload,
-      fav_music: updatedGenres,
-    }));
-  };
-    
-  console.log(payload);
-  
   const submitHandler = async () => {
-    if (
-      payload.name === "" ||
-      payload.phone === "" ||
-      payload.email === "" ||
-      payload.dob === null
-    ) {
-      dispath(
-        openModal({
-          title: "Register Failed",
-          message: `All fields are required`,
-          theme: "error",
-        })
-      );
+    if (payload.name === "" || payload.phone === "" || payload.email === "" || payload.dob === "") {
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `All fields are required`,
+        theme: 'error',
+      }));
       return;
     }
-    if (payload.tc_accept === false) {
-      dispath(
-        openModal({
-          title: "Register Failed",
-          message: `All fields are required`,
-          theme: "error",
-        })
-      );
-      return;
-    }
-    try {
-      setIsLoading(true);
-      const response = await axios.post(
-        // `${serverURL}${endpoints.user}`,
-        // "http://hnk-api.innoscript.co/api/user",
-        "http://localhost:8000/api/user",
-        payload
-      );
-      const result = response.data.data;
-      const updateStory = { ...story };
-      updateStory.id = result.id;
-      updateStory.tc_accept = payload.tc_accept;
-      updateStory.name = result.name;
-      updateStory.email = result.email;
-      updateStory.phone = result.phone;
-      updateStory.fav_music = result.fav_music;
-      updateStory.authToken = result.token;
-      dispath(storyUpdate(updateStory));
-      sessionStorage.setItem("USER_PAYLOAD", JSON.stringify(updateStory));
-      setIsLoading(false);
-      navigate("/term-and-condition");
-    } catch (error: any) {
-      console.error("Error submitting data:", error.response);
-      setIsLoading(false);
-      dispath(
-        openModal({
-          title: "Register Failed",
-          message: `${error.response.data.message}. Please check your data and try again later.`,
-          theme: "error",
-        })
-      );
-      // alert(`${error.response.data.message}. Please check your data and try again later.`);
-    }
-  };
 
+    if (payload.tc_accept === false) {
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `All fields are required`,
+        theme: 'error',
+      }));
+      return;
+    }
+
+    try {
+
+      const getFav: any= [];
+
+      favMusic.filter((value: any) => {
+        if(value.is_checked === true) {
+          getFav.push(value.value);
+        }
+      });
+
+      const updatePayload = {...payload};
+      updatePayload.fav_music = getFav;
+      
+      setIsLoading(true);
+      const response = await axios.post(`${serverURL}${endpoints.user}`,updatePayload);
+
+      if(response.status === 200) {
+        dispath(storyUpdate(response.data.data));
+      }
+      setIsLoading(false);
+      navigate("/invite");
+    } catch (error: any) {
+      setIsLoading(false);
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `${error.response.data.message}. Please check your data and try again later.`,
+        theme: 'error',
+      }));
+    }
+
+  };
   return (
     <div className="register-wrapper">
-      <AnimatePresence>{modal.isOpen && <ModalComponent />}</AnimatePresence>
+      <AnimatePresence>
+        {
+          modal.isOpen && (
+            <ModalComponent />
+          )
+        }
+      </AnimatePresence>
       <div className="header">
         <img
           src={hnkELogo}
@@ -187,10 +134,7 @@ const Register = () => {
 
       <div className="register-form">
         <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3">
-            {" "}
-            Name :{" "}
-          </label>
+          <label className="input-label-text font-extrabold pl-3"> နာမည် : </label>
           <input
             type="text"
             className="input-control"
@@ -204,10 +148,21 @@ const Register = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3">
-            {" "}
-            Phone :{" "}
-          </label>
+          <label className="input-label-text font-extrabold pl-3"> မွေးသက္ကရာဇ် :</label>
+          <input
+            type="date"
+            className="input-control"
+            value={payload.dob}
+            onChange={(e) => {
+              const updatePayload = { ...payload };
+              updatePayload.dob = e.target.value;
+              setPayload(updatePayload);
+            }}
+          />
+        </div>
+
+        <div className="input-group">
+          <label className="input-label-text font-extrabold pl-3"> ဖုန်းနံပါတ် : </label>
           <input
             type="text"
             className="input-control"
@@ -221,10 +176,7 @@ const Register = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3">
-            {" "}
-            Email :{" "}
-          </label>
+          <label className="input-label-text font-extrabold pl-3"> အီးမေးလိပ်စာ : </label>
           <input
             type="email"
             className="input-control"
@@ -237,114 +189,27 @@ const Register = () => {
           />
         </div>
 
-        <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3">
-            {" "}
-            Date of Birth :{" "}
-          </label>
-          <DatePicker
-            selected={payload.dob}
-            onChange={handleDateChange}
-            className="input-control z-999"
-          />
-        </div>
-
-        <label className="input-label-text text-white font-extrabold pl-3 mt-3">
-          {" "}
-         အကြိုက်ဆုံး ဂီတအမျိုးအစား{" "}
-        </label>
-        <div className="checkboxes-wrapper">
-          <span className="genre-checkbox-group">
-            <input
-              className="input-checkbox"
-              type="checkbox"
-              id="hiphop"
-              checked={payload.fav_music.includes("Hip-hop")}
-              onChange={(e) => handleGenreChange("Hip-hop", e.target.checked)}
-            />
-            <label className="checkbox-label" htmlFor="hiphop">
-              {" "}
-              Hip-hop{" "}
-            </label>
-          </span>
-          <span className="genre-checkbox-group">
-            <input
-              className="input-checkbox"
-              type="checkbox"
-              id="rnb"
-              checked={payload.fav_music.includes("RnB")}
-              onChange={(e) => handleGenreChange("RnB", e.target.checked)}
-            />
-            <label className="checkbox-label" htmlFor="rnb">
-              {" "}
-              RnB{" "}
-            </label>
-          </span>
-          <span className="genre-checkbox-group">
-            <input
-              className="input-checkbox"
-              type="checkbox"
-              id="pop"
-              checked={payload.fav_music.includes("Pop")}
-              onChange={(e) => handleGenreChange("Pop", e.target.checked)}
-            />
-            <label className="checkbox-label" htmlFor="pop">
-              {" "}
-              Pop{" "}
-            </label>
-          </span>
-          <span className="genre-checkbox-group">
-            <input
-              className="input-checkbox"
-              type="checkbox"
-              id="rock"
-              checked={payload.fav_music.includes("Rock")}
-              onChange={(e) => handleGenreChange("Rock", e.target.checked)}
-            />
-            <label className="checkbox-label" htmlFor="rock">
-              {" "}
-              Rock{" "}
-            </label>
-          </span>
-          <span className="genre-checkbox-group">
-            <input
-              className="input-checkbox"
-              type="checkbox"
-              id="classical"
-              checked={payload.fav_music.includes("Classical")}
-              onChange={(e) => handleGenreChange("Classical", e.target.checked)}
-            />
-            <label className="checkbox-label" htmlFor="classical">
-              {" "}
-              Classical{" "}
-            </label>
-          </span>
-          <span className="genre-checkbox-group">
-            <input
-              className="input-checkbox"
-              type="checkbox"
-              id="others"
-              checked={payload.fav_music.includes("Others")}
-              onChange={(e) =>
-                handleGenreChange("Others", e.target.checked, other)
-              }
-            />
-
-            <label className="checkbox-label" htmlFor="others">
-              {" "}
-              Others{" "}
-            </label>
-            {payload.fav_music.includes("Others") && (
-              <input
-                type="text"
-                value={other}
-                onChange={(e) => {
-                  setOther(e.target.value); // Update the other state
-                  handleGenreChange("Others", true, e.target.value); // Pass the value to handleGenreChange
-                }}
-              />
-            )}
-          </span>
+        <div className="flex-checkbox">
+        <label className="input-label-text font-extrabold pl-3" style={{ color: "#fff", lineHeight: "25px" }}> အကြိုက်ဆုံး ဂီတအမျိုးအစား </label>
+          {favMusic.length > 0 && favMusic.map((value: any, index: number) => {
+            return (
+              <div key={index}>
+                <div className="checkbox-group">
+                  <input
+                    className="input-checkbox"
+                    type="checkbox"
+                    checked={value.is_checked}
+                    onChange={(e) => {
+                      const updateFav: any = [...favMusic];
+                      updateFav[index].is_checked = e.target.checked;
+                      setFav(updateFav);
+                    }}
+                  />
+                  <label className="checkbox-label" style={{ textDecoration: "none", cursor: "none" }}> {value.label} </label>
+                </div>
+              </div>
+            )
+          })}
         </div>
 
         <div className="checkbox-group">
@@ -358,20 +223,7 @@ const Register = () => {
               setPayload(updatePayload);
             }}
           />
-          <label className="checkbox-label">
-            {" "}
-            I accept{" "}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setOpenTCModal(true);
-              }}
-              style={{ textDecoration: "underline" }}
-            >
-              terms and conditions
-            </a>{" "}
-          </label>
+          <label className="checkbox-label" onClick={() => navigate(`/term-and-condition/${params.vote}`)}> I Accept terms and conditions </label>
         </div>
 
         <div className="btn-group">
@@ -398,19 +250,9 @@ const Register = () => {
         />
       </div>
 
-      {isLoading && <LoadingComponent />}
-
-      {openTCModal && (
-        <TCModal onClose={() => setOpenTCModal(false)} />
-        // <ModalComponent>
-        //   <div className="modal-content">
-
-        //     <span className="close" onClick={() => setOpenTCModal(false)}>
-        //       &times;
-        //     </span>
-        //   </div>
-        //   </ModalComponent>
-      )}
+      {
+        isLoading && <LoadingComponent />
+      }
     </div>
   );
 };

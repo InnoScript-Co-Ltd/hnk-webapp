@@ -241,11 +241,13 @@
 
 .section-title{
     text-align: center;
-    font-family: w14art;
+    font-family: hanikenSerif;
+    /* font-family: w14art; */
     font-size: 40px;
     font-weight: 400;
     color: #ffffff;
     text-shadow: -2px 3px #000;
+    margin-bottom: 20px;
 }
 
 .question-mark{

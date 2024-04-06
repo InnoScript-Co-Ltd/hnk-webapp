@@ -64,7 +64,7 @@ const App = () => {
                     element: lazyLoad(<Episode />),
                 },
                 {
-                    path: "/term-and-condition",
+                    path: "/term-and-condition/:vote",
                     element: lazyLoad(<Termsandconditions />),
                 },
             ],

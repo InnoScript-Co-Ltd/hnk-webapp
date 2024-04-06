@@ -2,3 +2,17 @@
     background-image: url("../../assets/images/bg_tandc.png");
     background-size: cover;
 }
+
+.tc-list-wrapper {
+    padding: 10px;
+    line-height: 25px;
+}
+
+.hnk-font {
+    font-family: hanikenSerif;
+}
+
+.tc-list {
+    list-style: circle;
+    margin-bottom: 20px;
+}

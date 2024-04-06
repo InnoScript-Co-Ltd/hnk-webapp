@@ -1,31 +1,19 @@
 import { useState } from "react";
-// import "./style.css";
 import RotatingSlogan from "@/components/RotatingSlogan";
-
 import mp3 from "../../assets/images/randr/episode_1/mp3.png";
 import feedbackStar from "../../assets/images/Invite/feedbackStar.png";
 import bottle from "../../assets/svgs/bottle.svg";
 import hand from "../../assets/images/hand.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-
-import { useNavigate } from "react-router-dom";
 import ShareModalComponent from "@/components/ShareModalComponent";
 import { AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 import { USER_STORY } from "@/models/story.model";
 // import { Header } from "@/components/Header";
+// import "./style.css";
 
 const Invitation = () => {
-    const navigate = useNavigate();
     const [openShareModel, setOpenShareModel] = useState(false);
-
-    const onShare = () => {
-        setOpenShareModel(true);
-    };
-
-    const onGoBack = () => {
-        navigate("/party-radar");
-    };
 
     const modalCloseHandler = () => {
         setOpenShareModel(false);
@@ -56,10 +44,10 @@ const Invitation = () => {
                         src={hand}
                     />
                     <div className="flex  flex-col items-center justify-center gap-6 max-w-[350px] bg-[#532B6F] border-2 border-black rounded-lg shadow-[-3px_3px_0px_1px_rgba(0,0,0,1)] p-5 transition hover:scale-[1.02]">
-                        <p className=" text-center text-[#01EC48] font-hanikenSerif text-shadow text-3xl">
+                        <p className=" text-center text-[#01EC48] font-hanikenSerif text-shadow text-3xl" style={{fontSize: "20px"}}>
                             Hello {story.name} ,
                         </p>
-                        <p className="text-center text-[25px] text-white font-normal leading-[50px] font-w14art text-shadow select-none ">
+                        <p className="text-center text-[25px] text-white font-normal leading-[50px] text-shadow select-none ">
                             ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတခံစားမှုအသစ်တွေကို
                             ကိုယ်တိုင်ကိုယ်ကျ လာရောက်ခံစားပြီး Refresh လုပ်ဖို့
                             ဖိတ်ခေါ်လိုက်ပါတယ်နော်
@@ -72,7 +60,7 @@ const Invitation = () => {
                     </div>
 
                     <div className="max-w-[350px] flex  flex-col items-center justify-center gap-2 z-30">
-                        <p className=" text-md text-white font-normal font-hanikenSerif text-shadow-sm">
+                        <p className=" text-md text-white font-normal font-hanikenSerif text-shadow-sm" style={{marginBottom: "20px"}}>
                             Myanmar Plaza က Levitate မှာ ကျင်းပသွားမ​​ယ့်
                             <span className="text-[#01EC48] px-2">
                                 Heineken®Refresh Your Music, Refresh Your Nights
