@@ -12,14 +12,14 @@ const OutletModal = ({ outlet, onClose }: any) => {
                         <img
                         src={`${endpoints.image}/${outlet?.image?.image}`}
                         alt=""
-                        className="outlet-cover-img min-h-[200px]"
+                        className="outlet-cover-img min-h-[200px] max-h-[200px]"
                     />
                     }
                     {!outlet?.image?.image &&
                         <img
                         src={outletImage}
                         alt=""
-                        className="outlet-cover-img min-h-[200px]"
+                        className="outlet-cover-img min-h-[200px] max-h-[200px]"
                     />
                     }
                     <p className="outlet-title">Outdoor TOV</p>
