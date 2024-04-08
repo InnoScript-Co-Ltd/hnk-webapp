@@ -17,6 +17,8 @@ import { AnimatePresence } from "framer-motion";
 import { IReducer } from "@/store/store";
 import { openModal } from "@/store/modalSlice";
 import "./style.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Register = () => {
   const [payload, setPayload] = useState({
@@ -42,6 +44,12 @@ const Register = () => {
 
   const navigate = useNavigate();
   const params = useParams();
+
+  const handleDateChange = (date: Date) => {
+    const updatePayload = { ...payload };
+    updatePayload.dob = date;
+    setPayload(updatePayload);
+  };
 
   const submitHandler = async () => {
     if (payload.name === "" || payload.phone === "" || payload.email === "" || payload.dob === "") {
@@ -149,7 +157,7 @@ const Register = () => {
 
         <div className="input-group">
           <label className="input-label-text font-extrabold pl-3"> မွေးသက္ကရာဇ် :</label>
-          <input
+          {/* <input
             type="date"
             className="input-control"
             value={payload.dob}
@@ -158,6 +166,11 @@ const Register = () => {
               updatePayload.dob = e.target.value;
               setPayload(updatePayload);
             }}
+          /> */}
+          <DatePicker
+            selected={payload.dob}
+            onChange={handleDateChange}
+            className="input-control z-999"
           />
         </div>
 
