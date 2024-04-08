@@ -33,6 +33,7 @@ const PlayerComponent = () => {
   }, []);
 
   const nextSong = () => {
+    console.log(singerSlider, currentSong)
     singerSlider.filter((value: any, index: number) => {
       if(value.id === currentSong.id) {
         const nextMusic: any = singerSlider[index + 1];
@@ -50,7 +51,7 @@ const PlayerComponent = () => {
         const previousMusic: any = singerSlider[index -1];
 
         if(previousMusic) {
-          navigate(`play/${previousMusic.id}`);
+          navigate(`/play/${previousMusic.id}`);
         }
       }
     });
@@ -64,7 +65,7 @@ const PlayerComponent = () => {
     if (params.id) {
       const getCurrentSong: any = singerSlider.filter((value: any) => value.id === params.id)[0];
       setCurrentSong(getCurrentSong);
-      setIsPlaying(true);
+      // setIsPlaying(true);
     }
   }, [params.id, singerSlider]);
 
