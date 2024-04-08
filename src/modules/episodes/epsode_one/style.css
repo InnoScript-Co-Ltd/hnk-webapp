@@ -215,6 +215,8 @@
     color: white;
     text-shadow: -3px 2px 1px #000;
     -webkit-text-stroke: 1px #000;
+    -moz-text-stroke: 1px #000;
+    -o-text-stroke: 1px #000;
 }
 
 .footer-wrapper{
