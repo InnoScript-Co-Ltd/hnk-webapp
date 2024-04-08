@@ -5,6 +5,7 @@ import { SetStateAction, useCallback, useEffect, useState } from "react";
 import slide1 from "@/assets/images/event1.png";
 import slide2 from "@/assets/images/event2.png";
 import footerImg from "@/assets/images/footer.png";
+import outlet from "@/assets/images/outlet.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import {
   Select,
@@ -149,6 +150,9 @@ const PartyReader = (props: btnProps) => {
     }
   }, [userLocation]);
 
+  console.log(`${endpoints.image}/${outletList[0]?.image?.image}`);
+  
+
   const getEventSliders = async() => {
     try{
       const response: any = await getRequest("/event-slider");
@@ -208,7 +212,8 @@ const PartyReader = (props: btnProps) => {
               <EventSliderComponent autoPlay>
                 {slides?.map((slide, index) => (
                   <div className="p-2" key={index}>
-                    <img
+                    {slide?.cover_photo.image &&
+                      <img
                       src={`${endpoints.image}/${slide?.cover_photo.image}`}
                       alt="HNK Refresh Music"
                       className="slider-img"
@@ -218,6 +223,19 @@ const PartyReader = (props: btnProps) => {
                         setTitle(slide.name);
                       }}
                     />
+                    }
+                    {!slide?.cover_photo.image &&
+                      <img
+                      src={slide1}
+                      alt="HNK Refresh Music"
+                      className="slider-img"
+                      onClick={() => {
+                        setOpenEventModal(true);
+                        setDescription(slide.description);
+                        setTitle(slide.name);
+                      }}
+                    />
+                    }
                   </div>
                 ))}
               </EventSliderComponent>
@@ -305,11 +323,20 @@ const PartyReader = (props: btnProps) => {
                 className="outlet-items w-[150px] md:w-[180px]"
                 onClick={() => selectChange !== true && openModal(item)}
               >
-                <img
+                {item?.image?.image && 
+                  <img
                   src={`${endpoints.image}/${item?.image?.image}`}
                   alt="HNK Fresh Drink"
                   className="outlet_img min-w-[150px] md:min-w-[180px]"
                 />
+                }
+                {!item?.image?.image &&
+                  <img
+                  src={outlet}
+                  alt="HNK Fresh Drink"
+                  className="outlet_img min-w-[150px] md:min-w-[180px]"
+                />
+                }
                 <p className="outlet_name w-full !pt-[10px]">{item.name}</p>
               </button>
             ))}
