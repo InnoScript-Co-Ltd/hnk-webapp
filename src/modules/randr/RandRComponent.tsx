@@ -15,6 +15,9 @@ import styles from './style.module.css'
 import { useCallback, useEffect, useState } from 'react';
 import { getRequest } from '@/lib/axios';
 import { endpoints } from '@/constants/endpoints';
+import LoadingComponent from '@/components/LoadingComponent.tsx';
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/store/modalSlice';
 
 // const singerDummy = [
 //     {
@@ -43,6 +46,8 @@ import { endpoints } from '@/constants/endpoints';
 const RandRComponent = () => {
     const navigate = useNavigate();
     const [singerSlider, setSingerSlider] :any = useState([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const dispatch = useDispatch();
 
     const EpOneCLickHandler = () => {
         navigate('/randr/episode-1')
@@ -53,10 +58,19 @@ const RandRComponent = () => {
     }
 
     const loadingSingerSlider = useCallback(async () => {
+        setLoading(true);
         const result: any = await getRequest(`${endpoints.singerSlider}`);
 
         if(result.status === 200) {
+            setLoading(false);
             setSingerSlider(result.data.data);
+        }else{
+            setLoading(false);
+            dispatch(openModal({
+                title: 'Error loading Genres',
+                message: `${result?.data?.message}. Please check your data and try again later.`,
+                theme: 'error'
+              }));
         }
     }, []);
 
@@ -66,6 +80,11 @@ const RandRComponent = () => {
 
     return (
         <div className={styles.page_container}>
+            {
+                loading && (
+                    <LoadingComponent />
+                )
+            }
             <div className={styles.slider_container}>
                 <RotatingSlogan />
                 <SliderComponent

@@ -37,6 +37,7 @@ const RotatingSlogan = () => {
     maxWidth: stopSlogan ? '410px' : '',
     position: stopSlogan ? 'fixed' : 'relative',
     top: stopSlogan ? 100 : '0',
+    transition: 'all 0.2s linear',
     // left: 0,
     zIndex: 21
     }} 
