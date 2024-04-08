@@ -19,6 +19,7 @@ import { openModal } from "@/store/modalSlice";
 import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { postRequest } from "@/lib/axios";
 
 const Register = () => {
   const [payload, setPayload] = useState({
@@ -26,7 +27,7 @@ const Register = () => {
     phone: "",
     email: "",
     tc_accept: false,
-    dob: "",
+    dob: new Date(),
     fav_music: [],
   });
 
@@ -46,13 +47,13 @@ const Register = () => {
   const params = useParams();
 
   const handleDateChange = (date: Date) => {
-    const updatePayload = { ...payload };
-    updatePayload.dob = date;
+    const updatePayload: any = { ...payload };
+    updatePayload.dob = new Date(date);
     setPayload(updatePayload);
   };
 
   const submitHandler = async () => {
-    if (payload.name === "" || payload.phone === "" || payload.email === "" || payload.dob === "") {
+    if (payload.name === "" || payload.phone === "" || payload.email === "") {
       dispath(openModal({
         title: 'Register Failed',
         message: `All fields are required`,
@@ -88,7 +89,12 @@ const Register = () => {
 
       if(response.status === 200) {
         dispath(storyUpdate(response.data.data));
+
+        await postRequest(`user/${response.data.data.id}/vote/genre`, {
+          vote_genre: params.vote 
+        });
       }
+
       setIsLoading(false);
       navigate("/invite");
     } catch (error: any) {
@@ -142,7 +148,7 @@ const Register = () => {
 
       <div className="register-form">
         <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3"> နာမည် : </label>
+          <label className="input-label-text font-extrabold pl-3"> Name : </label>
           <input
             type="text"
             className="input-control"
@@ -156,7 +162,7 @@ const Register = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3"> မွေးသက္ကရာဇ် :</label>
+          <label className="input-label-text font-extrabold pl-3"> Birthday: </label>
           {/* <input
             type="date"
             className="input-control"
@@ -175,7 +181,7 @@ const Register = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3"> ဖုန်းနံပါတ် : </label>
+          <label className="input-label-text font-extrabold pl-3"> Phone : </label>
           <input
             type="text"
             className="input-control"
@@ -189,7 +195,7 @@ const Register = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-label-text font-extrabold pl-3"> အီးမေးလိပ်စာ : </label>
+          <label className="input-label-text font-extrabold pl-3"> Email : </label>
           <input
             type="email"
             className="input-control"
@@ -246,6 +252,7 @@ const Register = () => {
             onBtnClick={() => navigate("/")}
           />
           <ButtonComponent
+            className="btn-register"
             disabled={!payload.tc_accept}
             minWidth="100px"
             label="Next"

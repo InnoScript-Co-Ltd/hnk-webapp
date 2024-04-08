@@ -1,171 +1,271 @@
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import hnkELogo from "@/assets/images/hnk_e_logo_medium.png";
+import mask from "@/assets/images/mask.png";
+import hnkBottle from "@/assets/images/hnk_bottle.png";
+import guitter from "@/assets/images/guiter.png";
+import footerImg from "@/assets/images/footer.png";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-// import axios from "axios";
-import Logo from "@/assets/images/Heineken E logo1.png";
-import LeftGift from "@/assets/images/26 1.png";
-import Guitar from "@/assets/images/v1guiter 1.png";
-import Bottle from "@/assets/images/bottle logo png 1.png";
-// import { useDispatch } from "react-redux";
-// import { setToken } from "./authSlice";
-// import { baseURL } from "@/constants/endpoints";
-import { useNavigate } from "react-router-dom";
-// import { useToast } from "@/components/ui/use-toast";
-// import { Toast } from "@/components/ui/toast";
-
-interface formData {
-  name: string;
-  phone: string;
-  email: string;
-  is_accept: boolean;
-}
+import axios from "axios";
+import ButtonComponent from "@/components/ButtonComponent";
+import LoadingComponent from "@/components/LoadingComponent.tsx";
+import { endpoints, serverURL } from "@/constants/endpoints";
+import { storyUpdate } from "@/store/storySlice";
+import { useDispatch, useSelector } from "react-redux";
+import ModalComponent from "@/components/ModalComponent";
+import { AnimatePresence } from "framer-motion";
+import { IReducer } from "@/store/store";
+import { openModal } from "@/store/modalSlice";
+import "./style.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Register = () => {
-  const [formData, setFormData] = useState<formData>({
+  const [payload, setPayload] = useState({
     name: "",
     phone: "",
     email: "",
-    is_accept: false,
+    tc_accept: false,
+    dob: "",
+    fav_music: [],
   });
 
-  // const dispatch = useDispatch();
-  const [error, setError] = useState({
-    email: "",
-    name: "",
-    phone: "",
-  });
+  const [favMusic, setFav]: any = useState([
+    { label: "Hip-Hop", value: "Hip-Hop", is_checked: false },
+    { label: "RnB", value: "RnB", is_checked: false },
+    { label: "Pop", value: "Pop", is_checked: false },
+    { label: "Rock", value: "Rock", is_checked: false },
+    { label: "Classical", value: "Classical", is_checked: false },
+    { label: "Others", value: "Others", is_checked: false }
+  ]);
+  const [isLoading, setIsLoading] = useState(false)
+  const modal = useSelector((state: IReducer) => state.modal);
+  const dispath = useDispatch();
+
   const navigate = useNavigate();
+  const params = useParams();
 
-  const handleCheckboxChange = () => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      is_accept: !prevFormData.is_accept,
-    }));
+  const handleDateChange = (date: Date) => {
+    const updatePayload: any = { ...payload };
+    updatePayload.dob = date;
+    setPayload(updatePayload);
   };
 
-  const handleRegister = async () => {
-    if (formData) {
-      try {
-        // const response = await axios.post(`${baseURL}/user`, formData);
-        
-        // const token = response.data.data.token;
-        
-        // dispatch(setToken(token));
-        navigate("/");
-      } catch (e: any) {
-        if (e) {
-          const eMessage = e.response.data.data || "Registration failed";
-          setError(eMessage);
-          console.log("Registration failed:", eMessage);
-        }
-      }
+  const submitHandler = async () => {
+    if (payload.name === "" || payload.phone === "" || payload.email === "" || payload.dob === "") {
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `All fields are required`,
+        theme: 'error',
+      }));
+      return;
     }
-  };
 
+    if (payload.tc_accept === false) {
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `All fields are required`,
+        theme: 'error',
+      }));
+      return;
+    }
+
+    try {
+
+      const getFav: any= [];
+
+      favMusic.filter((value: any) => {
+        if(value.is_checked === true) {
+          getFav.push(value.value);
+        }
+      });
+
+      const updatePayload = {...payload};
+      updatePayload.fav_music = getFav;
+      
+      setIsLoading(true);
+      const response = await axios.post(`${serverURL}${endpoints.user}`,updatePayload);
+
+      if(response.status === 200) {
+        dispath(storyUpdate(response.data.data));
+      }
+      setIsLoading(false);
+      navigate("/invite");
+    } catch (error: any) {
+      setIsLoading(false);
+      dispath(openModal({
+        title: 'Register Failed',
+        message: `${error.response.data.message}. Please check your data and try again later.`,
+        theme: 'error',
+      }));
+    }
+
+  };
   return (
-    <div className="home-container">
-      <div className="bg-[#000242] min-h-screen">
-        <div className="flex flex-row justify-center mx-auto items-center pt-5">
-          <img src={Bottle} alt="" />
+    <div className="register-wrapper">
+      <AnimatePresence>
+        {
+          modal.isOpen && (
+            <ModalComponent />
+          )
+        }
+      </AnimatePresence>
+      <div className="header">
+        <img
+          src={hnkELogo}
+          className="register-elogo"
+          alt="Henineken E Logo"
+          title="Henineken E Logo"
+        />
+        <div className="header-group">
+          <img
+            src={mask}
+            className="img-mask"
+            alt="Henineken E Logo"
+            title="Henineken E Logo"
+          />
+          <img
+            src={hnkBottle}
+            className="hnk-bottle"
+            alt="Henineken E Logo"
+            title="Henineken E Logo"
+          />
+          <img
+            className="img-guitter"
+            src={guitter}
+            alt="Henineken"
+            title="Henineken"
+          />
         </div>
-        <div>
-          <img src={Logo} alt="" className="absolute top-[21px] left-[45px]" />
-          <img src={LeftGift} alt="" className="absolute left-0 top-[70px]" />
-          <img src={Guitar} alt="" className="absolute right-0 top-[0px]" />
+        <h1 className="hnk-text"> REGISTER </h1>
+      </div>
+
+      <div className="register-form">
+        <div className="input-group">
+          <label className="input-label-text font-extrabold pl-3"> Name : </label>
+          <input
+            type="text"
+            className="input-control"
+            value={payload.name}
+            onChange={(e) => {
+              const updatePayload = { ...payload };
+              updatePayload.name = e.target.value;
+              setPayload(updatePayload);
+            }}
+          />
         </div>
-        <div className="text-4xl text-white font-medium text-center">
-          REGISTER
+
+        <div className="input-group">
+          <label className="input-label-text font-extrabold pl-3"> Birthday :</label>
+          {/* <input
+            type="date"
+            className="input-control"
+            value={payload.dob}
+            onChange={(e) => {
+              const updatePayload = { ...payload };
+              updatePayload.dob = e.target.value;
+              setPayload(updatePayload);
+            }}
+          /> */}
+          <DatePicker
+            selected={new Date(payload.dob)}
+            onChange={handleDateChange}
+            className="input-control z-999"
+          />
         </div>
-        <div className="flex flex-col justify-center items-center gap-3 mt-6">
-          <div className="flex flex-row login-button justify-between px-3 rounded-full bg-[#00EE49] w-[312px] h-11">
-            <span className="flex items-center justify-center text-center">
-              Name:
-            </span>
-            <input
-              type="text"
-              inputMode="text"
-              value={formData.name}
-              className="bg-transparent focus:outline-none focus:ring-0 ml-3"
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-              required
-            />
-          </div>
-          {error && (
-            <div className="error text-red-700 w-[312px]">{error?.name[0]}</div>
-          )}
-          <div className="flex flex-row login-button justify-between px-3 rounded-full bg-[#00EE49] w-[312px] h-11">
-            <span className="flex items-center justify-center text-center">
-              Phone:
-            </span>
-            <input
-              type="text"
-              inputMode="tel"
-              className="bg-transparent focus:outline-none focus:ring-0 ml-3"
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              value={formData.phone}
-              required
-            />
-          </div>
-          {error && (
-            <div className="error text-red-700 w-[312px]">
-              {error?.phone[0]}
-            </div>
-          )}
-          <div className="flex flex-row login-button justify-between px-3 rounded-full bg-[#00EE49] w-[312px] h-11">
-            <span className="flex items-center justify-center text-center">
-              Mail:
-            </span>
-            <input
-              type="text"
-              inputMode="email"
-              className="bg-transparent focus:outline-none focus:ring-0 ml-3"
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              value={formData.email}
-              required
-            />
-          </div>
-          {error && (
-            <div className="error text-red-700 w-[312px]">
-              {error?.email[0]}
-            </div>
-          )}
+
+        <div className="input-group">
+          <label className="input-label-text font-extrabold pl-3"> Phone : </label>
+          <input
+            type="text"
+            className="input-control"
+            value={payload.phone}
+            onChange={(e) => {
+              const updatePayload = { ...payload };
+              updatePayload.phone = e.target.value;
+              setPayload(updatePayload);
+            }}
+          />
         </div>
-        <div className="flex justify-center items-center">
-          <div className="flex items-center space-x-2 mt-8 justify-start w-[312px]">
-            <Checkbox
-              id="terms"
-              checked={formData.is_accept}
-              onClick={handleCheckboxChange}
-            />
-            <label
-              htmlFor="terms"
-              className="text-[15px] text-white font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Accept terms and conditions
-            </label>
-          </div>
+
+        <div className="input-group">
+          <label className="input-label-text font-extrabold pl-3"> Email : </label>
+          <input
+            type="email"
+            className="input-control"
+            value={payload.email}
+            onChange={(e) => {
+              const updatePayload = { ...payload };
+              updatePayload.email = e.target.value;
+              setPayload(updatePayload);
+            }}
+          />
         </div>
-        <div className="flex justify-center gap-5 mt-6">
-          <Button
-           onClick={() => navigate('/verifyage')}
-           className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95">
-            Back
-          </Button>
-          <Button
-            onClick={handleRegister}
-            disabled={formData.is_accept == false}
-            className="text-dark login-button h-[44px] w-[116px] rounded-full border-[1px] border-black bg-white font-serif text-2xl font-medium hover:bg-white/95"
-          >
-            Next
-          </Button>
+
+        <div className="flex-checkbox">
+        <label className="input-label-text font-extrabold pl-3" style={{ color: "#fff", lineHeight: "25px" }}> အကြိုက်ဆုံး ဂီတအမျိုးအစား </label>
+          {favMusic.length > 0 && favMusic.map((value: any, index: number) => {
+            return (
+              <div key={index}>
+                <div className="checkbox-group">
+                  <input
+                    className="input-checkbox"
+                    type="checkbox"
+                    checked={value.is_checked}
+                    onChange={(e) => {
+                      const updateFav: any = [...favMusic];
+                      updateFav[index].is_checked = e.target.checked;
+                      setFav(updateFav);
+                    }}
+                  />
+                  <label className="checkbox-label" style={{ textDecoration: "none", cursor: "none" }}> {value.label} </label>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="checkbox-group">
+          <input
+            className="input-checkbox"
+            type="checkbox"
+            checked={payload.tc_accept}
+            onChange={(e) => {
+              const updatePayload = { ...payload };
+              updatePayload.tc_accept = e.target.checked;
+              setPayload(updatePayload);
+            }}
+          />
+          <label className="checkbox-label" onClick={() => navigate(`/term-and-condition/${params.vote}`)}> I Accept terms and conditions </label>
+        </div>
+
+        <div className="btn-group">
+          <ButtonComponent
+            minWidth="100px"
+            label="Back"
+            onBtnClick={() => navigate("/")}
+          />
+          <ButtonComponent
+            disabled={!payload.tc_accept}
+            minWidth="100px"
+            label="Next"
+            onBtnClick={() => submitHandler()}
+          />
         </div>
       </div>
+
+      <div className="footer">
+        <img
+          style={{ width: "100%" }}
+          src={footerImg}
+          alt="Henineken"
+          title="Henineken"
+        />
+      </div>
+
+      {
+        isLoading && <LoadingComponent />
+      }
     </div>
   );
 };

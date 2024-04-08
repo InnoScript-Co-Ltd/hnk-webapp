@@ -7,6 +7,7 @@ type btnProps = {
     minWidth?: string, 
     arrow?: boolean,
     disabled?: boolean,
+    className?: string
 }
 
 const ButtonComponent = (props: btnProps) => {
