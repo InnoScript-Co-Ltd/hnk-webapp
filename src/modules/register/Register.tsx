@@ -52,49 +52,6 @@ const Register = () => {
     setPayload(updatePayload);
   };
 
-  const handleGenreChange = (
-    genre: Genre | string,
-    checked: boolean,
-    value?: string
-  ) => {
-    let updatedGenres: (Genre | string)[] = [...payload.fav_music];
-    let updatedCheckGenres: (Genre | string)[];
-  
-    if (checked) {
-      if (genre === "Others" && value && value.trim() !== "") {
-        const words = value
-          .trim()
-          .split(",")
-          .map((word) => word.trim());
-  
-          updatedCheckGenres = [...updatedGenres, ...words];
-          console.log(updatedCheckGenres);
-          
-  
-        setPayload((prevPayload) => ({
-          ...prevPayload,
-          fav_music: updatedCheckGenres,
-        }));
-      } else if (!updatedGenres.includes(genre)) {
-        updatedGenres.push(genre);
-        setPayload((prevPayload) => ({
-          ...prevPayload,
-          fav_music: updatedGenres,
-        }));
-      }
-    } else {
-      updatedGenres = updatedGenres.filter((g) => g !== genre);
-      setPayload((prevPayload) => ({
-        ...prevPayload,
-        fav_music: updatedGenres,
-      }));
-    }
-  
-    
-  };
-    
-  console.log(payload);
-  
   const submitHandler = async () => {
     if (payload.name === "" || payload.phone === "" || payload.email === "") {
       dispath(openModal({
