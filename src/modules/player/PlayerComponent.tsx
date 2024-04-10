@@ -159,7 +159,7 @@ const PlayerComponent = () => {
           <div className="audio-player-container">
             {currentSong && (
               <AudioPlayer
-                // autoPlay
+                autoPlay
                 onClickNext={() => nextSong()}
                 onClickPrevious={() => previousSong()}
                 src={`${endpoints.audio}/${currentSong.song.file_path}`}
