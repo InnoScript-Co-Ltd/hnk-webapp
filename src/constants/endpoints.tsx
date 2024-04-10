@@ -5,7 +5,7 @@ const baseUrls = [
 ];
 
 const imageUrls = [
-   "http://localhost:8000", "http://hnk-api.innoscript.co", "http://api.refreshyourmusichnk.co"
+   "http://localhost:8000", "http://hnk-api.innoscript.co", "http://api.refreshyourmusichnk.com"
 ];
 
 export const baseURL = baseUrls[env];

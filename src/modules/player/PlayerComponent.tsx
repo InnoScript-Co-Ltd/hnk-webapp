@@ -12,6 +12,7 @@ import RotatingSlogan from "@/components/RotatingSlogan";
 import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import { useNavigate, useParams } from "react-router-dom";
+import LoadingComponent from "@/components/LoadingComponent.tsx";
 
 const PlayerComponent = () => {
   let height = screen.height;
@@ -20,6 +21,7 @@ const PlayerComponent = () => {
   const [singerSlider, setSingerSlider] = useState([]);
   const [currentSong, setCurrentSong]: any = useState(null);
   const intervalRef = useRef<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -32,8 +34,9 @@ const PlayerComponent = () => {
     }
   }, []);
 
+  console.log(singerSlider)
+
   const nextSong = () => {
-    console.log(singerSlider, currentSong)
     singerSlider.filter((value: any, index: number) => {
       if(value.id === currentSong.id) {
         const nextMusic: any = singerSlider[index + 1];
@@ -81,9 +84,25 @@ const PlayerComponent = () => {
     return () => clearInterval(intervalRef.current)
   }, [isPlaying])
 
+  const onLoadStart = () => {
+    setIsLoading(true);
+    setIsPlaying(false);
+  }
+
+
+  const loadEndedHandler = () => {
+    setIsLoading(false);
+    // setIsPlaying(true);
+  }
+
 
   return (
     <div className="playlist-container">
+      {
+        isLoading && (
+          <LoadingComponent />
+        )
+      }
       <div className="playlist-content" style={{ height: height }}>
         <RotatingSlogan />
         <div className="content-wrapper">
@@ -140,12 +159,14 @@ const PlayerComponent = () => {
           <div className="audio-player-container">
             {currentSong && (
               <AudioPlayer
-                autoPlay
+                // autoPlay
                 onClickNext={() => nextSong()}
                 onClickPrevious={() => previousSong()}
                 src={`${endpoints.audio}/${currentSong.song.file_path}`}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
+                onLoadStart={onLoadStart}
+                onCanPlay={loadEndedHandler}
                 volume={1}
                 loop={false}
                 showSkipControls={true}
