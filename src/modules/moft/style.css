@@ -33,6 +33,7 @@
     font-family: "hanikenSerif";
     font-size: 40px;
     /* width: 135px; */
+
     text-shadow: -2px 3px 0px #000000;
     -webkit-text-stroke: 1px #000000;
     -moz-text-shadow: 2px 3px 0px #000000;
@@ -43,11 +44,11 @@
     font-family: "hanikenSerif";
     font-size: 30px;
     /* width: 135px; */
+
     text-shadow: -2px 3px 0px #000000;
     -webkit-text-stroke: 1px #000000;
     -moz-text-shadow: 2px 3px 0px #000000;
   }
-  
   .header-text-wrapper {
     width: 220px;
     position: absolute;
@@ -133,12 +134,14 @@
     height: 847.88px;
     margin-top: -240px;
     margin-left: 25px;
+
     border-radius: 8px;
     border: 1px solid black;
     opacity: 0px;
     rotate: -0.7deg;
     background-color: #6508a6;
   }
+
   
   .prize-titles{
     color: white;

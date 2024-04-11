@@ -1,17 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { endpoints } from "@/constants/endpoints";
 import "./outletDetailStyle.css";
+import outletImage from '@/assets/images/outlet.png';
 
 const OutletModal = ({ outlet, onClose }: any) => {
     return (
         <div className="w-full h-full fixed top-0 left-0 z-[9999] backdrop-blur-sm bg-white/30">
             <div className="outlet-detail-container overflow-hidden">
                 <div className="outlet-detail-content">
-                    <img
+                    {outlet?.image?.image &&
+                        <img
                         src={`${endpoints.image}/${outlet?.image?.image}`}
                         alt=""
-                        className="outlet-cover-img min-h-[200px]"
+                        className="outlet-cover-img min-h-[200px] max-h-[200px]"
                     />
+                    }
+                    {!outlet?.image?.image &&
+                        <img
+                        src={outletImage}
+                        alt=""
+                        className="outlet-cover-img min-h-[200px] max-h-[200px]"
+                    />
+                    }
                     <p className="outlet-title">Outdoor TOV</p>
                     <div className="outlet-content">
                         <div className="outlet-item">

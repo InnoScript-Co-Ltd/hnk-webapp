@@ -5,6 +5,8 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import LoadingComponent from "./components/LoadingComponent.tsx";
 import { lazy, ReactElement, Suspense } from "react";
 import { Toaster } from "./components/ui/toaster.tsx";
+import Invitation from "./modules/invitation/Invitation.tsx";
+import Moft from "./modules/moft/Moft.tsx";
 
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
