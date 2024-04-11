@@ -50,7 +50,7 @@ const HomeComponent = () => {
               <span className="text-effect"> Exclusive </span> ဆုလက်ဆောင်တွေရယူနိုင်မယ့် အခွင့်အရေးတွေလည်းရှိနေဦးမှာဆိုတော့ ဘယ်လိုပုံစံနဲ့ <span className="text-effect"> Refresh </span> သွားမလဲ?
             </p>
 
-            <p className="link-text"> <label> အသေးစိတ်ကြည့်ရှုရန် </label></p>
+            <p className="link-text" onClick={() => navigate("/moft")}> <label> အသေးစိတ်ကြည့်ရှုရန် </label></p>
 
             {/* {showMore && (
               <>
