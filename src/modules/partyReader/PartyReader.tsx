@@ -1,28 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-// import menubarIcon from "@/assets/images/menu.png";
-// import hnkRefreshMusicImage from "@/assets/images/hnk_refresh_music.png";
-// import starIcon from "@/assets/images/star.png";
-// import outletPromotion from "@/assets/images/Outlet_Promotion.png";
-// import partyTitle from "@/assets/images/partyTitle.png";
+import { SetStateAction, useCallback, useEffect, useState } from "react";
 import slide1 from "@/assets/images/event1.png";
 import slide2 from "@/assets/images/event2.png";
-// import promotion from "@/assets/images/promotion.png";
 import footerImg from "@/assets/images/footer.png";
+import outlet from "@/assets/images/outlet.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 import {
   Select,
   SelectContent,
@@ -30,8 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-// import { useNavigate } from "react-router-dom";
 import OutletModal from "./OutletModal";
 
 import "./partyReaderStyle.css";
@@ -39,7 +21,6 @@ import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
-// import { Header } from "@/components/Header";
 interface Location {
   lat: number;
   long: number;
@@ -50,25 +31,39 @@ import { useDispatch } from "react-redux";
 import EventSliderComponent from "./EventSlider";
 import EventModal from "./EventModal";
 
+type btnProps = {
+  onBtnClick: () => void;
+  label: string;
+  backgroundColor?: string;
+  minWidth?: string;
+  arrow?: boolean;
+  disabled?: boolean;
+};
+
 const sliders = [
   {
     id: 1,
     image: slide1,
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
   },
   {
     id: 2,
     image: slide2,
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
   },
   {
     id: 3,
     image: slide1,
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
   },
 ];
 
-const PartyReader = () => {
+const PartyReader = (props: btnProps) => {
+  const { arrow } =
+    props;
   const [promotionTab, setPromotionTab] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const navigate = useNavigate();
@@ -80,6 +75,8 @@ const PartyReader = () => {
   const [loading, setLoading] = useState<boolean>();
   const [openEventModal, setOpenEventModal] = useState<boolean>();
   const [description, setDescription] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [slides, setSlides] = useState<Array<any>>([]);
   const dispatch = useDispatch();
 
   const openModal = (outlet: SetStateAction<null>) => {
@@ -153,9 +150,37 @@ const PartyReader = () => {
     }
   }, [userLocation]);
 
+  console.log(`${endpoints.image}/${outletList[0]?.image?.image}`);
+  
+
+  const getEventSliders = async() => {
+    try{
+      const response: any = await getRequest("/event-slider");
+      if(response.status === 200) {
+      console.log(response);
+      setSlides(response.data.data)
+      }
+    } catch (error) {
+      dispatch(
+        openErrorModal({
+          title: "Event Slide Error",
+          message: "Failed to get events",
+          theme: "error",
+        })
+      );
+    }
+  }
+
+  console.log(slides[0]?.cover_photo.image);
+  
+  
   useEffect(() => {
     getOutlet();
   }, [getOutlet]);
+
+  useEffect(() => {
+    getEventSliders()
+  },[])
 
   return (
     <div className="partyreader-container relative max-w-[420px] mx-auto">
@@ -170,44 +195,52 @@ const PartyReader = () => {
         <div className="slider-content-wrapper">
           <RotatingSlogan />
           <div className="party-content-wrapper">
-            {/* <img
-              src={partyTitle}
-              alt="HNK Refresh Music"
-              className="party-title"
-            /> */}
             <h1 className=" flex justify-start items-start gap-2 mx-auto text-primary-white text-white text-[40px]">
               b,fae&mvJ...
-              <span className=" text-primary-white text-green">bmyGJvJ...</span>{" "}
+              <span className=" text-primary-white text-green">
+                bmyGJvJ...
+              </span>{" "}
               <p className=" text-secondary-green ">?</p>{" "}
             </h1>
-            {/* <p 
-              className="party-title-1"
-            >ဘယ်နေရာလဲ...</p>
-            <p
-              className="party-title-2"
-            >ဘာပွဲလဲ...?</p> */}
             <p className="party-content px-[20px] font-medium leading-[19px]">
               ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
               စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
               ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
             </p>
-            <div className="slidder-wrapper mt-[20px] mb-[20px]">
+            {sliders.length > 0 && 
+              <div className="slidder-wrapper mt-[20px] mb-[20px]">
               <EventSliderComponent autoPlay>
-                {sliders.map((slide, index) => (
+                {slides?.map((slide, index) => (
                   <div className="p-2" key={index}>
-                    <img
-                      src={slide.image}
+                    {slide?.cover_photo.image &&
+                      <img
+                      src={`${endpoints.image}/${slide?.cover_photo.image}`}
                       alt="HNK Refresh Music"
                       className="slider-img"
                       onClick={() => {
-                        setOpenEventModal(true)
-                        setDescription(slide.description)
+                        setOpenEventModal(true);
+                        setDescription(slide.description);
+                        setTitle(slide.name);
                       }}
                     />
+                    }
+                    {!slide?.cover_photo.image &&
+                      <img
+                      src={slide1}
+                      alt="HNK Refresh Music"
+                      className="slider-img"
+                      onClick={() => {
+                        setOpenEventModal(true);
+                        setDescription(slide.description);
+                        setTitle(slide.name);
+                      }}
+                    />
+                    }
                   </div>
                 ))}
               </EventSliderComponent>
             </div>
+            }
           </div>
         </div>
         <div className="promotion-wrapper">
@@ -221,18 +254,44 @@ const PartyReader = () => {
           </p>
           <div className="promotion-btn-group">
             <button
-              className={`promotion-btn ${
-                promotionTab === true ? "active" : ""
-              }`}
+              className={`btn-style ${promotionTab === true ? "active" : ""}`}
               onClick={() => setPromotionTab(true)}
             >
-              Promotion
+              <span className="button-label">Promotion</span>
+              {arrow && (
+                <svg
+                  width="24"
+                  height="18"
+                  viewBox="0 0 24 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.9263 0L13.9592 0.501143C13.9592 2.83013 15.9778 5.86846 18.1466 7.61036H0.21875V10.3896H18.1454C15.9767 12.1315 13.958 15.1699 13.958 17.4989L16.9251 18C16.9251 14.6966 19.8797 10.3896 23.2188 10.3896V7.61036C19.8797 7.61036 16.9251 3.30343 16.9251 0L16.9263 0Z"
+                    fill="black"
+                  />
+                </svg>
+              )}
             </button>
             <button
-              className={`all-btn ${promotionTab === false ? "active" : ""}`}
+              className={`btn-style ${promotionTab === false ? "active" : ""}`}
               onClick={() => setPromotionTab(false)}
             >
-              All
+              <span className="button-label">All</span>
+              {arrow && (
+                <svg
+                  width="24"
+                  height="18"
+                  viewBox="0 0 24 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.9263 0L13.9592 0.501143C13.9592 2.83013 15.9778 5.86846 18.1466 7.61036H0.21875V10.3896H18.1454C15.9767 12.1315 13.958 15.1699 13.958 17.4989L16.9251 18C16.9251 14.6966 19.8797 10.3896 23.2188 10.3896V7.61036C19.8797 7.61036 16.9251 3.30343 16.9251 0L16.9263 0Z"
+                    fill="black"
+                  />
+                </svg>
+              )}
             </button>
           </div>
           {promotionTab && (
@@ -264,11 +323,20 @@ const PartyReader = () => {
                 className="outlet-items w-[150px] md:w-[180px]"
                 onClick={() => selectChange !== true && openModal(item)}
               >
-                <img
+                {item?.image?.image && 
+                  <img
                   src={`${endpoints.image}/${item?.image?.image}`}
                   alt="HNK Fresh Drink"
                   className="outlet_img min-w-[150px] md:min-w-[180px]"
                 />
+                }
+                {!item?.image?.image &&
+                  <img
+                  src={outlet}
+                  alt="HNK Fresh Drink"
+                  className="outlet_img min-w-[150px] md:min-w-[180px]"
+                />
+                }
                 <p className="outlet_name w-full !pt-[10px]">{item.name}</p>
               </button>
             ))}
@@ -293,7 +361,7 @@ const PartyReader = () => {
         <OutletModal outlet={selectedOutlet} onClose={closeModal} />
       )}
       {openEventModal && (
-        <EventModal description={description} onClose={closeEventModal} />
+        <EventModal description={description} title={title} onClose={closeEventModal} />
       )}
     </div>
   );

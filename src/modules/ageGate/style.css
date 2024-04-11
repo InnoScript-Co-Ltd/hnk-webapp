@@ -1,4 +1,19 @@
-.bg {
-    background: rgb(12, 158, 37);
+.agegate-wrapper {
     background: linear-gradient(42deg, rgba(12, 158, 37, 1) 0%, rgba(9, 240, 49, 1) 45%, rgba(12, 158, 37, 1) 100%);
+    width: 375px;
+    padding-top: 30px;
+}
+
+.agegate-hnk-logo {
+    position: relative;
+}
+
+.agegate-bg {
+    width: 100%;
+}
+
+@media only screen and (max-width: 375px) {
+    .agegate-wrapper  {
+        width: 100%;
+    }
 }

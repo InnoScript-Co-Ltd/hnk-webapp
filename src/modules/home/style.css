@@ -18,7 +18,7 @@
 .content-section{
     background-color: #009D1B;
     width: 100%;
-    height: 500px;
+    height: 720px;
     position: absolute;
     top: 527px;
     border-radius: 10px;
@@ -45,16 +45,69 @@
 .content-texts{
     width: 100%;
     margin-top: 10px;
-    font-family: natosansmm;
+    font-family: hanikenSerif;
     font-size: 12px;
     line-height: 25px;
     color: #FFFFFF;
 }
 
+.content-texts > p {
+    margin-bottom: 10px;
+}
+
+.text-effect {
+    color: #00ff70;
+    font-weight: bolder;
+    font-family: hanikenSerif;
+}
+
+.link-text {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-family: hanikenSerif;
+}
+
+.caption-text-party-radar {
+    width: calc(100% - 20px);
+    position: absolute;
+    top: -50px;
+    font-family: hanikenSerif;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.caption-text-party-radar-bottom {
+    width: 100%;
+    font-family: hanikenSerif;
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0px;
+    padding-left: 20px;
+    font-weight: 800;
+}
+
+.link-text > label {
+    text-decoration: underline;
+    line-height: 20px;
+}
+
+.seemore-text {
+    font-family: hanikenSerif;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.link {
+    color: #08084a;
+}
+
 .content-illu{
     width: 100%;
     height: 100px;
-    margin-top: 50px;
+    margin-top: 60px;
     padding-left: 20px;
     padding-right: 20px;
     position: relative;
@@ -81,7 +134,7 @@
 
 .btn{
     font-family: hanikenSerif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     background-color: #FFFFFF;
     display: flex;
@@ -111,7 +164,7 @@
 
 .content-section-2{
     width: 100%;
-    height: 180px;
+    height: 270px;
     background-color: #040658;
     position: relative;
 }
@@ -124,9 +177,7 @@
 .section-2-randr-illu{
     position: absolute;
     right: 20px;
-    bottom: 0;
-    width: 200px;
-    height: 138px;
+    top: 50px;
 }
 
 .randr{
@@ -139,4 +190,10 @@
 
 .footer-img{
     background-color: #040658;
+}
+
+.fix-btn {
+    width: 200px;
+    padding: 10px;
+    bottom: 32px;
 }

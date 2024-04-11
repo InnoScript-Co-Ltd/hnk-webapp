@@ -215,6 +215,8 @@
     color: white;
     text-shadow: -3px 2px 1px #000;
     -webkit-text-stroke: 1px #000;
+    -moz-text-stroke: 1px #000;
+    -o-text-stroke: 1px #000;
 }
 
 .footer-wrapper{
@@ -241,11 +243,13 @@
 
 .section-title{
     text-align: center;
-    font-family: w14art;
-    font-size: 40px;
+    font-family: hanikenSerif;
+    /* font-family: w14art; */
+    font-size: 20px;
     font-weight: 400;
     color: #ffffff;
     text-shadow: -2px 3px #000;
+    margin-bottom: 20px;
 }
 
 .question-mark{
@@ -280,6 +284,5 @@
     .mp3Player{
         top: -4px;
         width: 250px;
-
     }
 }

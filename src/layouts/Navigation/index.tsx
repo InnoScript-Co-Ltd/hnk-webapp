@@ -7,10 +7,10 @@ import {motion} from 'framer-motion';
 const navigation = [
     {
         name: 'Home',
-        path: '/'
+        path: '/home'
     },
     {
-        name: 'R&R',
+        name: 'ပြောင်းလဲဆန်းသစ်ရန်',
         path: '/randr'
     },
     {
@@ -18,8 +18,12 @@ const navigation = [
         path: '/party-radar'
     },
     {
-        name: 'Invite',
-        path: '/invite'
+        name: 'Invitation',
+        path: '/invitation'
+    },
+    {
+        name: 'MOFT',
+        path: '/moft'
     }
 ]
 

@@ -4,19 +4,21 @@ import store from "./store/store";
 import DefaultLayout from "./layouts/DefaultLayout";
 import LoadingComponent from "./components/LoadingComponent.tsx";
 import { lazy, ReactElement, Suspense } from "react";
+import { Toaster } from "./components/ui/toaster.tsx";
+import Invitation from "./modules/invitation/Invitation.tsx";
+import Moft from "./modules/moft/Moft.tsx";
 
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
 const PartyRadar = lazy(() => import("./modules/partyReader/PartyReader"));
 const Episode = lazy(() => import("./modules/episodes/epsode_one/EpisodeOne"));
-const Termsandconditions = lazy(
-    () => import("./modules/tc/Termsandconditions.tsx")
-);
+const Termsandconditions = lazy(() => import("./modules/tc/Termsandconditions.tsx"));
 const Register = lazy(() => import("./modules/register/Register"));
 const AgeGate = lazy(() => import("./modules/ageGate/AgeGate"));
 const Invite = lazy(() => import("./modules/invite/Invite"));
 const RandRComponent = lazy(() => import("./modules/randr/RandRComponent"));
-
+const Moft = lazy(() => import("./modules/moft/Moft.tsx"));
+const Invitation = lazy(() => import("./modules/invitation/Invitation.tsx"));
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
 };
@@ -36,15 +38,21 @@ const App = () => {
                     element: lazyLoad(<Invite />),
                 },
                 {
+                    path: "/invitation",
+                    element: lazyLoad(<Invitation />),
+                },
+                {
                     path: "/party-radar",
-                    element: lazyLoad(<PartyRadar />),
+                    element: lazyLoad(<PartyRadar onBtnClick={function (): void {
+                        throw new Error("Function not implemented.");
+                    } } label={""} />),
                 },
                 {
                     path: "/home",
                     element: lazyLoad(<HomeComponent />),
                 },
                 {
-                    path: "/player",
+                    path: "/play/:id",
                     element: lazyLoad(<PlayerComponent />),
                 },
                 {
@@ -56,19 +64,24 @@ const App = () => {
                     element: lazyLoad(<Episode />),
                 },
                 {
-                    path: "/term-and-condition",
+                    path: "/term-and-condition/:vote",
                     element: lazyLoad(<Termsandconditions />),
+                },
+                {
+                    path: "/moft/",
+                    element: lazyLoad(<Moft />),
                 },
             ],
         },
         {
-            path: "/register",
+            path: "/register/:vote",
             element: lazyLoad(<Register />),
         },
     ]);
     return (
         <Provider store={store}>
             <RouterProvider router={router} />
+            <Toaster />
         </Provider>
     );
 };

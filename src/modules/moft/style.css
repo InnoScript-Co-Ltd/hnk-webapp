@@ -1,0 +1,234 @@
+.moft-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgba(0, 2, 66, 0.8);
+  }
+  
+  .moft-content {
+    width: 420px;
+    height: 2495px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .moft-header {
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  .header-content-wrapper {
+    width: calc(100% - 0px);
+    background-color: #009d1b;
+    border-radius: 8px;
+  }
+  
+  .moft-header-white-text {
+    color: white;
+    font-family: "hanikenSerif";
+    font-size: 40px;
+    /* width: 135px; */
+
+    text-shadow: -2px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+    -moz-text-shadow: 2px 3px 0px #000000;
+  }
+  
+  .moft-header-green-text {
+    color: #00ff00;
+    font-family: "hanikenSerif";
+    font-size: 30px;
+    /* width: 135px; */
+
+    text-shadow: -2px 3px 0px #000000;
+    -webkit-text-stroke: 1px #000000;
+    -moz-text-shadow: 2px 3px 0px #000000;
+  }
+  .header-text-wrapper {
+    width: 220px;
+    position: absolute;
+    top: 90px;
+    left: 108px;
+    z-index: 0;
+  }
+  
+  .cha1 {
+    position: absolute;
+    top: 90px;
+    left: 0px;
+  }
+  
+  .cha2 {
+    position: absolute;
+    top: 200px;
+    right: 0px;
+  }
+  
+  .promotion-title {
+    color: white;
+    font-family: "hanikenSerif";
+    font-size: 22px;
+    font-weight: 900;
+    text-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 1);
+    /* text-shadow: -2px 3px 0px #000000; */
+    -webkit-text-stroke: 0.5px #000000;
+    -moz-text-stroke: 0.5px #000000;
+    -o-text-stroke: 0.5px #000000;
+    -ms-text-stroke: 0.5px #000000;
+    -moz-text-shadow: 2px 3px 0px #000000;
+    -o-text-shadow: 2px 3px 0px #000000;
+    -ms-text-shadow: 2px 3px 0px #000000;
+  }
+  
+  .promotion-title-mm {
+    color: white;
+    font-family: "natosansmm";
+    font-size: 22px;
+    font-weight: 900;
+    text-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 1);
+    /* text-shadow: -2px 3px 0px #000000; */
+    -moz-text-shadow: 2px 3px 0px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    -moz-text-stroke: 0.5px #000000;
+    -o-text-stroke: 0.5px #000000;
+    -ms-text-stroke: 0.5px #000000;
+  }
+  
+  .promotion-date {
+    color: white;
+    font-family: "hanikenSerif";
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .promotion-way {
+    color: white;
+    font-family: "natosansmm";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1%;
+  }
+  
+  .promotion-prize {
+    color: white;
+    font-family: "natosansmm";
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 1);
+    /* text-shadow: -2px 3px 0px #000000; */
+    -moz-text-shadow: 2px 3px 0px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    -moz-text-stroke: 0.5px #000000;
+    -o-text-stroke: 0.5px #000000;
+    -ms-text-stroke: 0.5px #000000;
+  }
+  
+  .prize-container {
+    /* position: absolute; */
+    width: 358px;
+    height: 847.88px;
+    margin-top: -240px;
+    margin-left: 25px;
+
+    border-radius: 8px;
+    border: 1px solid black;
+    opacity: 0px;
+    rotate: -0.7deg;
+    background-color: #6508a6;
+  }
+
+  
+  .prize-titles{
+    color: white;
+    font-family: "hanuman";
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .footer-content-container{
+      background-color: #00880F;
+      padding: 20px;
+  }
+  
+  ul {
+      padding: 20px;
+  }
+  
+  ul li {
+      color: white;
+      list-style-type: circle;
+      margin-bottom: 20px;
+  }
+  
+  .footer-imgs{
+      /* position: ; */
+      background-color: #00880F;
+      height: 300px;
+  }
+  
+  @keyframes loopText {
+    from {
+      transform: translateX(0);
+    }
+  
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .moft-content {
+      width: 320px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .moft-content {
+      width: 320px;
+    }
+  }
+  
+  @media only screen and (min-width: 320px) and (max-width: 420px) and (orientation: portrait) {
+    .moft-content {
+      width: 100%;
+    }
+    .moft-header-white-text {
+      color: white;
+      font-family: "hanikenSerif";
+      font-size: 30px;
+      text-shadow: -2px 3px 0px #000000;
+      -webkit-text-stroke: 1px #000000;
+      -moz-text-shadow: 2px 3px 0px #000000;
+    }
+  
+    .moft-header-green-text {
+      color: #00ff00;
+      font-family: "hanikenSerif";
+      font-size: 28px;
+      text-shadow: -2px 3px 0px #000000;
+      -webkit-text-stroke: 1px #000000;
+      -moz-text-shadow: 2px 3px 0px #000000;
+    }
+    .header-text-wrapper {
+      width: 220px;
+      position: absolute;
+      top: 90px;
+      left: 100px;
+    }
+    .prize-container {
+      width: 358px;
+      height: 847.88px;
+      margin-top: -240px;
+      margin-left: 20px;
+      border-radius: 8px;
+      border: 1px solid black;
+      opacity: 0px;
+      rotate: -0.7deg;
+      background-color: #6508a6;
+    }
+  }

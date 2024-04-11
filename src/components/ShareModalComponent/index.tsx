@@ -24,7 +24,7 @@ const ShareModalComponent = (props: propType) => {
     const linkValue = window.location.host;
 
     const onCopyLink = () => {
-        navigator.clipboard.writeText(linkValue);
+        navigator.clipboard.writeText(`${linkValue}/home`);
         closeModal();
     }
 
@@ -49,7 +49,7 @@ const ShareModalComponent = (props: propType) => {
                 }
             </div>
             <div className='share-input-container'>
-                <input id='share-input' disabled className='share-input' type='text' value={linkValue} />
+                <input id='share-input' disabled className='share-input' type='text' value={`${linkValue}/home`} />
                 <button
                 onClick={onCopyLink}
                 className='copy-link-btn'

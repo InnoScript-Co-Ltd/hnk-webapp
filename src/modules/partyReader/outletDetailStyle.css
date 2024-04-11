@@ -140,6 +140,7 @@
       height: auto;
       border-top-left-radius: 30px;
       border-top-right-radius: 30px;
+      object-fit: cover;
     }
     .outlet-detail-container {
       width: 80%;

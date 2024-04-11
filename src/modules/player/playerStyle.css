@@ -152,6 +152,7 @@
   font-family: "hanikenSerif";
   font-size: 14px;
   font-weight: 400px;
+  margin-bottom: 10px;
 }
 
 .artist-name {
@@ -159,16 +160,6 @@
   font-family: "hanikenSerif";
   font-size: 10px;
   font-weight: 400px;
-}
-
-@keyframes loopText {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
 }
 
 @media screen and (max-width: 320px) {

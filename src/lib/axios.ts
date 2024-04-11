@@ -1,10 +1,11 @@
 /* eslint-disable prefer-const */
+import { baseURL } from "@/constants/endpoints";
 import axios from "axios";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const baseUrl = "http://hnk-api.innoscript.co/api";
 
-axios.defaults.baseURL = baseUrl;
+axios.defaults.baseURL = baseURL;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Accept'] = 'application/json';
 
@@ -18,7 +19,7 @@ const urlParams = (params : string) => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const postRequest = async (path: string, body: any, options?: any) => {
-    return await axios.post(`${baseUrl}/${path}`, body, options)
+    return await axios.post(path, body, options)
         .then(result => result)
         .catch(error => error.response);
 };

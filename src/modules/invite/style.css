@@ -25,19 +25,27 @@
 }
 
 .invite-section{
-    width: 306px;
+    width: 340px;
     /* height: 302px; */
     background-color: #532B6F;
     border-radius: 15px;
     border: 2px solid #000;
     box-shadow: -3px 3px 0px 0px #000;
+    margin-bottom: 20px;
+}
+
+.invite-section > p {
+    margin-top: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    line-height: 40px;
 }
 
 .user-name{
-    margin-top: 19px;
+    margin-top: 30px;
     text-align: center;
     font-family: hanikenSerif;
-    font-size: 27px;
+    font-size: 20px;
     font-weight: 600;
     color: #01EC48;
     text-shadow: -2px 3px #000;

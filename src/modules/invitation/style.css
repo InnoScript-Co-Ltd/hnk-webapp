@@ -1,0 +1,121 @@
+.invitation-container{
+    position: relative;
+    background-color: #00880F;
+    border-radius: 5px;
+}
+
+.profile-invitation-img{
+    margin-top: 50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.invitation-section{
+    width: 306px;
+    /* height: 302px; */
+    background-color: #532B6F;
+    border-radius: 15px;
+    border: 2px solid #000;
+    box-shadow: -3px 3px 0px 0px #000;
+}
+
+
+.invitation-content-green-text{
+    text-align: center;
+    font-family: w14art;
+    font-size: 25px;
+    font-weight: 400;
+    color: #01EC48;
+    text-shadow: -2px 3px #000;
+}
+
+.invitation-content-eng-text{
+    text-align: center;
+    font-family: hanikenSerif;
+    font-size: 25px;
+    font-weight: 400;
+    color: #01EC48;
+    text-shadow: -2px 3px #000;
+}
+
+.share-back-btn{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.or-text{
+    color: #01EC48;
+    font-family: hanikenSerif;
+    font-size: 27px;
+    text-shadow: -2px 3px #000;
+    margin: 20px 0;
+}
+
+.feed-back-stars{
+    margin: 10px auto;
+}
+
+.invitation-beer-bottle{
+    position: relative;
+    transform: rotate(50deg);
+}
+
+/* .invitation-hand{
+    position: absolute;
+    right: -7px;
+    top: 150px;
+    transform: rotate(6.38deg);
+} */
+
+.invitation-footer{
+    /* background-color: #00880F; */
+    position: relative;
+    width: 100%;
+    height: 240px;
+    top: -30px;
+}
+
+.invite-enjoy{
+    position: absolute;
+    bottom: 170px;
+    right: 10px;
+    z-index: 20;
+}
+
+.mp3Player{
+    position: absolute;
+    right: 0;
+    /* top: 31px; */
+}
+
+.earphone{
+    position: absolute;
+    left: 0;
+    top: -90px;
+    z-index: 10;
+}
+
+@media only screen and (min-width: 375px) {
+    .mp3Player{
+        top: 13px
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    .mp3Player{
+        top: -4px;
+        width: 250px;
+
+    }
+}
