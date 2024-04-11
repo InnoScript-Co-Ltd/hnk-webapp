@@ -1,35 +1,27 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { SetStateAction, useCallback, useEffect, useState } from "react";
-import slide1 from "@/assets/images/event1.png";
-import slide2 from "@/assets/images/event2.png";
-import footerImg from "@/assets/images/footer.png";
-import outlet from "@/assets/images/outlet.png";
-import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import OutletModal from "./OutletModal";
+/** 
+Component Name              - Party Radar Component [Page]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
 
-import "./partyReaderStyle.css";
+import { SetStateAction, useCallback, useEffect, useState } from "react";
+import footerImg from "@/assets/images/footer.png";
+import outletpromotionTitle from "@/assets/svgs/OutletPromotion.svg";
+import whereEvent from "@/assets/svgs/whereEvent.svg";
+import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import OutletModal from "./OutletModal";
 import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
-interface Location {
-  lat: number;
-  long: number;
-  distance: number;
-}
 import { openModal as openErrorModal } from "@/store/modalSlice";
 import { useDispatch } from "react-redux";
 import EventSliderComponent from "./EventSlider";
 import EventModal from "./EventModal";
+import { INTERNAL_SERVER, imageTitle } from "@/constants/config";
+import "./partyReaderStyle.css";
 
 type btnProps = {
   onBtnClick: () => void;
@@ -40,43 +32,19 @@ type btnProps = {
   disabled?: boolean;
 };
 
-const sliders = [
-  {
-    id: 1,
-    image: slide1,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
-  },
-  {
-    id: 2,
-    image: slide2,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
-  },
-  {
-    id: 3,
-    image: slide1,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ipsam asperiores, dolor possimus amet veritatis, labore illo cumque iste natus ratione, dicta reiciendis nostrum odit id ullam eligendi expedita voluptatem?",
-  },
-];
-
 const PartyReader = (props: btnProps) => {
-  const { arrow } =
-    props;
-  const [promotionTab, setPromotionTab] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const navigate = useNavigate();
-  const [userLocation, setUserLocation] = useState<Location | null>(null);
-  const [selectedDistance, setSelectedDistance] = useState<any>("10km");
+  const { arrow } = props;
+  const [promotionTab, setPromotionTab] = useState<any>(null);
+  const [userLocation, setUserLocation] = useState<any | null>({ lat: "", long: "" });
+  const [distance, setDistance] = useState<string>("10");
   const [selectedOutlet, setSelectedOutlet] = useState<any>(null);
   const [outletList, setOutletList] = useState<Array<any>>([]);
-  const [selectChange, setSelectChange] = useState<boolean | undefined>();
-  const [loading, setLoading] = useState<boolean>();
+  const [loading, setLoading] = useState<boolean>(false);
   const [openEventModal, setOpenEventModal] = useState<boolean>();
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [slides, setSlides] = useState<Array<any>>([]);
+
   const dispatch = useDispatch();
 
   const openModal = (outlet: SetStateAction<null>) => {
@@ -91,171 +59,216 @@ const PartyReader = (props: btnProps) => {
     setOpenEventModal(false);
   };
 
-  useEffect(() => {
+  /** Outlet Data Retrive With GeoLocation */
+  const loadingOutletWithLocation = async () => {
+    setLoading(true);
+
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          if (promotionTab && selectedDistance && position !== null) {
-            setUserLocation({
-              lat: position.coords.latitude,
-              long: position.coords.longitude,
-              distance: Number(selectedDistance.replace(/km/g, "")),
-            });
-          } else {
-            setUserLocation(null);
-          }
-        },
-        (error) => {
-          // console.warn(error.message);
+      navigator.geolocation.getCurrentPosition(async (success: any) => {
+        const getCurrentLocation = await success.coords;
+
+        if (getCurrentLocation.latitude && getCurrentLocation.longitude) {
+          const updateUserLocation = { ...userLocation };
+          updateUserLocation.lat = getCurrentLocation.latitude;
+          updateUserLocation.long = getCurrentLocation.longitude
+          setUserLocation(updateUserLocation);
+        }
+      },
+        async (error: any) => {
           dispatch(
             openErrorModal({
-              title: "Location Error",
-              message: `${error.message}`,
+              title: "Location Access",
+              message: error.message
+            })
+          );
+          setPromotionTab("ALL");
+          setLoading(false);
+        });
+      setLoading(false);
+    }
+
+    if (userLocation.lat && userLocation.long) {
+      setLoading(true);
+      await getRequest(`${endpoints.outlet}?lat=${userLocation.lat}&long=${userLocation.long}&distance=${distance}`)
+        .then((result: any) => {
+          if (result.status === 200) {
+            setOutletList(result.data.data);
+            setLoading(false);
+            return;
+          }
+          dispatch(
+            openErrorModal({
+              title: "Something Went Wrong!",
+              message: INTERNAL_SERVER,
               theme: "error",
             })
           );
-        }
-      );
-    } else {
-      // console.error("Geolocation is not supported by this browser.");
-      dispatch(
-        openErrorModal({
-          title: "Location Error",
-          message: "Geolocation is not supported by this browser.",
-          theme: "error",
+          setLoading(false);
         })
-      );
+        .catch(() => {
+          dispatch(
+            openErrorModal({
+              title: "Something Went Wrong!",
+              message: INTERNAL_SERVER,
+              theme: "error",
+            })
+          )
+          setLoading(false);
+        });
     }
-  }, [selectedDistance, navigator, promotionTab]);
-
-  const getOutlet = useCallback(async () => {
-    setLoading(true);
-
-    try {
-      const response: any = await getRequest("outlet", userLocation);
-
-      if (response.status === 200) {
-        setOutletList(response.data.data);
-        setLoading(false);
-      }
-    } catch (error) {
-      dispatch(
-        openErrorModal({
-          title: "Outlet Error",
-          message: "Failed to get outlets",
-          theme: "error",
-        })
-      );
-      setLoading(false);
-    }
-  }, [userLocation]);
-
-  console.log(`${endpoints.image}/${outletList[0]?.image?.image}`);
-  
-
-  const getEventSliders = async() => {
-    try{
-      const response: any = await getRequest("/event-slider");
-      if(response.status === 200) {
-      console.log(response);
-      setSlides(response.data.data)
-      }
-    } catch (error) {
-      dispatch(
-        openErrorModal({
-          title: "Event Slide Error",
-          message: "Failed to get events",
-          theme: "error",
-        })
-      );
-    }
+    setLoading(false);
   }
 
-  console.log(slides[0]?.cover_photo.image);
-  
-  
-  useEffect(() => {
-    getOutlet();
-  }, [getOutlet]);
+  /** Outlet Data Retrive Without GeoLocation */
+  const loadingOutlet = async () => {
+    setLoading(true);
+    await getRequest(endpoints.outlet)
+      .then((result: any) => {
+        if (result.status === 200) {
+          setOutletList(result.data.data);
+          setLoading(false);
+          return;
+        }
 
+        dispatch(
+          openErrorModal({
+            title: "Something Went Wrong!",
+            message: INTERNAL_SERVER,
+            theme: "error",
+          })
+        );
+        setLoading(false);
+      })
+      .catch(() => {
+        dispatch(
+          openErrorModal({
+            title: "Something Went Wrong!",
+            message: INTERNAL_SERVER,
+            theme: "error",
+          })
+        )
+        setLoading(false);
+      });
+  }
+
+  /** Loading GeoLoacation */
+  const loadingGeoLocation = useCallback(async () => {
+    setLoading(true);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (success: any) => {
+        const getCurrentLocation = await success.coords;
+
+        if (getCurrentLocation.latitude && getCurrentLocation.longitude) {
+          const updateUserLocation = { ...userLocation };
+          updateUserLocation.lat = getCurrentLocation.latitude;
+          updateUserLocation.long = getCurrentLocation.longitude;
+          setUserLocation(updateUserLocation);
+          updateUserLocation.distance = distance;
+          setPromotionTab("PROMOTION");
+        }
+      },
+        async () => {
+          setPromotionTab("ALL");
+        });
+    }
+  }, []);
+
+  /** Loading Event Slider */
+  const loadingEventSlider = useCallback(async () => {
+    setLoading(true);
+    const resultEventSlider: any = await getRequest(endpoints.eventSlider);
+
+    if (resultEventSlider.status === 200) {
+      setSlides(resultEventSlider.data.data);
+      setLoading(false);
+      return;
+    }
+    setLoading(false);
+  }, []);
+
+  /** Watch GeoLoacation */
   useEffect(() => {
-    getEventSliders()
-  },[])
+    loadingGeoLocation();
+  }, [loadingGeoLocation]);
+
+  /** Watch Promotion Tab */
+  useEffect(() => {
+    if (promotionTab && promotionTab === "ALL") {
+      loadingOutlet();
+      return;
+    }
+
+    if (promotionTab && promotionTab === "PROMOTION") {
+      loadingOutletWithLocation();
+      return;
+    }
+  }, [promotionTab]);
+
+  /** Watch Event Slider */
+  useEffect(() => {
+    loadingEventSlider();
+  }, [loadingEventSlider]);
+
+  /** Watch Distance */
+  useEffect(() => {
+    if(distance) {
+      loadingOutletWithLocation();
+    }
+  }, [distance]);
 
   return (
     <div className="partyreader-container relative max-w-[420px] mx-auto">
       {loading && <LoadingComponent />}
-      {/* <Header backgroundColor={"#000242"} /> */}
       <div className="partyreader-content h-[100vh]">
-        {/* <div className="partyreader-header">
-          <img className="hnk-image" src={hnkRefreshMusicImage} alt="HNK Refresh Music" title="HNK Refresh Music" />
-        </div> */}
-        {/* <img className="menubar-btn" src={menubarIcon} alt="HNK Refresh Music" title="HNK Refresh Music" /> */}
-
         <div className="slider-content-wrapper">
           <RotatingSlogan />
           <div className="party-content-wrapper">
-            <h1 className=" flex justify-start items-start gap-2 mx-auto text-primary-white text-white text-[40px]">
-              b,fae&mvJ...
-              <span className=" text-primary-white text-green">
-                bmyGJvJ...
-              </span>{" "}
-              <p className=" text-secondary-green ">?</p>{" "}
-            </h1>
+            <div className="outlet-promotion-title">
+              <img src={whereEvent} alt={imageTitle} title={imageTitle} />
+            </div>
             <p className="party-content px-[20px] font-medium leading-[19px]">
-              ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
-              စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
+              ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း <span className="hnk-effect"> Refresh Nights </span> တွေမှာ
+              စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို <span className="hnk-effect"> Music Event </span> တွေ
               ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
             </p>
-            {sliders.length > 0 && 
+
+            {slides && slides.length > 0 && (
               <div className="slidder-wrapper mt-[20px] mb-[20px]">
-              <EventSliderComponent autoPlay>
-                {slides?.map((slide, index) => (
-                  <div className="p-2" key={index}>
-                    {slide?.cover_photo.image &&
-                      <img
-                      src={`${endpoints.image}/${slide?.cover_photo.image}`}
-                      alt="HNK Refresh Music"
-                      className="slider-img"
-                      onClick={() => {
-                        setOpenEventModal(true);
-                        setDescription(slide.description);
-                        setTitle(slide.name);
-                      }}
-                    />
-                    }
-                    {!slide?.cover_photo.image &&
-                      <img
-                      src={slide1}
-                      alt="HNK Refresh Music"
-                      className="slider-img"
-                      onClick={() => {
-                        setOpenEventModal(true);
-                        setDescription(slide.description);
-                        setTitle(slide.name);
-                      }}
-                    />
-                    }
-                  </div>
-                ))}
-              </EventSliderComponent>
-            </div>
-            }
+                <EventSliderComponent autoPlay>
+                  {slides.map((slide, index) => (
+                    <div className="p-2" key={index}>
+                      {slide?.cover_photo.image &&
+                        <img
+                          src={`${endpoints.image}/${slide?.cover_photo.image}`}
+                          alt="HNK Refresh Music"
+                          className="slider-img"
+                          onClick={() => {
+                            setOpenEventModal(true);
+                            setDescription(slide.description);
+                            setTitle(slide.name);
+                          }}
+                        />
+                      }
+                    </div>
+                  ))}
+                </EventSliderComponent>
+              </div>
+            )}
           </div>
         </div>
         <div className="promotion-wrapper">
-          <h1 className=" text-secondary-green text-white text-[30px] text-center mt-[20px]">
-            Outlet <span className=" text-secondary-green">Promotion</span>
-          </h1>
+          <div className="outlet-promotion-title">
+            <img src={outletpromotionTitle} alt={imageTitle} title={imageTitle} />
+          </div>
           <p className="promotion-content px-[20px] font-medium leading-[19px]">
-            ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း Refresh Nights တွေမှာ
-            စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို Music Event တွေ
+            ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း <span className="hnk-effect"> Refresh Nights </span> တွေမှာ
+            စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို <span className="hnk-effect"> Music Event </span> တွေ
             ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
           </p>
           <div className="promotion-btn-group">
             <button
-              className={`btn-style ${promotionTab === true ? "active" : ""}`}
-              onClick={() => setPromotionTab(true)}
+              className={`btn-style ${promotionTab === 'PROMOTION' ? "active" : ""}`}
+              onClick={() => setPromotionTab("PROMOTION")}
             >
               <span className="button-label">Promotion</span>
               {arrow && (
@@ -274,8 +287,8 @@ const PartyReader = (props: btnProps) => {
               )}
             </button>
             <button
-              className={`btn-style ${promotionTab === false ? "active" : ""}`}
-              onClick={() => setPromotionTab(false)}
+              className={`btn-style ${promotionTab === "ALL" ? "active" : ""}`}
+              onClick={() => setPromotionTab("ALL")}
             >
               <span className="button-label">All</span>
               {arrow && (
@@ -294,22 +307,23 @@ const PartyReader = (props: btnProps) => {
               )}
             </button>
           </div>
-          {promotionTab && (
+          {promotionTab === "PROMOTION" && (
             <>
               <div className="nearby-container">
                 <span className="nearby-label">Near by</span>
                 <Select
-                  onOpenChange={(e: any) => setSelectChange(e)}
-                  defaultValue={selectedDistance}
-                  onValueChange={setSelectedDistance}
+                  defaultValue={distance}
+                  onValueChange={async (e) => {
+                    setDistance(e);
+                  }}
                 >
                   <SelectTrigger className="w-[80px] text-[#00F944] rounded-full border-[#00F944]">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="10km">10km</SelectItem>
-                    <SelectItem value="20km">20km</SelectItem>
-                    <SelectItem value="30km">30km</SelectItem>
+                    <SelectItem value="10">10 km </SelectItem>
+                    <SelectItem value="20">20 km </SelectItem>
+                    <SelectItem value="30">30 km </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -321,21 +335,15 @@ const PartyReader = (props: btnProps) => {
               <button
                 key={index}
                 className="outlet-items w-[150px] md:w-[180px]"
-                onClick={() => selectChange !== true && openModal(item)}
+                onClick={() => openModal(item)}
               >
-                {item?.image?.image && 
+                {item?.image?.image &&
                   <img
-                  src={`${endpoints.image}/${item?.image?.image}`}
-                  alt="HNK Fresh Drink"
-                  className="outlet_img min-w-[150px] md:min-w-[180px]"
-                />
-                }
-                {!item?.image?.image &&
-                  <img
-                  src={outlet}
-                  alt="HNK Fresh Drink"
-                  className="outlet_img min-w-[150px] md:min-w-[180px]"
-                />
+                    src={`${endpoints.image}/${item?.image?.image}`}
+                    alt={imageTitle}
+                    title={imageTitle}
+                    className="outlet_img min-w-[150px] md:min-w-[180px]"
+                  />
                 }
                 <p className="outlet_name w-full !pt-[10px]">{item.name}</p>
               </button>
@@ -345,13 +353,15 @@ const PartyReader = (props: btnProps) => {
             <img
               style={{ width: "100%" }}
               src={footerImg}
-              alt="Henineken"
-              title="Henineken"
+              alt={imageTitle}
+              title={imageTitle}
             />
             <div>
               <img
                 className="absolute z-50 bottom-[100px] left-[20px]"
                 src={enjoyLogo}
+                alt={imageTitle}
+                title={imageTitle}
               />
             </div>
           </div>

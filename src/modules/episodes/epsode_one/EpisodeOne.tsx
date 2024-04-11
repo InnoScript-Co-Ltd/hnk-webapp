@@ -1,3 +1,10 @@
+/** 
+Component Name              - Ep01 Page Component
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import { useCallback, useEffect, useState } from 'react'
 import RotatingSlogan from '@/components/RotatingSlogan'
 import titleIllu from '../../../assets/images/randr/episode_1/titleIllu.png'
@@ -7,12 +14,13 @@ import ButtonComponent from '@/components/ButtonComponent'
 import enjoyLogo from '../../../assets/images/HomePage/enjoyLogo.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { getGenre } from '@/lib/randrApi'
 import { IGenrereResponse } from '@/models/genre.model'
 import LoadingComponent from '@/components/LoadingComponent.tsx'
 import { openModal } from '@/store/modalSlice'
-import './style.css'
 import { endpoints } from '@/constants/endpoints'
+import { getRequest } from '@/lib/axios'
+import { INTERNAL_SERVER, imageTitle } from '@/constants/config'
+import './style.css'
 
 const EpisodeOne = () => {
   const [boxState, setBoxState] = useState<IGenrereResponse>({
@@ -23,11 +31,12 @@ const EpisodeOne = () => {
     rate: '',
     status: ''
   });
-  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [genreList, setGenreList] = useState([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const voteHandler = (data: IGenrereResponse) => {
     setBoxState(data)
@@ -39,17 +48,19 @@ const EpisodeOne = () => {
 
   const loadGenreData = useCallback(async () => {
     setLoading(true);
-    await getGenre().then((response) => {
-      setGenreList(response.data.data);
+    const genreResult: any = await getRequest(`${endpoints.genre}`);
+
+    if(genreResult.status === 200) {
+      setGenreList(genreResult.data.data);
       setLoading(false);
-    }).catch((error) => {
+    } else {
       dispatch(openModal({
-        title: 'Error loading Genres',
-        message: `${error.response.data.message}. Please check your data and try again later.`,
+        title: 'Something Went Wrong!',
+        message: INTERNAL_SERVER,
         theme: 'error'
       }));
       setLoading(false);
-    });
+    }
   }, [dispatch]);
 
   useEffect(() => {
@@ -66,13 +77,11 @@ const EpisodeOne = () => {
       <div className='ep1-container'>
         <RotatingSlogan />
         <div className='section-wrapper'>
-          <img src={titleIllu} />
+          <img src={titleIllu} alt={imageTitle} title={imageTitle} />
           <p className='section-title'>
           <span className='bold-text'> Refresh with Take Care by Double J </span> ကို ဘယ်လို <span className='bold-text'> Music Style </span> နဲ နားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ 
             {/* vGrf;ydkif&JY   <span className='bold-text'>wpf&mwef</span>  udk
             b,fvdkyHkpHeJY     <span className='bold-text'>em;axmifcsifvJ...?</span> */}
-            {/* လွှမ်းပိုင်ရဲ့ <span className='bold-text'>တစ်ရာတန်</span>ကို<br/>
-              ဘယ်လိုပုံစံနဲ့ <span className='bold-text'>နားထောင်ချင်လဲ...<span className='question-mark'>?</span></span> */}
           </p>
         </div>
         <div className='genre-select'>
@@ -102,10 +111,10 @@ const EpisodeOne = () => {
             <ButtonComponent disabled={boxState.id === ''} minWidth='187px' label='Done' onBtnClick={onDoneClick} />
           </div>
         </div>
-        <img className='ep1-enjoy' src={enjoyLogo} />
+        <img className='ep1-enjoy' src={enjoyLogo} alt={imageTitle} title={imageTitle} />
         <div className='footer-wrapper'>
-          <img className='earphone' src={earphone} />
-          <img className='mp3Player' src={mp3Player} />
+          <img className='earphone' src={earphone} alt={imageTitle} title={imageTitle} />
+          <img className='mp3Player' src={mp3Player} alt={imageTitle} title={imageTitle} />
         </div>
       </div>
     </>

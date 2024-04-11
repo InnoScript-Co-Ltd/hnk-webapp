@@ -1,13 +1,13 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import logoIcon from "../assets/images/HomePage/logo.png";
 import slogan from "../assets/images/HomePage/slogan.png";
-import "./style.css";
 import { useEffect, useState } from "react";
 import Navigation from "./Navigation";
 import { AnimatePresence } from "framer-motion"
 import { useSelector } from "react-redux";
 import { IReducer } from "@/store/store";
 import ModalComponent from "@/components/ModalComponent";
+import "./style.css";
 
 const DefaultLayout = () => {
   const location = useLocation();

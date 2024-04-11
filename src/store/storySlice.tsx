@@ -1,4 +1,11 @@
-import { USER_JOURNEY } from '@/constants/keys';
+/** 
+Component Name              - User Redux Slice
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
+import { USER_JOURNEY } from '@/constants/config';
 import { USER_STORY } from '@/models/story.model';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -20,7 +27,6 @@ const storySlice = createSlice({
   initialState,
   reducers: {
     storyUpdate(state: USER_STORY | null, action: PayloadAction<USER_STORY>) {
-      
       state = action.payload;
       localStorage.setItem(USER_JOURNEY, JSON.stringify(action.payload));
       return state;

@@ -1,3 +1,10 @@
+/** 
+Component Name              - App Redux Store
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import { configureStore } from '@reduxjs/toolkit';
 import storyReducer from "./storySlice";
 import modalReducer from './modalSlice';

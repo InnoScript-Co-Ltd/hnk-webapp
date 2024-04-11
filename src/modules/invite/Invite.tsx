@@ -1,5 +1,11 @@
+/** 
+Component Name              - Register Complete Invite Component [Page]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import { useState } from "react";
-import "./style.css";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import earphone from "../../assets/images/randr/episode_1/earphone.png";
 import mp3Player from "../../assets/images/randr/episode_1/mp3Player.png";
@@ -13,7 +19,8 @@ import ShareModalComponent from "@/components/ShareModalComponent";
 import { AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 import { USER_STORY } from "@/models/story.model";
-// import { Header } from "@/components/Header";
+import { imageTitle } from "@/constants/config";
+import "./style.css";
 
 const Invite = () => {
     const navigate = useNavigate();
@@ -21,10 +28,6 @@ const Invite = () => {
 
     const onShare = () => {
         setOpenShareModel(true);
-    };
-
-    const onGoBack = () => {
-        navigate("/party-radar");
     };
 
     const modalCloseHandler = () => {
@@ -43,13 +46,15 @@ const Invite = () => {
                         <ShareModalComponent closeModal={modalCloseHandler} />
                     )}
                 </AnimatePresence>
-                {/* <Header backgroundColor="#000242" /> */}
+
                 <RotatingSlogan />
 
                 <div className="invite-section-wrapper relative">
                     <img
                         className=" absolute -top-[58px] left-[5px]"
                         src={bottle}
+                        alt={imageTitle}
+                        title={imageTitle}
                     />
                     <div className="invite-section">
                         <p className="user-name">Hello {story.name} </p>
@@ -59,12 +64,15 @@ const Invite = () => {
                         <img
                             className="feed-back-stars"
                             src={feedbackStar}
-                            alt="feedbackStar"
+                            alt={imageTitle}
+                            title={imageTitle}
                         />
                     </div>
                     <img
                         className=" absolute top-[100px] right-[5px]"
                         src={hand}
+                        alt={imageTitle}
+                        title={imageTitle}
                     />
                     <div className="share-back-btn">
                         <ButtonComponent
@@ -78,15 +86,15 @@ const Invite = () => {
                             minWidth="300px"
                             arrow
                             label="Go to Campaign Info"
-                            onBtnClick={onGoBack}
+                            onBtnClick={() => navigate("/campign-info")}
                         />
                     </div>
                 </div>
 
-                <img className="invite-enjoy" src={enjoyLogo} />
+                <img className="invite-enjoy" src={enjoyLogo} alt={imageTitle} title={imageTitle} />
                 <div className="invite-footer">
-                    <img className="earphone" src={earphone} />
-                    <img className="mp3Player" src={mp3Player} />
+                    <img className="earphone" src={earphone} alt={imageTitle} title={imageTitle} />
+                    <img className="mp3Player" src={mp3Player} alt={imageTitle} title={imageTitle} />
                 </div>
             </div>
         </>
