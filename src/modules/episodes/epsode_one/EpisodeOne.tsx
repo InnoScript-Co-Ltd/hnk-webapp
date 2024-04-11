@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getGenre } from '@/lib/randrApi'
 import { IGenrereResponse } from '@/models/genre.model'
-import { IMAGE_ROUTE } from '@/constants/keys'
 import LoadingComponent from '@/components/LoadingComponent.tsx'
 import { openModal } from '@/store/modalSlice'
 import './style.css'
+import { endpoints } from '@/constants/endpoints'
 
 const EpisodeOne = () => {
   const [boxState, setBoxState] = useState<IGenrereResponse>({
@@ -34,7 +34,7 @@ const EpisodeOne = () => {
   }
 
   const onDoneClick = async () => {
-    navigate(`/term-and-condition/${boxState.name}`)
+    navigate(`/register/${boxState.name}`)
   }
 
   const loadGenreData = useCallback(async () => {
@@ -68,7 +68,7 @@ const EpisodeOne = () => {
         <div className='section-wrapper'>
           <img src={titleIllu} />
           <p className='section-title'>
-            Refresh with <span className='bold-text'> Double J </span>
+          <span className='bold-text'> Refresh with Take Care by Double J </span> ကို ဘယ်လို <span className='bold-text'> Music Style </span> နဲ နားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ 
             {/* vGrf;ydkif&JY   <span className='bold-text'>wpf&mwef</span>  udk
             b,fvdkyHkpHeJY     <span className='bold-text'>em;axmifcsifvJ...?</span> */}
             {/* လွှမ်းပိုင်ရဲ့ <span className='bold-text'>တစ်ရာတန်</span>ကို<br/>
@@ -86,7 +86,7 @@ const EpisodeOne = () => {
                 <button
                   onClick={() => voteHandler(data)}
                   style={{
-                    backgroundImage: `url(${IMAGE_ROUTE}/${data.icon?.image})`,
+                    backgroundImage: `url(${endpoints.image}/${data.icon?.image})`,
                     boxShadow: boxState.id === data.id ? `3px 5px 0px 0px ${data.color}, 4px 6px 0px 0px #000, 0px 0px 25px 10px ${data.color}` : `3px 5px 0px 0px ${data.color}, 4px 6px 0px 0px #000`,
                   }}
                   key={index}

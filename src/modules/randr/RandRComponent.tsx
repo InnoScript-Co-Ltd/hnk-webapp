@@ -106,7 +106,7 @@ const RandRComponent = () => {
             </div>
             <div className={styles.level_section}>
                 <p className={styles.level_title}>
-                    Reconstruct <span style={{ color: 'white' }}>and</span> Refresh
+                    ပြောင်းလဲဆန်းသစ် ဂီတခံစားမှုအသစ်
                 </p>
 
                 <div className={styles.ep_section}>
@@ -120,7 +120,7 @@ const RandRComponent = () => {
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
-                                    Refresh Your Music X Double J
+                                Take Care by Double J ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
                                 </p>
                             </div>
 
