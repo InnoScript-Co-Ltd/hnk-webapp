@@ -10,7 +10,7 @@ const navigation = [
         path: '/home'
     },
     {
-        name: 'R&R',
+        name: 'ပြောင်းလဲဆန်းသစ်ရန်',
         path: '/randr'
     },
     {
@@ -20,6 +20,10 @@ const navigation = [
     {
         name: 'Invitation',
         path: '/invitation'
+    },
+    {
+        name: 'MOFT',
+        path: '/moft'
     }
 ]
 

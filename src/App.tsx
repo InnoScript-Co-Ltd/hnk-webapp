@@ -65,15 +65,15 @@ const App = () => {
                     path: "/term-and-condition/:vote",
                     element: lazyLoad(<Termsandconditions />),
                 },
+                {
+                    path: "/moft/",
+                    element: lazyLoad(<Moft />),
+                },
             ],
         },
         {
             path: "/register/:vote",
             element: lazyLoad(<Register />),
-        },
-        {
-            path: "/moft/",
-            element: lazyLoad(<Moft />),
         },
     ]);
     return (

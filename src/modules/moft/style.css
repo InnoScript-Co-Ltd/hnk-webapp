@@ -76,7 +76,12 @@
     text-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 1);
     /* text-shadow: -2px 3px 0px #000000; */
     -webkit-text-stroke: 0.5px #000000;
+    -moz-text-stroke: 0.5px #000000;
+    -o-text-stroke: 0.5px #000000;
+    -ms-text-stroke: 0.5px #000000;
     -moz-text-shadow: 2px 3px 0px #000000;
+    -o-text-shadow: 2px 3px 0px #000000;
+    -ms-text-shadow: 2px 3px 0px #000000;
   }
   
   .promotion-title-mm {
@@ -86,13 +91,16 @@
     font-weight: 900;
     text-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 1);
     /* text-shadow: -2px 3px 0px #000000; */
-    -webkit-text-stroke: 0.5px #000000;
     -moz-text-shadow: 2px 3px 0px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    -moz-text-stroke: 0.5px #000000;
+    -o-text-stroke: 0.5px #000000;
+    -ms-text-stroke: 0.5px #000000;
   }
   
   .promotion-date {
     color: white;
-    font-family: "natosansmm";
+    font-family: "hanikenSerif";
     font-size: 12px;
     font-weight: 400;
   }
@@ -112,8 +120,11 @@
     font-weight: 700;
     text-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 1);
     /* text-shadow: -2px 3px 0px #000000; */
-    -webkit-text-stroke: 0.5px #000000;
     -moz-text-shadow: 2px 3px 0px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    -moz-text-stroke: 0.5px #000000;
+    -o-text-stroke: 0.5px #000000;
+    -ms-text-stroke: 0.5px #000000;
   }
   
   .prize-container {
