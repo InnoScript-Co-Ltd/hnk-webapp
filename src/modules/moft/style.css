@@ -148,7 +148,7 @@ ul {
 ul li {
     color: white;
     list-style-type: circle;
-    
+    margin-bottom: 20px;
 }
 
 .footer-imgs{
