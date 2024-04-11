@@ -1,3 +1,10 @@
+/** 
+Component Name              - HOme Page Component [style.css]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 .home-container{
     background-image: url('../../assets/images/HomePage/landingBg.png');
     background-position: center;
@@ -24,12 +31,6 @@
     border-radius: 10px;
 }
 
-.redStar{
-    margin: 0 10px;
-    width: 20px;
-    height: 18px;
-}
-
 .right-illu{
     position: absolute;
     right: 0;
@@ -45,10 +46,11 @@
 .content-texts{
     width: 100%;
     margin-top: 10px;
-    font-family: hanikenSerif;
-    font-size: 12px;
+    font-family: natosansmm;
+    font-size: 14px;
     line-height: 25px;
     color: #FFFFFF;
+    font-weight: 500;
 }
 
 .content-texts > p {
@@ -59,49 +61,52 @@
     color: #00ff70;
     font-weight: bolder;
     font-family: hanikenSerif;
+    font-size: 14px;
 }
 
 .link-text {
     width: 100%;
     display: inline-block;
     text-align: center;
-    font-family: hanikenSerif;
+    font-family: natosansmm;
+    font-weight: 900;
+}
+
+.link-text > label {
+    cursor: pointer;
 }
 
 .caption-text-party-radar {
     width: calc(100% - 20px);
     position: absolute;
     top: -50px;
-    font-family: hanikenSerif;
+    font-family: natosansmm;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 800;
+    text-shadow: 3px 3px #000000;
 }
 
 .caption-text-party-radar-bottom {
     width: 100%;
-    font-family: hanikenSerif;
+    font-family: natosansmm;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     position: absolute;
     bottom: 0px;
     padding-left: 20px;
     font-weight: 800;
+    text-shadow: 3px 3px #000000;
+}
+
+.caption-text-party-radar-bottom > label,
+.caption-text-party-radar > label {
+    font-family: hanikenSerif;
 }
 
 .link-text > label {
     text-decoration: underline;
     line-height: 20px;
-}
-
-.seemore-text {
-    font-family: hanikenSerif;
-    text-decoration: underline;
-    font-size: 12px;
-}
-
-.link {
-    color: #08084a;
 }
 
 .content-illu{
@@ -117,12 +122,6 @@
     position: absolute;
     top: -71px;
     right: 0;
-}
-
-@media only screen and (max-width: 420px) {
-    .top-slogan{
-        width: 97%;
-    }
 }
 
 .rader{
@@ -164,7 +163,7 @@
 
 .content-section-2{
     width: 100%;
-    height: 270px;
+    height: 300px;
     background-color: #040658;
     position: relative;
 }
@@ -195,5 +194,13 @@
 .fix-btn {
     width: 200px;
     padding: 10px;
-    bottom: 32px;
+    bottom: 65px;
 }
+
+
+@media only screen and (max-width: 420px) {
+    .top-slogan{
+        width: 97%;
+    }
+}
+

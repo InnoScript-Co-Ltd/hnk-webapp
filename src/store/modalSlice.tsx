@@ -1,3 +1,10 @@
+/** 
+Component Name              - Moddal Redux Slice
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import { IModal } from '@/models/reduxmodal.model';
 import { createSlice } from '@reduxjs/toolkit';
 

@@ -1,6 +1,19 @@
+/** 
+Component Name              - Refresh Music Component
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
+// import { getRequest } from '@/lib/axios';
+// import { endpoints } from '@/constants/endpoints';
+// import { useDispatch } from 'react-redux';
+// import { openModal } from '@/store/modalSlice';
+// import SlideShowImageContainer from '@/components/SlideShowImageContainer';
+// import SliderComponent from '@/components/SliderComponent';
+// import { useCallback, useEffect, useState } from 'react';
+
 import RotatingSlogan from '@/components/RotatingSlogan'
-import SlideShowImageContainer from '@/components/SlideShowImageContainer';
-import SliderComponent from '@/components/SliderComponent';
 import ep1 from '../../assets/svgs/ep01.svg';
 import ep2 from '../../assets/images/randr/ep2.png'
 import ep3 from '../../assets/images/randr/ep3.png'
@@ -10,82 +23,64 @@ import enjoyLogo from '../../assets/images/HomePage/enjoyLogo.png'
 import footerImg from '../../assets/images/randr/randrfooter.png'
 import { IoIosStarOutline } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
-import styles from './style.module.css'
-// import bgImage from '../../assets/images/util_imgs/bgtest.png'
-import { useCallback, useEffect, useState } from 'react';
-import { getRequest } from '@/lib/axios';
-import { endpoints } from '@/constants/endpoints';
+import { useEffect, useState } from 'react';
 import LoadingComponent from '@/components/LoadingComponent.tsx';
-import { useDispatch } from 'react-redux';
-import { openModal } from '@/store/modalSlice';
-
-// const singerDummy = [
-//     {
-//         id: 1,
-//         singerName: 'Wai La',
-//         singerSlogan: 'Refresh Rock',
-//         color: '#FF00F5',
-//         image: bgImage
-//     },
-//     {
-//         id: 2,
-//         singerName: 'Aung La',
-//         singerSlogan: 'Refresh Pop',
-//         color: '#33FF64',
-//         image: bgImage
-//     },
-//     {
-//         id: 1,
-//         singerName: 'SCY',
-//         singerSlogan: 'Refresh Hip Hop',
-//         color: '#87CEEB',
-//         image: bgImage
-//     },
-// ]
+import { imageTitle, loadingTimeOut } from '@/constants/config';
+import styles from './style.module.css'
 
 const RandRComponent = () => {
+    const [loading, setLoading] = useState<boolean>(true);
+    // const [singerSlider, setSingerSlider]: any = useState([]);
+
     const navigate = useNavigate();
-    const [singerSlider, setSingerSlider] :any = useState([]);
-    const [loading, setLoading] = useState<boolean>(false);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const EpOneCLickHandler = () => {
         navigate('/randr/episode-1')
     }
 
-    const onClickSinger = (id: string) => {
-        navigate('/play/' + id);
-    }
+    // const onClickSinger = (id: string) => {
+    //     navigate('/play/' + id);
+    // }
 
-    const loadingSingerSlider = useCallback(async () => {
-        setLoading(true);
-        const result: any = await getRequest(`${endpoints.singerSlider}`);
+    /**
+     * Info[ singer slider code is wrok and complete.]
+     * Singer is tempory disable by client request 
+     * 
+     */
 
-        if(result.status === 200) {
-            setLoading(false);
-            setSingerSlider(result.data.data);
-        }else{
-            setLoading(false);
-            dispatch(openModal({
-                title: 'Error loading Genres',
-                message: `${result?.data?.message}. Please check your data and try again later.`,
-                theme: 'error'
-              }));
-        }
-    }, []);
+    // const loadingSingerSlider = useCallback(async () => {
+    //     setLoading(true);
+    //     const result: any = await getRequest(`${endpoints.singerSlider}`);
 
+    //     if(result.status === 200) {
+    //         setLoading(false);
+    //         setSingerSlider(result.data.data);
+    //     }else{
+    //         setLoading(false);
+    //         dispatch(openModal({
+    //             title: 'Error loading Genres',
+    //             message: `${result?.data?.message}. Please check your data and try again later.`,
+    //             theme: 'error'
+    //           }));
+    //     }
+    // }, [dispatch]);
+
+    // useEffect(() => {
+    //     loadingSingerSlider();
+    // }, [loadingSingerSlider]);
+
+    { /* setTimeout need to disable when slider component is enabled */}
     useEffect(() => {
-        loadingSingerSlider();
-    }, [loadingSingerSlider]);
+        setTimeout(() => {
+            setLoading(false);
+        }, loadingTimeOut);
+    }, []);
 
     return (
         <div className={styles.page_container}>
-            {
-                loading && (
-                    <LoadingComponent />
-                )
-            }
-            <div className={styles.slider_container}>
+            { loading && ( <LoadingComponent />) }
+            {/* <div className={styles.slider_container}>
                 <RotatingSlogan />
                 <SliderComponent
                     autoPlay
@@ -103,7 +98,10 @@ const RandRComponent = () => {
                         ))
                     }
                 </SliderComponent>
-            </div>
+            </div> */}
+
+            <RotatingSlogan /> { /** Rotating Slogan is need to disable when slider component is enable **/}
+
             <div className={styles.level_section}>
                 <p className={styles.level_title}>
                     ပြောင်းလဲဆန်းသစ် ဂီတခံစားမှုအသစ်
@@ -115,17 +113,17 @@ const RandRComponent = () => {
                     </svg>
 
                     <div className={styles.flex_relative}>
-                        <img src={ep1} />
-                        <div className={styles.ep_right_text} style={{position: "relative", right: "30px"}}>
+                        <img src={ep1} alt={imageTitle} title={imageTitle} />
+                        <div className={styles.ep_right_text} style={{ position: "relative", right: "30px" }}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
-                                Take Care by Double J ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
+                                    Take Care by Double J ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
                                 </p>
                             </div>
 
                             <div className={styles.ep_btn}>
-                                <button className={styles.btn_style} onClick={EpOneCLickHandler} style={{width: "170px"}}>
+                                <button className={styles.btn_style} onClick={EpOneCLickHandler} style={{ width: "170px" }}>
                                     <span className={styles.button_label}>  Refresh with Double J </span>
                                 </button>
                                 {/* <ButtonComponent label='Refresh with Double J' onBtnClick={EpOneCLickHandler} /> */}
@@ -139,7 +137,7 @@ const RandRComponent = () => {
                     <svg className={styles.svg_line_2} width="420" height="395" viewBox="0 0 390 395" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M-30.5 0.5H81.5C97.5163 0.5 110.5 13.4837 110.5 29.5V172.5H400L493.5 129.5L408.5 249.5H316.5C301.036 249.5 288.5 262.036 288.5 277.5V394H102.5H-60" stroke="#00FF0A"></path>
                     </svg>
-                    <div className={styles.top_adj_200} style={{justifyContent: 'flex-end'}}>
+                    <div className={styles.top_adj_200} style={{ justifyContent: 'flex-end' }}>
                         <div className={styles.ep_right_text} style={{ top: "-20px", position: "relative" }}>
                             {/* <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
@@ -152,7 +150,7 @@ const RandRComponent = () => {
                                 <ButtonComponent disabled={true} label='Episode-2' onBtnClick={EpOneCLickHandler} />
                             </div> */}
                         </div>
-                        <img src={ep2} style={{position: "relative", right: "22px"}} />
+                        <img src={ep2} style={{ position: "relative", right: "22px" }} alt={imageTitle} title={imageTitle} />
                     </div>
                 </div>
 
@@ -162,7 +160,7 @@ const RandRComponent = () => {
                     </svg>
 
                     <div className={styles.flex_relative}>
-                        <img src={ep3} style={{ top: "-440px", position: "relative", left: "20px" }} />
+                        <img src={ep3} style={{ top: "-440px", position: "relative", left: "20px" }} alt={imageTitle} title={imageTitle} />
                         {/* <div className={styles.ep_right_text} style={{ top: "-435px", position: "relative" }}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
@@ -177,7 +175,7 @@ const RandRComponent = () => {
                         </div> */}
                     </div>
 
-                    <div className={styles.flex_relative} style={{justifyContent: "flex-end"}}>
+                    <div className={styles.flex_relative} style={{ justifyContent: "flex-end" }}>
                         {/* <div className={styles.ep_right_text} style={{ top: "-435px", position: "relative" }}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
@@ -191,11 +189,11 @@ const RandRComponent = () => {
                             </div>
                         </div> */}
 
-                        <img src={ep4} style={{ top: "-430px", position: "relative", right: "-30px" }} />
+                        <img src={ep4} style={{ top: "-430px", position: "relative", right: "-30px" }}  alt={imageTitle} title={imageTitle}/>
                     </div>
 
                     <div className={styles.flex_relative}>
-                        <img src={ep5} style={{ top: "-400px", position: "relative", left: "20px" }} />
+                        <img src={ep5} style={{ top: "-400px", position: "relative", left: "20px" }} alt={imageTitle} title={imageTitle} />
                         {/* <div className={styles.ep_right_text} style={{ top: "-390px", position: "relative" }}>
                             <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
@@ -258,13 +256,12 @@ const RandRComponent = () => {
                 <path d="M-66 1H129C138.389 1 146 8.61116 146 18V69" stroke="#00FF0A"/>
             </svg> */}
 
-                <img width={'100%'} src={footerImg} />
-
-                <img className={styles.randr_enjoy} src={enjoyLogo} />
+                <img width={'100%'} src={footerImg} alt={imageTitle} title={imageTitle} />
+                <img className={styles.randr_enjoy} src={enjoyLogo} alt={imageTitle} title={imageTitle} />
 
             </div>
         </div>
     )
 }
 
-export default RandRComponent
+export default RandRComponent;

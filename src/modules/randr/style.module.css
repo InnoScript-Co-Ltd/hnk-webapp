@@ -1,3 +1,10 @@
+/** 
+Component Name              - Refresh Music Component [style]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 .page_container{
     width: 100%;
     position: relative;
@@ -6,7 +13,6 @@
 }
 
 .slider_container{
-    /* position: absolute; */
     width: 100%;
     margin-top: 100px;
     display: block;
@@ -222,37 +228,6 @@
     align-items: center;
 }
 
-@media only screen and (min-width: 375px) {
-    .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
-        right: 0;
-    }
-
-    .randr_enjoy{
-        right: 22px;
-        bottom: 173px;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-    .ep_btn {
-        position: relative;
-        top: -35px;
-    }
-}
-
-@media only screen and (min-width: 420px) {
-    .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
-        right: 20px;
-    }
-    .randr_enjoy{
-    right: 30px;
-    bottom: 192px;
-    }
-}
-
-@media only screen {
-    
-}
 
 .btn_style{
     font-size: 18px;
@@ -301,6 +276,35 @@
     font-family: hanikenSerif;
     font-weight: 600;
     margin-right: 10px;
+}
+
+
+@media only screen and (min-width: 375px) {
+    .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
+        right: 0;
+    }
+
+    .randr_enjoy{
+        right: 22px;
+        bottom: 173px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .ep_btn {
+        position: relative;
+        top: -35px;
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    .ep1-btn-label, .ep3-btn-label, .ep1, .ep4, .ep2, .ep5-btn-label{
+        right: 20px;
+    }
+    .randr_enjoy{
+    right: 30px;
+    bottom: 192px;
+    }
 }
 
 @keyframes btnAnimation {

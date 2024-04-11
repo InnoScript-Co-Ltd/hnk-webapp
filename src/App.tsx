@@ -1,3 +1,10 @@
+/** 
+Component Name              - Entry Point & App Routing
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
@@ -5,8 +12,6 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import LoadingComponent from "./components/LoadingComponent.tsx";
 import { lazy, ReactElement, Suspense } from "react";
 import { Toaster } from "./components/ui/toaster.tsx";
-import Invitation from "./modules/invitation/Invitation.tsx";
-import Moft from "./modules/moft/Moft.tsx";
 
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
@@ -17,8 +22,10 @@ const Register = lazy(() => import("./modules/register/Register"));
 const AgeGate = lazy(() => import("./modules/ageGate/AgeGate"));
 const Invite = lazy(() => import("./modules/invite/Invite"));
 const RandRComponent = lazy(() => import("./modules/randr/RandRComponent"));
-const Moft = lazy(() => import("./modules/moft/Moft.tsx"));
+const Moft = lazy(() => import("@/modules/moft/Moft.tsx"));
 const Invitation = lazy(() => import("./modules/invitation/Invitation.tsx"));
+const CampignInfo = lazy(() => import("./modules/campignInfo/index.tsx"));
+
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
 };
@@ -68,8 +75,12 @@ const App = () => {
                     element: lazyLoad(<Termsandconditions />),
                 },
                 {
-                    path: "/moft/",
+                    path: "/moft",
                     element: lazyLoad(<Moft />),
+                },
+                {
+                    path: "/campign-info",
+                    element: lazyLoad(<CampignInfo />),
                 },
             ],
         },

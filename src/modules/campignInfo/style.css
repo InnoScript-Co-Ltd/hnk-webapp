@@ -1,8 +1,8 @@
 /** 
-Component Name              - TermsAndCondition Page Component [style.css]
+Component Name              - Campign Info Page Component [style.css]
 Development By              - InnoScript Co., Ltd
 Date                        - 11/04/2024
-Email                       - tech@innoscript.co
+Email                       - info@innoscript.co
 **/
 
 .bg-tandc {
@@ -10,7 +10,7 @@ Email                       - tech@innoscript.co
     background-size: cover;
 }
 
-.tc-list-wrapper {
+.campign-list-wrapper {
     padding: 10px;
     line-height: 25px;
 }
@@ -20,9 +20,9 @@ Email                       - tech@innoscript.co
     font-size: 14px;
 }
 
-.tc-list {
+.campign-list {
     list-style: circle;
     margin-bottom: 20px;
-    font-family: natosansmm;
     font-size: 14px;
+    font-family: natosansmm;
 }

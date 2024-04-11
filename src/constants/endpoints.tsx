@@ -1,20 +1,29 @@
+/** 
+Component Name              - Api Endpoints [Constant Global Data]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 export const env = 2;
 
 const baseUrls = [
-    "http://localhost:8000/api", "http://hnk-api.innoscript.co/api", "https://api.refreshyourmusichnk.com/api"
+    "http://localhost:8000", "http://hnk-innoscript.co", "https://refreshyourmusichnk.com"
 ];
 
-const imageUrls = [
-   "http://localhost:8000", "http://hnk-api.innoscript.co", "http://api.refreshyourmusichnk.com"
+const serverURLs = [
+    "http://localhost:8000", "http://hnk-api.innoscript.co", "https://api.refreshyourmusichnk.com"
 ];
 
 export const baseURL = baseUrls[env];
-export const serverURL = baseUrls[env];
-const imageUrl = imageUrls[env];
+export const serverURL = `${serverURLs[env]}/api`;
 
 export const endpoints = {
     user: '/user',
-    image: `${imageUrl}/storage/images`,
-    audio: `${imageUrl}/storage/audio`,
-    singerSlider: "singer-in-song"
+    image: `${serverURLs[env]}/storage/images`,
+    audio: `${serverURLs[env]}/storage/audio`,
+    singerSlider: "singer-in-song",
+    genre: "/genre",
+    outlet: "/outlet",
+    eventSlider: "/event-slider"
 }

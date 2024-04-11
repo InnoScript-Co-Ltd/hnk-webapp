@@ -1,4 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/** 
+Component Name              - Register Page Component
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import hnkELogo from "@/assets/images/hnk_e_logo_medium.png";
 import mask from "@/assets/images/mask.png";
 import hnkBottle from "@/assets/images/hnk_bottle.png";
@@ -6,20 +12,20 @@ import guitter from "@/assets/images/guiter.png";
 import footerImg from "@/assets/images/footer.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import ButtonComponent from "@/components/ButtonComponent";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
-import { endpoints, serverURL } from "@/constants/endpoints";
+import { endpoints } from "@/constants/endpoints";
 import { storyUpdate } from "@/store/storySlice";
 import { useDispatch, useSelector } from "react-redux";
 import ModalComponent from "@/components/ModalComponent";
 import { AnimatePresence } from "framer-motion";
 import { IReducer } from "@/store/store";
 import { openModal } from "@/store/modalSlice";
-import "./style.css";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { postRequest } from "@/lib/axios";
+import { INTERNAL_SERVER, favouriteGenres, imageTitle } from "@/constants/config";
+import "react-datepicker/dist/react-datepicker.css";
+import "./style.css";
 
 const Register = () => {
   const [payload, setPayload] = useState({
@@ -31,14 +37,7 @@ const Register = () => {
     fav_music: [],
   });
 
-  const [favMusic, setFav]: any = useState([
-    { label: "Hip-Hop", value: "Hip-Hop", is_checked: false },
-    { label: "RnB", value: "RnB", is_checked: false },
-    { label: "Pop", value: "Pop", is_checked: false },
-    { label: "Rock", value: "Rock", is_checked: false },
-    { label: "Classical", value: "Classical", is_checked: false },
-    { label: "Others", value: "Others", is_checked: false }
-  ]);
+  const [favMusic, setFav]: any = useState(favouriteGenres);
   const [isLoading, setIsLoading] = useState(false)
   const modal = useSelector((state: IReducer) => state.modal);
   const dispath = useDispatch();
@@ -71,42 +70,41 @@ const Register = () => {
       return;
     }
 
-    try {
+    const getFav: any = [];
 
-      const getFav: any= [];
-
-      favMusic.filter((value: any) => {
-        if(value.is_checked === true) {
-          getFav.push(value.value);
-        }
-      });
-
-      const updatePayload = {...payload};
-      updatePayload.fav_music = getFav;
-      
-      setIsLoading(true);
-      const response = await axios.post(`${serverURL}${endpoints.user}`,updatePayload);
-
-      if(response.status === 200) {
-        dispath(storyUpdate(response.data.data));
-
-        await postRequest(`user/${response.data.data.id}/vote/genre`, {
-          vote_genre: params.vote 
-        });
+    favMusic.filter((value: any) => {
+      if (value.is_checked === true) {
+        getFav.push(value.value);
       }
+    });
 
+    const updatePayload = { ...payload };
+    updatePayload.fav_music = getFav;
+
+    setIsLoading(true);
+    const registerResult: any = await postRequest(`${endpoints.user}`, updatePayload);
+
+    if(registerResult.status === 200) {
+      dispath(storyUpdate(registerResult.data.data));
+
+      await postRequest(`user/${registerResult.data.data.id}/vote/genre`, {
+        vote_genre: params.vote
+      });
       setIsLoading(false);
       navigate("/invite");
-    } catch (error: any) {
-      setIsLoading(false);
-      dispath(openModal({
-        title: 'Register Failed',
-        message: `${error.response.data.message}. Please check your data and try again later.`,
-        theme: 'error',
-      }));
+      return;
     }
 
+    dispath(openModal({
+      title: 'Something Went Wrong!',
+      message: INTERNAL_SERVER,
+      theme: 'error',
+    }));
+
+    setIsLoading(false);
+    return;
   };
+
   return (
     <div className="register-wrapper">
       <AnimatePresence>
@@ -120,27 +118,27 @@ const Register = () => {
         <img
           src={hnkELogo}
           className="register-elogo"
-          alt="Henineken E Logo"
-          title="Henineken E Logo"
+          alt={imageTitle}
+          title={imageTitle}
         />
         <div className="header-group">
           <img
             src={mask}
             className="img-mask"
-            alt="Henineken E Logo"
-            title="Henineken E Logo"
+            alt={imageTitle}
+            title={imageTitle}
           />
           <img
             src={hnkBottle}
             className="hnk-bottle"
-            alt="Henineken E Logo"
-            title="Henineken E Logo"
+            alt={imageTitle}
+            title={imageTitle}
           />
           <img
             className="img-guitter"
             src={guitter}
-            alt="Henineken"
-            title="Henineken"
+            alt={imageTitle}
+            title={imageTitle}
           />
         </div>
         <h1 className="hnk-text"> REGISTER </h1>
@@ -163,16 +161,6 @@ const Register = () => {
 
         <div className="input-group">
           <label className="input-label-text font-extrabold pl-3"> Birthday: </label>
-          {/* <input
-            type="date"
-            className="input-control"
-            value={payload.dob}
-            onChange={(e) => {
-              const updatePayload = { ...payload };
-              updatePayload.dob = e.target.value;
-              setPayload(updatePayload);
-            }}
-          /> */}
           <DatePicker
             selected={payload.dob}
             onChange={handleDateChange}
@@ -209,7 +197,7 @@ const Register = () => {
         </div>
 
         <div className="flex-checkbox">
-        <label className="input-label-text font-extrabold pl-3" style={{ color: "#fff", lineHeight: "25px" }}> အကြိုက်ဆုံး ဂီတအမျိုးအစား </label>
+          <label className="input-label-text font-extrabold pl-3" style={{ color: "#fff", lineHeight: "25px" }}> အကြိုက်ဆုံး ဂီတအမျိုးအစား </label>
           {favMusic.length > 0 && favMusic.map((value: any, index: number) => {
             return (
               <div key={index}>
@@ -249,7 +237,7 @@ const Register = () => {
           <ButtonComponent
             minWidth="100px"
             label="Back"
-            onBtnClick={() => navigate("/")}
+            onBtnClick={() => navigate("/home")}
           />
           <ButtonComponent
             className="btn-register"
@@ -265,8 +253,8 @@ const Register = () => {
         <img
           style={{ width: "100%" }}
           src={footerImg}
-          alt="Henineken"
-          title="Henineken"
+          alt={imageTitle}
+          title={imageTitle}
         />
       </div>
 

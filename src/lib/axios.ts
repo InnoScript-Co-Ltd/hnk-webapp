@@ -1,11 +1,15 @@
+/** 
+Component Name              - Axios Config [Libs Configuration]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 /* eslint-disable prefer-const */
-import { baseURL } from "@/constants/endpoints";
+import { serverURL } from "@/constants/endpoints";
 import axios from "axios";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const baseUrl = "http://hnk-api.innoscript.co/api";
-
-axios.defaults.baseURL = baseURL;
+axios.defaults.baseURL = serverURL;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Accept'] = 'application/json';
 
