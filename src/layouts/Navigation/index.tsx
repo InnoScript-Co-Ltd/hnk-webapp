@@ -20,6 +20,10 @@ const navigation = [
     {
         name: 'Invitation',
         path: '/invitation'
+    },
+    {
+        name: 'Moft',
+        path: '/moft'
     }
 ]
 

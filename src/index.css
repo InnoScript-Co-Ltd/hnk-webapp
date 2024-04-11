@@ -115,6 +115,11 @@
   src: url('./assets/fonts/W14ArtHouse.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: hanuman;
+  src: url('./assets/fonts/Hanuman-Bold.ttf') format('truetype');
+}
+
 @media only screen and (max-width: 375px) {
   .layout-container{
     width: 100%;
