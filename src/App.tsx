@@ -5,20 +5,18 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import LoadingComponent from "./components/LoadingComponent.tsx";
 import { lazy, ReactElement, Suspense } from "react";
 import { Toaster } from "./components/ui/toaster.tsx";
-import Invitation from "./modules/invitation/Invitation.tsx";
 
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
 const PartyRadar = lazy(() => import("./modules/partyReader/PartyReader"));
 const Episode = lazy(() => import("./modules/episodes/epsode_one/EpisodeOne"));
-const Termsandconditions = lazy(
-    () => import("./modules/tc/Termsandconditions.tsx")
-);
+const Termsandconditions = lazy(() => import("./modules/tc/Termsandconditions.tsx"));
 const Register = lazy(() => import("./modules/register/Register"));
 const AgeGate = lazy(() => import("./modules/ageGate/AgeGate"));
 const Invite = lazy(() => import("./modules/invite/Invite"));
 const RandRComponent = lazy(() => import("./modules/randr/RandRComponent"));
-
+const Moft = lazy(() => import("./modules/moft/Moft.tsx"));
+const Invitation = lazy(() => import("./modules/invitation/Invitation.tsx"));
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
 };
@@ -72,6 +70,10 @@ const App = () => {
         {
             path: "/register/:vote",
             element: lazyLoad(<Register />),
+        },
+        {
+            path: "/moft/",
+            element: lazyLoad(<Moft />),
         },
     ]);
     return (

@@ -7,16 +7,16 @@ import footerImg from "../../assets/images/HomePage/footer.png";
 import randr from "../../assets/images/HomePage/r&r.png";
 import { useNavigate } from "react-router-dom";
 import RotatingSlogan from "@/components/RotatingSlogan";
-import { useState } from "react";
+// import { useState } from "react";
 import "./style.css";
 
 const HomeComponent = () => {
   const navigate = useNavigate();
-  const [showMore, setShowMore] = useState(false);
+  // const [showMore, setShowMore] = useState(false);
 
-  const openMoreText = () => {
-    setShowMore(!showMore);
-  }
+  // const openMoreText = () => {
+  //   setShowMore(!showMore);
+  // }
 
   const handleClickRandR = () => {
     navigate('/randr')
@@ -44,12 +44,15 @@ const HomeComponent = () => {
           </div>
           <div className="content-texts pl-[20px] pr-[50px] font-semibold leading-[19px]">
             <p>
-              ဂီတဟာ ခံစားမှု၊ စိတ်ကူးနိုင်စွမ်းနဲ့  <span className="text-effect"> Refresh Vibes </span> တွေကိုပါ ရရှိစေပါတယ်။  ဒါကြောင့် လူငယ်အများစုဟာ အရင်တုန်းကလို <span className="text-effect"> Refresh </span> ညတွေ ပြန်ရဖို့
-              ကိုယ့်အကြိုက်ဆုံးသီချင်းတွေ ကြားရမယ့်နေရာတွေဆီ သွားလေ့ရှိကြပေမယ့်  <span className="text-effect"> Social Media  Algorithms </span> တွေကြောင့် ပုံစံတူသီချင်း၊ ခံစားမှုတွေဆီမှာပဲ
-              ပိတ်မိပြန်ပါတယ် <span className="seemore-text" onClick={openMoreText}> see more </span>
+              <span className="text-effect"> Heineken </span> က ပရိသတ်အကြိုက်ဆုံး သီချင်း တွေကို နာမည်ကျော်
+              <span className="text-effect">Local Artists </span> တွေနဲ့အတူ ပြန်လည်ဆန်းသစ် <span className="text-effect">Refresh</span>  လုပ်သွားမှာပါ။
+              ဖန်တီးတဲ့တစ်လျှောက်လုံး Website ကတဆင့် ပရိသတ်တွေ ကိုယ်တိုင်ပါဝင်နိုင်မယ့် အစီအစဉ်တွေအပြင် <span className="text-effect"> Heineken </span> ရဲ့
+              <span className="text-effect"> Exclusive </span> ဆုလက်ဆောင်တွေရယူနိုင်မယ့် အခွင့်အရေးတွေလည်းရှိနေဦးမှာဆိုတော့ ဘယ်လိုပုံစံနဲ့ <span className="text-effect"> Refresh </span> သွားမလဲ?
             </p>
 
-            {showMore && (
+            <p className="link-text"> <label> အသေးစိတ်ကြည့်ရှုရန် </label></p>
+
+            {/* {showMore && (
               <>
                 <p> ဒီအတွက် <span className="text-effect"> Heineken®Refresh Your Music, Refresh Your Nights </span> ပြန်လည်ရောက်ရှိလာပါပြီ </p>
 
@@ -67,12 +70,14 @@ const HomeComponent = () => {
                   ဆုလက်ဆောင်တွေရယူနိုင်မယ့် အခွင့်အရေးတွေလည်းရှိနေမှာမို့  ဘယ်လိုပုံစံနဲ့ <span className="text-effect"> Refresh </span> သွားမလဲ? စောင့်မျှော်ခံစားကြည့်လိုက်ပါ…
                 </p>
               </>
-            )}
+            )} */}
           </div>
           <div className="content-illu relative">
             <img className="content-left-illu" src={contentIllu} />
             <img className="content-right-illu" src={beerBottle} />
 
+
+            <p className="caption-text-party-radar"> Music တွေခံစားနိုင်မယ့် Heineken Outlet များ </p>
             <div className="right-bottom-clip !-bottom-[164px]">
               <svg
                 width="100"
@@ -112,7 +117,7 @@ const HomeComponent = () => {
             />
             <img className="section-2-randr-illu" src={randr} />
             <button onClick={handleClickRandR} className="randr btn fix-btn">
-              <span> Refresh with Double J </span>
+              <span> Refresh Your Music </span>
               <svg
                 width="24"
                 height="18"
@@ -126,6 +131,7 @@ const HomeComponent = () => {
                 />
               </svg>
             </button>
+            <p className="caption-text-party-radar-bottom"> အကြိုက်ဆုံးအဆိုတော်တွေရဲ့သီချင်းများ ဆန်းသစ်ရန် </p>
           </div>
 
           <div className="footer-img relative">

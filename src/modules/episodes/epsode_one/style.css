@@ -245,7 +245,7 @@
     text-align: center;
     font-family: hanikenSerif;
     /* font-family: w14art; */
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 400;
     color: #ffffff;
     text-shadow: -2px 3px #000;
@@ -284,6 +284,5 @@
     .mp3Player{
         top: -4px;
         width: 250px;
-
     }
 }
