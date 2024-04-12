@@ -79,7 +79,7 @@ const EpisodeOne = () => {
         <div className='section-wrapper'>
           <img src={titleIllu} alt={imageTitle} title={imageTitle} />
           <p className='section-title'>
-          <span className='bold-text'> Refresh with Take Care by Double J </span> ကို ဘယ်လို <span className='bold-text'> Music Style </span> နဲ နားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ 
+          <span className='bold-text'> Take Care by Double J </span> ကို ဘယ်လို <span className='bold-text'> Music Style </span> နဲ နားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ 
             {/* vGrf;ydkif&JY   <span className='bold-text'>wpf&mwef</span>  udk
             b,fvdkyHkpHeJY     <span className='bold-text'>em;axmifcsifvJ...?</span> */}
           </p>

@@ -1,33 +1,40 @@
+/** 
+Component Name              - Navigation Component [App]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import logoIcon from "../../assets/images/HomePage/logo.png";
 import { CgClose } from "react-icons/cg";
-import './style.css'
 import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion';
+import './style.css'
 
 const navigation = [
-    {
-        name: 'Home',
-        path: '/home'
-    },
-    {
-        name: 'ပြောင်းလဲဆန်းသစ်ရန်',
-        path: '/randr'
-    },
-    {
-        name: 'Party Radar',
-        path: '/party-radar'
-    },
-    {
-        name: 'Invitation',
-        path: '/invitation'
-    },
+    // {
+    //     name: 'Home',
+    //     path: '/home'
+    // },
+    // {
+    //     name: 'ပြောင်းလဲဆန်းသစ်ရန်',
+    //     path: '/randr'
+    // },
+    // {
+    //     name: 'Party Radar',
+    //     path: '/party-radar'
+    // },
+    // {
+    //     name: 'Invitation',
+    //     path: '/invitation'
+    // },
     {
         name: 'MOFT',
         path: '/moft'
     },
     {
         name: "Campaign အကြောင်း",
-        path: "/campign-info"
+        path: "/campaign-info"
     }
 ]
 

@@ -22,6 +22,10 @@ const DefaultLayout = () => {
   };
 
   useEffect(() => {
+    if(location.pathname === "/") {
+      navigate('/campaign-info');
+    }
+
     if (location.pathname === "/home") {
       document.addEventListener("scroll", handleScroll);
 
@@ -87,7 +91,7 @@ const DefaultLayout = () => {
                 justifyContent: 'center',
                 alignItems: 'center'
               }} 
-              onClick={() => navigate("/home")} 
+              onClick={() => navigate("/")} 
               className="logo">
                 <img
                   style={{
