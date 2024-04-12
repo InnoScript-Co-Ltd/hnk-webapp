@@ -24,6 +24,10 @@ const navigation = [
     {
         name: 'MOFT',
         path: '/moft'
+    },
+    {
+        name: "Campaign အကြောင်း",
+        path: "/campign-info"
     }
 ]
 
