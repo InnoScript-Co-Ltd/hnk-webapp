@@ -27,7 +27,8 @@ const Moft = () => {
   const metaData: any = {
     title: "HNK - Reresh Your Music | MOFT",
     description: "Heineken 33cl Free Can, Heineken Waterproof Bag, Heineken Fanny Pack, Heineken T shirt နှင့် Heineken Water Bottle ဆုမဲများကို သက်ဆိုင်ရာ CMHL ကောင်တာများ တွင် ချက်ချင်းထုတ်ယူနိုင်ပါသည်။",
-    image: BuyGift
+    image: BuyGift,
+    summaryImage: BuyGift
   };
 
   return (

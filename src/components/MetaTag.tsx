@@ -1,44 +1,31 @@
-import { baseURL } from "@/constants/endpoints";
-import { useEffect, useState } from "react"
+/** 
+Component Name              - Meta Tags Component [App]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
+
 import { Helmet } from "react-helmet";
 
 export const MetaTags = ({ dataSource }: any) => {
-    const [data, setData] = useState<any>(null);
-
-    useEffect(() => {
-        if (dataSource) {
-            setData(dataSource);
-        }
-    }, [dataSource])
 
     return (
-        <>
-            {data && (
-                <Helmet>
-                    <title>{data.title}</title>
-                    <link rel="canonical" href={window.location.href} />
-                    <meta property="og:url" content={window.location.href} />
-                    <meta property="og:type" content="website" />
+        <Helmet>
+            <title>{dataSource.title} </title>
+            <meta name="keywords" content="Thingyan Heineken RefreshYourMusic HNK MyanmarThingyan" />
+            <meta name="author" content="InnoScript Co., Ltd" />
 
-                    <meta property="og:title" content={data.title} />
-                    <meta property="og:type" content={data.type} />
-                    <meta property="og:image" content={data.image} />
-                    <meta property="og:url" content={baseURL} />
-                    <meta property="og:description" content={data.description} />
+            { /** Open Graph */}
+            <meta property="og:title" content={dataSource.title} />
+            <meta property="og:image" content={dataSource.image} />
+            <meta property="og:description" content={dataSource.image} />
 
-                    <meta property="og:title" content={data.title} />
-                    <meta itemProp="name" content={data.title} />
-                    <meta name="twitter:title" content={data.title} />
-
-                    <meta property="og:description" content={data.description} />
-                    <meta itemProp="description" content={data.description} />
-                    <meta name="twitter:description" content={data.description} />
-
-                    <meta property="og:image" content={data.image} />
-                    <meta itemProp="image" content={data.image} />
-                    <meta name="twitter:image" content={data.image} />
-                </Helmet>
-            )}
-        </>
+            { /** Twitter */}
+            <meta name="twitter:title" content={dataSource.title} />
+            <meta name="twitter:description" content={dataSource.description} />
+            <meta name="twitter:image" content={dataSource.image} />
+            <meta name="twitter:card" content={dataSource.summaryImage} />
+        </Helmet>
     )
 }

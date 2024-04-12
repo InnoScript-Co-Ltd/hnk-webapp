@@ -20,6 +20,7 @@ const CampignInfo = () => {
         title: "Campaign အကြောင်း",
         description : "ဂီတဟာ ခံစားမှု၊ စိတ်ကူးနိုင်စွမ်းနဲ့ Refresh Vibes တွေကိုပါ ရရှိစေပါတယ်။  ဒါကြောင့် လူငယ်အများစုဟာ အရင်တုန်းကလို Refresh ညတွေ ပြန်ရဖို့ ကိုယ့်အကြိုက်ဆုံးသီချင်းတွေ ကြားရမယ့်နေရာတွေဆီ သွားလေ့ရှိကြပေမယ့် Social Media  Algorithms တွေကြောင့် ပုံစံတူသီချင်း၊ ခံစားမှုတွေဆီမှာပဲ ပိတ်မိပြန်ပါတယ်",
         image: metaImage,
+        summaryImage: metaImage
     }
 
     return (
