@@ -15,7 +15,7 @@ import { Toaster } from "./components/ui/toaster.tsx";
 
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
-const PartyRadar = lazy(() => import("./modules/partyReader/PartyReader"));
+// const PartyRadar = lazy(() => import("./modules/partyReader/PartyReader"));
 const Episode = lazy(() => import("./modules/episodes/epsode_one/EpisodeOne"));
 const Termsandconditions = lazy(() => import("./modules/tc/Termsandconditions.tsx"));
 const Register = lazy(() => import("./modules/register/Register"));
@@ -26,6 +26,7 @@ const Invitation = lazy(() => import("./modules/invitation/Invitation.tsx"));
 const CampignInfo = lazy(() => import("./modules/campignInfo/index.tsx"));
 const Moft = lazy(() => import("@/modules/moft/Moft.tsx"));
 const EmployeeRegister = lazy(() => import("@/modules/employee/EmployeeRegister.tsx"));
+const PartyRadar = lazy(() => import("@/modules/partyReader/PartyRadar.tsx"));
 
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
@@ -51,10 +52,14 @@ const App = () => {
                 },
                 {
                     path: "/party-radar",
-                    element: lazyLoad(<PartyRadar onBtnClick={function (): void {
-                        throw new Error("Function not implemented.");
-                    } } label={""} />),
+                    element: lazyLoad(<PartyRadar />)
                 },
+                // {
+                //     path: "/party-radar",
+                //     element: lazyLoad(<PartyRadar onBtnClick={function (): void {
+                //         throw new Error("Function not implemented.");
+                //     } } label={""} />),
+                // },
                 {
                     path: "/home",
                     element: lazyLoad(<HomeComponent />),

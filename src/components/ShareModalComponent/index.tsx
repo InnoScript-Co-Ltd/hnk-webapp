@@ -7,18 +7,20 @@ Email                       - info@innoscript.co
 
 import { baseURL } from '@/constants/endpoints';
 import { motion } from 'framer-motion'
-import { FaFacebookF, FaInstagram, FaFacebookMessenger, FaTelegram, FaWhatsapp } from "react-icons/fa";
-import { FacebookShareButton, TelegramShareButton, WhatsappShareButton, InstapaperShareButton, FacebookMessengerShareButton} from 'react-share';
+// import { FaFacebookF, FaInstagram, FaFacebookMessenger, FaTelegram, FaWhatsapp } from "react-icons/fa";
+// import { FacebookShareButton, TelegramShareButton, WhatsappShareButton, InstapaperShareButton, FacebookMessengerShareButton} from 'react-share';
+import { FaFacebookF } from "react-icons/fa";
+import { FacebookShareButton } from 'react-share';
 import './style.css'
 
 const color = '#FFF'
 
 const shareMedias = [
-    {media: <FacebookShareButton url={`${baseURL}/home`}><FaFacebookF color={color} /> </FacebookShareButton>},
-    {media: <InstapaperShareButton url={`${baseURL}/home`}><FaInstagram color={color} /></InstapaperShareButton>},
-    {media: <FacebookMessengerShareButton appId='784926446458048' url={`${baseURL}/home`}><FaFacebookMessenger color={color} /></FacebookMessengerShareButton>},
-    {media: <TelegramShareButton url={`${baseURL}/home`} ><FaTelegram color={color} /></TelegramShareButton>},
-    {media: <WhatsappShareButton url={`${baseURL}/home`}><FaWhatsapp color={color} /></WhatsappShareButton>},
+    {media: <FacebookShareButton url={`${baseURL}/randr/episode-1`}><FaFacebookF color={color} /> </FacebookShareButton>},
+    // {media: <InstapaperShareButton url={`${baseURL}/home`}><FaInstagram color={color} /></InstapaperShareButton>},
+    // {media: <FacebookMessengerShareButton appId='784926446458048' url={`${baseURL}/home`}><FaFacebookMessenger color={color} /></FacebookMessengerShareButton>},
+    // {media: <TelegramShareButton url={`${baseURL}/home`} ><FaTelegram color={color} /></TelegramShareButton>},
+    // {media: <WhatsappShareButton url={`${baseURL}/home`}><FaWhatsapp color={color} /></WhatsappShareButton>},
 ];
 
 type propType = {
@@ -28,7 +30,7 @@ type propType = {
 const ShareModalComponent = (props: propType) => {
     const {closeModal} = props;
     const onCopyLink = () => {
-        navigator.clipboard.writeText(`${baseURL}/home`);
+        navigator.clipboard.writeText(`${baseURL}/randr/episode-1`);
         closeModal();
     }
 
@@ -53,7 +55,7 @@ const ShareModalComponent = (props: propType) => {
                 }
             </div>
             <div className='share-input-container'>
-                <input id='share-input' disabled className='share-input' type='text' value={`${baseURL}/home`} />
+                <input id='share-input' disabled className='share-input' type='text' value={`${baseURL}/randr/episode-1`} />
                 <button
                 onClick={onCopyLink}
                 className='copy-link-btn'

@@ -26,9 +26,9 @@ const Invite = () => {
     const navigate = useNavigate();
     const [openShareModel, setOpenShareModel] = useState(false);
 
-    // const onShare = () => {
-    //     setOpenShareModel(true);
-    // };
+    const onShare = () => {
+        setOpenShareModel(true);
+    };
 
     const modalCloseHandler = () => {
         setOpenShareModel(false);
@@ -59,8 +59,13 @@ const Invite = () => {
                     <div className="invite-section">
                         <p className="user-name">Hello {story.name} </p>
                         <p className=" text-lg text-white font-normal font-hanikenSerif text-shadow px-5">
-                            ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတခံစားမှုအသစ်တွေကို ကိုယ်တိုင်ကိုယ်ကျ လာရောက်ခံစားပြီး <span className="text-[#01EC48] px-2"> Refresh </span> လုပ်ဖို့ ဖိတ်ခေါ်လိုက်ပါတယ်နော်…
+                            invitation Card နဲ့ ပွဲကိုလာတဲ့ ပထမဆုံး အယောက် (၇၅ ယောက်)ကို Heineken Can - 2 ဘူး၊ Fanny Pack or Water Bottle ၁ခု မဲနှိက်ရွေးချယ်နိုင်မှာပါ။ 
+                            ဒါ့အပြင် ပွဲထဲက Music Game Activities တွေမှာပါဝင်ပြီး Refresh Your Music ရဲ့ Premium Item ဖြစ်တဲ့ RYM Guitar၊ JBL Speaker တွေနဲ့အခြားသောအခွင့်အရေးတွေကိုပါ 
+                            ရယူနိုင်မှာမို လာခဲ့ဖိုဖိတ်ခေါ်ပါတယ်နော်
                         </p>
+                        {/* <p className=" text-lg text-white font-normal font-hanikenSerif text-shadow px-5">
+                            ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတခံစားမှုအသစ်တွေကို ကိုယ်တိုင်ကိုယ်ကျ လာရောက်ခံစားပြီး <span className="text-[#01EC48] px-2"> Refresh </span> လုပ်ဖို့ ဖိတ်ခေါ်လိုက်ပါတယ်နော်…
+                        </p> */}
                         <img
                             className="feed-back-stars"
                             src={feedbackStar}
@@ -75,17 +80,17 @@ const Invite = () => {
                         title={imageTitle}
                     />
                     <div className="share-back-btn">
-                        {/* <ButtonComponent
+                        <ButtonComponent
                             minWidth="200px"
                             label="Share"
                             onBtnClick={onShare}
                         />
-                        <p className="or-text">OR</p> */}
+                        <p className="or-text">OR</p>
 
                         <ButtonComponent
                             minWidth="300px"
                             arrow
-                            label="Go to Party Radar"
+                            label="Go to Event"
                             onBtnClick={() => navigate("/party-radar")}
                         />
                     </div>
