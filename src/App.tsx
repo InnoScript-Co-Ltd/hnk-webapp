@@ -27,6 +27,7 @@ const CampignInfo = lazy(() => import("./modules/campignInfo/index.tsx"));
 const Moft = lazy(() => import("@/modules/moft/Moft.tsx"));
 const EmployeeRegister = lazy(() => import("@/modules/employee/EmployeeRegister.tsx"));
 const PartyRadar = lazy(() => import("@/modules/partyReader/PartyRadar.tsx"));
+const EventDetail = lazy(() => import("@/modules/event/EventDetail.tsx"));
 
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
@@ -92,17 +93,21 @@ const App = () => {
                     path: "/campaign-info",
                     element: lazyLoad(<CampignInfo />),
                 },
+                {
+                    path: "/event-detail/:id",
+                    element: lazyLoad(<EventDetail />),
+                },
+                {
+                    path: "/register/:vote/:type",
+                    element: lazyLoad(<Register />),
+                },
             ],
-        },
-        {
-            path: "/register/:vote/:type",
-            element: lazyLoad(<Register />),
         },
     ]);
     return (
         <Provider store={store}>
-            <RouterProvider router={router} />
-            <Toaster />
+                <RouterProvider router={router} />
+                <Toaster />
         </Provider>
     );
 };

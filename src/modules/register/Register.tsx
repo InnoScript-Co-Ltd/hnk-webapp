@@ -252,7 +252,7 @@ const Register = () => {
         </div>
       </div>
 
-      <div className="footer">
+      <div className="regiser-footer">
         <img
           style={{ width: "100%" }}
           src={footerImg}

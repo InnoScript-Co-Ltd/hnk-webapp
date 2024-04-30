@@ -31,7 +31,7 @@ const DefaultLayout = () => {
 
       return () => document.removeEventListener("scroll", handleScroll);
     }
-    window.scrollTo({top: 0})
+    window.scrollTo({ top: 0 })
   }, [location.pathname]);
 
   const closeNavigation = () => {
@@ -43,6 +43,7 @@ const DefaultLayout = () => {
       setIsHome(false);
     } else {
       if (scroll > 300) {
+        console.log(scroll);
         setIsHome(false);
       } else {
         setIsHome(true);
@@ -53,13 +54,13 @@ const DefaultLayout = () => {
   return (
     <main>
       <div className="layout-container">
-      <AnimatePresence>
-        {
-          modal.isOpen && (
-            <ModalComponent />
-          )
-        }
-      </AnimatePresence>
+        <AnimatePresence>
+          {
+            modal.isOpen && (
+              <ModalComponent />
+            )
+          }
+        </AnimatePresence>
         {location.pathname !== "/" &&
           location.pathname !== "/register" && (
             <div
@@ -71,28 +72,28 @@ const DefaultLayout = () => {
               className="top-bar"
             >
               <AnimatePresence>
-              {
-                navOpen && (
-                  <Navigation onNavigateClose={closeNavigation} />
-                )
-              }
+                {
+                  navOpen && (
+                    <Navigation onNavigateClose={closeNavigation} />
+                  )
+                }
               </AnimatePresence>
-              <div style={{cursor: "pointer"}} onClick={() => setNavOpen(prev => !prev)} className="menu">
-                  <div className="menu-icon"></div>
+              <div style={{ cursor: "pointer" }} onClick={() => setNavOpen(prev => !prev)} className="menu">
+                <div className="menu-icon"></div>
               </div>
-              <div 
-              style={{
-                position: 'absolute',
-                left: '50%',
-                top: "10px",
-                transform: 'translateX(-50%)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }} 
-              onClick={() => navigate("/")} 
-              className="logo">
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: "10px",
+                  transform: 'translateX(-50%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+                onClick={() => navigate("/")}
+                className="logo">
                 <img
                   style={{
                     marginBottom: "10px",
@@ -111,15 +112,15 @@ const DefaultLayout = () => {
                   alt="Slogan"
                 />
               </div>
-              <div style={{width: '50px'}}>
+              <div style={{ width: '50px' }}>
                 {/* <img className="profile" src={profile} alt="Mini Logo" /> */}
               </div>
             </div>
           )}
         <div
-        style={{marginTop: location.pathname === '/home' || location.pathname === '/' ? '' : '100px', width: '100%'}}
+          style={{ marginTop: location.pathname === '/home' || location.pathname === '/' ? '' : '100px', width: '100%' }}
         >
-          <Outlet />
+            <Outlet />
         </div>
       </div>
     </main>

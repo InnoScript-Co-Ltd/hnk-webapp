@@ -91,7 +91,7 @@ const Invite = () => {
                             minWidth="300px"
                             arrow
                             label="Go to Event"
-                            onBtnClick={() => navigate("/party-radar")}
+                            onBtnClick={() => navigate("/event-detail/9bedd0d0-2085-4e09-aa2d-db2d9496f6b5")}
                         />
                     </div>
                 </div>

@@ -14,7 +14,7 @@
 }
 
 .modal-detail-container {
-  width: 376px;
+  width: 370px;
   /* height: 950px; */
   position: fixed;
   top: 50%;
@@ -32,7 +32,7 @@
 }
 
 .modal-detail-content {
-  width: 420px;
+  width: 370px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,15 +119,9 @@
   }
 }
 
-@media screen and (max-width: 320px) {
-  .modal-detail-content {
-    width: 320px;
-  }
-}
-
 @media only screen and (min-width: 320px) and (max-width: 420px) and (orientation: portrait) {
   .modal-detail-content {
-    width: 100%;
+    width: 300px;
   }
 
   .modal-cover-img {
@@ -138,8 +132,7 @@
   }
 
   .modal-detail-container {
-    width: 80%;
-    /* height: 950px; */
+    width: 300px;
     position: fixed;
     top: 50%;
     left: 50%;

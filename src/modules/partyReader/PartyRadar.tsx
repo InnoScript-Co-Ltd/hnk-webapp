@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { imageTitle } from "@/constants/config";
 import EventSlider from "@/components/EventSlider/EventSlider";
 import "./index.css";
+import RotatingSlogan from "@/components/RotatingSlogan";
 
 const PartyRadar = () => {
 
@@ -29,6 +30,7 @@ const PartyRadar = () => {
     return(
         <div className="party-radar-wrapper">
             {loading && <LoadingComponent />}
+            <RotatingSlogan />
 
             <img className="party-radar-where-event-img" src={whereEventImg} alt={imageTitle} title={imageTitle} />
 

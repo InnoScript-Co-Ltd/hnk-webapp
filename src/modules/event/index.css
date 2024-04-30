@@ -1,0 +1,111 @@
+/** 
+Component Name              - Event Detail Component [Style]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
+.party-radar-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #009d1b;
+}
+
+.party-radar-where-event-img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.party-radar-content {
+    padding: 20px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: natosansmm;
+    color: #fff;
+}
+
+.hnk-text {
+    font-family: hanikenSerif !important;
+}
+
+.event-slider-footer {
+    width: 100%;
+}
+
+.event-slider-bg {
+    width: 100%;
+}
+
+.event-slider-elogo {
+    position: absolute;
+    bottom: 100px;
+}
+
+.event-detail-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.event-detail-img {
+    width: 100%;
+}
+
+.event-detail-title {
+    font-size: 16px;
+    font-family: hanikenSerif !important;
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.event-detail-info-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #fff;
+    font-family: hanikenSerif;
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+.event-detail-info-item > label {
+    width: 30%;
+    font-weight: 600;
+}
+
+.event-detail-info-item > span {
+    width: 70%;
+    font-weight: 100!important;
+}
+
+.event-detail-promotion-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    font-family: hanikenSerif;
+    color: #fff;
+}
+
+.event-detail-promotion-item > label {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.event-detail-promotion-item > span {
+    font-size: 16px;
+    font-weight: 900;
+}
