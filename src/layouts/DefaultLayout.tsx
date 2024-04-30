@@ -22,9 +22,9 @@ const DefaultLayout = () => {
   };
 
   useEffect(() => {
-    if(location.pathname === "/") {
-      navigate('/campaign-info');
-    }
+    // if(location.pathname === "/") {
+    //   navigate('/age-gate');
+    // }
 
     if (location.pathname === "/home") {
       document.addEventListener("scroll", handleScroll);

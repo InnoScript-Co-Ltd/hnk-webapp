@@ -26,9 +26,9 @@ const Invite = () => {
     const navigate = useNavigate();
     const [openShareModel, setOpenShareModel] = useState(false);
 
-    const onShare = () => {
-        setOpenShareModel(true);
-    };
+    // const onShare = () => {
+    //     setOpenShareModel(true);
+    // };
 
     const modalCloseHandler = () => {
         setOpenShareModel(false);
@@ -51,7 +51,7 @@ const Invite = () => {
 
                 <div className="invite-section-wrapper relative">
                     <img
-                        className=" absolute -top-[58px] left-[5px]"
+                        className=" absolute -top-[75px] left-[5px]"
                         src={bottle}
                         alt={imageTitle}
                         title={imageTitle}
@@ -75,18 +75,18 @@ const Invite = () => {
                         title={imageTitle}
                     />
                     <div className="share-back-btn">
-                        <ButtonComponent
+                        {/* <ButtonComponent
                             minWidth="200px"
                             label="Share"
                             onBtnClick={onShare}
                         />
-                        <p className="or-text">OR</p>
+                        <p className="or-text">OR</p> */}
 
                         <ButtonComponent
                             minWidth="300px"
                             arrow
-                            label="Go to Campaign Info"
-                            onBtnClick={() => navigate("/campign-info")}
+                            label="Go to Party Radar"
+                            onBtnClick={() => navigate("/party-radar")}
                         />
                     </div>
                 </div>

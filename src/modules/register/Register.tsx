@@ -35,6 +35,7 @@ const Register = () => {
     tc_accept: false,
     dob: new Date(),
     fav_music: [],
+    type: ""
   });
 
   const [favMusic, setFav]: any = useState(favouriteGenres);
@@ -80,6 +81,7 @@ const Register = () => {
 
     const updatePayload = { ...payload };
     updatePayload.fav_music = getFav;
+    updatePayload.type = params.type ? params.type : ""
 
     setIsLoading(true);
     const registerResult: any = await postRequest(`${endpoints.user}`, updatePayload);
@@ -88,7 +90,8 @@ const Register = () => {
       dispath(storyUpdate(registerResult.data.data));
 
       await postRequest(`user/${registerResult.data.data.id}/vote/genre`, {
-        vote_genre: params.vote
+        vote_genre: params.vote,
+        type: params.type
       });
       setIsLoading(false);
       navigate("/invite");
@@ -230,7 +233,7 @@ const Register = () => {
               setPayload(updatePayload);
             }}
           />
-          <label className="checkbox-label" onClick={() => navigate(`/term-and-condition/${params.vote}`)}> I Accept terms and conditions </label>
+          <label className="checkbox-label" onClick={() => navigate(`/term-and-condition/${params.vote}/${params.type}`)}> I Accept terms and conditions </label>
         </div>
 
         <div className="btn-group">

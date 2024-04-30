@@ -12,22 +12,22 @@ import {motion} from 'framer-motion';
 import './style.css'
 
 const navigation = [
-    // {
-    //     name: 'Home',
-    //     path: '/home'
-    // },
-    // {
-    //     name: 'ပြောင်းလဲဆန်းသစ်ရန်',
-    //     path: '/randr'
-    // },
-    // {
-    //     name: 'Party Radar',
-    //     path: '/party-radar'
-    // },
-    // {
-    //     name: 'Invitation',
-    //     path: '/invitation'
-    // },
+    {
+        name: 'Home',
+        path: '/home'
+    },
+    {
+        name: 'ပြောင်းလဲဆန်းသစ်ရန်',
+        path: '/randr'
+    },
+    {
+        name: 'Party Radar',
+        path: '/party-radar'
+    },
+    {
+        name: 'Invitation',
+        path: '/invitation'
+    },
     {
         name: 'MOFT',
         path: '/moft'
@@ -110,16 +110,6 @@ const Navigation = (props: proptype) => {
                     </button>
                 ))
             }
-            {/* <button
-            onClick={logoutHandler}
-            style={{
-                width: '100%',
-                marginTop: '20px',
-                color: '#FFF'
-            }}
-            >
-                Logout
-            </button> */}
         </div>
     </motion.div>
   )

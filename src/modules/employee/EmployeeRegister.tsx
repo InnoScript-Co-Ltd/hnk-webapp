@@ -7,11 +7,11 @@ Email                       - info@innoscript.co
 
 import { useCallback, useEffect, useState } from 'react'
 import RotatingSlogan from '@/components/RotatingSlogan'
-import titleIllu from '../../../assets/images/randr/episode_1/titleIllu.png'
-import earphone from '../../../assets/images/randr/episode_1/earphone.png'
-import mp3Player from '../../../assets/images/randr/episode_1/mp3Player.png'
+import titleIllu from '../../assets/images/randr/episode_1/titleIllu.png'
+import earphone from '../../assets/images/randr/episode_1/earphone.png'
+import mp3Player from '../../assets/images/randr/episode_1/mp3Player.png'
 import ButtonComponent from '@/components/ButtonComponent'
-import enjoyLogo from '../../../assets/images/HomePage/enjoyLogo.png'
+import enjoyLogo from '../../assets/images/HomePage/enjoyLogo.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { IGenrereResponse } from '@/models/genre.model'
@@ -22,7 +22,7 @@ import { getRequest } from '@/lib/axios'
 import { INTERNAL_SERVER, imageTitle } from '@/constants/config'
 import './style.css'
 
-const EpisodeOne = () => {
+const EmployeeRegister = () => {
   const [boxState, setBoxState] = useState<IGenrereResponse>({
     id: '',
     color: '',
@@ -43,7 +43,7 @@ const EpisodeOne = () => {
   }
 
   const onDoneClick = async () => {
-    navigate(`/register/${boxState.name}/client`)
+    navigate(`/register/${boxState.name}/employee`)
   }
 
   const loadGenreData = useCallback(async () => {
@@ -119,4 +119,4 @@ const EpisodeOne = () => {
   )
 }
 
-export default EpisodeOne
+export default EmployeeRegister
