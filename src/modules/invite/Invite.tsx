@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import { USER_STORY } from "@/models/story.model";
 import { imageTitle } from "@/constants/config";
 import "./style.css";
+import { Helmet } from "react-helmet";
 
 const Invite = () => {
     const navigate = useNavigate();
@@ -39,7 +40,14 @@ const Invite = () => {
     });
 
     return (
-        <>
+        <div>
+            <Helmet>
+                <title> ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ကိုယ်တိုင်စီးမျောခံစားဖို... </title>
+                <meta name="description" content=" Take Care by Double J ကို ဘယ်လို Music Style နဲနားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ" data-react-helmet="true" />
+                <meta property="og:url" content="https://refreshyourmusichnk.com/randr/episode-1" data-react-helmet="true" />
+                <meta property="og:type" content="article" data-react-helmet="true" />
+                <meta property="og:image" content="https://refreshyourmusichnk.com/assets/landingBg-CjO8QWGu.png" data-react-helmet="true" />
+            </Helmet>
             <div className="invite-container max-w-[420px] mx-auto">
                 <AnimatePresence>
                     {openShareModel && (
@@ -58,14 +66,14 @@ const Invite = () => {
                     />
                     <div className="invite-section">
                         <p className="user-name">Hello {story.name} </p>
-                        <p className=" text-lg text-white font-normal font-hanikenSerif text-shadow px-5">
+                        {/* <p className=" text-lg text-white font-normal font-hanikenSerif text-shadow px-5">
                             invitation Card နဲ့ ပွဲကိုလာတဲ့ ပထမဆုံး အယောက် (၇၅ ယောက်)ကို Heineken Can - 2 ဘူး၊ Fanny Pack or Water Bottle ၁ခု မဲနှိက်ရွေးချယ်နိုင်မှာပါ။ 
                             ဒါ့အပြင် ပွဲထဲက Music Game Activities တွေမှာပါဝင်ပြီး Refresh Your Music ရဲ့ Premium Item ဖြစ်တဲ့ RYM Guitar၊ JBL Speaker တွေနဲ့အခြားသောအခွင့်အရေးတွေကိုပါ 
                             ရယူနိုင်မှာမို လာခဲ့ဖိုဖိတ်ခေါ်ပါတယ်နော်
-                        </p>
-                        {/* <p className=" text-lg text-white font-normal font-hanikenSerif text-shadow px-5">
-                            ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတခံစားမှုအသစ်တွေကို ကိုယ်တိုင်ကိုယ်ကျ လာရောက်ခံစားပြီး <span className="text-[#01EC48] px-2"> Refresh </span> လုပ်ဖို့ ဖိတ်ခေါ်လိုက်ပါတယ်နော်…
                         </p> */}
+                        <p className=" text-lg text-white font-normal font-hanikenSerif text-shadow px-5">
+                            ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတခံစားမှုအသစ်တွေကို ကိုယ်တိုင်ကိုယ်ကျ လာရောက်ခံစားပြီး <span className="text-[#01EC48] px-2"> Refresh </span> လုပ်ဖို့ ဖိတ်ခေါ်လိုက်ပါတယ်နော်…
+                        </p>
                         <img
                             className="feed-back-stars"
                             src={feedbackStar}
@@ -102,7 +110,7 @@ const Invite = () => {
                     <img className="mp3Player" src={mp3Player} alt={imageTitle} title={imageTitle} />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

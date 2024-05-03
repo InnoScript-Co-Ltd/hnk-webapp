@@ -166,6 +166,7 @@ const Register = () => {
           <label className="input-label-text font-extrabold pl-3"> Birthday: </label>
           <DatePicker
             selected={payload.dob}
+            dateFormat={"dd/MM/yyyy"}
             onChange={handleDateChange}
             className="input-control z-999"
           />

@@ -21,6 +21,7 @@ import { endpoints } from '@/constants/endpoints'
 import { getRequest } from '@/lib/axios'
 import { INTERNAL_SERVER, imageTitle } from '@/constants/config'
 import './style.css'
+import { Helmet } from 'react-helmet'
 
 const EpisodeOne = () => {
   const [boxState, setBoxState] = useState<IGenrereResponse>({
@@ -50,7 +51,7 @@ const EpisodeOne = () => {
     setLoading(true);
     const genreResult: any = await getRequest(`${endpoints.genre}`);
 
-    if(genreResult.status === 200) {
+    if (genreResult.status === 200) {
       setGenreList(genreResult.data.data);
       setLoading(false);
     } else {
@@ -68,7 +69,14 @@ const EpisodeOne = () => {
   }, [loadGenreData])
 
   return (
-    <>
+    <div>
+      <Helmet>
+        <title> ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ကိုယ်တိုင်စီးမျောခံစားဖို... </title>
+        <meta name="description" content=" Take Care by Double J ကို ဘယ်လို Music Style နဲနားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ" data-react-helmet="true" />
+        <meta property="og:url" content="https://refreshyourmusichnk.com/randr/episode-1" data-react-helmet="true" />
+        <meta property="og:type" content="article" data-react-helmet="true" />
+        <meta property="og:image" content="https://refreshyourmusichnk.com/assets/landingBg-CjO8QWGu.png" data-react-helmet="true" />
+      </Helmet>
       {
         loading && (
           <LoadingComponent />
@@ -79,7 +87,7 @@ const EpisodeOne = () => {
         <div className='section-wrapper'>
           <img src={titleIllu} alt={imageTitle} title={imageTitle} />
           <p className='section-title'>
-          <span className='bold-text'> Take Care by Double J </span> ကို ဘယ်လို <span className='bold-text'> Music Style </span> နဲ နားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ 
+            <span className='bold-text'> Take Care by Double J </span> ကို ဘယ်လို <span className='bold-text'> Music Style </span> နဲ နားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ
           </p>
         </div>
         <div className='genre-select'>
@@ -115,7 +123,7 @@ const EpisodeOne = () => {
           <img className='mp3Player' src={mp3Player} alt={imageTitle} title={imageTitle} />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

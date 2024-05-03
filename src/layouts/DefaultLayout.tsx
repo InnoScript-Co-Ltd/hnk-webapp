@@ -43,7 +43,6 @@ const DefaultLayout = () => {
       setIsHome(false);
     } else {
       if (scroll > 300) {
-        console.log(scroll);
         setIsHome(false);
       } else {
         setIsHome(true);

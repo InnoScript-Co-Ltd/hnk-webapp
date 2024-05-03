@@ -16,12 +16,13 @@ import './style.css'
 const color = '#FFF'
 
 const shareMedias = [
-    {media: <FacebookShareButton url={`${baseURL}/randr/episode-1`}><FaFacebookF color={color} /> </FacebookShareButton>},
+    {media: <FacebookShareButton url={`${baseURL}/randr/episode-1`} hashtag={"#RefreshYourMusic #RefreshYourNights #RefreshExperience"}><FaFacebookF color={color} /> </FacebookShareButton>},
     // {media: <InstapaperShareButton url={`${baseURL}/home`}><FaInstagram color={color} /></InstapaperShareButton>},
     // {media: <FacebookMessengerShareButton appId='784926446458048' url={`${baseURL}/home`}><FaFacebookMessenger color={color} /></FacebookMessengerShareButton>},
     // {media: <TelegramShareButton url={`${baseURL}/home`} ><FaTelegram color={color} /></TelegramShareButton>},
     // {media: <WhatsappShareButton url={`${baseURL}/home`}><FaWhatsapp color={color} /></WhatsappShareButton>},
 ];
+
 
 type propType = {
     closeModal: () => void,

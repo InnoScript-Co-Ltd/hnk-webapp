@@ -207,7 +207,7 @@ Email                       - info@innoscript.co
 }
 
 .left{
-    width: 75px;
+    width: 100px;
     left: 10px;
 }
 
@@ -217,7 +217,7 @@ Email                       - info@innoscript.co
     /* text-wrap: wrap; */
     bottom: 10px;
     font-family: hanikenSerif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     color: white;
     text-shadow: -3px 2px 1px #000;

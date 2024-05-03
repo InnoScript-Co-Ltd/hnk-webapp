@@ -11,7 +11,7 @@ import footerImg from "@/assets/images/footer.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 
 import LoadingComponent from "@/components/LoadingComponent.tsx";
-import { useEffect, useState } from "react";
+import { useRef } from "react";
 import { imageTitle } from "@/constants/config";
 import EventSlider from "@/components/EventSlider/EventSlider";
 import "./index.css";
@@ -19,17 +19,10 @@ import RotatingSlogan from "@/components/RotatingSlogan";
 
 const PartyRadar = () => {
 
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setInterval(() => {
-            setLoading(false);
-        }, 2000);
-    }, []);
-
+    const loading = useRef(false);
     return(
         <div className="party-radar-wrapper">
-            {loading && <LoadingComponent />}
+            {loading.current && <LoadingComponent />}
             <RotatingSlogan />
 
             <img className="party-radar-where-event-img" src={whereEventImg} alt={imageTitle} title={imageTitle} />
