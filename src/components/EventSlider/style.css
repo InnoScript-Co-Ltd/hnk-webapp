@@ -1,0 +1,55 @@
+/** 
+Component Name              - Event Slider Compoment [Style]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
+.event-slider-wrapper {
+    width: 100%;
+}
+
+.event-slider-swiper-wrapper {
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow: hidden;
+}
+
+.event-slider-img {
+    width: 100%;
+}
+
+.event-slider-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-slider-name {
+    position: relative;
+    top: -90px;
+    padding: 20px;
+    font-size: 1.3rem;
+    color: #fff;
+    font-family: hanikenSerif;
+}
+
+.swiper-pagination {
+    position: relative!important;
+    top: -100px!important;
+}
+
+.swiper-scrollbar {
+    display: none!important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: rgb(51, 255, 100)!important;
+    width: 35px!important;
+    height: 5px!important;
+    margin-right: 10px!important;
+    border-radius: 5px!important;
+}

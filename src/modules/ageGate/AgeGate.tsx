@@ -13,12 +13,21 @@ import AgeGateTitle from "@/assets/svgs/agegate-title.svg";
 import { imageTitle, loadingTimeOut } from "@/constants/config";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
 import { useEffect, useState } from "react";
+import { baseURL } from "@/constants/endpoints";
+import { MetaTags } from "@/components/MetaTag";
 import "./style.css";
 
 const AgeGate = () => {
     const [loading, setLoading] = useState(true);
-
     const navigate = useNavigate();
+
+    const metaData: any = {
+        title: "Henieken - Refresh your music",
+        description : "အသက် (၁၈) နှစ်ပြည့်ပြီးဖြစ်ပါသည်",
+        image: HNKLogo,
+        url: baseURL,
+        type: "Web Application"
+    }
 
     useEffect(() => {
         setTimeout(() => {
@@ -27,47 +36,50 @@ const AgeGate = () => {
     }, []);
 
     return (
-        <div className="agegate-wrapper">
-            <div className=" flex flex-col items-center min-h-screen">
-                <div className="flex flex-col items-center gap-2">
-                    <img
-                        src={HNKLogo}
-                        alt={imageTitle}
-                        title={imageTitle}
-                    />
-                    <img
-                        src={AgeGateTitle}
-                        alt={imageTitle}
-                        title={imageTitle}
-                        className="mt-10 mb-10"
-                    />
-                </div>
+        <>
+            <MetaTags dataSource={metaData} />
+            <div className="agegate-wrapper">
+                <div className=" flex flex-col items-center min-h-screen">
+                    <div className="flex flex-col items-center gap-2">
+                        <img
+                            src={HNKLogo}
+                            alt={imageTitle}
+                            title={imageTitle}
+                        />
+                        <img
+                            src={AgeGateTitle}
+                            alt={imageTitle}
+                            title={imageTitle}
+                            className="mt-10 mb-10"
+                        />
+                    </div>
 
-                <div className="button-container flex flex-col gap-3">
-                    <Button
-                        onClick={() => navigate("/home")}
-                        variant="hnk"
-                        size="hnk"
-                    >
-                        Yes, I am
-                    </Button>
+                    <div className="button-container flex flex-col gap-3">
+                        <Button
+                            onClick={() => navigate("/home")}
+                            variant="hnk"
+                            size="hnk"
+                        >
+                            Yes, I am
+                        </Button>
 
-                    <Button variant="hnk" size="hnk">
-                        No, I am not
-                    </Button>
-                </div>
+                        <Button variant="hnk" size="hnk">
+                            No, I am not
+                        </Button>
+                    </div>
 
-                <div className="iamge-container flex relative mt-auto pt-[20px] ">
-                    <img
-                        src={ageGateBg}
-                        alt={imageTitle}
-                        title={imageTitle}
-                        className="agegate-bg"
-                    />
+                    <div className="iamge-container flex relative mt-auto pt-[20px] ">
+                        <img
+                            src={ageGateBg}
+                            alt={imageTitle}
+                            title={imageTitle}
+                            className="agegate-bg"
+                        />
+                    </div>
                 </div>
+                {loading && (<LoadingComponent />)}
             </div>
-            { loading && (<LoadingComponent />)}
-        </div>
+        </>
     );
 };
 

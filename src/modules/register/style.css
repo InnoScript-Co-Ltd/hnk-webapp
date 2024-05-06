@@ -15,7 +15,7 @@ Email                       - info@innoscript.co
 }
 
 .header {
-    width: 320px;
+    width: 100%;
     margin-top: 20px;
     overflow: hidden;
 }
@@ -39,7 +39,6 @@ Email                       - info@innoscript.co
 .img-mask {
     width: 120px;
     position: relative;
-    left: -10px;
     top: 20px;
 }
 
@@ -47,14 +46,14 @@ Email                       - info@innoscript.co
     width: 130px;
     position: relative;
     top: -20px;
-    left: -25px;
+    left: 30px;
 }
 
 .img-guitter {
     width: 100px;
     position: relative;
     top: 0px;
-    right: 9%;
+    right: -70px;
 }
 
 .hnk-text {
@@ -213,4 +212,8 @@ Email                       - info@innoscript.co
 .flex-checkbox > div > .checkbox-group {
     width: initial;
     margin-top: 10px;
+}
+
+.regiser-footer {
+    width: 100%;
 }

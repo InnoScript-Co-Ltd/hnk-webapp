@@ -1,11 +1,19 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
 
   <link rel="icon" type="image/svg+xml" href="/hnk.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title> Refresh Your Music HNK </title>
+
+  <!-- <meta property="og:type" content="website" />
+  <meta property="og:title" content={this.state.article.title} />
+  <meta property="og:description" content="Футболни статии" />
+  <meta property="og:image" content={this.state.article.mainPhoto} />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="400" /> -->
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LV7DKCK5C9"></script>
@@ -28,6 +36,18 @@
     })(window, document, 'script', 'dataLayer', 'GTM-532WBRR6');</script>
   <!-- End Google Tag Manager -->
 
+  <style>
+    .page-layout-container {
+      width: 100%;
+      height: 100%;
+      background-image: url("./src/assets/images/pagebackground.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: fixed;
+      overflow: scroll;
+      top: 0px;
+    }
+  </style>
 </head>
 
 <body>
@@ -36,7 +56,11 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <div class="page-layout-container">
+
+  </div>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
+
 </html>

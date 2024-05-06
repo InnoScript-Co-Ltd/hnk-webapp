@@ -1,8 +1,15 @@
+/** 
+Component Name              - Navigation Component [App]
+Development By              - InnoScript Co., Ltd
+Date                        - 11/04/2024
+Email                       - info@innoscript.co
+**/
+
 import logoIcon from "../../assets/images/HomePage/logo.png";
 import { CgClose } from "react-icons/cg";
-import './style.css'
 import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion';
+import './style.css'
 
 const navigation = [
     {
@@ -24,6 +31,10 @@ const navigation = [
     {
         name: 'MOFT',
         path: '/moft'
+    },
+    {
+        name: "Campaign အကြောင်း",
+        path: "/campaign-info"
     }
 ]
 
@@ -99,16 +110,6 @@ const Navigation = (props: proptype) => {
                     </button>
                 ))
             }
-            {/* <button
-            onClick={logoutHandler}
-            style={{
-                width: '100%',
-                marginTop: '20px',
-                color: '#FFF'
-            }}
-            >
-                Logout
-            </button> */}
         </div>
     </motion.div>
   )

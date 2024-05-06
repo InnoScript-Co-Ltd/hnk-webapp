@@ -21,6 +21,7 @@ import ep4 from '../../assets/images/randr/ep4.png'
 import ep5 from '../../assets/images/randr/ep5.png'
 import enjoyLogo from '../../assets/images/HomePage/enjoyLogo.png'
 import footerImg from '../../assets/images/randr/randrfooter.png'
+import titleImg from "@/assets/svgs/home-title.svg";
 import { IoIosStarOutline } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -70,7 +71,7 @@ const RandRComponent = () => {
     //     loadingSingerSlider();
     // }, [loadingSingerSlider]);
 
-    { /* setTimeout need to disable when slider component is enabled */}
+    { /* setTimeout need to disable when slider component is enabled */ }
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
@@ -79,7 +80,7 @@ const RandRComponent = () => {
 
     return (
         <div className={styles.page_container}>
-            { loading && ( <LoadingComponent />) }
+            {loading && (<LoadingComponent />)}
             {/* <div className={styles.slider_container}>
                 <RotatingSlogan />
                 <SliderComponent
@@ -103,9 +104,13 @@ const RandRComponent = () => {
             <RotatingSlogan /> { /** Rotating Slogan is need to disable when slider component is enable **/}
 
             <div className={styles.level_section}>
-                <p className={styles.level_title}>
+                {/* <p className={styles.level_title}>
                     ပြောင်းလဲဆန်းသစ် ဂီတခံစားမှုအသစ်
-                </p>
+                </p> */}
+                <div className={styles.home_title_wrapper}>
+                    <img src={titleImg} alt={imageTitle} title={imageTitle} />
+                </div>
+
 
                 <div className={styles.ep_section}>
                     <svg className={styles.line} width="420" height="200" viewBox="0 0 390 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,7 +194,7 @@ const RandRComponent = () => {
                             </div>
                         </div> */}
 
-                        <img src={ep4} style={{ top: "-430px", position: "relative", right: "-30px" }}  alt={imageTitle} title={imageTitle}/>
+                        <img src={ep4} style={{ top: "-430px", position: "relative", right: "-30px" }} alt={imageTitle} title={imageTitle} />
                     </div>
 
                     <div className={styles.flex_relative}>

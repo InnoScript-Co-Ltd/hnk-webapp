@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /** 
 Component Name              - Party Radar Component [Page]
 Development By              - InnoScript Co., Ltd
@@ -5,22 +6,24 @@ Date                        - 11/04/2024
 Email                       - info@innoscript.co
 **/
 
-import { SetStateAction, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+// import { SetStateAction, useCallback, useEffect, useState } from "react";
 import footerImg from "@/assets/images/footer.png";
-import outletpromotionTitle from "@/assets/svgs/OutletPromotion.svg";
+// import outletpromotionTitle from "@/assets/svgs/OutletPromotion.svg";
 import whereEvent from "@/assets/svgs/whereEvent.svg";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import OutletModal from "./OutletModal";
 import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
-import { openModal as openErrorModal } from "@/store/modalSlice";
-import { useDispatch } from "react-redux";
+// import { openModal as openErrorModal } from "@/store/modalSlice";
+// import { useDispatch } from "react-redux";
 import EventSliderComponent from "./EventSlider";
 import EventModal from "./EventModal";
-import { INTERNAL_SERVER, imageTitle } from "@/constants/config";
+// import { INTERNAL_SERVER, imageTitle } from "@/constants/config";
+import { imageTitle } from "@/constants/config";
 import "./partyReaderStyle.css";
 
 type btnProps = {
@@ -32,24 +35,25 @@ type btnProps = {
   disabled?: boolean;
 };
 
-const PartyReader = (props: btnProps) => {
-  const { arrow } = props;
-  const [promotionTab, setPromotionTab] = useState<any>(null);
-  const [userLocation, setUserLocation] = useState<any | null>({ lat: "", long: "" });
-  const [distance, setDistance] = useState<string>("10");
+const PartyReader = (_props: btnProps) => {
+  // const { arrow } = props;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const [promotionTab, setPromotionTab] = useState<any>(null);
+  // const [userLocation, setUserLocation] = useState<any | null>({ lat: "", long: "" });
+  // const [distance, setDistance] = useState<string>("10");
   const [selectedOutlet, setSelectedOutlet] = useState<any>(null);
-  const [outletList, setOutletList] = useState<Array<any>>([]);
+  // const [outletList, setOutletList] = useState<Array<any>>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [openEventModal, setOpenEventModal] = useState<boolean>();
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [slides, setSlides] = useState<Array<any>>([]);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const openModal = (outlet: SetStateAction<null>) => {
-    setSelectedOutlet(outlet);
-  };
+  // const openModal = (outlet: SetStateAction<null>) => {
+  //   setSelectedOutlet(outlet);
+  // };
 
   const closeModal = () => {
     setSelectedOutlet(null);
@@ -60,118 +64,118 @@ const PartyReader = (props: btnProps) => {
   };
 
   /** Outlet Data Retrive With GeoLocation */
-  const loadingOutletWithLocation = async () => {
-    setLoading(true);
+  // const loadingOutletWithLocation = async () => {
+  //   setLoading(true);
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (success: any) => {
-        const getCurrentLocation = await success.coords;
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(async (success: any) => {
+  //       const getCurrentLocation = await success.coords;
 
-        if (getCurrentLocation.latitude && getCurrentLocation.longitude) {
-          const updateUserLocation = { ...userLocation };
-          updateUserLocation.lat = getCurrentLocation.latitude;
-          updateUserLocation.long = getCurrentLocation.longitude
-          setUserLocation(updateUserLocation);
-        }
-      },
-        async (error: any) => {
-          dispatch(
-            openErrorModal({
-              title: "Location Access",
-              message: error.message
-            })
-          );
-          setPromotionTab("ALL");
-          setLoading(false);
-        });
-      setLoading(false);
-    }
+  //       if (getCurrentLocation.latitude && getCurrentLocation.longitude) {
+  //         const updateUserLocation = { ...userLocation };
+  //         updateUserLocation.lat = getCurrentLocation.latitude;
+  //         updateUserLocation.long = getCurrentLocation.longitude
+  //         setUserLocation(updateUserLocation);
+  //       }
+  //     },
+  //       async (error: any) => {
+  //         dispatch(
+  //           openErrorModal({
+  //             title: "Location Access",
+  //             message: error.message
+  //           })
+  //         );
+  //         setPromotionTab("ALL");
+  //         setLoading(false);
+  //       });
+  //     setLoading(false);
+  //   }
 
-    if (userLocation.lat && userLocation.long) {
-      setLoading(true);
-      await getRequest(`${endpoints.outlet}?lat=${userLocation.lat}&long=${userLocation.long}&distance=${distance}`)
-        .then((result: any) => {
-          if (result.status === 200) {
-            setOutletList(result.data.data);
-            setLoading(false);
-            return;
-          }
-          dispatch(
-            openErrorModal({
-              title: "Something Went Wrong!",
-              message: INTERNAL_SERVER,
-              theme: "error",
-            })
-          );
-          setLoading(false);
-        })
-        .catch(() => {
-          dispatch(
-            openErrorModal({
-              title: "Something Went Wrong!",
-              message: INTERNAL_SERVER,
-              theme: "error",
-            })
-          )
-          setLoading(false);
-        });
-    }
-    setLoading(false);
-  }
+  //   if (userLocation.lat && userLocation.long) {
+  //     setLoading(true);
+  //     await getRequest(`${endpoints.outlet}?lat=${userLocation.lat}&long=${userLocation.long}&distance=${distance}`)
+  //       .then((result: any) => {
+  //         if (result.status === 200) {
+  //           setOutletList(result.data.data);
+  //           setLoading(false);
+  //           return;
+  //         }
+  //         dispatch(
+  //           openErrorModal({
+  //             title: "Something Went Wrong!",
+  //             message: INTERNAL_SERVER,
+  //             theme: "error",
+  //           })
+  //         );
+  //         setLoading(false);
+  //       })
+  //       .catch(() => {
+  //         dispatch(
+  //           openErrorModal({
+  //             title: "Something Went Wrong!",
+  //             message: INTERNAL_SERVER,
+  //             theme: "error",
+  //           })
+  //         )
+  //         setLoading(false);
+  //       });
+  //   }
+  //   setLoading(false);
+  // }
 
   /** Outlet Data Retrive Without GeoLocation */
-  const loadingOutlet = async () => {
-    setLoading(true);
-    await getRequest(endpoints.outlet)
-      .then((result: any) => {
-        if (result.status === 200) {
-          setOutletList(result.data.data);
-          setLoading(false);
-          return;
-        }
+  // const loadingOutlet = async () => {
+  //   setLoading(true);
+  //   await getRequest(endpoints.outlet)
+  //     .then((result: any) => {
+  //       if (result.status === 200) {
+  //         setOutletList(result.data.data);
+  //         setLoading(false);
+  //         return;
+  //       }
 
-        dispatch(
-          openErrorModal({
-            title: "Something Went Wrong!",
-            message: INTERNAL_SERVER,
-            theme: "error",
-          })
-        );
-        setLoading(false);
-      })
-      .catch(() => {
-        dispatch(
-          openErrorModal({
-            title: "Something Went Wrong!",
-            message: INTERNAL_SERVER,
-            theme: "error",
-          })
-        )
-        setLoading(false);
-      });
-  }
+  //       dispatch(
+  //         openErrorModal({
+  //           title: "Something Went Wrong!",
+  //           message: INTERNAL_SERVER,
+  //           theme: "error",
+  //         })
+  //       );
+  //       setLoading(false);
+  //     })
+  //     .catch(() => {
+  //       dispatch(
+  //         openErrorModal({
+  //           title: "Something Went Wrong!",
+  //           message: INTERNAL_SERVER,
+  //           theme: "error",
+  //         })
+  //       )
+  //       setLoading(false);
+  //     });
+  // }
 
   /** Loading GeoLoacation */
-  const loadingGeoLocation = useCallback(async () => {
-    setLoading(true);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (success: any) => {
-        const getCurrentLocation = await success.coords;
+  // const loadingGeoLocation = useCallback(async () => {
+  //   setLoading(true);
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(async (success: any) => {
+  //       const getCurrentLocation = await success.coords;
 
-        if (getCurrentLocation.latitude && getCurrentLocation.longitude) {
-          const updateUserLocation = { ...userLocation };
-          updateUserLocation.lat = getCurrentLocation.latitude;
-          updateUserLocation.long = getCurrentLocation.longitude;
-          setUserLocation(updateUserLocation);
-          updateUserLocation.distance = distance;
-          setPromotionTab("PROMOTION");
-        }
-      },
-        async () => {
-          setPromotionTab("ALL");
-        });
-    }
-  }, []);
+  //       if (getCurrentLocation.latitude && getCurrentLocation.longitude) {
+  //         const updateUserLocation = { ...userLocation };
+  //         updateUserLocation.lat = getCurrentLocation.latitude;
+  //         updateUserLocation.long = getCurrentLocation.longitude;
+  //         setUserLocation(updateUserLocation);
+  //         updateUserLocation.distance = distance;
+  //         setPromotionTab("PROMOTION");
+  //       }
+  //     },
+  //       async () => {
+  //         setPromotionTab("ALL");
+  //       });
+  //   }
+  // }, []);
 
   /** Loading Event Slider */
   const loadingEventSlider = useCallback(async () => {
@@ -187,22 +191,22 @@ const PartyReader = (props: btnProps) => {
   }, []);
 
   /** Watch GeoLoacation */
-  useEffect(() => {
-    loadingGeoLocation();
-  }, [loadingGeoLocation]);
+  // useEffect(() => {
+  //   loadingGeoLocation();
+  // }, [loadingGeoLocation]);
 
   /** Watch Promotion Tab */
-  useEffect(() => {
-    if (promotionTab && promotionTab === "ALL") {
-      loadingOutlet();
-      return;
-    }
+  // useEffect(() => {
+  //   if (promotionTab && promotionTab === "ALL") {
+  //     loadingOutlet();
+  //     return;
+  //   }
 
-    if (promotionTab && promotionTab === "PROMOTION") {
-      loadingOutletWithLocation();
-      return;
-    }
-  }, [promotionTab]);
+  //   if (promotionTab && promotionTab === "PROMOTION") {
+  //     loadingOutletWithLocation();
+  //     return;
+  //   }
+  // }, [promotionTab]);
 
   /** Watch Event Slider */
   useEffect(() => {
@@ -210,11 +214,11 @@ const PartyReader = (props: btnProps) => {
   }, [loadingEventSlider]);
 
   /** Watch Distance */
-  useEffect(() => {
-    if(distance) {
-      loadingOutletWithLocation();
-    }
-  }, [distance]);
+  // useEffect(() => {
+  //   if(distance) {
+  //     loadingOutletWithLocation();
+  //   }
+  // }, [distance]);
 
   return (
     <div className="partyreader-container relative max-w-[420px] mx-auto">
@@ -235,6 +239,7 @@ const PartyReader = (props: btnProps) => {
             {slides && slides.length > 0 && (
               <div className="slidder-wrapper mt-[20px] mb-[20px]">
                 <EventSliderComponent autoPlay>
+
                   {slides.map((slide, index) => (
                     <div className="p-2" key={index}>
                       {slide?.cover_photo.image &&
@@ -244,11 +249,12 @@ const PartyReader = (props: btnProps) => {
                           className="slider-img"
                           onClick={() => {
                             setOpenEventModal(true);
-                            setDescription(slide.description);
+                            setDescription(slide);
                             setTitle(slide.name);
                           }}
                         />
                       }
+                      <h3 className="event-slider-name"> {slide.name }</h3>
                     </div>
                   ))}
                 </EventSliderComponent>
@@ -257,15 +263,15 @@ const PartyReader = (props: btnProps) => {
           </div>
         </div>
         <div className="promotion-wrapper">
-          <div className="outlet-promotion-title">
+          {/* <div className="outlet-promotion-title">
             <img src={outletpromotionTitle} alt={imageTitle} title={imageTitle} />
-          </div>
-          <p className="promotion-content px-[20px] font-medium leading-[19px]">
+          </div> */}
+          {/* <p className="promotion-content px-[20px] font-medium leading-[19px]">
             ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း <span className="hnk-effect"> Refresh Nights </span> တွေမှာ
             စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို <span className="hnk-effect"> Music Event </span> တွေ
             ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
-          </p>
-          <div className="promotion-btn-group">
+          </p> */}
+          {/* <div className="promotion-btn-group">
             <button
               className={`btn-style ${promotionTab === 'PROMOTION' ? "active" : ""}`}
               onClick={() => setPromotionTab("PROMOTION")}
@@ -306,8 +312,8 @@ const PartyReader = (props: btnProps) => {
                 </svg>
               )}
             </button>
-          </div>
-          {promotionTab === "PROMOTION" && (
+          </div> */}
+          {/* {promotionTab === "PROMOTION" && (
             <>
               <div className="nearby-container">
                 <span className="nearby-label">Near by</span>
@@ -328,8 +334,8 @@ const PartyReader = (props: btnProps) => {
                 </Select>
               </div>
             </>
-          )}
-
+          )} */}
+{/* 
           <div className="promotion-container px-[20px] !justify-between gap-[20px]">
             {outletList.map((item: any, index: any): any => (
               <button
@@ -348,7 +354,7 @@ const PartyReader = (props: btnProps) => {
                 <p className="outlet_name w-full !pt-[10px]">{item.name}</p>
               </button>
             ))}
-          </div>
+          </div> */}
           <div className="footer relative z-0">
             <img
               style={{ width: "100%" }}
@@ -367,6 +373,7 @@ const PartyReader = (props: btnProps) => {
           </div>
         </div>
       </div>
+      
       {selectedOutlet && (
         <OutletModal outlet={selectedOutlet} onClose={closeModal} />
       )}

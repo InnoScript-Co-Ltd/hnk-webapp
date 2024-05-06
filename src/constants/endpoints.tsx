@@ -22,7 +22,9 @@ export const endpoints = {
     user: '/user',
     image: `${serverURLs[env]}/storage/images`,
     audio: `${serverURLs[env]}/storage/audio`,
+    video: `${serverURLs[env]}/video`,
     singerSlider: "singer-in-song",
+    singer: "singer",
     genre: "/genre",
     outlet: "/outlet",
     eventSlider: "/event-slider"

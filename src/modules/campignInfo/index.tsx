@@ -6,75 +6,73 @@ Email                       - info@innoscript.co
 **/
 
 import RotatingSlogan from "@/components/RotatingSlogan";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+// import { Button } from "@/components/ui/button";
+// import { useNavigate } from "react-router-dom";
+import { MetaTags } from "@/components/MetaTag";
+import metaImage from "@/assets/images/hnk_refresh_music.png";
 import "./style.css";
 
 const CampignInfo = () => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+
+    const metaData: any = {
+        title: "Campaign အကြောင်း",
+        description : "ဂီတဟာ ခံစားမှု၊ စိတ်ကူးနိုင်စွမ်းနဲ့ Refresh Vibes တွေကိုပါ ရရှိစေပါတယ်။  ဒါကြောင့် လူငယ်အများစုဟာ အရင်တုန်းကလို Refresh ညတွေ ပြန်ရဖို့ ကိုယ့်အကြိုက်ဆုံးသီချင်းတွေ ကြားရမယ့်နေရာတွေဆီ သွားလေ့ရှိကြပေမယ့် Social Media  Algorithms တွေကြောင့် ပုံစံတူသီချင်း၊ ခံစားမှုတွေဆီမှာပဲ ပိတ်မိပြန်ပါတယ်",
+        image: metaImage,
+        summaryImage: metaImage
+    }
 
     return (
-        <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-1 max-w-[420px] mx-auto relative">
-            <div className="w-full flex flex-col justify-center items-center gap-3">
-                <RotatingSlogan />
-                <div className="w-full h-full font-natosansmm text-white bg-[rgba(30,18,115,0.88)]/30 backdrop-blur-2xl border border-[#EABFFF] rounded-lg verflow-hidden overflow-y-scroll scrollbar-none flex flex-col gap-4 p-5">
-                    <h1 className="text-[25px] font-bold text-center"> ကမ်ပိန်းစည်းမျဉ်းစည်းကမ်းများ </h1>
-                    <ul className="campign-list-wrapper">
-                        <li className="campign-list">
-                            <span className="hnk-font"> Heineken®Refresh Your Music, Refresh Your Nights </span> ကမ်ပိန်းကို မြန်မာနိုင်ငံသားမှတ်ပုံတင် (ID card) ကိုင်ဆောင်ထားသော (၂၈)ရက်၊ မတ်လ၊ ၂၀၂၄ ခုနှစ်တွင် အသက် (၂၁)နှစ်နှင့်အထက် ရှိပြီးဖြစ်သော သူများသာပါဝင်ခွင့်ရှိပါသည်။
-                        </li>
+        <>
+            <MetaTags dataSource={metaData} />
 
-                        <li className="campign-list">
-                            (၂၈)ရက်၊ မတ်လ၊ ၂၀၂၄ ခုနှစ်တွင် အသက် (၁၈)နှစ်မပြည့်သေးသူများ၊ <span className="hnk-font"> Heineken® </span> မှဝန်ထမ်းများ နှင့် <span className="hnk-font"> Heineken® </span> ၏မိတ်ဖက် အရောင်းမြှင့်တင်ရေးအေဂျင်စီများ၊ ၄င်းတို့၏ မိသားစုဝင်များ၊ ဥပဒေအရတားမြစ်ခြင်းခံရသူများ ပါဝင်ခွင့်မရှိပါ။
-                        </li>
+            <div className="bg-tandc bg-no-repeat bg-cover display flex flex-col justify-center items-center p-1 max-w-[420px] mx-auto relative">
+                <div className="w-full flex flex-col justify-center items-center gap-3">
+                    <RotatingSlogan />
+                    <div className="w-full h-full font-natosansmm text-white bg-[rgba(30,18,115,0.88)]/30 backdrop-blur-2xl border border-[#EABFFF] rounded-lg verflow-hidden overflow-y-scroll scrollbar-none flex flex-col gap-4 p-5">
+                        <h1 className="text-[25px] font-bold text-center"> Campaign အကြောင်း </h1>
+                        <ul className="campign-list-wrapper">
+                            <li className="campign-list">
+                                ဂီတဟာ ခံစားမှု၊ စိတ်ကူးနိုင်စွမ်းနဲ့ <span className="hnk-font"> Refresh Vibes</span> တွေကိုပါ ရရှိစေပါတယ်။
+                                ဒါကြောင့် လူငယ်အများစုဟာ အရင်တုန်းကလို <span className="hnk-font"> Refresh </span> ညတွေ ပြန်ရဖို့
+                                ကိုယ့်အကြိုက်ဆုံးသီချင်းတွေ ကြားရမယ့်နေရာတွေဆီ သွားလေ့ရှိကြပေမယ့် <span className="hnk-font"> Social Media  Algorithms </span>
+                                တွေကြောင့် ပုံစံတူသီချင်း၊ ခံစားမှုတွေဆီမှာပဲ ပိတ်မိပြန်ပါတယ် ဒီအတွက်  <span className="hnk-font"> Heineken®Refresh Your Music, Refresh Your Nights </span>
+                                ပြန်လည်ရောက်ရှိလာပါပြီ
+                            </li>
 
-                        <li className="campign-list">
-                            <span className="hnk-font"> Heineken® </span> သည် လူမှုကွန်ရက်စာမျက်နှာ (social media)များမှ တဆင့်ကြိုတင်အကြောင်းကြား၍ ကမ်ပိန်းကျင်းပမည့် နေ့ရက်များကို ပြောင်းလဲရန်၊ ရုပ်သိမ်းရန် သို့မဟုတ် ပြန်လည်စီစဉ်ရန် ဆုံးဖြတ်ပိုင်ခွင့်ရှိထားသည်ကိုလည်း သိရှိရပါမည်။
-                        </li>
+                            <li className="campign-list">
+                                ခေါက်ရိုးကျိုးပုံစံတွေကနေ ပြောင်းလဲဆန်းသစ်ထားတဲ့ ဂီတသံစဉ်တွေနဲ့ ဖောက်ထွက်နိုင်မယ့် <span className="hnk-font"> Heineken </span> ရဲ့
+                                <span className="hnk-font"> campaign </span> တစ်ခုဖြစ်ပြီးတော့ ၂၀၂၂ ခုနှစ်တုန်းကလည်း ရန်ကုန်မြို့က <span className="hnk-font"> Heineken®Premium Outlets </span>  တွေမှာ
+                                <span className="hnk-font"> International EDM Artist THE CHAINSMOKERS </span> ရဲ့ နာမည်ကျော်သီချင်းတွေကို  <span className="hnk-font"> Local Artists </span>
+                                တွေဖြစ်ကြတဲ့ ဝေလ၊ SNARE၊ ထက်ယံ၊ Amera Hpone တို့က ဖျော်ဖြေခဲ့ကြပါသေးတယ်။
+                            </li>
 
-                        <li className="campign-list">
-                            ဆုလက်ဆောင်များမှာ Heineken YAMAHA Guitar, Heineken JBL Speaker, Heineken Earbuds,  Heineken Waterproof Bag, Heineken Fanny Pack, Heineken T shirt နှင့် Heineken Water Bottle များဖြစ်ပါသည်။
-                        </li>
+                            <li className="campign-list">
+                                ဒီနှစ် <span className="hnk-font"> Refresh Your Music, Refresh Your Nights 2024 </span>  မှာတော့ ပရိသတ်အကြိုက်ဆုံးသီချင်းတွေ ဖန်တီးထားကြတဲ့
+                                <span className="hnk-font"> Local Artists </span> မိစန္ဒီ၊ Ar-T၊ Jewel၊ Double J၊ Shine နဲ့  Amera Hpone တို့က
+                                <span className="hnk-font"> Heineken </span> နဲ့အတူ အသစ်လွင်ဆုံး ဂီတသံစဉ်ကို အတူဖန်တီးသွားကြမှာဖြစ်ပါတယ်။ ဖန်တီးတဲ့တစ်လျှောက်လုံး
+                                www.refreshyourmusichnk.com ကတဆင့် ပရိသတ်တွေ ကိုယ်တိုင်ပါဝင်နိုင်မယ့် အစီအစဉ်တွေအပြင်  <span className="hnk-font"> Live Performance </span>
+                                အဖြစ် ကိုယ်တိုင် နားထောင်နိုင်မယ့် <span className="hnk-font">Event </span> တွေလည်းပါဝင်ဦးမှာပါ။ ဒီအစီအစဉ်တွေကနေ <span className="hnk-font"> Heineken </span>  ရဲ့
+                                <span className="hnk-font"> Exclusive </span>  ဆုလက်ဆောင်တွေရယူနိုင်မယ့် အခွင့်အရေးတွေလည်းရှိနေမှာမို့  ဘယ်လိုပုံစံနဲ့ <span className="hnk-font"> Refresh </span>  သွားမလဲ?
+                                စောင့်မျှော်ခံစားကြည့်လိုက်ပါ…
+                            </li>
+                        </ul>
 
-                        <li className="campign-list">
-                            ဆုလက်ဆောင်များကို www.refreshyourmusichnk.com ရှိ <a href="/home"> Refresh with Double J </a> တွင် ဖော်ပြထားသောနည်းလမ်းများဖြင့် ရယူနိုင်ပါသည်။
-                        </li>
-
-                        <li className="campign-list">
-                            ဆုလက်ဆောင်များအား လူအစားထိုးလဲလှယ်ခြင်းများ၊ အခြားအကျိုးခံစားခွင့်များနှင့် လဲလှယ်ခြင်း၊ ငွေသားဖြင့်လှဲလှယ်ခြင်းများ  ပြုလုပ်ပေးသွားမည်မဟုတ်ပါ။
-                        </li>
-
-                        <li className="campign-list">
-                            ဤကမ်ပိန်းတွင်ပါဝင်မည့်သူသည်  <span className="hnk-font"> Heineken® </span>နှင့် ၎င်း၏မိတ်ဖက်များကို ဆုလက်ဆောင်များတွင် မပါဝင်ဘဲ တစ်ပိုင်းတစ်စ၊ သို့မဟုတ် အပြည့်အဝ ဖြစ်ပေါ်လာနိုင်သော၊ သို့မဟုတ် ပြိုင်ပွဲဝင်သူတွင် ရှိသော ဆုံးရှုံးမှုများ၊ အခွင့်အရေးများ၊ တောင်းဆိုမှုများ၊ ကုန်ကျမှုများနှင့် စပ်လျဉ်း၍ တိုက်ရိုက်ဖြစ်စေ၊ သွယ်ဝိုက်ဖြစ်စေ အပြစ်တင်စွဲ ဆိုနိုင်ခြင်းမရှိသည်ကို နားလည်ထားပြီး ဖြစ်ရပါမည်။
-                        </li>
-
-                        <li className="campign-list">
-                            ဤကမ်ပိန်းတွင် ပါဝင်ခြင်းအားဖြင့် ပါဝင်သူများသည် မိမိတို့ပါဝင်ယှဉ်ပြိုင်ထားသော သီချင်းများ၊ Video များ၊ ဓာတ်ပုံများနှင့် ပတ်သက်သော မူပိုင်ခွင့်များအား <span className="hnk-font"> Heineken® </span> သို့ ပေးအပ်ပြီးဖြစ်ပါသည်။ ပေးအပ်ထားသော မူပိုင်ခွင့်များတွင် အကြောင်းအရာများအား သင့်တော်သလို ပြန်လည်တည်းဖြတ်ခြင်း၊ အပြောင်းအလဲများပြုလုပ်ခြင်း၊ စီးပွားရေး ကြော်ငြာများ ၊ အရောင်းမြှင့်တင်ရေးလုပ်ငန်းများတွင် အသုံးပြုခြင်း၊ တိုက်ရိုက် အရောင်းမြှင့်တင်ခြင်း၊ အီလက်ထရောနစ်မီဒီယာများမှ တဆင့် အရောင်းမြှင့်တင်ခြင်း လုပ်ငန်းများတွင် အသုံးပြုခြင်းများအတွက်ပါ အခွင့်အရေးပေးထားပြီး ဖြစ်ကြောင်း အသိပေးအပ်ပါသည်။
-                        </li>
-
-                        <li className="campign-list">
-                            အထက်ဖော်ပြပါ အချက်များအပြင်  <span className="hnk-font"> Heineken® </span> သည် ကမ်ပိန်းစည်းမျဉ်းကန့်သတ်ချက်များအား ကြိုတင်အကြောင်းကြားခြင်းမပြုဘဲ ပြင်ဆင်ခြင်း၊ ဖြည့်စွက်ခြင်း၊ အစားထိုးခြင်းများ ပြုလုပ်နိုင်ခွင့် ရှိပါသည်။ ဤကမ်ပိန်းတွင် ပါဝင်ခြင်းဖြင့် အဆိုပါပြင်ဆင်မှုများ၊ ဖြည့်စွက်မှု၊အစားထိုးမှုများနှင့်အတူစည်းမျဉ်းကန့်သတ်ချက်များနှင့် အားလုံးကို  <span className="hnk-font"> Heineken® </span> မှ နောက်ဆုံး ဆုံးဖြတ်မည်ကို သိရှိလက်ခံထားပြီး ဖြစ်ပါသည်။
-                        </li>
-
-                        <li className="campign-list">
-                            ကမ်ပိန်းအစီစဉ်များ၊ စည်းမျဉ်းကန့်သတ်ချက်ကို မြန်မာနိုင်ငံ၏ ဥပဒေများဖြင့် ထိန်းသိမ်းကြီးကြပ်သွားပါမည်။
-                        </li>
-                    </ul>
-
-                    <div className="flex justify-around px-4">
-                    <Button
-                        variant="hnk"
-                        size="hnksm"
-                        onClick={() => navigate("/home")}
-                        className="text-black"
-                    >
-                        Back
-                    </Button>
-                </div>
+                        {/* <div className="flex justify-around px-4">
+                            <Button
+                                variant="hnk"
+                                size="hnksm"
+                                onClick={() => navigate("/home")}
+                                className="text-black"
+                            >
+                                Back
+                            </Button>
+                        </div> */}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

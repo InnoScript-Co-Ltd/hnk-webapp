@@ -12,7 +12,6 @@ const EventSliderComponent = ({ children, autoPlay }: Props) => {
     const [touchEnd, setTouchEnd] = useState<number | null>(null);
     const sliderRef = useRef<HTMLDivElement>(null);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
     const minSwipeDistance = 50;
 
     const onTouchStart = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {

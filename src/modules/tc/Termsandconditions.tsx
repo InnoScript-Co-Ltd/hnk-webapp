@@ -24,7 +24,7 @@ const Termsandconditions = () => {
 
 
     const handleTcAccept = () => {
-        navigate(`/register/${params.vote}`);
+        navigate(`/register/${params.vote}/${params.type}`);
     };
 
     const onClose = () => {

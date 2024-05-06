@@ -5,7 +5,7 @@ Date                        - 11/04/2024
 Email                       - info@innoscript.co
 **/
 
-export const loadingTimeOut = 2000;
+export const loadingTimeOut = 1000;
 
 
 /** Favourite Genres */
