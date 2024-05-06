@@ -28,6 +28,7 @@ const Moft = lazy(() => import("@/modules/moft/Moft.tsx"));
 const EmployeeRegister = lazy(() => import("@/modules/employee/EmployeeRegister.tsx"));
 const PartyRadar = lazy(() => import("@/modules/partyReader/PartyRadar.tsx"));
 const EventDetail = lazy(() => import("@/modules/event/EventDetail.tsx"));
+const SingerDetail = lazy(() => import("@/modules/singerDetail/SingerDetail.tsx"));
 
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
@@ -100,6 +101,10 @@ const App = () => {
                 {
                     path: "/register/:vote/:type",
                     element: lazyLoad(<Register />),
+                },
+                {
+                    path: "/singer/:id",
+                    element: lazyLoad(<SingerDetail />)
                 },
             ],
         },

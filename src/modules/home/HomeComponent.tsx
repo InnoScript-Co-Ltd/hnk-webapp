@@ -16,6 +16,7 @@ import randr from "../../assets/images/HomePage/r&r.png";
 import { useNavigate } from "react-router-dom";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import { imageTitle } from "@/constants/config";
+import SingerSlider from "@/components/SingerSlider/SingerSlider";
 import "./style.css";
 
 const HomeComponent = () => {
@@ -23,9 +24,7 @@ const HomeComponent = () => {
   
   return (
     <div className="home-container max-w-[420px] mx-auto">
-      <div>
-        <img className="enjoy-logo" src={enjoyLogo} alt={imageTitle} title={imageTitle} />
-      </div>
+      <SingerSlider />
       <div className="content-section">
         <div className="right-illu">
           <img src={titleRightIllu} alt={imageTitle} title={imageTitle} />
@@ -35,14 +34,14 @@ const HomeComponent = () => {
           <img src={homeTitle} alt={imageTitle} title={imageTitle} />
         </div>
         <div className="content-texts pl-[20px] pr-[50px] font-semibold leading-[19px]">
-          <p>
+          <p className="p-text">
             <span className="text-effect"> Heineken </span> က ပရိသတ်အကြိုက်ဆုံး သီချင်း တွေကို နာမည်ကျော်
             <span className="text-effect">Local Artists </span> တွေနဲ့အတူ ပြန်လည်ဆန်းသစ် <span className="text-effect">Refresh</span>  လုပ်သွားမှာပါ။
             ဖန်တီးတဲ့တစ်လျှောက်လုံး Website ကတဆင့် ပရိသတ်တွေ ကိုယ်တိုင်ပါဝင်နိုင်မယ့် အစီအစဉ်တွေအပြင် <span className="text-effect"> Heineken </span> ရဲ့
             <span className="text-effect"> Exclusive </span> ဆုလက်ဆောင်တွေရယူနိုင်မယ့် အခွင့်အရေးတွေလည်းရှိနေဦးမှာဆိုတော့ ဘယ်လိုပုံစံနဲ့ <span className="text-effect"> Refresh </span> သွားမလဲ?
           </p>
 
-          <p className="link-text"> <label  onClick={() => navigate("/campaign-info")}> အသေးစိတ်ကြည့်ရှုရန် </label></p>
+          <p className="link-text detail-link"> <label  onClick={() => navigate("/campaign-info")}> အသေးစိတ်ကြည့်ရှုရန် </label></p>
 
           {/* {showMore && (
           <>
@@ -66,7 +65,7 @@ const HomeComponent = () => {
         </div>
         <div className="content-illu relative">
           <img className="content-left-illu" src={contentIllu} alt={imageTitle} title={imageTitle} />
-          <img className="content-right-illu" src={beerBottle} alt={imageTitle} title={imageTitle} />
+          <img className="content-right-illu right-img" src={beerBottle} alt={imageTitle} title={imageTitle} />
 
 
           <p className="caption-text-party-radar"> <label> Music </label> တွေခံစားနိုင်မယ့် <label> Heineken Outlet</label> များ </p>
@@ -85,7 +84,7 @@ const HomeComponent = () => {
             </svg>
           </div>
         </div>
-        <button onClick={() => navigate('/party-radar')} className="rader btn">
+        <button onClick={() => navigate('/party-radar')} className="rader btn right-btn">
           <span>Party Radar</span>
           <svg
             width="24"
@@ -110,6 +109,7 @@ const HomeComponent = () => {
             title={imageTitle}
           />
           <img className="section-2-randr-illu" src={randr} alt={imageTitle} title={imageTitle} />
+          <p className="caption-text-party-radar-bottom left-caption"> သီချင်းများ ဆန်းသစ်ရန် </p>
           <button onClick={() =>  navigate('/randr')} className="randr btn fix-btn">
             <span> Refresh Your Music </span>
             <svg
@@ -125,7 +125,6 @@ const HomeComponent = () => {
               />
             </svg>
           </button>
-          <p className="caption-text-party-radar-bottom"> အကြိုက်ဆုံးအဆိုတော်တွေရဲ့သီချင်းများ ဆန်းသစ်ရန် </p>
         </div>
 
         <div className="footer-img relative">

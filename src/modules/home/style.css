@@ -5,45 +5,45 @@ Date                        - 11/04/2024
 Email                       - info@innoscript.co
 **/
 
-.home-container{
-    background-image: url('../../assets/images/HomePage/landingBg.png');
+.home-container {
+    /* background-image: url('../../assets/images/HomePage/landingBg.png'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    min-height: 720px;
+    min-height: 475px;
     position: relative;
-    background-color: #000242;
+    background-color: #532b6f;
 }
 
-.enjoy-logo{
+.enjoy-logo {
     position: absolute;
     bottom: 200px;
     right: 20px;
 }
 
-.content-section{
+.content-section {
     background-color: #009D1B;
     width: 100%;
     height: 720px;
     position: absolute;
-    top: 527px;
+    top: 470px;
     border-radius: 10px;
 }
 
-.right-illu{
+.right-illu {
     position: absolute;
     right: 0;
     top: 40px;
 }
 
-.content-title{
+.content-title {
     margin-top: 30px;
     display: flex;
     justify-content: center;
 }
 
-.content-texts{
+.content-texts {
     width: 100%;
     margin-top: 10px;
     font-family: natosansmm;
@@ -53,7 +53,7 @@ Email                       - info@innoscript.co
     font-weight: 500;
 }
 
-.content-texts > p {
+.content-texts>p {
     margin-bottom: 10px;
 }
 
@@ -72,14 +72,14 @@ Email                       - info@innoscript.co
     font-weight: 900;
 }
 
-.link-text > label {
+.link-text>label {
     cursor: pointer;
 }
 
 .caption-text-party-radar {
     width: calc(100% - 20px);
     position: absolute;
-    top: -50px;
+    top: -40px;
     font-family: natosansmm;
     color: #fff;
     font-size: 16px;
@@ -88,28 +88,27 @@ Email                       - info@innoscript.co
 }
 
 .caption-text-party-radar-bottom {
-    width: 100%;
     font-family: natosansmm;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     position: absolute;
     bottom: 0px;
-    padding-left: 20px;
+    padding-left: 10px;
     font-weight: 800;
     text-shadow: 3px 3px #000000;
 }
 
-.caption-text-party-radar-bottom > label,
-.caption-text-party-radar > label {
+.caption-text-party-radar-bottom>label,
+.caption-text-party-radar>label {
     font-family: hanikenSerif;
 }
 
-.link-text > label {
+.link-text>label {
     text-decoration: underline;
     line-height: 20px;
 }
 
-.content-illu{
+.content-illu {
     width: 100%;
     height: 100px;
     margin-top: 60px;
@@ -118,20 +117,20 @@ Email                       - info@innoscript.co
     position: relative;
 }
 
-.content-right-illu{
+.content-right-illu {
     position: absolute;
-    top: -71px;
+    top: -60px;
     right: 0;
 }
 
-.rader{
+.rader {
     position: absolute;
     right: 30px;
     width: 190px;
     height: 60px;
 }
 
-.btn{
+.btn {
     font-family: hanikenSerif;
     font-size: 18px;
     font-weight: 500;
@@ -145,62 +144,80 @@ Email                       - info@innoscript.co
     z-index: 1;
 }
 
-.rader-btn>span{
+.rader-btn>span {
     margin-right: 10px;
 }
 
-.right-bottom-clip{
+.right-bottom-clip {
     position: absolute;
     right: -1px;
     bottom: -57px;
 }
 
-.content-section-bottom{
+.content-section-bottom {
     width: 100%;
     height: 120px;
     background-color: #009D1B;
 }
 
-.content-section-2{
+.content-section-2 {
     width: 100%;
     height: 300px;
     background-color: #040658;
     position: relative;
 }
 
-.section-2-left-illu{
+.section-2-left-illu {
     position: absolute;
     top: -71px;
 }
 
-.section-2-randr-illu{
+.section-2-randr-illu {
     position: absolute;
     right: 20px;
     top: 50px;
 }
 
-.randr{
+.randr {
     position: absolute;
-    left: 20px;
+    left: 10px;
     bottom: -20px;
     width: 180px;
     height: 60px;
 }
 
-.footer-img{
+.footer-img {
     background-color: #040658;
 }
 
 .fix-btn {
     width: 200px;
-    padding: 10px;
-    bottom: 65px;
+    padding: 20px;
+    bottom: 75px;
 }
 
 
 @media only screen and (max-width: 420px) {
-    .top-slogan{
+    .top-slogan {
         width: 97%;
     }
 }
 
+.left-caption {
+    top: 135px;
+    padding-left: 20px;
+}
+
+.detail-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+@media screen and (max-width: 320px) {
+    .content-section {
+        top: 400px;
+    }
+}

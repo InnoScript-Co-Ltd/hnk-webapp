@@ -28,8 +28,8 @@ const PartyRadar = () => {
             <img className="party-radar-where-event-img" src={whereEventImg} alt={imageTitle} title={imageTitle} />
 
             <p className="party-radar-content">
-              ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း <span className="hnk-text"> Refresh Nights </span> တွေမှာ
-              စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို <span className="hnk-text"> Music Event </span> တွေ
+              ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ခံစားရင်း <span className="hnk-text-party-radar"> Refresh Nights </span> တွေမှာ
+              စီးမျောဖို့ ရန်ကုန်မြို့ရဲ့ ဘယ်နေရာတွေမှာ ဘယ်လို <span className="hnk-text-party-radar"> Music Event </span> တွေ
               ရှိနေမလဲ ရှာဖွေကြည့်ရအောင်…
             </p>
 

@@ -28,8 +28,11 @@ Email                       - info@innoscript.co
     color: #fff;
 }
 
-.hnk-text {
+.hnk-text-party-radar {
     font-family: hanikenSerif !important;
+    font-size: 14px!important;
+    font-weight: 400;
+    color: #fff;
 }
 
 .event-slider-footer {
