@@ -9,6 +9,7 @@ import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import titleRightIllu from "../../assets/images/HomePage/titleRightIllu.png";
 import contentIllu from "../../assets/images/HomePage/contentIlluLeft.png";
 import beerBottle from "../../assets/images/HomePage/beerbottle.png";
+import REFRESH_SERIES from "../../assets/images/refresh-series.png";
 import homeTitle from "@/assets/svgs/home-title.svg";
 import contentsection2leftIllu from "../../assets/images/HomePage/section2leftillu.png";
 import footerImg from "../../assets/images/HomePage/footer.png";
@@ -110,7 +111,7 @@ const HomeComponent = () => {
           />
           <img className="section-2-randr-illu" src={randr} alt={imageTitle} title={imageTitle} />
           <p className="caption-text-party-radar-bottom left-caption"> သီချင်းများ ဆန်းသစ်ရန် </p>
-          <button onClick={() =>  navigate('/randr')} className="randr btn fix-btn">
+          <button onClick={() =>  navigate('/randr')} className="randr btn fix-btn btn-disable" disabled={true}>
             <span> Refresh Your Music </span>
             <svg
               width="24"
@@ -127,8 +128,27 @@ const HomeComponent = () => {
           </button>
         </div>
 
+        <div className="refresh-series-wrapper">
+          <img className="refresh-series" src={REFRESH_SERIES} alt={"Refresh Series"} title={"Refresh Series"} />
+          <button onClick={() =>  navigate('/singer/9bfbb09c-5edd-4309-aabc-55018d3dc6c9')} className="refresh-series-btn">
+            <span className="btn-label"> Refresh Series </span>
+            <svg
+              width="24"
+              height="18"
+              viewBox="0 0 24 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.9263 0L13.9592 0.501143C13.9592 2.83013 15.9778 5.86846 18.1466 7.61036H0.21875V10.3896H18.1454C15.9767 12.1315 13.958 15.1699 13.958 17.4989L16.9251 18C16.9251 14.6966 19.8797 10.3896 23.2188 10.3896V7.61036C19.8797 7.61036 16.9251 3.30343 16.9251 0L16.9263 0Z"
+                fill="black"
+              />
+            </svg>
+          </button>
+        </div>
+
         <div className="footer-img relative">
-          <img className=" w-full" src={footerImg} alt={imageTitle} title={imageTitle} />
+          <img className="w-full" src={footerImg} alt={imageTitle} title={imageTitle} />
           <div>
             <img className="enjoy-logo absolute z-50 !bottom-[120px] !right-[20px]" src={enjoyLogo} />
           </div>
