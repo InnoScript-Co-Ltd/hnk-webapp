@@ -29,6 +29,7 @@ const EmployeeRegister = lazy(() => import("@/modules/employee/EmployeeRegister.
 const PartyRadar = lazy(() => import("@/modules/partyReader/PartyRadar.tsx"));
 const EventDetail = lazy(() => import("@/modules/event/EventDetail.tsx"));
 const SingerDetail = lazy(() => import("@/modules/singerDetail/SingerDetail.tsx"));
+const EpisodeTwo = lazy(() => import("@/modules/episodes/epsode_two/EpisodeTwo.tsx"));
 
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
@@ -77,6 +78,10 @@ const App = () => {
                 {
                     path: "/randr/episode-1",
                     element: lazyLoad(<Episode />),
+                },
+                {
+                    path: "/randr/episode-2",
+                    element: lazyLoad(<EpisodeTwo />),
                 },
                 {
                     path: "/employee",

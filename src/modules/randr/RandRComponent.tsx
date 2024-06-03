@@ -37,7 +37,7 @@ const RandRComponent = () => {
     // const dispatch = useDispatch();
 
     const EpOneCLickHandler = () => {
-        navigate('/randr/episode-1')
+        navigate('/randr/episode-2')
     }
 
     // const onClickSinger = (id: string) => {
