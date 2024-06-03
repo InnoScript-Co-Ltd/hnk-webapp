@@ -111,7 +111,8 @@ const HomeComponent = () => {
           />
           <img className="section-2-randr-illu" src={randr} alt={imageTitle} title={imageTitle} />
           <p className="caption-text-party-radar-bottom left-caption"> သီချင်းများ ဆန်းသစ်ရန် </p>
-          <button onClick={() =>  navigate('/randr')} className="randr btn fix-btn btn-disable" disabled={true}>
+          {/** btn-disable */}
+          <button onClick={() =>  navigate('/randr')} className="randr btn fix-btn" disabled={false}>
             <span> Refresh Your Music </span>
             <svg
               width="24"

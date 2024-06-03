@@ -21,7 +21,7 @@ import { useSelector } from "react-redux";
 import { USER_STORY } from "@/models/story.model";
 import { imageTitle } from "@/constants/config";
 import "./style.css";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 const Invite = () => {
     const navigate = useNavigate();
@@ -41,13 +41,13 @@ const Invite = () => {
 
     return (
         <div>
-            <Helmet>
+            {/* <Helmet>
                 <title> ဆန်းသစ်ထူးခြားတဲ့ ဂီတအရသာတွေကို ကိုယ်တိုင်စီးမျောခံစားဖို... </title>
                 <meta name="description" content=" Take Care by Double J ကို ဘယ်လို Music Style နဲနားထောင်ချင်လဲ? ရွေးချယ်လိုက်ပါ" data-react-helmet="true" />
                 <meta property="og:url" content="https://refreshyourmusichnk.com/randr/episode-1" data-react-helmet="true" />
                 <meta property="og:type" content="article" data-react-helmet="true" />
                 <meta property="og:image" content="https://refreshyourmusichnk.com/assets/landingBg-CjO8QWGu.png" data-react-helmet="true" />
-            </Helmet>
+            </Helmet> */}
             <div className="invite-container max-w-[420px] mx-auto">
                 <AnimatePresence>
                     {openShareModel && (

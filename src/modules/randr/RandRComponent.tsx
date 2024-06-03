@@ -124,11 +124,11 @@ const RandRComponent = () => {
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
                                     Take Care by Double J ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
-                                </p>
+                                </p> 
                             </div>
 
                             <div className={styles.ep_btn}>
-                                <button className={styles.btn_style} onClick={EpOneCLickHandler} style={{ width: "170px" }}>
+                                <button className={styles.btn_style} onClick={EpOneCLickHandler} style={{ width: "170px", top: "10px[" }} disabled={true}>
                                     <span className={styles.button_label}>  Refresh with Double J </span>
                                 </button>
                                 {/* <ButtonComponent label='Refresh with Double J' onBtnClick={EpOneCLickHandler} /> */}
@@ -144,16 +144,19 @@ const RandRComponent = () => {
                     </svg>
                     <div className={styles.top_adj_200} style={{ justifyContent: 'flex-end' }}>
                         <div className={styles.ep_right_text} style={{ top: "-20px", position: "relative" }}>
-                            {/* <div className={styles.ep_right_label}>
+                            <div className={styles.ep_right_label}>
                                 <IoIosStarOutline color='#00FF0A' />
                                 <p className={styles.btn_label_text}>
-                                    Refresh Your Lyric
+                                    Take Care by Amara Hpone ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
                                 </p>
                             </div>
 
                             <div className={styles.ep_btn}>
-                                <ButtonComponent disabled={true} label='Episode-2' onBtnClick={EpOneCLickHandler} />
-                            </div> */}
+                                <button className={styles.btn_style} onClick={EpOneCLickHandler} style={{ width: "170px", top: "10px" }}>
+                                    <span className={styles.button_label}>  Refresh with Amara Hpone </span>
+                                </button>
+                                {/* <ButtonComponent disabled={true} label='Episode-2' onBtnClick={EpOneCLickHandler} /> */}
+                            </div>
                         </div>
                         <img src={ep2} style={{ position: "relative", right: "22px" }} alt={imageTitle} title={imageTitle} />
                     </div>
