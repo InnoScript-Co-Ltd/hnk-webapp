@@ -22,7 +22,7 @@ export const endpoints = {
     user: '/user',
     image: `${serverURLs[env]}/storage/images`,
     audio: `${serverURLs[env]}/storage/audio`,
-    video: `${serverURLs[env]}/video`,
+    video: `${serverURLs[env]}/storage/video`,
     singerSlider: "singer-in-song",
     singer: "singer",
     genre: "/genre",
