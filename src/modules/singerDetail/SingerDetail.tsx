@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import { imageTitle } from "@/constants/config";
+import HNK_VIDEO_COVER from "@/assets/images/video-poster.png";
 import "./index.css";
 
 const SingerDetail = () => {
@@ -63,20 +64,23 @@ const SingerDetail = () => {
                 <h3 className="video-title"> Refresh Series </h3>
                 {currentVideo && (
                     <div className="video-player">
-                        <div className="video-poster" style={{ display: isPlay ? "none" : ""}}>
-                            <h4> {singer && singer.name} </h4>
-                            <p> {singer && singer.slider_description} </p>
+                        <div className="video-poster" style={{ display: isPlay ? "none" : "" }}>
                             <button
                                 className="btn-play"
-                                style={{ display: isPlay ? "none" : ""}}
+                                style={{ display: isPlay ? "none" : "" }}
                                 onClick={() => {
                                     palyerRef.current.play();
                                     setIsPlay(true);
                                 }}>
-                                <img src={BTNPLAY} title={imageTitle} alt={imageTitle} />
+                                <img className="play-btn-icon" src={BTNPLAY} title={imageTitle} alt={imageTitle} />
                             </button>
+
+                            <div className="video-poster-title">
+                                <h4> {currentVideo && currentVideo.album_name} </h4>
+                                <p> {currentVideo && currentVideo.title} </p>
+                            </div>
                         </div>
-                        <video controls={isPlay} height="250px" ref={palyerRef}>
+                        <video className="video-play" controls={isPlay} ref={palyerRef}>
                             <source src={`${endpoints.video}/${currentVideo.video}`} />
                         </video>
                     </div>
@@ -93,10 +97,11 @@ const SingerDetail = () => {
                                 setIsPlay(false);
                                 palyerRef.current.currentTime = 0;
                                 setCurrentVideo(value);
+                                palyerRef.current.load();
                             }}>
-                            <video className="video-thum" controls={false}>
-                                <source src={`${endpoints.video}/${value.video}`} />
-                            </video>
+                            <div className="video-thum">
+                                <img src={HNK_VIDEO_COVER} alt={value.title} title={value.title} />
+                            </div>
 
                             <div className="video-detail">
                                 <h4> {value.title} </h4>
@@ -106,7 +111,7 @@ const SingerDetail = () => {
                     )
                 })}
             </div>
-            <div style={{background: "#000", position: "absolute", width: "100%", height: "100px", bottom: "0px"}}>
+            <div style={{ background: "#000", position: "absolute", width: "100%", height: "25px", bottom: "0px" }}>
 
             </div>
         </div>
