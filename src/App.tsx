@@ -13,6 +13,7 @@ import LoadingComponent from "./components/LoadingComponent.tsx";
 import { lazy, ReactElement, Suspense } from "react";
 import { Toaster } from "./components/ui/toaster.tsx";
 
+
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
 // const PartyRadar = lazy(() => import("./modules/partyReader/PartyReader"));
@@ -30,6 +31,7 @@ const PartyRadar = lazy(() => import("@/modules/partyReader/PartyRadar.tsx"));
 const EventDetail = lazy(() => import("@/modules/event/EventDetail.tsx"));
 const SingerDetail = lazy(() => import("@/modules/singerDetail/SingerDetail.tsx"));
 const EpisodeTwo = lazy(() => import("@/modules/episodes/epsode_two/EpisodeTwo.tsx"));
+const AmeraInvite = lazy(() => import("@/modules/invite/AmeraInvite.tsx"));
 
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
@@ -111,6 +113,10 @@ const App = () => {
                     path: "/singer/:id",
                     element: lazyLoad(<SingerDetail />)
                 },
+                {
+                    path: "/amera-invite",
+                    element: lazyLoad(<AmeraInvite />)
+                }
             ],
         },
     ]);
