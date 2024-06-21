@@ -5,7 +5,7 @@ Date                        - 11/04/2024
 Email                       - info@innoscript.co
 **/
 
-export const env = 2;
+export const env = 0;
 
 const baseUrls = [
     "http://localhost:8000", "http://hnk-innoscript.co", "https://refreshyourmusichnk.com"
