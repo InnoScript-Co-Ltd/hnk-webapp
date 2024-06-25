@@ -63,13 +63,13 @@ const HomeComponent = () => {
             </p>
           </>
         )} */}
+
         </div>
         <div className="content-illu relative">
           <img className="content-left-illu" src={contentIllu} alt={imageTitle} title={imageTitle} />
           <img className="content-right-illu right-img" src={beerBottle} alt={imageTitle} title={imageTitle} />
 
-
-          <p className="caption-text-party-radar"> <label> Music </label> တွေခံစားနိုင်မယ့် <label> Heineken Outlet</label> များ </p>
+          <p className="caption-text-party-radar"> <label> Music </label> တွေခံစားနိုင်မယ့် <label> Heineken Outlet </label> များ </p>
           <div className="right-bottom-clip !-bottom-[164px]">
             <svg
               width="100"
@@ -131,7 +131,7 @@ const HomeComponent = () => {
 
         <div className="refresh-series-wrapper">
           <img className="refresh-series" src={REFRESH_SERIES} alt={"Refresh Series"} title={"Refresh Series"} />
-          <button onClick={() =>  navigate('/singer/9bfbb09c-5edd-4309-aabc-55018d3dc6c9')} className="refresh-series-btn">
+          <button onClick={() =>  navigate('/refresh-series')} className="refresh-series-btn">
             <span className="btn-label"> Refresh Series </span>
             <svg
               width="24"

@@ -5,7 +5,7 @@ Date                        - 11/04/2024
 Email                       - info@innoscript.co
 **/
 
-export const env = 0;
+export const env = 2;
 
 const baseUrls = [
     "http://localhost:8000", "http://hnk-innoscript.co", "https://refreshyourmusichnk.com"
@@ -27,5 +27,6 @@ export const endpoints = {
     singer: "singer",
     genre: "/genre",
     outlet: "/outlet",
-    eventSlider: "/event-slider"
+    eventSlider: "/event-slider",
+    episode: "/episode"
 }

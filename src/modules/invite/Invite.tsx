@@ -15,21 +15,43 @@ import bottle from "../../assets/svgs/bottle.svg";
 import hand from "../../assets/images/hand.png";
 import enjoyLogo from "../../assets/images/HomePage/enjoyLogo.png";
 import ButtonComponent from "@/components/ButtonComponent";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import { useSelector } from "react-redux";
 // import { USER_STORY } from "@/models/story.model";
 import { imageTitle } from "@/constants/config";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { getRequest } from "@/lib/axios";
+import { endpoints } from "@/constants/endpoints";
 import "./style.css";
-import { useEffect, useRef } from "react";
 
 const Invite = () => {
     const navigate = useNavigate();
 
+    const [episode, setEpisode] = useState<any>(null);
+
     const palyerRef: any = useRef(null);
 
+    const prarams = useParams();
+
+    const loadingEpisode = useCallback(async () => {
+        const episodeResult: any = await getRequest(`${endpoints.episode}/search/${prarams.episode}`);
+
+        if (episodeResult.data) {
+            setEpisode(episodeResult.data.data);
+        }
+
+    }, [prarams.episode]);
+
     useEffect(() => {
-        palyerRef.current.play();
-    }, []);
+        if(episode && episode.status === "ENABLE") {
+            palyerRef.current.play();
+        }
+    }, [episode]);
+
+    useEffect(() => {
+        loadingEpisode();
+    }, [loadingEpisode]);
+
     return (
         <div>
             <div className="invite-container max-w-[420px] mx-auto">
@@ -44,19 +66,31 @@ const Invite = () => {
                             alt={imageTitle}
                             title={imageTitle}
                         />
-                        <img className="amera-content-img" src={AMRA_CONT} alt={imageTitle} title={imageTitle} />
+
+                        {episode && episode.status === "ENABLE" && (
+                            < div className='section-wrapper'>
+                                <p className='section-title'>
+                                    <span className='bold-text'> {episode.singer.name} </span> နဲ့အတူသီချင်းတွေ <span className='bold-text'> Refresh </span> လုပ်ရင်း
+                                    <span className='bold-text'> လက်ဆောင်ယူကြမယ် </span>
+                                </p>
+                            </div>
+                        )}
+
+                        {/* <img className="amera-content-img" src={AMRA_CONT} alt={imageTitle} title={imageTitle} /> */}
                     </div>
 
-                    <video 
-                        controls
-                        preload="auto" 
-                        autoPlay={true} 
-                        width={"280px"}
-                        ref={palyerRef}
-                        playsInline
-                    >
-                        <source src={AMRA_VIDEO} type="video/mp4" />
-                    </video>
+                    {episode && episode.status === "ENABLE" && (
+                        <video
+                            controls
+                            preload="auto"
+                            autoPlay={true}
+                            width={"280px"}
+                            ref={palyerRef}
+                            playsInline
+                        >
+                            <source src={`${endpoints.image}/${episode.singer.invite_video}`} type="video/mp4" />
+                        </video>
+                    )}
 
                     <img
                         className="absolute top-[300px] right-[0px]"
@@ -82,7 +116,7 @@ const Invite = () => {
                     <img className="mp3Player" src={mp3Player} alt={imageTitle} title={imageTitle} />
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

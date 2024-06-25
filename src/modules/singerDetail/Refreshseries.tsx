@@ -10,20 +10,20 @@ import { imageTitle } from "@/constants/config";
 import HNK_VIDEO_COVER from "@/assets/images/video-poster.png";
 import "./index.css";
 
-const SingerDetail = () => {
+const Refreshseries = () => {
     const [loading, setLoading] = useState(false);
     const [singer, setSinger]: any = useState(null);
+    const [singers, setSingers]: any = useState([]);
     const [videos, setVideos]: any = useState([]);
     const [currentVideo, setCurrentVideo]: any = useState(null);
     const [isPlay, setIsPlay] = useState(false);
 
     const params: any = useParams();
-
     const palyerRef: any = useRef(null);
 
-    const initLoading = useCallback(async () => {
+    const loadingSinger = async (value: string) => {
         setLoading(true);
-        const result: any = await getRequest(`${endpoints.singer}/${params.id}`);
+        const result: any = await getRequest(`${endpoints.singer}/${value}`);
 
         if (result.status === 200) {
             setSinger(result.data.data);
@@ -31,9 +31,21 @@ const SingerDetail = () => {
             setCurrentVideo(result.data.data.videos[0]);
             setIsPlay(false);
         }
+        setLoading(false);
+    }
+
+    const initLoading = useCallback(async () => {
+        setLoading(true);
+
+        const singerList: any = await getRequest(`${endpoints.singer}`);
+
+        if (singerList.status === 200) {
+            loadingSinger(singerList.data.data[0].id);
+            setSingers(singerList.data.data);
+        }
 
         setLoading(false);
-    }, [params]);
+    }, []);
 
 
     useEffect(() => {
@@ -61,6 +73,16 @@ const SingerDetail = () => {
 
 
             <div className="video-wrapper">
+                <div className="singer-list">
+                    {singers && singers.map((value: any, index: number) => {
+                        return (
+                            <div className="singer-btn" key={`singer_id_${index}`} onClick={() => loadingSinger(value.id)}>
+                                <span> {value.name} </span>
+                            </div>
+                        )
+                    })}
+                </div>
+
                 <h3 className="video-title"> Refresh Series </h3>
                 {currentVideo && (
                     <div className="video-player">
@@ -81,7 +103,7 @@ const SingerDetail = () => {
                             </div>
                         </div>
                         <video className="video-play" controls={isPlay} ref={palyerRef}>
-                            <source src={`${endpoints.video}/${currentVideo.video}`} />
+                            <source src={`${endpoints.image}/${currentVideo.video}`} />
                         </video>
                     </div>
 
@@ -118,4 +140,4 @@ const SingerDetail = () => {
     )
 }
 
-export default SingerDetail;
+export default Refreshseries;

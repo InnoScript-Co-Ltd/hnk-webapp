@@ -31,7 +31,8 @@ const SingerSlider = () => {
         const resultSingerSlider: any = await getRequest(endpoints.singer);
 
         if (resultSingerSlider.status === 200) {
-            setSlider(resultSingerSlider.data.data);
+            const showSlider = resultSingerSlider.data.data.filter((value: any) => value.show_slider === "ACTIVE");
+            setSlider(showSlider);
             setLoading(false);
             return;
         }
@@ -60,7 +61,7 @@ const SingerSlider = () => {
                                 className="singer-slider-item"
                                 key={`sinfer_slider_id_${index}`}
                                 onClick={() => {
-                                    navigate(`/singer/${slider.id}`)
+                                    navigate(`/refresh-series`)
                                 }}
                             >
                                 <img className="singer-slider-img" src={`${endpoints.image}/${slider.slider_image}`} alt={imageTitle} title={imageTitle} />

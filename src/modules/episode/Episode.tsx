@@ -12,7 +12,7 @@ import earphone from '@/assets/images/randr/episode_1/earphone.png'
 import mp3Player from '@/assets/images/randr/episode_1/mp3Player.png'
 import ButtonComponent from '@/components/ButtonComponent'
 import enjoyLogo from '@/assets/images/HomePage/enjoyLogo.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { IGenrereResponse } from '@/models/genre.model'
 import LoadingComponent from '@/components/LoadingComponent.tsx'
@@ -34,16 +34,18 @@ const Episode = () => {
 
   const [loading, setLoading] = useState(false);
   const [genreList, setGenreList] = useState([]);
+  const [episode, setEpisode] = useState<any>(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
 
   const voteHandler = (data: IGenrereResponse) => {
     setBoxState(data)
   }
 
   const onDoneClick = async () => {
-    navigate(`/register/${boxState.name}/client`)
+    navigate(`/register/${episode.url}/${boxState.name}/client`)
   }
 
   const loadGenreData = useCallback(async () => {
@@ -63,9 +65,31 @@ const Episode = () => {
     }
   }, [dispatch]);
 
+  const loadingEpisode = useCallback(async () => {
+    setLoading(true);
+    const result: any = await getRequest(`${endpoints.episode}/search/${params.id}`);
+
+    if (result.status === 200) {
+      setEpisode(result.data.data);
+      setLoading(false);
+    } else {
+      dispatch(openModal({
+        title: 'Something Went Wrong!',
+        message: INTERNAL_SERVER,
+        theme: 'error'
+      }));
+      setLoading(false);
+    }
+
+  }, [dispatch, params.id]);
+
   useEffect(() => {
     loadGenreData();
-  }, [loadGenreData])
+  }, [loadGenreData]);
+
+  useEffect(() => {
+    loadingEpisode();
+  }, [loadingEpisode]);
 
   return (
     <div>
@@ -78,37 +102,42 @@ const Episode = () => {
         <RotatingSlogan />
         <div className='section-wrapper'>
           <img src={titleIllu} alt={imageTitle} title={imageTitle} />
-          <p className='section-title'>
-            <span className='bold-text'> Amara Hpone </span>  ရဲ့ အိမ်မက်သီချင်းကို ဘယ်လို refresh လုပ်ချင်လဲ? 
-          </p>
+          {episode && episode.singer && (
+            <p className='section-title'>
+              <span className='bold-text'> {episode.singer.name} </span>  ရဲ့ အိမ်မက်သီချင်းကို ဘယ်လို refresh လုပ်ချင်လဲ?
+            </p>
+          )}
         </div>
-        <div className='genre-select'>
-          <p className='genre-title'>
-            Select Genre
-          </p>
 
-          <div className='genre-grid'>
-            {
-              genreList.map((data: IGenrereResponse, index) => (
-                <button
-                  onClick={() => voteHandler(data)}
-                  style={{
-                    backgroundImage: `url(${endpoints.image}/${data.icon?.image})`,
-                    boxShadow: boxState.id === data.id ? `3px 5px 0px 0px ${data.color}, 4px 6px 0px 0px #000, 0px 0px 25px 10px ${data.color}` : `3px 5px 0px 0px ${data.color}, 4px 6px 0px 0px #000`,
-                  }}
-                  key={index}
-                  className='genre-btn'>
-                  <div style={{ backgroundColor: data.color }} className='wave'></div>
-                  <span className='label left'>{data.name}</span>
-                  <span className='label right'>{data.rate}%</span>
-                </button>
-              ))
-            }
+        {episode && episode.status === "ENABLE" && (
+          <div className='genre-select'>
+            <p className='genre-title'>
+              Select Genre
+            </p>
+
+            <div className='genre-grid'>
+              {
+                genreList.map((data: IGenrereResponse, index) => (
+                  <button
+                    onClick={() => voteHandler(data)}
+                    style={{
+                      backgroundImage: `url(${endpoints.image}/${data.icon?.image})`,
+                      boxShadow: boxState.id === data.id ? `3px 5px 0px 0px ${data.color}, 4px 6px 0px 0px #000, 0px 0px 25px 10px ${data.color}` : `3px 5px 0px 0px ${data.color}, 4px 6px 0px 0px #000`,
+                    }}
+                    key={index}
+                    className='genre-btn'>
+                    <div style={{ backgroundColor: data.color }} className='wave'></div>
+                    <span className='label left'>{data.name}</span>
+                    <span className='label right'>{data.rate}%</span>
+                  </button>
+                ))
+              }
+            </div>
+            <div className='done-btn'>
+              <ButtonComponent disabled={boxState.id === ''} minWidth='187px' label='Done' onBtnClick={onDoneClick} />
+            </div>
           </div>
-          <div className='done-btn'>
-            <ButtonComponent disabled={boxState.id === ''} minWidth='187px' label='Done' onBtnClick={onDoneClick} />
-          </div>
-        </div>
+        )}
         <img className='ep1-enjoy' src={enjoyLogo} alt={imageTitle} title={imageTitle} />
         <div className='footer-wrapper'>
           <img className='earphone' src={earphone} alt={imageTitle} title={imageTitle} />
