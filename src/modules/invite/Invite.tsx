@@ -8,8 +8,6 @@ Email                       - info@innoscript.co
 import RotatingSlogan from "@/components/RotatingSlogan";
 import earphone from "../../assets/images/randr/episode_1/earphone.png";
 import mp3Player from "../../assets/images/randr/episode_1/mp3Player.png";
-import AMRA_VIDEO from "@/assets/videos/amera_intro.mp4";
-import AMRA_CONT from "@/assets/images/amera_content.svg";
 // import feedbackStar from "../../assets/images/Invite/feedbackStar.png";
 import bottle from "../../assets/svgs/bottle.svg";
 import hand from "../../assets/images/hand.png";

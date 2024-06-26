@@ -26,7 +26,7 @@ import { IoIosStarOutline } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import LoadingComponent from '@/components/LoadingComponent.tsx';
-import { imageTitle, loadingTimeOut } from '@/constants/config';
+import { imageTitle } from '@/constants/config';
 import { getRequest } from '@/lib/axios';
 import styles from './style.module.css'
 
@@ -160,7 +160,7 @@ const RandRComponent = () => {
                                 <IoIosStarOutline color='#00FF0A' />
                                 {episode && episode[1] && (
                                     <p className={styles.btn_label_text}>
-                                        Take Care by {episode[1].singer.name} ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
+                                        အိပ်မက် by {episode[1].singer.name}
                                     </p>
                                 )}
                             </div>
@@ -190,7 +190,7 @@ const RandRComponent = () => {
                                 <IoIosStarOutline color='#00FF0A' />
                                 {episode && episode[2] && (
                                     <p className={styles.btn_label_text}>
-                                        Take Care by {episode[2].singer.name} ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
+                                        {episode[2].singer.name} ရဲ့ ပြန်ဆန်းသစ်ထားတဲ့ ခေတ်ဟောင်းသီချင်းလေးက ဘာဖြစ်မလဲ?
                                     </p>
                                 )}
                             </div>
