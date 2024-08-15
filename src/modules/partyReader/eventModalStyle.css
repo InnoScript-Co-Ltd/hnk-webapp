@@ -5,17 +5,27 @@
   height: 100%;
 } */
 
+.close-button-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
 .close-button {
   display: flex;
   justify-content: flex-end;
   color: white;
+  margin-right: 20px;
   font-family: hanikenSerif;
-  width: 70%;
 }
 
 .modal-detail-container {
   width: 370px;
-  /* height: 950px; */
+  height: 500px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -29,6 +39,7 @@
   box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
   -webkit-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
   -moz-box-shadow: -1px 1px 0px 4px rgb(0, 0, 0) !important;
+  overflow: scroll;
 }
 
 .modal-detail-content {
@@ -57,8 +68,6 @@
   display: flex;
   flex-direction: column;
   color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .modal-item {
@@ -78,14 +87,12 @@
 }
 
 .modal-item-value> span:first-child {
-  margin-top: 10px;
   width: 30%;
   padding-left: 10px;
 
 }
 
 .modal-item-value> span:last-child  {
-  margin-top: 10px;
   width: 70%;
   padding-left: 10px;
 }
@@ -104,13 +111,43 @@
 .promotion-item-value > label {
   font-size: 16px;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 .promotion-item-value > span {
   font-size: 14px;
   padding-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+.artist-lineup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.title-name {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+.artist-lineup > span:last-child {
+  font-size: 12px;
+}
+
+.event-modal-image {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 320px) {

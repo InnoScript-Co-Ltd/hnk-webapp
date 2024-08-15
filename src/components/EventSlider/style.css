@@ -29,8 +29,6 @@ Email                       - info@innoscript.co
 }
 
 .event-slider-name {
-    position: relative;
-    top: -90px;
     padding: 20px;
     font-size: 1.3rem;
     color: #fff;
@@ -38,8 +36,7 @@ Email                       - info@innoscript.co
 }
 
 .swiper-pagination {
-    position: relative!important;
-    top: -100px!important;
+    margin-top: 20px;
 }
 
 .swiper-scrollbar {

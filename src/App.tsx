@@ -15,8 +15,7 @@ import { Toaster } from "./components/ui/toaster.tsx";
 
 const HomeComponent = lazy(() => import("./modules/home/HomeComponent.tsx"));
 const PlayerComponent = lazy(() => import("./modules/player/PlayerComponent"));
-// const PartyRadar = lazy(() => import("./modules/partyReader/PartyReader"));
-const Episode = lazy(() => import("./modules/episodes/epsode_one/EpisodeOne"));
+const Episode = lazy(() => import("./modules/episode/Episode.tsx"));
 const Termsandconditions = lazy(() => import("./modules/tc/Termsandconditions.tsx"));
 const Register = lazy(() => import("./modules/register/Register"));
 const AgeGate = lazy(() => import("./modules/ageGate/AgeGate"));
@@ -28,7 +27,8 @@ const Moft = lazy(() => import("@/modules/moft/Moft.tsx"));
 const EmployeeRegister = lazy(() => import("@/modules/employee/EmployeeRegister.tsx"));
 const PartyRadar = lazy(() => import("@/modules/partyReader/PartyRadar.tsx"));
 const EventDetail = lazy(() => import("@/modules/event/EventDetail.tsx"));
-const SingerDetail = lazy(() => import("@/modules/singerDetail/SingerDetail.tsx"));
+const Refreshseries = lazy(() => import("@/modules/singerDetail/Refreshseries.tsx"));
+const AmeraInvite = lazy(() => import("@/modules/invite/AmeraInvite.tsx"));
 
 const lazyLoad = (element: ReactElement) => {
     return <Suspense fallback={<LoadingComponent />}>{element}</Suspense>;
@@ -45,7 +45,7 @@ const App = () => {
                     element: lazyLoad(<AgeGate />),
                 },
                 {
-                    path: "/invite",
+                    path: "/invite/:episode",
                     element: lazyLoad(<Invite />),
                 },
                 {
@@ -56,12 +56,10 @@ const App = () => {
                     path: "/party-radar",
                     element: lazyLoad(<PartyRadar />)
                 },
-                // {
-                //     path: "/party-radar",
-                //     element: lazyLoad(<PartyRadar onBtnClick={function (): void {
-                //         throw new Error("Function not implemented.");
-                //     } } label={""} />),
-                // },
+                {
+                    path: "/party-radar",
+                    element: lazyLoad(<PartyRadar />),
+                },
                 {
                     path: "/home",
                     element: lazyLoad(<HomeComponent />),
@@ -75,7 +73,7 @@ const App = () => {
                     element: lazyLoad(<RandRComponent />),
                 },
                 {
-                    path: "/randr/episode-1",
+                    path: "/randr/:id",
                     element: lazyLoad(<Episode />),
                 },
                 {
@@ -99,13 +97,17 @@ const App = () => {
                     element: lazyLoad(<EventDetail />),
                 },
                 {
-                    path: "/register/:vote/:type",
+                    path: "/register/:episode/:vote/:type",
                     element: lazyLoad(<Register />),
                 },
                 {
-                    path: "/singer/:id",
-                    element: lazyLoad(<SingerDetail />)
+                    path: "/refresh-series/:id",
+                    element: lazyLoad(<Refreshseries />)
                 },
+                {
+                    path: "/amera-invite",
+                    element: lazyLoad(<AmeraInvite />)
+                }
             ],
         },
     ]);

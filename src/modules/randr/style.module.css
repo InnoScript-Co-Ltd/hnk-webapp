@@ -71,6 +71,12 @@ Email                       - info@innoscript.co
     left: 20px;
 }
 
+.ep6 {
+    position: absolute;
+    top: 1125px;
+    left: 20px;
+}
+
 .line{
     margin-top: 60px;
 }
@@ -164,6 +170,13 @@ Email                       - info@innoscript.co
     position: relative;
     height: 280px;
     overflow: hidden;
+}
+
+.ep_section_end {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    top: -600px;
 }
 
 .flex_relative {
@@ -286,7 +299,7 @@ Email                       - info@innoscript.co
 
     .randr_enjoy{
         right: 22px;
-        bottom: 173px;
+        bottom: 0px;
     }
 }
 

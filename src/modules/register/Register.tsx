@@ -94,7 +94,7 @@ const Register = () => {
         type: params.type
       });
       setIsLoading(false);
-      navigate("/invite");
+      navigate(`/invite/${params.episode}`);
       return;
     }
 
