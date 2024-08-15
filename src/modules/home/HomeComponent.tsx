@@ -18,13 +18,37 @@ import { useNavigate } from "react-router-dom";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import { imageTitle } from "@/constants/config";
 import SingerSlider from "@/components/SingerSlider/SingerSlider";
+import { useCallback, useEffect, useState } from "react";
 import "./style.css";
+import { getRequest } from "@/lib/axios";
+import { endpoints } from "@/constants/endpoints";
+import LoadingComponent from "@/components/LoadingComponent.tsx";
 
 const HomeComponent = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [singers, setSingers] = useState<any>([]);
+
+  const loadingSinger = useCallback( async () => {
+    setLoading(true);
+
+    const result: any = await getRequest(`${endpoints.singer}`);
+
+    if (result.status === 200) {
+      setSingers(result.data.data);
+    }
+
+    setLoading(false);
+  }, []);
+
+
+  useEffect(() => {
+    loadingSinger()
+  }, [loadingSinger])
   
   return (
     <div className="home-container max-w-[420px] mx-auto">
+      {loading && <LoadingComponent />}
       <SingerSlider />
       <div className="content-section">
         <div className="right-illu">
@@ -131,7 +155,7 @@ const HomeComponent = () => {
 
         <div className="refresh-series-wrapper">
           <img className="refresh-series" src={REFRESH_SERIES} alt={"Refresh Series"} title={"Refresh Series"} />
-          <button onClick={() =>  navigate('/refresh-series')} className="refresh-series-btn">
+          <button onClick={() =>  navigate(`/refresh-series/${singers[0].id}`)} className="refresh-series-btn">
             <span className="btn-label"> Refresh Series </span>
             <svg
               width="24"

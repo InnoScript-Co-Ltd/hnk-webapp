@@ -133,7 +133,7 @@ const RandRComponent = () => {
                                 <IoIosStarOutline color='#00FF0A' />
                                 {episode && episode[0] && (
                                     <p className={styles.btn_label_text}>
-                                        Take Care by {episode[0].singer.name} ကို ဘယ်လို Music Style နဲ နားထောင်ချင်လဲ?
+                                        “ကမ္ဘာတစ်ဖက်က လမင်း” by {episode[0].singer.name} ကို ဘယ်လို Music Style နဲ့ နားထောင်ချင်လဲ?
                                     </p>
                                 )}
                             </div>
@@ -160,7 +160,7 @@ const RandRComponent = () => {
                                 <IoIosStarOutline color='#00FF0A' />
                                 {episode && episode[1] && (
                                     <p className={styles.btn_label_text}>
-                                        အိပ်မက် by {episode[1].singer.name}
+                                        {episode[1].singer.name}  ရဲ့ ပြန်ဆန်းသစ်ထားတဲ့ ခေတ်ဟောင်းသီချင်းလေးက ဘာဖြစ်မလဲ?
                                     </p>
                                 )}
                             </div>

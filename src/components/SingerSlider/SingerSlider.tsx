@@ -61,7 +61,7 @@ const SingerSlider = () => {
                                 className="singer-slider-item"
                                 key={`sinfer_slider_id_${index}`}
                                 onClick={() => {
-                                    navigate(`/refresh-series`)
+                                    navigate(`/refresh-series/${slider.id}`)
                                 }}
                             >
                                 <img className="singer-slider-img" src={`${endpoints.image}/${slider.slider_image}`} alt={imageTitle} title={imageTitle} />

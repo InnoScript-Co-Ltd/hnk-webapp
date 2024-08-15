@@ -3,12 +3,13 @@ import BTNPLAY from "@/assets/images/btn-play.png";
 import RotatingSlogan from "@/components/RotatingSlogan";
 import LoadingComponent from "@/components/LoadingComponent.tsx";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import { imageTitle } from "@/constants/config";
 import HNK_VIDEO_COVER from "@/assets/images/video-poster.png";
 import "./index.css";
+
 
 const Refreshseries = () => {
     const [loading, setLoading] = useState(false);
@@ -20,18 +21,25 @@ const Refreshseries = () => {
 
     const params: any = useParams();
     const palyerRef: any = useRef(null);
+    const navigate = useNavigate()
 
     const loadingSinger = async (value: string) => {
-        setLoading(true);
-        const result: any = await getRequest(`${endpoints.singer}/${value}`);
+        navigate(`/refresh-series/${value}`)
+        // setLoading(true);
+        // setIsPlay(false);
+        // const result: any = await getRequest(`${endpoints.singer}/${value}`);
 
-        if (result.status === 200) {
-            setSinger(result.data.data);
-            setVideos(result.data.data.videos);
-            setCurrentVideo(result.data.data.videos[0]);
-            setIsPlay(false);
-        }
-        setLoading(false);
+        // if (result.status === 200) {
+        //     setSinger(result.data.data);
+        //     setVideos(result.data.data.videos);
+        //     setCurrentVideo(result.data.data.videos[0]);
+        //     setIsPlay(false);
+
+        //     if(palyerRef.current) {
+        //         palyerRef.current.load();
+        //     }
+        // }
+        // setLoading(false);
     }
 
     const initLoading = useCallback(async () => {
@@ -40,19 +48,34 @@ const Refreshseries = () => {
         const singerList: any = await getRequest(`${endpoints.singer}`);
 
         if (singerList.status === 200) {
-            loadingSinger(singerList.data.data[0].id);
+            // const data: any = singerList.data.data.filter((value: any) => {
+            //     if (value.id === params.id) {
+            //         return value;
+            //     }
+            // });
+
+            const result: any = await getRequest(`${endpoints.singer}/${params.id}`);
+
+            if (result.status === 200) {
+                setSinger(result.data.data);
+                setVideos(result.data.data.videos);
+                setCurrentVideo(result.data.data.videos[0]);
+                setIsPlay(false);
+
+                if(palyerRef.current) {
+                    palyerRef.current.load();
+                }
+            }
             setSingers(singerList.data.data);
         }
 
         setLoading(false);
-    }, []);
+    }, [params.id]);
 
 
     useEffect(() => {
-        if (params) {
-            initLoading();
-        }
-    }, [initLoading, params]);
+        initLoading();
+    }, [initLoading]);
 
 
     return (

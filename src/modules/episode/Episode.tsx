@@ -104,7 +104,8 @@ const Episode = () => {
           <img src={titleIllu} alt={imageTitle} title={imageTitle} />
           {episode && episode.singer && (
             <p className='section-title'>
-              <span className='bold-text'> {episode.singer.name} </span>  ရဲ့ အိမ်မက်သီချင်းကို ဘယ်လို refresh လုပ်ချင်လဲ?
+              “ကမ္ဘာတစ်ဖက်က လမင်း” by <span className='bold-text'> {episode.singer.name} </span> ကို ဘယ်လို Music Style နဲ့ နားထောင်ချင်လဲ?
+              {/* <span className='bold-text'> {episode.singer.name} </span>  ရဲ့ အိမ်မက်သီချင်းကို ဘယ်လို refresh လုပ်ချင်လဲ? */}
             </p>
           )}
         </div>

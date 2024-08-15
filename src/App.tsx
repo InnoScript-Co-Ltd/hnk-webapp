@@ -101,7 +101,7 @@ const App = () => {
                     element: lazyLoad(<Register />),
                 },
                 {
-                    path: "/refresh-series",
+                    path: "/refresh-series/:id",
                     element: lazyLoad(<Refreshseries />)
                 },
                 {
