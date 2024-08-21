@@ -62,7 +62,7 @@ const Refreshseries = () => {
                 setCurrentVideo(result.data.data.videos[0]);
                 setIsPlay(false);
 
-                if(palyerRef.current) {
+                if (palyerRef.current) {
                     palyerRef.current.load();
                 }
             }
@@ -100,7 +100,7 @@ const Refreshseries = () => {
                     {singers && singers.map((value: any, index: number) => {
                         return (
                             <div className="singer-btn" key={`singer_id_${index}`} onClick={() => loadingSinger(value.id)}>
-                                <span> {value.name} </span>
+                               <span> {value.name} </span>
                             </div>
                         )
                     })}
@@ -155,6 +155,8 @@ const Refreshseries = () => {
                         </div>
                     )
                 })}
+
+                
             </div>
             <div style={{ background: "#000", position: "absolute", width: "100%", height: "25px", bottom: "0px" }}>
 
