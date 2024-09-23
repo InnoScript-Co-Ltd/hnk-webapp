@@ -133,7 +133,7 @@ const RandRComponent = () => {
                                 <IoIosStarOutline color='#00FF0A' />
                                 {episode && episode[0] && (
                                     <p className={styles.btn_label_text}>
-                                        “ကမ္ဘာတစ်ဖက်က လမင်း” by {episode[0].singer.name} ကို ဘယ်လို Music Style နဲ့ နားထောင်ချင်လဲ?
+                                        “ရေခဲရိုက်အပြုံး” by {episode[0].singer.name} ကို ဘယ်လို Music Style နဲ့ နားထောင်ချင်လဲ?
                                     </p>
                                 )}
                             </div>
@@ -275,7 +275,6 @@ const RandRComponent = () => {
                                         <span className={styles.button_label}>  Refresh with {episode[5].singer.name} </span>
                                     </button>
                                 )}
-                                {/* <ButtonComponent disabled={true} label='Episode-2' onBtnClick={EpOneCLickHandler} /> */}
                             </div>
                         </div>
                         <img src={ep2} style={{ position: "relative", right: "22px" }} alt={imageTitle} title={imageTitle} />
